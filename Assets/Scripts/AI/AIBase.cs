@@ -6,7 +6,7 @@ using AI_UtilitySystem;
 //this is the script that actually makes our agent do stuff the player sees, this behaviour is entirely controlled from the states
 //this is the only script that can change values of the AIStats script
 [RequireComponent(typeof(AIStats))]
-public class AIBase : MonoBehaviour, IAttackable {
+public class AIBase : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private Animator anim;
@@ -15,17 +15,12 @@ public class AIBase : MonoBehaviour, IAttackable {
 	private SpriteRenderer myRenderer;
 	private Color myColor;
 
-	[SerializeField]private Transform worldCanvas;
-	[SerializeField]private HealthBar healthBar;
-
-	public delegate void HealthUpdateDelegate (int newHP);
-	public event HealthUpdateDelegate onHealthChanged;
+	private CharacterCombat combat;
 
 	void Awake(){
-		CombatManager.Instance.RegisterPotentialTarget (this);
-
 		rb = GetComponent<Rigidbody2D> ();
 		myStats = GetComponent<AIStats> ();
+		combat = GetComponent<CharacterCombat> ();
 
 		anim = transform.GetChild(0).GetComponent<Animator> ();
 
@@ -34,20 +29,14 @@ public class AIBase : MonoBehaviour, IAttackable {
 
 		myStats.previousPosition = Position ();
 	}
-
-	void Start(){
-		//spawn the healthbar and initialize it:
-		healthBar = GameObject.Instantiate(healthBar, worldCanvas) as HealthBar;
-		healthBar.Init (this);
-	}
 		
 	//make sure that we have the most potential target set
 	public void UpdateTarget(){
 		IAttackable bestTarget = null;
 		float closestDist = 100000f;
 
-		foreach (IAttackable attackable in CombatManager.Instance.potentialTargets) {
-			if (attackable == (IAttackable)this)
+		foreach (CharacterCombat attackable in CombatManager.Instance.potentialTargets) {
+			if (attackable == combat)
 				continue;
 
 			float dist = Vector2.Distance (attackable.Position (), Position ());
@@ -65,21 +54,6 @@ public class AIBase : MonoBehaviour, IAttackable {
 		}
 
 		myStats.target = bestTarget;
-	}
-
-	public void ApplyDamage (int dmg) {
-		myStats.health -= dmg;
-		if (myStats.health <= 0) {
-			myStats.health = 0;
-		}
-
-		if (onHealthChanged != null) {
-			onHealthChanged (myStats.health);
-		}
-	}
-
-	public bool ValidTarget (){
-		return myStats.health > 0;
 	}
 
 	//can be called to make sure we are facing towards the target (if there is any)
@@ -113,10 +87,6 @@ public class AIBase : MonoBehaviour, IAttackable {
 		return new Vector2 (transform.position.x, transform.position.y);
 	}
 
-	public Vector2 PrevPosition(){
-		return myStats.previousPosition;
-	}
-
 	public void MoveForward(float speed){
 		rb.velocity = new Vector2(myStats.forward.x * speed, rb.velocity.y);
 	}
@@ -146,6 +116,5 @@ public class AIBase : MonoBehaviour, IAttackable {
 
 	public void DestroySelf(){
 		Destroy (gameObject);
-		CombatManager.Instance.PotentialTargetDied (this);
 	}
 }

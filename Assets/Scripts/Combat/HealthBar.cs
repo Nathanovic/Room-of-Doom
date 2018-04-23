@@ -4,10 +4,10 @@ using AI_UtilitySystem;
 
 public class HealthBar : MonoBehaviour {
 
-	private AIStats statsModel;
+	private CharacterCombat combat;
 	private RectTransform healthFill;
 
-	private Transform target;
+	private int maxHealth;
 	public float yOffset = 1f;
 
 	private void Start(){
@@ -15,16 +15,17 @@ public class HealthBar : MonoBehaviour {
 	}
 
 	//initialize the healthbar behaviour:
-	public void Init(AIBase baseScript){
-		transform.name = baseScript.name + "_health";
-		baseScript.onHealthChanged += HealthChanged;
-		statsModel = baseScript.GetComponent<AIStats> ();
-		target = baseScript.transform;
+	public void Init(CharacterCombat combatScript){
+		combat = combatScript;
+		transform.name = "Health Bar";
+		combat.onHealthChanged += HealthChanged;
+		maxHealth = combat.health;
 	}
 
 	//make sure the healthbar stays on top of the unit it belongs to:
 	private void Update(){
-		Vector3 targetPos = target.position + Vector3.up * yOffset;
+		Vector2 pos = combat.Position ();
+		Vector3 targetPos = new Vector3 (pos.x, pos.y + yOffset, 0f);
 		transform.position = targetPos;
 	}
 
@@ -35,7 +36,7 @@ public class HealthBar : MonoBehaviour {
 			return;
 		}
 
-		float percentage = (float)newHealth / statsModel.maxHealth;
+		float percentage = (float)newHealth / maxHealth;
 		Vector2 healthBarSize = healthFill.sizeDelta;
 		healthBarSize.x = 100f * percentage;
 		healthFill.sizeDelta = healthBarSize;

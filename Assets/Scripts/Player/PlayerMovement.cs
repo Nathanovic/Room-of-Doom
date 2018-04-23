@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //takes care of the character movement using the rb2D
-public class CharacterMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
 	public float moveSpeed;
 	public float jumpForce;
@@ -34,6 +34,7 @@ public class CharacterMovement : MonoBehaviour {
 		rb.velocity = new Vector2 (horizontalSpeed, rb.velocity.y);
 
 		if (horizontalSpeed != 0) {
+			Debug.Log ("move");
 			CheckFacingDirection (transform.localScale.x, horizontalSpeed);
 		}
 
