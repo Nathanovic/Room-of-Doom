@@ -3,18 +3,18 @@
 //takes care of the character movement using the rb2D
 public class PlayerMovement : MonoBehaviour {
 
-	public float moveSpeed;
-	public float jumpForce;
-
 	private Rigidbody2D rb;
 	private Animator anim;
+	private PlayerBase baseScript;
 
 	[Header("ground check values:")]
 	public Transform groundCheck;
 	public float groundCheckRadius;
 	public LayerMask groundLM;
 
-	[Header("jump countdown values:")]
+	[Header("jump values:")]
+	public float moveSpeed;
+	public float jumpForce;
 	public float minJumpCountdownTime = 0.5f;
 	private Counter jumpCounter;
 	private bool canJump;
@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour {
 	private void Start(){
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
+		baseScript = GetComponent<PlayerBase> ();
 
 		jumpCounter = new Counter (minJumpCountdownTime);
 		jumpCounter.onCount += EnableJumping;
@@ -29,12 +30,14 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	private void Update(){
+		if (!baseScript.canControl)
+			return;
+
 		float horizontalInput = Input.GetAxis ("Horizontal");
 		float horizontalSpeed = horizontalInput * moveSpeed;
 		rb.velocity = new Vector2 (horizontalSpeed, rb.velocity.y);
 
 		if (horizontalSpeed != 0) {
-			Debug.Log ("move");
 			CheckFacingDirection (transform.localScale.x, horizontalSpeed);
 		}
 

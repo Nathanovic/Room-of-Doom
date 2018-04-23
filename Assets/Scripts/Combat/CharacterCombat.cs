@@ -19,11 +19,17 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	public void ApplyDamage (int dmg){
 		health -= dmg;
 		if (health <= 0) {
-			CombatManager.Instance.PotentialTargetDied (this);
+			health = 0;
 		}
 
+		//make sure all related systems know that the health changed:
 		if (onHealthChanged != null) {
 			onHealthChanged (health);
+		}
+
+		//make sure we cannot be attacked anymore:
+		if (health == 0) {
+			CombatManager.Instance.PotentialTargetDied (this);
 		}
 	}
 

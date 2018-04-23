@@ -868,6 +868,34 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7c3196b96a82064ea7d27d21459ea8b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &424913087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424913088}
+  m_Layer: 0
+  m_Name: weaponCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &424913088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 424913087}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.305, y: -0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1188870401}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &448780036
 Prefab:
   m_ObjectHideFlags: 0
@@ -983,7 +1011,7 @@ GameObject:
   - component: {fileID: 605385487}
   - component: {fileID: 605385489}
   - component: {fileID: 605385488}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1393,9 +1421,10 @@ GameObject:
   - component: {fileID: 1188870404}
   - component: {fileID: 1188870403}
   - component: {fileID: 1188870402}
-  - component: {fileID: 1188870405}
+  - component: {fileID: 1188870406}
   - component: {fileID: 1188870400}
-  m_Layer: 10
+  - component: {fileID: 1188870405}
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1413,13 +1442,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64028829b422886458f6af89cb9a6418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumpForce: 395
   groundCheck: {fileID: 1642303072}
   groundCheckRadius: 0.14
   groundLM:
     serializedVersion: 2
     m_Bits: 768
+  moveSpeed: 3
+  jumpForce: 395
   minJumpCountdownTime: 0.5
 --- !u!4 &1188870401
 Transform:
@@ -1434,6 +1463,7 @@ Transform:
   m_Children:
   - {fileID: 605385487}
   - {fileID: 1642303072}
+  - {fileID: 424913088}
   - {fileID: 1192010253}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1519,10 +1549,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1188870399}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ec38b40ca1f15e48bf6d8dc16d70100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  enemyLM:
+    serializedVersion: 2
+    m_Bits: 1024
+  weaponCheck: {fileID: 424913088}
+  weaponDamage: 2
+  weaponRange: 0.3
+  cooldown: 1
+  remainingCooldown: 0
+--- !u!114 &1188870406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1188870399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460206edee54ebb4b85490c94507a411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canControl: 0
 --- !u!1 &1192010252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,7 +1601,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1188870401}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1192010254
 BoxCollider2D:
@@ -2209,7 +2259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1642303072}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
