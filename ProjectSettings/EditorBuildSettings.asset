@@ -4,4 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Vrij/Menu.unity
+    guid: d140d2d598dff2d42b8838f8f4976030
+  - enabled: 1
+    path: Assets/Vrij/CharacterSelect.unity
+    guid: 95ce8e7d06d664c4ead727b71cf1c0c7
+  - enabled: 1
+    path: Assets/Vrij/Game.unity
+    guid: 8c1465c2c2967454f8f265c0d4e83f00
+  m_configObjects: {}
