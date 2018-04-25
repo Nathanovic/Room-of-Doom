@@ -4,6 +4,7 @@
 public class PlayerCombat : CharacterCombat {
 
 	private PlayerBase baseScript;
+	private Animator anim;
 
 	[Header("hit check values")]
 	public LayerMask enemyLM;
@@ -17,6 +18,7 @@ public class PlayerCombat : CharacterCombat {
 
 	private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
+		anim = GetComponentInChildren<Animator> ();
 	}
 
 	private void Update () {
@@ -39,6 +41,8 @@ public class PlayerCombat : CharacterCombat {
 			CharacterCombat combatScript = other.GetComponent<CharacterCombat> ();
 			combatScript.ApplyDamage (weaponDamage);
         }
+
+		anim.SetTrigger ("stab");
 	}
 
 	private void Cooldown(){
