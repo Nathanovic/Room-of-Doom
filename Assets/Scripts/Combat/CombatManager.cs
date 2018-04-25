@@ -15,13 +15,27 @@ public class CombatManager : MonoBehaviour {
 		}
 	}
 
-	public List<IAttackable> potentialTargets = new List<IAttackable>();
+	public List<CharacterCombat> potentialTargets = new List<CharacterCombat>();
 
-	public void RegisterPotentialTarget(IAttackable t){
+	[SerializeField]private Transform worldCanvas;
+	[SerializeField]private HealthBar healthBar;
+
+	public void RegisterPotentialTarget(CharacterCombat t){
 		potentialTargets.Add (t);
 	}
 
-	public void PotentialTargetDied(IAttackable t){
+	private void Start(){
+		worldCanvas = GameObject.FindGameObjectWithTag ("WorldCanvas").transform;
+		HealthBar healthBarPrefab = Resources.Load<HealthBar> ("HealthBar");
+
+		//spawn the healthbars and initialize them:
+		foreach (CharacterCombat attackable in potentialTargets) {
+			HealthBar healthBar = GameObject.Instantiate (healthBarPrefab, worldCanvas) as HealthBar;
+			healthBar.Init (attackable);
+		}
+	}
+
+	public void PotentialTargetDied(CharacterCombat t){
 		potentialTargets.Remove (t);
 	}
 }

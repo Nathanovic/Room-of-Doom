@@ -14,8 +14,7 @@ namespace AI_UtilitySystem{
 		}
 		public Vector2 forward;
 
-		public int maxHealth = 10;
-		public int health = 10;
+		private int health = 10;
 		public int maxEnergy;
 		public int energy;
 
@@ -31,10 +30,16 @@ namespace AI_UtilitySystem{
 		private void Start(){
 			obstacleLM = LayerMask.GetMask ("Default", "Ground", "Obstacle");
 
-			health = maxHealth;
-			energy = maxEnergy;
+			CharacterCombat combatScript = GetComponent<CharacterCombat>();
+			combatScript.onHealthChanged += UpdateHealth;
+			health = combatScript.health;
 
+			energy = maxEnergy;
 			forward = new Vector2 (1, 0);
+		}
+
+		private void UpdateHealth(int newHP){
+			health = newHP;
 		}
 
 		private float DistToTarget(){

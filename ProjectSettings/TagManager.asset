@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Pickup
+  - WorldCanvas
   layers:
   - Default
   - TransparentFX

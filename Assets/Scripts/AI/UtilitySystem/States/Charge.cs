@@ -26,7 +26,7 @@ namespace AI_UtilitySystem{
 			//check for obstacles:
 			if (statsModel.ObstacleAhead ()) {
 				EndState ();
-				return;
+				return; 
 			}
 
 			//check if we can hit a target:

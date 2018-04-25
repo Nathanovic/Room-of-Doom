@@ -13,6 +13,7 @@ public class PickUpBehaviour : MonoBehaviour {
 
 	//check for pickup available:
 	private void OnTriggerEnter2D(Collider2D other){
+		Debug.Log ("pickup enter: " + other.tag);
 		if (other.tag == "Pickup" && !availablePickups.Contains(other)) { 
 			availablePickups.Add (other);
 			Vector3 targetPos = new Vector3 (other.transform.position.x, transform.position.y, 0f);
