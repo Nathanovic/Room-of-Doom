@@ -7,6 +7,8 @@ public class MainScreen : MonoBehaviour {
 
     public GameObject badges, slotmachine, play;
 
+    public GameObject[] buttons;
+
     public int amountPlayers = 2;
     public int readyPlayers = 0;
 
@@ -14,7 +16,7 @@ public class MainScreen : MonoBehaviour {
     public void Ready(){       
         readyPlayers++;
         PlayerPrefs.SetInt("CharacterPlayer1", 0);
-        PlayerPrefs.SetInt("CharacterPlayer1", 1);
+        PlayerPrefs.SetInt("CharacterPlayer2", 1);
 
         if (readyPlayers == amountPlayers){
             SceneManager.LoadScene(2);
