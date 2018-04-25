@@ -8,7 +8,7 @@ public class MainScreen : MonoBehaviour {
     public GameObject badges, slotmachine, play;
 
     public int amountPlayers = 2;
-    private int readyPlayers = 0;
+    public int readyPlayers = 0;
 
 
     public void Ready(){       

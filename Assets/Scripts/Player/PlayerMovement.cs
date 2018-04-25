@@ -12,12 +12,27 @@ public class PlayerMovement : MonoBehaviour {
 	public float groundCheckRadius;
 	public LayerMask groundLM;
 
-	[Header("jump values:")]
+	[Header("movement values:")]
 	public float moveSpeed;
+	public AnimationCurve accelerationCurve;
+	public float accelerationTime = 0.3f;
+	private bool accelerate;
+	public AnimationCurve deccelerationCurve;
+	public float deccelerationTime = 0.3f;
+	private float startDeccelerationMoment;
+
+	private float curveT = 0f;//1 means max movementspeed; 0 means stand still
+	private float curveValue;
+
+	[Header("jump values:")]
+	public float doubleJumpFactor = 0.7f;
 	public float jumpForce;
 	public float minJumpCountdownTime = 0.5f;
+	public float doubleJumpTime = 1.2f;
+	private float remainingDoubleJumpTime = 0f;
 	private Counter jumpCounter;
 	private bool canJump;
+	private bool didDoubleJump;
 
 	private void Start(){
 		rb = GetComponent<Rigidbody2D> ();
@@ -33,21 +48,88 @@ public class PlayerMovement : MonoBehaviour {
 		if (!baseScript.canControl)
 			return;
 
-		float horizontalInput = Input.GetAxis ("Horizontal");
-		float horizontalSpeed = horizontalInput * moveSpeed;
-		rb.velocity = new Vector2 (horizontalSpeed, rb.velocity.y);
+		MoveBehaviour ();
+		JumpBehaviour ();
+	}
 
-		if (horizontalSpeed != 0) {
-			CheckFacingDirection (transform.localScale.x, horizontalSpeed);
+	#region Move Behaviour
+	private void MoveBehaviour(){
+		float inputValue = Input.GetAxis ("Horizontal");
+		if (inputValue != 0 && !accelerate) {
+			curveT = GetCurveT (accelerationCurve);
+			accelerate = true;
+		} else if (inputValue == 0 && accelerate) {
+			curveT = GetCurveT (deccelerationCurve);
+			accelerate = false;
 		}
 
-		if (Input.GetButtonDown ("Jump") && canJump) {
-			//jump if we are grounded:
-			if (Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, groundLM)) {
-				canJump = false;
-				jumpCounter.StartCounting ();
-				rb.AddForce (Vector2.up * jumpForce);
+		if (accelerate) {
+			if (curveT < 1f) {
+				curveT += Time.deltaTime / accelerationTime;
 			}
+			curveValue = accelerationCurve.Evaluate (curveT);
+			CheckFacingDirection (transform.localScale.x, inputValue);
+		} else {
+			if (curveT < 1f) {
+				curveT += Time.deltaTime / accelerationTime;
+			}
+			curveValue = deccelerationCurve.Evaluate (curveT);
+			inputValue = transform.localScale.x;
+		}
+
+		rb.velocity = new Vector2 (curveValue * moveSpeed * inputValue, rb.velocity.y);
+	}
+
+	//used to update the curveT value if we switch from accelerating to deccelerating or in reverse
+	private float GetCurveT(AnimationCurve newCurve){
+		float closestDiff = 1f;
+		float preferredT = 0f;
+
+		float t = 0f;
+		float step = 0.01f;
+
+		while(t < 1f){
+			t += step;
+			float value = newCurve.Evaluate(t);
+			float diff = Mathf.Abs (value - curveValue);
+			if(diff < closestDiff) { 
+				closestDiff = diff;
+				preferredT = t;
+			}
+		}   
+			
+		return preferredT;
+	}
+	#endregion
+
+	#region Jump Behaviour
+	private void JumpBehaviour(){
+		if (remainingDoubleJumpTime > 0f) {
+			remainingDoubleJumpTime -= Time.deltaTime;
+		}
+		if (Input.GetButtonDown ("Jump")) {
+			TryJump ();
+		}		
+	}
+
+	private void TryJump(){
+		bool grounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, groundLM);
+		if ((canJump && grounded) || (!didDoubleJump && remainingDoubleJumpTime <= 0f)){
+			float jumpPower = jumpForce;
+			if (!grounded) {
+				canJump = false;
+				didDoubleJump = true;
+				jumpPower *= doubleJumpFactor;
+			}
+			else {
+				remainingDoubleJumpTime = doubleJumpTime;
+				didDoubleJump = false;
+			}
+
+			//jump if we are grounded/can double jump:
+			jumpCounter.StartCounting ();
+			rb.AddForce (Vector2.up * jumpForce);
+			
 		}
 	}
 
@@ -55,6 +137,7 @@ public class PlayerMovement : MonoBehaviour {
 	private void EnableJumping(){
 		canJump = true;
 	}
+	#endregion
 
 	//draw the gizmos for the ground check
 	private void OnDrawGizmos(){
@@ -62,7 +145,7 @@ public class PlayerMovement : MonoBehaviour {
 		Gizmos.DrawWireSphere (groundCheck.position, groundCheckRadius);
 	}
 
-	//make sure we are looking in the right direction
+	//make sure we are facing the right direction
 	private void CheckFacingDirection(float localX, float moveSpeed){
 		if((moveSpeed > 0 && localX < 0) || (moveSpeed < 0 && localX > 0)){
 			float newXScale = (transform.localScale.x > 0f) ? -1f : 1f;
