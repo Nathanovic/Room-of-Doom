@@ -331,7 +331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 2
   speed: 10
-  characterList: {fileID: 0}
+  characterList:
+  - {fileID: 21300000, guid: 68744889c2fbe8f409c8e16c6ab075bb, type: 3}
+  - {fileID: 21300000, guid: db58b7d002c86a742920d63e30505b45, type: 3}
 --- !u!1 &389665498
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +631,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   speed: 10
-  characterList: {fileID: 0}
+  characterList:
+  - {fileID: 21300000, guid: 68744889c2fbe8f409c8e16c6ab075bb, type: 3}
+  - {fileID: 21300000, guid: db58b7d002c86a742920d63e30505b45, type: 3}
 --- !u!1 &1335177487
 GameObject:
   m_ObjectHideFlags: 0

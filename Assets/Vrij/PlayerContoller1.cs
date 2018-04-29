@@ -7,13 +7,13 @@ public class PlayerContoller1 : MonoBehaviour {
     public int playerNumber;
 
     public float speed;
-    public GameObject characterList;
+    public Sprite[] characterList;
 
     private PlayerInput input;
     private Rigidbody2D rb;
 
     private void Awake(){
-        
+        GetComponent<SpriteRenderer>().sprite = characterList[PlayerPrefs.GetInt("CharacterPlayer" + playerNumber)];
     }
 
     void Start () {
