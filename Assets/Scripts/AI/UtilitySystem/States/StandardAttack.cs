@@ -23,16 +23,10 @@ namespace AI_UtilitySystem{
 				//make sure that we only apply damage to our target if it is still relevant:
 				CalculateUtility ();
 				if (utilityValue > 0.1f){
-					TryDamageTarget ();
+					controller.HitTarget (attackDamage);
 				}
 
 				EndState ();
-			}
-		}
-
-		private void TryDamageTarget(){
-			if (statsModel.target != null) {
-				statsModel.target.ApplyDamage (attackDamage);
 			}
 		}
 

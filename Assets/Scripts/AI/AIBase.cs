@@ -109,6 +109,10 @@ public class AIBase : MonoBehaviour {
 		transform.localScale = new Vector3 (newXScale, 1f, 1f);
 	}
 
+	public void HitTarget(int attackDamage){
+		myStats.target.ApplyDamage (attackDamage, transform.position.x);
+	}
+
 	public void FadeSelfOut(float newAlpha){
 		myColor.a = newAlpha;
 		myRenderer.color = myColor;

@@ -11,12 +11,14 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	public delegate void HealthUpdateDelegate (int newHP);
 	public event HealthUpdateDelegate onHealthChanged;
 
+	public ParticleSystem hitPS;
+
 	private void Awake(){
 		CombatManager.Instance.RegisterPotentialTarget (this);
 	}
 
 	//apply damage to character; can only be done if health > 0
-	public void ApplyDamage (int dmg){
+	public void ApplyDamage (int dmg, float otherX){
 		health -= dmg;
 		if (health <= 0) {
 			health = 0;
@@ -31,6 +33,9 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		if (health == 0) {
 			CombatManager.Instance.PotentialTargetDied (this);
 		}
+
+		//show the player visually that we have been hit:
+		hitPS.Play ();
 	}
 
 	public bool ValidTarget (){

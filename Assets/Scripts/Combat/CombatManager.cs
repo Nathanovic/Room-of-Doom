@@ -35,6 +35,7 @@ public class CombatManager : MonoBehaviour {
 		}
 	}
 
+	//one of the targets has died, so remove it
 	public void PotentialTargetDied(CharacterCombat t){
 		potentialTargets.Remove (t);
 	}

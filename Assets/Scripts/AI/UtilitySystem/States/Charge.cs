@@ -11,7 +11,7 @@ namespace AI_UtilitySystem{
 		public float maxChargeDist = 10f;
 		public float chargeSpeed = 5f;
 
-		public LayerMask targetLM;
+		public DecisionFactor hittableTargetFactor;
 
 		private float passedChargeDist;
 
@@ -30,30 +30,18 @@ namespace AI_UtilitySystem{
 			}
 
 			//check if we can hit a target:
-			Debug.DrawLine(controller.Position(), statsModel.forward * statsModel.weaponRange, Color.red);
-			IAttackable attackable = GetAttackableTarget ();
-			TryDamageTarget (attackable);
+			TryDamageTarget();
 
 			//charge forward:
 			controller.MoveForward(chargeSpeed);
 			passedChargeDist += chargeSpeed * Time.deltaTime;
 		}
 
-		//get the target that is in attack range
-		private IAttackable GetAttackableTarget(){
-			RaycastHit2D hit = Physics2D.Raycast (controller.Position (), statsModel.forward, statsModel.weaponRange, targetLM);
-			if (hit.collider != null) {
-				IAttackable target = hit.collider.GetComponent<IAttackable> ();
-				return target;
-			}
-
-			return null;
-		}
-
 		//apply damage to target (if we can!)
-		private void TryDamageTarget(IAttackable target){
-			if (target != null) {
-				target.ApplyDamage (chargeDamage);
+		private void TryDamageTarget(){
+			if (hittableTargetFactor.Value (statsModel) > 0.4f) {
+				Debug.Log ("hit: target");
+				controller.HitTarget (chargeDamage);
 				EndState ();
 			}
 		}
@@ -71,7 +59,7 @@ namespace AI_UtilitySystem{
 			copyState.chargeDamage = chargeDamage;
 			copyState.maxChargeDist = maxChargeDist;
 			copyState.chargeSpeed = chargeSpeed;
-			copyState.targetLM = targetLM;
+			copyState.hittableTargetFactor = hittableTargetFactor;
 
 			return copyState;
 		}

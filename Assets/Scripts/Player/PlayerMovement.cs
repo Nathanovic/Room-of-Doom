@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour {
 	private Counter jumpCounter;
 	private bool canJump;
 	private bool didDoubleJump;
+	private bool grounded;
+	public ParticleSystem jumpPS;
+	public ParticleSystem groundedPS;
 
 	private void Start(){
 		rb = GetComponent<Rigidbody2D> ();
@@ -104,6 +107,12 @@ public class PlayerMovement : MonoBehaviour {
 
 	#region Jump Behaviour
 	private void JumpBehaviour(){
+		bool newGrounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, groundLM);
+		if (!grounded && newGrounded) {
+			groundedPS.Play ();
+		}
+		grounded = newGrounded;
+
 		if (remainingDoubleJumpTime > 0f) {
 			remainingDoubleJumpTime -= Time.deltaTime;
 		}
@@ -113,7 +122,6 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	private void TryJump(){
-		bool grounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, groundLM);
 		if ((canJump && grounded) || (!didDoubleJump && remainingDoubleJumpTime <= 0f)){
 			float jumpPower = jumpForce;
 			if (!grounded) {
@@ -129,7 +137,7 @@ public class PlayerMovement : MonoBehaviour {
 			//jump if we are grounded/can double jump:
 			jumpCounter.StartCounting ();
 			rb.AddForce (Vector2.up * jumpForce);
-			
+			jumpPS.Play ();
 		}
 	}
 

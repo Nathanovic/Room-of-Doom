@@ -2,13 +2,32 @@
 using System.Collections.Generic;
 
 //this script is used for picking up items
-public class PickUpBehaviour : MonoBehaviour {
+public class PlayerPickup : MonoBehaviour {
 
 	public List<Collider2D> availablePickups;
 	private Pickup currentPickup;
+	private PlayerBase baseScript;
 
 	private void Start(){
 		availablePickups = new List<Collider2D> ();
+		baseScript = GetComponentInParent<PlayerBase> ();
+	}
+
+	//try to pickup if we push the pickup button
+	private void Update(){
+		if (!baseScript.canControl)
+			return;
+
+		int lastPickupIndex = availablePickups.Count - 1;
+		if (Input.GetButtonDown ("Pickup") && lastPickupIndex >= 0) {
+			if (currentPickup != null) {
+				currentPickup.DropMe (transform.position);
+			}
+
+			Pickup pickup = availablePickups [lastPickupIndex].GetComponent <Pickup> ();
+			currentPickup = pickup;
+			pickup.PickMeUp ();
+		}
 	}
 
 	//check for pickup available:
@@ -19,7 +38,7 @@ public class PickUpBehaviour : MonoBehaviour {
 			NotificationPanel.instance.ShowNotification (targetPos, "(<color=red>Y</color>) apple");
 		}
 	}
-		
+
 	//check for pickup left
 	private void OnTriggerExit2D(Collider2D other){
 		if (other.tag == "Pickup" && availablePickups.Contains(other)) { 
@@ -27,20 +46,6 @@ public class PickUpBehaviour : MonoBehaviour {
 			if (availablePickups.Count == 0) {
 				NotificationPanel.instance.DeactivateNotification ();
 			}
-		}
-	}
-
-	private void Update(){
-		//try to pickup if we push the pickup button:
-		int lastPickupIndex = availablePickups.Count - 1;
-		if (Input.GetButtonDown ("Pickup") && lastPickupIndex >= 0) {
-			if (currentPickup != null) {
-				currentPickup.DropMe (transform.position);
-			}
-
-			Pickup pickup = availablePickups [lastPickupIndex].GetComponent <Pickup> ();
-			currentPickup = pickup;
-			pickup.PickMeUp ();
 		}
 	}
 }

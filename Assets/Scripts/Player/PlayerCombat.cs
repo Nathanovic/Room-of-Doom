@@ -11,8 +11,8 @@ public class PlayerCombat : CharacterCombat {
 	public Transform weaponCheck;
 
 	[Header("weapon values")]
-	public int weaponDamage;
-	public float weaponRange;
+	public int attackDamage;
+	public float attackRange;
 	public float cooldown;
 	public float remainingCooldown;
 
@@ -36,10 +36,10 @@ public class PlayerCombat : CharacterCombat {
 	//activate the cooldown and try to hit someone
 	private void Attack(){
 		remainingCooldown = cooldown;
-		Collider2D other = Physics2D.OverlapCircle(weaponCheck.position, weaponRange, enemyLM);
+		Collider2D other = Physics2D.OverlapCircle(weaponCheck.position, attackRange, enemyLM);
         if (other != null) {
 			CharacterCombat combatScript = other.GetComponent<CharacterCombat> ();
-			combatScript.ApplyDamage (weaponDamage);
+			combatScript.ApplyDamage (attackDamage, transform.position.x);
         }
 
 		anim.SetTrigger ("stab");
@@ -53,6 +53,6 @@ public class PlayerCombat : CharacterCombat {
 	//draw a circle where the weapon can hit
 	void OnDrawGizmos(){
 		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere (weaponCheck.position, weaponRange);
+		Gizmos.DrawWireSphere (weaponCheck.position, attackRange);
 	}
 }
