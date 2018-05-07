@@ -5,7 +5,7 @@ using UnityEngine;
 //handles all of the input for one player
 public class PlayerInput : MonoBehaviour {
 
-    public enum Button {A, B, RB}//A = oa jumping, RB = attack
+    public enum Button {A, B, Y, RB}//A = jumping&continue, B = back, X = oppakken, RB = attack
 
     private string horizontalAxis;
     //private string verticalAxis;
