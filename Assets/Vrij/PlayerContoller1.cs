@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerContoller1 : MonoBehaviour {
 
-    public int playerNumber;
+    public int controllerNumber;
 
     public float speed;
     public Sprite[] characterList;
@@ -13,7 +14,7 @@ public class PlayerContoller1 : MonoBehaviour {
     private Rigidbody2D rb;
 
     private void Awake(){
-        GetComponent<SpriteRenderer>().sprite = characterList[PlayerPrefs.GetInt("CharacterPlayer" + playerNumber)];
+        GetComponent<SpriteRenderer>().sprite = characterList[PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber)];
     }
 
     void Start () {
@@ -21,7 +22,7 @@ public class PlayerContoller1 : MonoBehaviour {
 
         rb = GetComponent<Rigidbody2D>();
         input = GetComponent<PlayerInput>();
-        input.SetControllerNumber(playerNumber);
+        input.SetControllerNumber(controllerNumber);
 
         Destroy(GetComponent<PolygonCollider2D>());
         gameObject.AddComponent<PolygonCollider2D>();

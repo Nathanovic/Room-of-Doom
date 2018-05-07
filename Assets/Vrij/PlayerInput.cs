@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour {
     private string bButton;
     private int controllerNumber;
 
+    [HideInInspector]
     public float horizontal;
 
     private void Awake(){
