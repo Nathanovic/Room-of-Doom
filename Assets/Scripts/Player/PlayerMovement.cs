@@ -3,6 +3,7 @@
 //takes care of the character movement using the rb2D
 public class PlayerMovement : MonoBehaviour {
 
+	private PlayerInput input;
 	private Rigidbody2D rb;
 	private Animator anim;
 	private PlayerBase baseScript;
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 	public ParticleSystem groundedPS;
 
 	private void Start(){
+		input = GetComponent<PlayerInput> ();
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
 		baseScript = GetComponent<PlayerBase> ();
@@ -57,7 +59,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	#region Move Behaviour
 	private void MoveBehaviour(){
-		float inputValue = Input.GetAxis ("Horizontal");
+		float inputValue = input.horizontal;
 		if (inputValue != 0 && !accelerate) {
 			curveT = GetCurveT (accelerationCurve);
 			accelerate = true;
@@ -116,7 +118,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (remainingDoubleJumpTime > 0f) {
 			remainingDoubleJumpTime -= Time.deltaTime;
 		}
-		if (Input.GetButtonDown ("Jump")) {
+		if (input.ButtonIsDown(PlayerInput.Button.A)) {
 			TryJump ();
 		}		
 	}
