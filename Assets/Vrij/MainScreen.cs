@@ -14,7 +14,7 @@ public class MainScreen : MonoBehaviour {
     public List<MainMenuScreens> screens = new List<MainMenuScreens>();
     private MainMenuScreens currenScreen;
     public Button selectedBut;
-    private int screenIndex = 0;
+    //private int screenIndex = 0;
     private bool canChangeButSelect = true;
 
     private bool readyP1;
