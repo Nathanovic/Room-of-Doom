@@ -11,6 +11,8 @@ public class PlayerInput : MonoBehaviour {
     //private string verticalAxis;
     private string aButton;
     private string bButton;
+    private string rbButton;
+
     public int controllerNumber;
 
     [HideInInspector]
@@ -27,7 +29,9 @@ public class PlayerInput : MonoBehaviour {
                 return Input.GetButton(aButton);
             case Button.B:
                 return Input.GetButton(bButton);
-			default: 
+            case Button.RB:
+                return Input.GetButton(rbButton);
+            default: 
 				Debug.LogWarning ("unkown button: " + but);
 				break;
         }
@@ -40,6 +44,8 @@ public class PlayerInput : MonoBehaviour {
         //verticalAxis = "J" + controllerNumber + "Vertical";
         aButton = "J" + controllerNumber + "A";
         bButton = "J" + controllerNumber + "B";
+        rbButton = "J" + controllerNumber + "RB";
+
     }
 
     private void Update(){

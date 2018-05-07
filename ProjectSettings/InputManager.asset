@@ -422,7 +422,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: J1Vertical
+    m_Name: J1RB
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -438,7 +438,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: J2Vertical
+    m_Name: J2RB
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
