@@ -85,10 +85,10 @@ public class MainScreen : MonoBehaviour {
     }
 
     public void Ready(){
-        int temp = System.Array.IndexOf(characters, playerCharacters[0].sprite);
+        int temp = (System.Array.IndexOf(characters, playerCharacters[0].sprite)) + 1;
 
         PlayerPrefs.SetInt("CharacterPlayer1", temp);
-        PlayerPrefs.SetInt("CharacterPlayer2", temp == 0 ? 1 : 0);
+        PlayerPrefs.SetInt("CharacterPlayer2", temp == 1 ? 2 : 1);
         SceneManager.LoadScene(2);
         
     }
