@@ -145,7 +145,7 @@ public class MainScreen : MonoBehaviour {
     }
 
     private void CharacterScreen(){
-        if ((Input.GetKeyDown(KeyCode.Joystick1Button3) && Input.GetKeyDown(KeyCode.Joystick2Button3))      || Input.GetKeyDown(KeyCode.Space)){
+        if ((Input.GetKey(KeyCode.Joystick1Button3) && Input.GetKey(KeyCode.Joystick2Button3))              || Input.GetKeyDown(KeyCode.Space)){
             int temp = System.Array.IndexOf(characters, playerCharacters[0].sprite);
             playerCharacters[0].sprite = characters[temp == 0 ? 1 : 0];
             playerCharacters[1].sprite = characters[temp == 0 ? 0 : 1];
