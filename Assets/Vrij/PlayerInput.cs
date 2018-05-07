@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//handles all of the input for one player
 public class PlayerInput : MonoBehaviour {
 
-    public enum Button {A, B}
+    public enum Button {A, B, RB}//A = oa jumping, RB = attack
 
     private string horizontalAxis;
     //private string verticalAxis;
@@ -26,6 +27,9 @@ public class PlayerInput : MonoBehaviour {
                 return Input.GetButton(aButton);
             case Button.B:
                 return Input.GetButton(bButton);
+			default: 
+				Debug.LogWarning ("unkown button: " + but);
+				break;
         }
         return false;
     }
@@ -38,11 +42,10 @@ public class PlayerInput : MonoBehaviour {
         bButton = "J" + controllerNumber + "B";
     }
 
-    private void FixedUpdate(){
+    private void Update(){
         if (controllerNumber > 0){
             horizontal = Input.GetAxis(horizontalAxis);
             horizontal = Input.GetAxis("Horizontal");
         }
     }
-
 }

@@ -3,6 +3,7 @@
 //the player implementation for combat
 public class PlayerCombat : CharacterCombat {
 
+	private PlayerInput input;
 	private PlayerBase baseScript;
 	private Animator anim;
 
@@ -19,13 +20,14 @@ public class PlayerCombat : CharacterCombat {
 	private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
 		anim = GetComponentInChildren<Animator> ();
+		input = GetComponent<PlayerInput> ();
 	}
 
 	private void Update () {
 		if (!baseScript.canControl)
 			return;
 
-		if (remainingCooldown == 0f && Input.GetButtonDown ("Attack")) {
+		if (remainingCooldown == 0f && input.ButtonIsDown(PlayerInput.Button.RB)) {
 			Attack ();
 		}
 		else if (remainingCooldown > 0f) {
