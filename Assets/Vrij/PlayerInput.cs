@@ -10,13 +10,13 @@ public class PlayerInput : MonoBehaviour {
     //private string verticalAxis;
     private string aButton;
     private string bButton;
-    private int controllerNumber;
+    public int controllerNumber;
 
     [HideInInspector]
     public float horizontal;
 
     private void Awake(){
-        controllerNumber = PlayerPrefs.GetInt("CharacterPlayer");
+        controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
         SetControllerNumber(controllerNumber);
     }
 
