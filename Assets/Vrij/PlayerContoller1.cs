@@ -5,16 +5,13 @@ using UnityEngine;
 
 public class PlayerContoller1 : MonoBehaviour {
 
-    public int controllerNumber;
-
     public float speed;
-    public Sprite[] characterList;
 
     private PlayerInput input;
     private Rigidbody2D rb;
 
     private void Awake(){
-        GetComponent<SpriteRenderer>().sprite = characterList[PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber)];
+
     }
 
     void Start () {
@@ -22,10 +19,7 @@ public class PlayerContoller1 : MonoBehaviour {
 
         rb = GetComponent<Rigidbody2D>();
         input = GetComponent<PlayerInput>();
-        input.SetControllerNumber(controllerNumber);
 
-        Destroy(GetComponent<PolygonCollider2D>());
-        gameObject.AddComponent<PolygonCollider2D>();
     }
 
     void Update () {

@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour {
     public enum Button {A, B}
 
     private string horizontalAxis;
-    private string verticalAxis;
+    //private string verticalAxis;
     private string aButton;
     private string bButton;
     private int controllerNumber;
@@ -16,11 +16,11 @@ public class PlayerInput : MonoBehaviour {
     public float horizontal;
 
     private void Awake(){
-
-
+        controllerNumber = PlayerPrefs.GetInt("CharacterPlayer");
+        SetControllerNumber(controllerNumber);
     }
 
-    internal bool ButtonIsDown(Button but){
+    public bool ButtonIsDown(Button but){
         switch (but){
             case Button.A:
                 return Input.GetButton(aButton);
@@ -30,10 +30,10 @@ public class PlayerInput : MonoBehaviour {
         return false;
     }
 
-    internal void SetControllerNumber(int nr){
+    public void SetControllerNumber(int nr){
         controllerNumber = nr;
         horizontalAxis = "J" + controllerNumber + "Horizontal";
-        verticalAxis = "J" + controllerNumber + "Vertical";
+        //verticalAxis = "J" + controllerNumber + "Vertical";
         aButton = "J" + controllerNumber + "A";
         bButton = "J" + controllerNumber + "B";
     }
