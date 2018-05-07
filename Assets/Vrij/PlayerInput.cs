@@ -25,12 +25,13 @@ public class PlayerInput : MonoBehaviour {
 
     public bool ButtonIsDown(Button but){
         switch (but){
-            case Button.A:
-				return Input.GetButtonDown(aButton);
+		case Button.A:
+			Debug.Log ("button A: " + aButton + ": " + Input.GetButtonDown(aButton).ToString() + "|||Any key: " + Input.anyKeyDown + "|||");
+			return Input.GetButtonDown(aButton);
             case Button.B:
-				return Input.GetButtonDown(bButton);
+			return Input.GetButtonDown(bButton);
             case Button.RB:
-				return Input.GetButtonDown(rbButton);
+			return Input.GetButtonDown(rbButton);
             default: 
 				Debug.LogWarning ("unkown button: " + but);
 				break;
