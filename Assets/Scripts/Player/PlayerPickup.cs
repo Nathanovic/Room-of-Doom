@@ -10,7 +10,7 @@ public class PlayerPickup : MonoBehaviour {
 	private PlayerBase baseScript;
 
 	private void Start(){
-		input = GetComponent<PlayerInput> ();
+		input = transform.parent.GetComponent<PlayerInput> ();
 		availablePickups = new List<Collider2D> ();
 		baseScript = GetComponentInParent<PlayerBase> ();
 	}

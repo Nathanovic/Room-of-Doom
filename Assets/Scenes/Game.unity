@@ -4905,6 +4905,10 @@ Prefab:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1071036759413988, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
   m_IsPrefabAsset: 0
