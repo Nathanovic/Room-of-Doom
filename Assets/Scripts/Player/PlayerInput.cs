@@ -56,13 +56,11 @@ public class PlayerInput : MonoBehaviour {
         xButton = "J" + controllerNumber + "X";
 
         rbButton = "J" + controllerNumber + "RB";
-
     }
 
-    private void Update(){
+	private void Update(){
         if (controllerNumber > 0){
             horizontal = Input.GetAxis(horizontalAxis);
-            //horizontal = Input.GetAxis("Horizontal");
         }
     }
 }

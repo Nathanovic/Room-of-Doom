@@ -83,6 +83,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		rb.velocity = new Vector2 (curveValue * moveSpeed * inputValue, rb.velocity.y);
+
+		anim.SetFloat ("moveSpeed", curveValue * Mathf.Abs(inputValue));
 	}
 
 	//used to update the curveT value if we switch from accelerating to deccelerating or in reverse
@@ -121,6 +123,8 @@ public class PlayerMovement : MonoBehaviour {
 		if (input.ButtonIsDown(PlayerInput.Button.A)) {
 			TryJump ();
 		}		
+
+		anim.SetBool ("grounded", grounded);
 	}
 
 	private void TryJump(){

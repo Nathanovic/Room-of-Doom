@@ -81,9 +81,12 @@ namespace AI_UtilitySystem{
 			if (target == null)
 				return 0f;
 			else {
+				/*
 				float distToTarget = Vector2.Distance(target.Position (), position);
 				float prevDistToTarget = Vector2.Distance(target.PrevPosition(), previousPosition);
 				float approachSpeed = (prevDistToTarget - distToTarget) / Time.deltaTime;
+				*/
+				float approachSpeed = 0f;
 				return approachSpeed;
 			}
 		}

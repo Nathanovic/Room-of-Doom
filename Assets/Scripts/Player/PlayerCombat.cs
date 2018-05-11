@@ -44,7 +44,7 @@ public class PlayerCombat : CharacterCombat {
 			combatScript.ApplyDamage (attackDamage, transform.position.x);
         }
 
-		anim.SetTrigger ("stab");
+		anim.SetTrigger ("attack");
 	}
 
 	private void Cooldown(){

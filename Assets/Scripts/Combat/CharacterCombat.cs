@@ -45,8 +45,4 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	public Vector2 Position (){
 		return (Vector2)transform.position;
 	}
-
-	public Vector2 PrevPosition (){
-		throw new System.NotImplementedException ();
-	}
 }
