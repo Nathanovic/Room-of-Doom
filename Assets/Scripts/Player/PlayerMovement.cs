@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float curveT = 0f;//1 means max movementspeed; 0 means stand still
 	private float curveValue;
 
+
 	[Header("jump values:")]
 	public float doubleJumpFactor = 0.7f;
 	public float jumpForce;

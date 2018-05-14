@@ -19,12 +19,13 @@ public class PlayerRangedAttack : MonoBehaviour {
     }
 
     private void Update () {
-        if (canRangedAtteck && input.horizontal != 0 && (input.ButtonIsDown(PlayerInput.Button.X) || Input.GetKeyDown(KeyCode.D))){
+        if (canRangedAtteck && (input.ButtonIsDown(PlayerInput.Button.X) || Input.GetKeyDown(KeyCode.D))){
             canRangedAtteck = false;
             StartCoroutine(RangedAtteck());
 
+            aim = new Vector2(input.horizontal, input.vertical);
             Debug.Log(aim);
-            aim = new Vector2(input.horizontal, 0);
+
         }
 
 
