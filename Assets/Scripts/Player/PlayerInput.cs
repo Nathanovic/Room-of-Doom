@@ -62,6 +62,7 @@ public class PlayerInput : MonoBehaviour {
 	private void Update(){
         if (controllerNumber > 0){
             horizontal = Input.GetAxis(horizontalAxis);
+			Debug.Log ("horizontal: " + horizontal + " " + Input.GetAxis("Horizontal"));
         }
     }
 }
