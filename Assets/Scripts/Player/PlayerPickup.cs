@@ -22,6 +22,7 @@ public class PlayerPickup : MonoBehaviour {
 
 		int lastPickupIndex = availablePickups.Count - 1;
 		if (input.ButtonIsDown(PlayerInput.Button.Y) && lastPickupIndex >= 0) {
+            Debug.Log("Pickup");
 			if (currentPickup != null) {
 				currentPickup.DropMe (transform.position);
 			}
