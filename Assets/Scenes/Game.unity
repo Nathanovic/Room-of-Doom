@@ -1068,7 +1068,6 @@ GameObject:
   m_Component:
   - component: {fileID: 235854346}
   - component: {fileID: 235854345}
-  - component: {fileID: 235854344}
   - component: {fileID: 235854348}
   - component: {fileID: 235854347}
   m_Layer: 0
@@ -1078,32 +1077,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &235854344
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61651118165973848, guid: b7c3196b96a82064ea7d27d21459ea8b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 235854343}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.000000029802322, y: 0.24397433}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.40759015}
-  m_EdgeRadius: 0
 --- !u!212 &235854345
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1191,7 +1164,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011440277, y: 0.22260761}
+  m_Offset: {x: -0.011440277, y: 0.17083047}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1202,7 +1175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6245663, y: 0.6346904}
+  m_Size: {x: 0.6245663, y: 0.5311359}
   m_EdgeRadius: 0
 --- !u!1 &267612097
 GameObject:
@@ -4237,7 +4210,7 @@ Rigidbody2D:
   m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -8855,9 +8828,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e16342b9427a641bc463f7c1fd8315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
+  cooldown: 0
   dashDuration: 0.2
-  power: 50
+  power: 12
 --- !u!1001 &2057032957
 Prefab:
   m_ObjectHideFlags: 0
