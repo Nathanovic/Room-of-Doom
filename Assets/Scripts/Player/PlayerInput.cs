@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour {
     public enum Button {A, B, Y, X, RB}//A = jumping&continue, B = back, X = oppakken, RB = attack
 
     private string horizontalAxis;
-    //private string verticalAxis;
+    private string verticalAxis;
     private string aButton;
     private string bButton;
     private string yButton;
@@ -20,6 +20,8 @@ public class PlayerInput : MonoBehaviour {
 
     [HideInInspector]
     public float horizontal;
+    [HideInInspector]
+    public float vertical;
 
     private void Awake(){
         controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
@@ -49,7 +51,7 @@ public class PlayerInput : MonoBehaviour {
     public void SetControllerNumber(int nr){
         controllerNumber = nr;
         horizontalAxis = "J" + controllerNumber + "Horizontal";
-        //verticalAxis = "J" + controllerNumber + "Vertical";
+        verticalAxis = "J" + controllerNumber + "Vertical";
         aButton = "J" + controllerNumber + "A";
         bButton = "J" + controllerNumber + "B";
         yButton = "J" + controllerNumber + "Y";
@@ -61,6 +63,7 @@ public class PlayerInput : MonoBehaviour {
 	private void Update(){
         if (controllerNumber > 0){
             horizontal = Input.GetAxis(horizontalAxis);
+            vertical = Input.GetAxis(verticalAxis);
         }
     }
 }
