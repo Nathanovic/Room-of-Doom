@@ -33,8 +33,7 @@ public class MainScreen : MonoBehaviour {
             canChangeButSelect = true;
         }
 
-        if ((Input.GetButtonDown("Fire1") && selectedBut != null) || Input.GetKeyDown(KeyCode.Return) && selectedBut != null){
-			
+        if ((Input.GetButtonDown("Fire1") && selectedBut != null) || Input.GetKeyDown(KeyCode.Return) && selectedBut != null){		
             selectedBut.onClick.Invoke();
         }
 

@@ -13,13 +13,13 @@ public class PlayerDash : MonoBehaviour {
     private float curPower;
     private bool canDash = true;
     private PlayerInput input;
-    private PlayerMovement pm;
+    private PlayerBase playerbase;
     private Rigidbody2D rb;
 
 
     private void Start () {
         input = GetComponent<PlayerInput>();
-        pm = GetComponent<PlayerMovement>();
+        playerbase = GetComponent<PlayerBase>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -37,7 +37,7 @@ public class PlayerDash : MonoBehaviour {
 
         curPower = power;
         dashTime += Time.deltaTime;
-        pm.canMove = false;
+        playerbase.canControl = false;
 
         while (dashTime <= dashDuration){
             rb.velocity = input.horizontal > 0 ? Vector2.right * curPower : Vector2.left * curPower;
@@ -46,7 +46,7 @@ public class PlayerDash : MonoBehaviour {
 
             yield return new WaitForEndOfFrame();
         }
-        pm.canMove = true;
+        playerbase.canControl = true;
 
         yield return new WaitForSeconds(cooldown);
 

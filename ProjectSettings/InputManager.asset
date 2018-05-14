@@ -411,14 +411,14 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
-    altNegativeButton: left
-    altPositiveButton: right
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3
     dead: 0.3
     sensitivity: 1
     snap: 1
     invert: 0
-    type: 0
+    type: 2
     axis: 0
     joyNum: 2
   - serializedVersion: 3
