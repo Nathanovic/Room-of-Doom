@@ -6278,7 +6278,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1071036759413988, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
     type: 2}
   m_PrefabInternal: {fileID: 1329812717}
---- !u!114 &1564573184
+--- !u!114 &1564573176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6286,12 +6286,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1564573175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e16342b9427a641bc463f7c1fd8315, type: 3}
+  m_Script: {fileID: 11500000, guid: 22aaa158abe16604f8f63163274d1852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleRange: 1
   cooldown: 2
-  dashDuration: 0.2
-  power: 50
 --- !u!1 &1579628240
 GameObject:
   m_ObjectHideFlags: 0
@@ -8400,6 +8399,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2023524480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1071036759413988, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 2057032957}
+--- !u!114 &2023524481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2023524480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e16342b9427a641bc463f7c1fd8315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  dashDuration: 0.2
+  power: 50
 --- !u!1001 &2057032957
 Prefab:
   m_ObjectHideFlags: 0
@@ -8461,6 +8479,11 @@ Prefab:
     - target: {fileID: 212585889042580294, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
         type: 2}
       propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114581330608633092, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
+        type: 2}
+      propertyPath: doubleJumpFactor
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

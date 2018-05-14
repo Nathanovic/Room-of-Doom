@@ -27,7 +27,6 @@ public class PlayerInput : MonoBehaviour {
     }
 
     public bool ButtonIsDown(Button but){
-        Debug.Log(but.ToString());
         switch (but){
 		    case Button.A:
 			    //Debug.Log ("button A: " + aButton + ": " + Input.GetButtonDown(aButton).ToString() + "|||Any key: " + Input.anyKeyDown + "|||");
