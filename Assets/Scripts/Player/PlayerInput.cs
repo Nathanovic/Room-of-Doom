@@ -27,14 +27,14 @@ public class PlayerInput : MonoBehaviour {
     }
 
     public bool ButtonIsDown(Button but){
-        Debug.Log(but.ToString());
         switch (but){
 		    case Button.A:
 			    //Debug.Log ("button A: " + aButton + ": " + Input.GetButtonDown(aButton).ToString() + "|||Any key: " + Input.anyKeyDown + "|||");
 			    return Input.GetButtonDown(aButton);
             case Button.B:
 			    return Input.GetButtonDown(bButton);
-            case Button.Y:
+			case Button.Y:
+				Debug.Log ("button y " + Input.GetButtonDown (yButton));	
                 return Input.GetButtonDown(yButton);
             case Button.X:
                 return Input.GetButtonDown(xButton);
