@@ -13,7 +13,7 @@ public class MainScreen : MonoBehaviour {
 
     public List<MainMenuScreens> screens = new List<MainMenuScreens>();
     private MainMenuScreens currenScreen;
-    public Button selectedBut;
+	public Button selectedBut;
     //private int screenIndex = 0;
     private bool canChangeButSelect = true;
 
@@ -25,9 +25,7 @@ public class MainScreen : MonoBehaviour {
         string[] connectedControllers = Input.GetJoystickNames();
         foreach (var item in connectedControllers){
             Debug.Log(item);
-        }
-
-
+		}
     }
 
     private void Update(){
@@ -36,6 +34,7 @@ public class MainScreen : MonoBehaviour {
         }
 
         if ((Input.GetButtonDown("Fire1") && selectedBut != null) || Input.GetKeyDown(KeyCode.Return) && selectedBut != null){
+			
             selectedBut.onClick.Invoke();
         }
 
