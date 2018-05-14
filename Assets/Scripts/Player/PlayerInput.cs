@@ -35,7 +35,8 @@ public class PlayerInput : MonoBehaviour {
 			    return Input.GetButtonDown(aButton);
             case Button.B:
 			    return Input.GetButtonDown(bButton);
-            case Button.Y:
+			case Button.Y:
+			Debug.Log ("button y + " + Input.GetButtonDown(yButton));
                 return Input.GetButtonDown(yButton);
             case Button.X:
                 return Input.GetButtonDown(xButton);
@@ -62,7 +63,7 @@ public class PlayerInput : MonoBehaviour {
 
 	private void Update(){
         if (controllerNumber > 0){
-            horizontal = Input.GetAxis(LhorizontalAxis);
+			horizontal = Input.GetAxis (LhorizontalAxis);// + Input.GetAxis("Horizontal");
             vertical = Input.GetAxis(LverticalAxis);
         }
     }
