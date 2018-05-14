@@ -23,7 +23,7 @@ public class PlayerRangedAttack : MonoBehaviour {
             canRangedAtteck = false;
             StartCoroutine(RangedAtteck());
 
-            aim = new Vector2(input.horizontal, input.vertical);
+            aim = new Vector2(input.Rhorizontal, input.Rvertical);
             Debug.Log(aim);
 
         }

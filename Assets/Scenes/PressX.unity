@@ -447,7 +447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Press x to start
+  m_Text: 'Press A to start
 
     (mouse for PC)'
 --- !u!222 &735888260

@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	#region Move Behaviour
 	private void MoveBehaviour(){
-		float inputValue = input.horizontal;
+		float inputValue = input.Lhorizontal;
 		if (inputValue != 0 && !accelerate) {
 			curveT = GetCurveT (accelerationCurve);
 			accelerate = true;
