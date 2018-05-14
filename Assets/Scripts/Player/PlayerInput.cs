@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour {
 
     private string LhorizontalAxis;
     private string LverticalAxis;
+    private string RhorizontalAxis;
+    private string RverticalAxis;
     private string aButton;
     private string bButton;
     private string yButton;
@@ -19,9 +21,13 @@ public class PlayerInput : MonoBehaviour {
     public int controllerNumber;
 
     [HideInInspector]
-    public float horizontal;
+    public float Lhorizontal;
     [HideInInspector]
-    public float vertical;
+    public float Lvertical;
+    [HideInInspector]
+    public float Rhorizontal;
+    [HideInInspector]
+    public float Rvertical;
 
     private void Awake(){
         controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
@@ -52,6 +58,8 @@ public class PlayerInput : MonoBehaviour {
         controllerNumber = nr;
         LhorizontalAxis = "J" + controllerNumber + "LHorizontal";
         LverticalAxis = "J" + controllerNumber + "LVertical";
+        RhorizontalAxis = "J" + controllerNumber + "RHorizontal";
+        RverticalAxis = "J" + controllerNumber + "RVertical";
         aButton = "J" + controllerNumber + "A";
         bButton = "J" + controllerNumber + "B";
         yButton = "J" + controllerNumber + "Y";
@@ -62,8 +70,10 @@ public class PlayerInput : MonoBehaviour {
 
 	private void Update(){
         if (controllerNumber > 0){
-            horizontal = Input.GetAxis(LhorizontalAxis);
-            vertical = Input.GetAxis(LverticalAxis);
+            Lhorizontal = Input.GetAxis(LhorizontalAxis);
+            Lvertical = Input.GetAxis(LverticalAxis);
+            Rhorizontal = Input.GetAxis(RhorizontalAxis);
+            Rvertical = Input.GetAxis(RverticalAxis);
         }
     }
 }

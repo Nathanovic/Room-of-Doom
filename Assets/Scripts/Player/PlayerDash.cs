@@ -25,7 +25,7 @@ public class PlayerDash : MonoBehaviour {
 
 
     private void Update () {
-        if (canDash && input.horizontal != 0 && (input.ButtonIsDown(PlayerInput.Button.X)        || Input.GetKeyDown(KeyCode.D))){
+        if (canDash && input.Lhorizontal != 0 && (input.ButtonIsDown(PlayerInput.Button.X)        || Input.GetKeyDown(KeyCode.D))){
             canDash = false;
             StartCoroutine(Dash());
         }
@@ -40,7 +40,7 @@ public class PlayerDash : MonoBehaviour {
         playerbase.canControl = false;
 
         while (dashTime <= dashDuration){
-            rb.velocity = input.horizontal > 0 ? Vector2.right * curPower : Vector2.left * curPower;
+            rb.velocity = input.Lhorizontal > 0 ? Vector2.right * curPower : Vector2.left * curPower;
             dashTime += Time.deltaTime;
             curPower = Mathf.Lerp(curPower, 0, dashTime);
 
