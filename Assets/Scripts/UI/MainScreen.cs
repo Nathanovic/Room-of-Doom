@@ -19,8 +19,6 @@ public class MainScreen : MonoBehaviour {
 
     private bool readyP1;
     private bool readyP2;
-
-
  
     private void Start(){
         NewScreenOpen(0);
@@ -37,7 +35,7 @@ public class MainScreen : MonoBehaviour {
             canChangeButSelect = true;
         }
 
-        if ((Input.GetButtonDown("Fire1") && selectedBut != null)                   || Input.GetKeyDown(KeyCode.Return) && selectedBut != null){
+        if ((Input.GetButtonDown("Fire1") && selectedBut != null) || Input.GetKeyDown(KeyCode.Return) && selectedBut != null){
             selectedBut.onClick.Invoke();
         }
 
