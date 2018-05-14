@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour {
 	private float curveT = 0f;//1 means max movementspeed; 0 means stand still
 	private float curveValue;
 
+    //[HideInInspector]
+    public bool canMove = true;
+
 	[Header("jump values:")]
 	public float doubleJumpFactor = 0.7f;
 	public float jumpForce;
@@ -82,7 +85,9 @@ public class PlayerMovement : MonoBehaviour {
 			inputValue = transform.localScale.x;
 		}
 
-		rb.velocity = new Vector2 (curveValue * moveSpeed * inputValue, rb.velocity.y);
+        if (canMove){
+		    rb.velocity = new Vector2 (curveValue * moveSpeed * inputValue, rb.velocity.y);
+        }
 
 		anim.SetFloat ("moveSpeed", curveValue * Mathf.Abs(inputValue));
 	}
