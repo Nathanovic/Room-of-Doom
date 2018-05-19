@@ -27,7 +27,7 @@ public class PlayerCombat : CharacterCombat {
 		if (!baseScript.canControl)
 			return;
 
-		if (remainingCooldown == 0f && input.ButtonIsDown(PlayerInput.Button.RB)) {
+		if (remainingCooldown == 0f && input.ButtonIsDown(PlayerInput.Button.B)) {
 			Attack ();
 		}
 		else if (remainingCooldown > 0f) {

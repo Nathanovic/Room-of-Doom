@@ -12,6 +12,8 @@ public class PlayerBase : MonoBehaviour {
 
 		PlayerCombat combatScript = GetComponent<PlayerCombat> ();
 		combatScript.onHealthChanged += OnHealthChanged;
+
+        CameraMovement.players.Add(gameObject);
 	}
 
 	//make sure to know when we are dead
