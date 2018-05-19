@@ -22,10 +22,6 @@ public class MainScreen : MonoBehaviour {
  
     private void Start(){
         NewScreenOpen(0);
-        string[] connectedControllers = Input.GetJoystickNames();
-        foreach (var item in connectedControllers){
-            Debug.Log(item);
-		}
     }
 
     private void Update(){
