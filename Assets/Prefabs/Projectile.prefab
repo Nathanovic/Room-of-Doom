@@ -91,6 +91,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  hasTarget: 0
+  target: []
+  margeToEndPos: 0.2
+  delayNextTarget: 1
+  currentTarget: 0
 --- !u!114 &114852211411760380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  destroyPosible: 1
+  canHit:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!212 &212724343117384572
 SpriteRenderer:
   m_ObjectHideFlags: 1

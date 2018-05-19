@@ -384,6 +384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canControl: 0
+  spirteWidth: 0
+  spirteHeigth: 0
 --- !u!114 &114332496706423164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,7 +511,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   deccelerationTime: 0.15
-  canDoubleJump: 0
+  canDoubleJump: 1
   doubleJumpFactor: 0.55
   jumpForce: 345
   minJumpCountdownTime: 0.5

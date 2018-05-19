@@ -8,9 +8,11 @@ public class ProjectileMovement : MonoBehaviour {
     public float speed;
     public bool hasTarget = false;
     public List<Vector3> target = new List<Vector3>();
+    public float margeToEndPos;
+    public float delayNextTarget;
 
     private Rigidbody2D rb;
-    private int currentTarget = 0;
+    public int currentTarget = 0;
     private Vector3 startPos;
 
     private void Start(){
@@ -18,23 +20,13 @@ public class ProjectileMovement : MonoBehaviour {
     }
 
     private void Update(){
-        if (hasTarget){
-            MoveToTarget();
-        }
-        else{
+        if (hasTarget == false){
             Move();
         }
-    }
+        else if(hasTarget && currentTarget < target.Count ){
+            MoveToTarget();
+        }            
 
-    private void MoveToTarget(){
-        if (currentTarget > target.Count - 1){
-            return;
-        }
-
-        //while (MoveTo(startPos, target[currentTarget])){
-        //    startPos = transform.position;
-            //StartCoroutine(MoveTo(startPos, target[currentTarget]));
-        //}
     }
 
     private void Move(){
@@ -42,15 +34,28 @@ public class ProjectileMovement : MonoBehaviour {
         rb.velocity = new Vector3(rb.velocity.x, 0);
     }
 
-    private bool MoveTo(Vector3 startPos, Vector3 endPos){
+    private void MoveToTarget(){
+        startPos = transform.position;
+        transform.position = Vector2.MoveTowards(startPos, target[currentTarget], speed * Time.deltaTime);     
+
+        if (ReachedEndPos(target[currentTarget])){
+            delayNextTarget -= Time.deltaTime;
+            if (delayNextTarget < 0){
+                currentTarget++;
+            }
+        }
+    }
 
 
-        //if (transform.position - endPos >= new Vector3(0.1f, 0.1f)){
-            transform.position = Vector2.Lerp(startPos, endPos, speed * Time.deltaTime);
+    private bool ReachedEndPos(Vector2 end){
+        float x = transform.position.x - end.x;
+        float y = transform.position.y - end.y;
 
-       // }
+        if (x < margeToEndPos && y < margeToEndPos && x > -margeToEndPos && y > -margeToEndPos){
+            return true;
+        }
 
-        return true;
+        return false;
     }
 
 }

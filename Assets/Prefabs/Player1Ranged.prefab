@@ -403,6 +403,8 @@ MonoBehaviour:
   projectile: {fileID: 1513216415537730, guid: 1c462c67df84f2843b812a8722bfafb1, type: 2}
   cooldown: 0
   amount: 5
+  yOffset: 0.6
+  rangeAboveHead: 0.3
 --- !u!114 &114557026312540788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,6 +417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canControl: 0
+  spirteWidth: 0
+  spirteHeigth: 0
 --- !u!114 &114593036698666774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -554,7 +558,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   deccelerationTime: 0.15
-  canDoubleJump: 1
+  canDoubleJump: 0
   doubleJumpFactor: 0.55
   jumpForce: 345
   minJumpCountdownTime: 0.5

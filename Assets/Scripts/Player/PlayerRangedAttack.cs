@@ -37,16 +37,6 @@ public class PlayerRangedAttack : MonoBehaviour {
             projectileBul.speed = -projectileBul.speed;
         }
 
-
-
-        //p.GetComponent<ProjectileMovement>().hasTarget = true;
-        //p.GetComponent<ProjectileMovement>().target.Add(new Vector2(0, transform.position.y + 5));
-        //p.GetComponent<ProjectileMovement>().target.Add(new Vector2(0, 5));
-
-
-
-
-
         yield return new WaitForSeconds(cooldown);
 
         canRangedAtteck = true;
