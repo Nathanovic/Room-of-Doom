@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour {
 	private float curveValue;
 
 
-	[Header("jump values:")]
+    [Header("jump values:")]
+    public bool canDoubleJump;
 	public float doubleJumpFactor = 0.7f;
 	public float jumpForce;
 	public float minJumpCountdownTime = 0.5f;
@@ -122,7 +123,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (remainingDoubleJumpTime > 0f) {
 			remainingDoubleJumpTime -= Time.deltaTime;
 		}
-		if (input.ButtonIsDown(PlayerInput.Button.A)) {
+		if (input.ButtonIsDown(PlayerInput.Button.A) || Input.GetKeyDown(KeyCode.J)) {
 			TryJump ();
 		}		
 
@@ -130,8 +131,10 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	private void TryJump(){
-		if ((canJump && grounded) || (!didDoubleJump && remainingDoubleJumpTime <= 0f)){
-			float jumpPower = jumpForce;
+		if ((canJump && grounded) || 
+           ((!didDoubleJump && remainingDoubleJumpTime <= 0f) && canDoubleJump)){
+
+            float jumpPower = jumpForce;
 			if (!grounded) {
 				canJump = false;
 				didDoubleJump = true;

@@ -5391,7 +5391,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4446268379904978, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.01
+      value: -4.09
       objectReference: {fileID: 0}
     - target: {fileID: 4446268379904978, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5423,7 +5423,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1071036759413988, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
       propertyPath: m_Name
-      value: Player
+      value: Player1Ranged
       objectReference: {fileID: 0}
     - target: {fileID: 114424631532616998, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
         type: 2}
@@ -6702,7 +6702,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22aaa158abe16604f8f63163274d1852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleRange: 1
+  cooldown: 0
+  projectile: {fileID: 1513216415537730, guid: 1c462c67df84f2843b812a8722bfafb1, type: 2}
+  projectileStartDis: 0.5
+--- !u!114 &1564573177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1564573175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e16342b9427a641bc463f7c1fd8315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  dashDuration: 0.2
+  power: 15
+--- !u!114 &1564573178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1564573175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb9f38b03de4bf49aeb88afa76ff4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1513216415537730, guid: 1c462c67df84f2843b812a8722bfafb1, type: 2}
   cooldown: 0
 --- !u!1 &1579628240
 GameObject:
@@ -8812,25 +8840,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2023524480 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1071036759413988, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 2057032957}
---- !u!114 &2023524481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2023524480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e16342b9427a641bc463f7c1fd8315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  dashDuration: 0.2
-  power: 12
 --- !u!1001 &2057032957
 Prefab:
   m_ObjectHideFlags: 0
@@ -8840,7 +8849,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4446268379904978, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.45
+      value: -6.23
       objectReference: {fileID: 0}
     - target: {fileID: 4446268379904978, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8872,7 +8881,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1071036759413988, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
       propertyPath: m_Name
-      value: Player2
+      value: Player2Melee
       objectReference: {fileID: 0}
     - target: {fileID: 114581330608633092, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
         type: 2}
@@ -8898,6 +8907,11 @@ Prefab:
         type: 2}
       propertyPath: doubleJumpFactor
       value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114581330608633092, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
+        type: 2}
+      propertyPath: canDoubleJump
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
