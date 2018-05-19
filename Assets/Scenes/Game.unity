@@ -8924,7 +8924,7 @@ Prefab:
     - target: {fileID: 114581330608633092, guid: ff7ac5aff08a0e040acbe8c40c6673f3,
         type: 2}
       propertyPath: doubleJumpFactor
-      value: 0
+      value: 0.55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7ac5aff08a0e040acbe8c40c6673f3, type: 2}
