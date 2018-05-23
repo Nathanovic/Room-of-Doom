@@ -366,7 +366,7 @@ Animator:
   m_GameObject: {fileID: 1278631031987154}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5b23abdacbd8fbb45ae55f17b91a07b9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6085406a778455c4f87a7d5afff7d78f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -403,6 +403,9 @@ MonoBehaviour:
   projectile: {fileID: 1513216415537730, guid: 1c462c67df84f2843b812a8722bfafb1, type: 2}
   cooldown: 0
   amount: 5
+  yOffset: 0
+  delayBetweenObjects: 0
+  rangeAboveHead: 0
 --- !u!114 &114334602127940940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,6 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canControl: 0
+  spirteWidth: 0
+  spirteHeigth: 0
 --- !u!114 &114653710504075462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -535,7 +540,7 @@ MonoBehaviour:
   deccelerationTime: 0.15
   canDoubleJump: 0
   doubleJumpFactor: 0.55
-  jumpForce: 450
+  jumpForce: 500
   minJumpCountdownTime: 0.5
   doubleJumpTime: 0.3
   jumpPS: {fileID: 198232957843220042}
@@ -14366,12 +14371,12 @@ SpriteRenderer:
   m_SortingLayerID: -1867122247
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bbcf4a3aa4a520e4faaf76cb36752360, type: 3}
-  m_Color: {r: 1, g: 0.99501103, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4ac3cee15bca85744b55f222da562efe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4166666, y: 1.4166666}
+  m_Size: {x: 2.2, y: 1.9333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
