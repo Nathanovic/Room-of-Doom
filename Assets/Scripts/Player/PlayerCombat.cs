@@ -41,8 +41,9 @@ public class PlayerCombat : CharacterCombat {
 		remainingCooldown = cooldown;
 		Collider2D other = Physics2D.OverlapCircle(weaponCheck.position, attackRange, enemyLM);
         if (other != null) {
-			CharacterCombat combatScript = other.GetComponent<CharacterCombat> ();
-			combatScript.ApplyDamage (attackDamage, transform.position.x);
+			RaycastHit2D hit = Physics2D.Raycast (transform.position, (other.transform.position - transform.position), attackRange * 2f, enemyLM);
+			IAttackable combatScript = other.GetComponent<IAttackable> ();
+			combatScript.ApplyDamage (attackDamage, hit.point);
         }
 
 		anim.SetTrigger ("attack");

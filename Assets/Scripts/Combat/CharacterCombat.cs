@@ -7,13 +7,16 @@ using UnityEngine;
 public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	public int health = 5;
-	private const float HITTED_IMMUNE_DURATION = 1f;
+	private const float HITTED_IMMUNE_DURATION = 2f;
 	private float remainingImmuneDuration = 0f;
 
 	public delegate void HealthUpdateDelegate (int newHP);
 	public event HealthUpdateDelegate onHealthChanged;
+	public event SimpleDelegate onDie;
 
 	public ParticleSystem hitPS;
+
+	public bool customHealthBar;
 
 	private void Awake(){
 		CombatManager.Instance.RegisterPotentialTarget (this);
@@ -26,11 +29,13 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	}
 
 	//apply damage to character; can only be done if health > 0
-	public void ApplyDamage (int dmg, float otherX){
+	public void ApplyDamage (int dmg, Vector3 hitPos){
 		health -= dmg;
 		remainingImmuneDuration = HITTED_IMMUNE_DURATION;
 		if (health <= 0) {
 			health = 0;
+			if(onDie != null)
+				onDie ();
 		}
 
 		//make sure all related systems know that the health changed:
@@ -44,6 +49,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		}
 
 		//show the player visually that we have been hit:
+		hitPS.transform.position = hitPos;
 		hitPS.Play ();
 	}
 

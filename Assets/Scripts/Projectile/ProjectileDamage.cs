@@ -5,20 +5,29 @@ using UnityEngine;
 public class ProjectileDamage : MonoBehaviour {
 
     public int damage;
-    public bool destroyPosible = true;
-    public LayerMask canHit;
+	private bool didDamage;
 
-    private CharacterCombat charCombat;
+	private void Start(){
+		Invoke ("DestroySelf", 1f);
+	}
 
-
-    private void OnCollisionEnter2D(Collision2D collision){
-        if (destroyPosible &&                   (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy")           ){
-            if (collision.gameObject.GetComponent<CharacterCombat>()){
-                charCombat = collision.gameObject.GetComponent<CharacterCombat>();
-                charCombat.ApplyDamage(damage, transform.position.x);
+	private void OnTriggerEnter2D(Collider2D other){
+		if (!didDamage && other.transform.root.tag == "Enemy"){
+			IAttackable attackable = other.GetComponent<IAttackable>();
+			if (attackable != null){
+				didDamage = true;
+				attackable.ApplyDamage(damage, transform.position);
             }
 
-            Destroy(gameObject);
+			DestroySelf ();
         }
     }
+
+	private void OnCollisionEnter2D(Collision2D coll){
+		DestroySelf ();
+	}
+
+	private void DestroySelf(){
+		Destroy (gameObject);
+	}
 }

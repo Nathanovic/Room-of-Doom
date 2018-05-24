@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			//jump if we are grounded/can double jump:
 			jumpCounter.StartCounting ();
-			rb.AddForce (Vector2.up * jumpForce);
+			rb.AddForce (Vector2.up * jumpPower);
 			jumpPS.Play ();
 		}
 	}

@@ -30,6 +30,9 @@ public class CombatManager : MonoBehaviour {
 
 		//spawn the healthbars and initialize them:
 		foreach (CharacterCombat attackable in potentialTargets) {
+			if (attackable.customHealthBar)
+				continue;
+			
 			HealthBar healthBar = GameObject.Instantiate (healthBarPrefab, worldCanvas) as HealthBar;
 			healthBar.Init (attackable);
 		}

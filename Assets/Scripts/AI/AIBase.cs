@@ -110,7 +110,7 @@ public class AIBase : MonoBehaviour {
 	}
 
 	public void HitTarget(int attackDamage){
-		myStats.target.ApplyDamage (attackDamage, transform.position.x);
+		myStats.target.ApplyDamage (attackDamage, transform.position);
 	}
 
 	public void FadeSelfOut(float newAlpha){

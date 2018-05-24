@@ -46,11 +46,11 @@ public class PlayerInput : MonoBehaviour {
 			    //Debug.Log ("button A: " + aButton + ": " + Input.GetButtonDown(aButton).ToString() + "|||Any key: " + Input.anyKeyDown + "|||");
 			    return Input.GetButtonDown(aButton);
             case Button.B:
-			    return Input.GetButtonDown(bButton);
+			return Input.GetButtonDown(xButton);
             case Button.Y:
                 return Input.GetButtonDown(yButton);
             case Button.X:
-                return Input.GetButtonDown(xButton);
+			return Input.GetButtonDown(bButton);
             case Button.RB:
 			    return Input.GetButtonDown(rbButton);
             case Button.LB:

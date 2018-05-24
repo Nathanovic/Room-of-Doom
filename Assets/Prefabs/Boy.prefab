@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4179841391098826}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: weaponCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4530213885197698}
   - component: {fileID: 198457926622430440}
   - component: {fileID: 199239946290110820}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: hitVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114517180172180924}
   - component: {fileID: 114132738617649720}
   - component: {fileID: 114781287473618362}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Boy
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4602491028838086}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4380000028820314}
   - component: {fileID: 198796740551043144}
   - component: {fileID: 199742791149216790}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: jumpVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4687081618550072}
   - component: {fileID: 198829399358170356}
   - component: {fileID: 199011367111396362}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: groundedVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4332980707130812}
   - component: {fileID: 61341718921315224}
   - component: {fileID: 114592085348866594}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4211566437174302}
   - component: {fileID: 212724314622480572}
   - component: {fileID: 95913220284576306}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317204450474788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.23, y: 1.24, z: 0}
+  m_LocalPosition: {x: 3.46, y: 1.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4211566437174302}
@@ -253,7 +253,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417068213961944}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.256, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4576484420035442}
@@ -389,8 +389,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   weaponCheck: {fileID: 4179841391098826}
-  attackDamage: 0
-  attackRange: 0
+  attackDamage: 1
+  attackRange: 0.7
   cooldown: 0.5
   remainingCooldown: 0
 --- !u!114 &114439685204899794
@@ -405,6 +405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canControl: 0
+  spirteWidth: 0
+  spirteHeigth: 0
 --- !u!114 &114517180172180924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -473,8 +475,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   deccelerationTime: 0.15
   canDoubleJump: 1
-  doubleJumpFactor: 0
-  jumpForce: 500
+  doubleJumpFactor: 0.7
+  jumpForce: 420
   minJumpCountdownTime: 0.5
   doubleJumpTime: 0.1
   jumpPS: {fileID: 198796740551043144}
@@ -502,11 +504,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334de183348065d41b5d8db86457cf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerNumber: 1
+  controllerNumber: 2
   Lhorizontal: 0
   Lvertical: 0
   Rhorizontal: 0
   Rvertical: 0
+  keyboardInput: 0
 --- !u!198 &198457926622430440
 ParticleSystem:
   m_ObjectHideFlags: 1
