@@ -12,6 +12,7 @@ public class MagmaWorm : MonoBehaviour {
 
 	private WormSegment[] wormSegments;
 	private WormSegment lastSegment;
+	public LayerMask groundLM;
 
 	public float startDelay = 1f;
 	private float delay = 0f;
@@ -41,28 +42,39 @@ public class MagmaWorm : MonoBehaviour {
 		transform.position = deactivePosition;
 
 		int rndmTargetIndex = Random.Range (0, targets.Length);
-		Vector3 targetPos = targets [rndmTargetIndex].position;
+		Vector3 enemyPos = targets [rndmTargetIndex].position;
 
 		//choose a random start pos that is far away from it:
 		List<Vector3> availableSpawnPositions = new List<Vector3>();
 		Vector3 startPos = Vector3.zero;
 		int i = 0;
 		foreach (Vector3 point in spawner.points) {
-			float dist = Mathf.Abs (point.x - targetPos.x);
+			float dist = Mathf.Abs (point.x - enemyPos.x);
 			if (dist > minXAttackDist) {
 				availableSpawnPositions.Add (point);
 			}
 			i++;
 		}
 
-		Debug.Log (availableSpawnPositions.Count + " positions available!");
 		int rndmIndex = Random.Range (0, availableSpawnPositions.Count);
 		startPos = availableSpawnPositions [rndmIndex];
 
 		//calculate a control point
-		Vector3 controlPoint = Vector3.Lerp (startPos, targetPos, 0.7f);
-		float xDist = Mathf.Abs (startPos.x - targetPos.x);
+		Vector3 controlPoint = Vector3.Lerp (startPos, enemyPos, 0.7f);
+		float xDist = Mathf.Abs (startPos.x - enemyPos.x);
 		controlPoint.y += xDist * 1.5f;
+
+		//make sure our targetPos is beneath the ground surface:
+		Vector3 targetPos = enemyPos;
+		Vector3 enemyDir = (enemyPos - controlPoint);
+		RaycastHit2D hit = Physics2D.Raycast(controlPoint, enemyDir, 20f, groundLM);
+		if (hit.collider != null) {
+			targetPos = hit.point;// + enemyDir;
+			Debug.DrawLine (controlPoint, targetPos, Color.yellow, 2f);
+		}
+		else {
+			Debug.LogWarning ("couldnt find ground");
+		}
 
 		movementCurve.points [0] = startPos;
 		movementCurve.points [1] = controlPoint;

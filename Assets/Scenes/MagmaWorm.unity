@@ -577,6 +577,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets:
   - {fileID: 477043941}
+  groundLM:
+    serializedVersion: 2
+    m_Bits: 256
   startDelay: 1
   headLength: 1
   movementSpeed: 5
