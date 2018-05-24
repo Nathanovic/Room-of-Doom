@@ -5,7 +5,7 @@ using UnityEngine;
 //handles all of the input for one player
 public class PlayerInput : MonoBehaviour {
 
-    public enum Button {A, B, Y, X, RB}//A = jumping&continue, B = back, X = oppakken, RB = attack
+    public enum Button {A, B, Y, X, RB, LB}//A = jumping&continue, B = back, X = oppakken, RB = attack
 
     private string LhorizontalAxis;
     private string LverticalAxis;
@@ -17,6 +17,8 @@ public class PlayerInput : MonoBehaviour {
     private string xButton;
 
     private string rbButton;
+    private string lbButton;
+
 
     public int controllerNumber;
 
@@ -51,6 +53,8 @@ public class PlayerInput : MonoBehaviour {
                 return Input.GetButtonDown(xButton);
             case Button.RB:
 			    return Input.GetButtonDown(rbButton);
+            case Button.LB:
+                return Input.GetButtonDown(lbButton);
             default: 
 				Debug.LogWarning ("unkown button: " + but);
 				break;
@@ -70,9 +74,11 @@ public class PlayerInput : MonoBehaviour {
         xButton = "J" + controllerNumber + "X";
 
         rbButton = "J" + controllerNumber + "RB";
+        lbButton = "J" + controllerNumber + "LB";
+
     }
 
-	private void Update(){
+    private void Update(){
         if (controllerNumber > 0){
 			Lhorizontal = Input.GetAxis(LhorizontalAxis);
             Lvertical = Input.GetAxis(LverticalAxis);

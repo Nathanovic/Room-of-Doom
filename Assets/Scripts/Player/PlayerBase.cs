@@ -6,12 +6,20 @@ using UnityEngine.SceneManagement;
 public class PlayerBase : MonoBehaviour {
 
 	public bool canControl;
+    public float spirteWidth;
+    public float spirteHeigth;
+
 
 	private void Start(){
-		canControl = true;
+        //spirteWidth = 
+        //spirteHeigth = 
+
+        canControl = true;
 
 		PlayerCombat combatScript = GetComponent<PlayerCombat> ();
 		combatScript.onHealthChanged += OnHealthChanged;
+
+        CameraMovement.players.Add(gameObject);
 	}
 
 	//make sure to know when we are dead
