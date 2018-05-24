@@ -373,7 +373,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 34290a6bb4e00784ab47f243bd6e75ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5583,7 +5583,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 34290a6bb4e00784ab47f243bd6e75ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5747,6 +5747,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4892921310834758, guid: f8aba7ea2fb8a764d9b943ef4dbbc3f2,
     type: 2}
   m_PrefabInternal: {fileID: 1233361314}
+--- !u!1001 &289241829
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -7.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.018554688
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836579822353802, guid: a8878792eb5a815449272051172129e5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8878792eb5a815449272051172129e5, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &336641333
 GameObject:
   m_ObjectHideFlags: 0
@@ -6434,7 +6484,7 @@ GameObject:
   - component: {fileID: 630088301}
   - component: {fileID: 630088300}
   m_Layer: 10
-  m_Name: MagmaWorm (2)
+  m_Name: MagmaWorm (2) (OP)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6489,8 +6539,8 @@ MonoBehaviour:
     m_Bits: 256
   startDelay: 0.5
   headLength: 1
-  movementSpeed: 7
-  attackDamage: 3
+  movementSpeed: 9
+  attackDamage: 5
   minXAttackDist: 5
   myHealthBar: {fileID: 1096536448}
 --- !u!4 &630088303
@@ -6625,7 +6675,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -8
   m_Sprite: {fileID: 21300000, guid: 34290a6bb4e00784ab47f243bd6e75ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -12346,7 +12396,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: b97e311de67aed24299a082238e2292c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -13149,7 +13199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.70760036, b: 0.2028302, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -19062,7 +19112,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 460800a21e82f2642accb9ebeab5b927, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -19370,7 +19420,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -4
   m_Sprite: {fileID: 21300000, guid: 34290a6bb4e00784ab47f243bd6e75ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -19873,7 +19923,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -7
   m_Sprite: {fileID: 21300000, guid: 34290a6bb4e00784ab47f243bd6e75ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -20063,7 +20113,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 34290a6bb4e00784ab47f243bd6e75ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -20399,7 +20449,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -6
   m_Sprite: {fileID: 21300000, guid: 34290a6bb4e00784ab47f243bd6e75ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76245767, b: 0.3726415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
