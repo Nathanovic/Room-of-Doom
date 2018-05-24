@@ -7,6 +7,8 @@ using UnityEngine;
 public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	public int health = 5;
+	private const float HITTED_IMMUNE_DURATION = 1f;
+	private float remainingImmuneDuration = 0f;
 
 	public delegate void HealthUpdateDelegate (int newHP);
 	public event HealthUpdateDelegate onHealthChanged;
@@ -17,9 +19,16 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		CombatManager.Instance.RegisterPotentialTarget (this);
 	}
 
+	protected virtual void Update(){
+		if (remainingImmuneDuration > 0f) {
+			remainingImmuneDuration -= Time.deltaTime;
+		}
+	}
+
 	//apply damage to character; can only be done if health > 0
 	public void ApplyDamage (int dmg, float otherX){
 		health -= dmg;
+		remainingImmuneDuration = HITTED_IMMUNE_DURATION;
 		if (health <= 0) {
 			health = 0;
 		}
@@ -39,7 +48,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	}
 
 	public bool ValidTarget (){
-		return health > 0;
+		return health > 0 && remainingImmuneDuration <= 0f;
 	}
 
 	public Vector2 Position (){

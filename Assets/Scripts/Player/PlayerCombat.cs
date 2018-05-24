@@ -23,7 +23,8 @@ public class PlayerCombat : CharacterCombat {
 		input = GetComponent<PlayerInput> ();
 	}
 
-	private void Update () {
+	protected override void Update () {
+		base.Update ();
 		if (!baseScript.canControl)
 			return;
 

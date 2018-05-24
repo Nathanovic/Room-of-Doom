@@ -1149,7 +1149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3da4b2b5fd81442abc3ec25201b1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
+  actions:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   buttonFeedbackObjects:
   - {fileID: 1045974556}
 --- !u!61 &235854348

@@ -29,9 +29,13 @@ public class PlayerInput : MonoBehaviour {
     [HideInInspector]
     public float Rvertical;
 
+	public bool keyboardInput;
+
     private void Awake(){
         controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
-        SetControllerNumber(controllerNumber);
+		if (keyboardInput)
+			controllerNumber = 1;
+		SetControllerNumber(controllerNumber);
     }
 
     public bool ButtonIsDown(Button but){
@@ -70,7 +74,7 @@ public class PlayerInput : MonoBehaviour {
 
 	private void Update(){
         if (controllerNumber > 0){
-            Lhorizontal = Input.GetAxis(LhorizontalAxis);
+			Lhorizontal = Input.GetAxis(LhorizontalAxis);
             Lvertical = Input.GetAxis(LverticalAxis);
             Rhorizontal = Input.GetAxis(RhorizontalAxis);
             Rvertical = Input.GetAxis(RverticalAxis);
