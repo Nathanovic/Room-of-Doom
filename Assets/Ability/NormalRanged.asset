@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e414dc68cdd17469fc14349a7eabff, type: 3}
+  m_Name: NormalRanged
+  m_EditorClassIdentifier: 
+  nameAbility: NormalRanged
+  button: 1
+  couldown: 0
+  castingTime: 0
+  abilitySprite: {fileID: 21300000, guid: db58b7d002c86a742920d63e30505b45, type: 3}
+  soundEffect: {fileID: 0}
+  readyAtTime: 0
+  projectile: {fileID: 1513216415537730, guid: 1c462c67df84f2843b812a8722bfafb1, type: 2}

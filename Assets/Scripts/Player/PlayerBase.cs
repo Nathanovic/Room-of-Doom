@@ -6,14 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerBase : MonoBehaviour {
 
 	public bool canControl;
-    public float spirteWidth;
-    public float spirteHeigth;
 
 
 	private void Start(){
-        //spirteWidth = 
-        //spirteHeigth = 
-
         canControl = true;
 
 		PlayerCombat combatScript = GetComponent<PlayerCombat> ();

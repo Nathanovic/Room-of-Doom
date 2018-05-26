@@ -5,26 +5,36 @@ using UnityEngine;
 public class ProjectileDamage : MonoBehaviour {
 
     public int damage;
+    public float hitDelay = 0.2f;
+
+    private float startTime;
 	private bool didDamage;
 
 	private void Start(){
 		Invoke ("DestroySelf", 1f);
+        startTime = Time.time;
 	}
 
-	private void OnTriggerEnter2D(Collider2D other){
-		if (!didDamage && other.transform.root.tag == "Enemy"){
-			IAttackable attackable = other.GetComponent<IAttackable>();
-			if (attackable != null){
-				didDamage = true;
-				attackable.ApplyDamage(damage, transform.position);
-            }
 
-			DestroySelf ();
+    private void OnTriggerEnter2D(Collider2D other){
+        if (startTime - Time.time >= hitDelay){
+		    if (!didDamage && other.transform.root.tag == "Enemy"){
+			    IAttackable attackable = other.GetComponent<IAttackable>();
+			    if (attackable != null){
+				    didDamage = true;
+				    attackable.ApplyDamage(damage, transform.position);
+                }
+
+			    DestroySelf ();
+            }
         }
+
     }
 
 	private void OnCollisionEnter2D(Collision2D coll){
-		DestroySelf ();
+        if (startTime - Time.time >= hitDelay){
+            DestroySelf();
+        }        
 	}
 
 	private void DestroySelf(){

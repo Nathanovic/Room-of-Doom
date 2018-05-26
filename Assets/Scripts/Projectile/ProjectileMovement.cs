@@ -46,7 +46,6 @@ public class ProjectileMovement : MonoBehaviour {
         }
     }
 
-
     private bool ReachedEndPos(Vector2 end){
         float x = transform.position.x - end.x;
         float y = transform.position.y - end.y;
