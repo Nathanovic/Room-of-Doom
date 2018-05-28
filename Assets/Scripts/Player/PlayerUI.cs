@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour {
 
-    public Image infoPanel;
     public GameObject inforAbilities;
     public GameObject cdEffect;
 

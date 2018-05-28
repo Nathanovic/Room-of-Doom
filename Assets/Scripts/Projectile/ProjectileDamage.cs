@@ -6,12 +6,13 @@ public class ProjectileDamage : MonoBehaviour {
 
     public int damage;
     public float hitDelay = 0.2f;
+    public float projectileAutoDestroy;
 
     private float startTime;
 	private bool didDamage;
 
 	private void Start(){
-		Invoke ("DestroySelf", 1f);
+		Invoke ("DestroySelf", projectileAutoDestroy);
         startTime = Time.time;
 	}
 
