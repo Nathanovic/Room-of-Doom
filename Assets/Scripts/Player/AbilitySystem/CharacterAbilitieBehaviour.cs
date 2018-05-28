@@ -8,19 +8,24 @@ public class CharacterAbilitieBehaviour : MonoBehaviour {
     public bool isStunned;
     public KeyCode testBut;
     public Ability[] characterAbilities;
+    [HideInInspector]
+    public Ability[] cloneAbilities;
 
-    private Ability[] cloneAbilities;
     private PlayerInput playerInput;
     private AudioSource audioSource;
+
+    private void Awake(){
+        cloneAbilities = new Ability[characterAbilities.Length];
+        for (int i = 0; i < characterAbilities.Length; i++) {
+            cloneAbilities[i] = characterAbilities[i].Clone();
+        }
+    }
 
     private void Start(){
         playerInput = GetComponent<PlayerInput>();
         audioSource = GetComponent<AudioSource>();
 
-        cloneAbilities = new Ability[characterAbilities.Length];
-        for (int i = 0; i < characterAbilities.Length; i++) {
-            cloneAbilities[i] = characterAbilities[i].Clone();
-        }
+
     }
 
     private void Update(){

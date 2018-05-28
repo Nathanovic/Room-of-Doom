@@ -7,32 +7,36 @@ public class PlayerCooldownInfo : MonoBehaviour {
 
     public Text cdTime;
     public Image cdEffect;
+    public Ability ab;
 
     private float coolDownDuration;
     private float nextReadyTime;
     private float coolDownTimeLeft;
 
     private void Update(){
-        bool coolDownComplete = (Time.time > nextReadyTime);
+        bool coolDownComplete = (Time.time > ab.readyAtTime);
 
         if (coolDownComplete){
             AbilityReady();
-            //if (Input.GetButtonDown(abilityButtonAxisName)){
-                AbilityTriggered();
-            //}
         }
         else{
+            if (coolDownTimeLeft == 0){
+                AbilityTriggered();
+            }
+
             CoolDown();
         }
     }
 
 
     private void AbilityReady(){
+        coolDownTimeLeft = 0;
         cdTime.enabled = false;
         cdEffect.enabled = false;
     }
 
     private void CoolDown(){
+        Debug.Log("cd");
         coolDownTimeLeft -= Time.deltaTime;
         float roundedCd = Mathf.Round(coolDownTimeLeft);
         cdTime.text = roundedCd.ToString();
@@ -40,8 +44,9 @@ public class PlayerCooldownInfo : MonoBehaviour {
     }
 
     private void AbilityTriggered(){
-        nextReadyTime = coolDownDuration + Time.time;
-        coolDownTimeLeft = coolDownDuration;
+        Debug.Log("trigger");
+        coolDownDuration = ab.cooldown;
+        coolDownTimeLeft = ab.cooldown;
         cdTime.enabled = true;
         cdEffect.enabled = true;
     }

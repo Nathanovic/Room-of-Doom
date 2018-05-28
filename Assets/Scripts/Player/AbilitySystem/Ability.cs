@@ -6,7 +6,7 @@ public abstract class Ability : ScriptableObject {
 
     public string nameAbility;
     public PlayerInput.Button button;
-    public float couldown;
+    public float cooldown;
     public float castingTime;
     public Sprite abilitySprite;
     public AudioClip soundEffect;
@@ -14,7 +14,7 @@ public abstract class Ability : ScriptableObject {
     public float readyAtTime;
 
     public Ability Clone() { Ability other = (Ability)this.MemberwiseClone(); return other; }
-    public void Cooldown() { readyAtTime = couldown + Time.time; }
+    public void Cooldown() { readyAtTime = cooldown + Time.time; }
     public abstract IEnumerator TriggerAbility(GameObject player);
 
 }

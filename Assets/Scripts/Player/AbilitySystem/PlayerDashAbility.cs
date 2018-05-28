@@ -27,7 +27,6 @@ public class PlayerDashAbility : Ability{
 
         while (dashTime <= dashDuration && stun == false){
             stun = cb.isStunned;
-            Debug.Log(stun);
             dashTime += Time.deltaTime;
             curPower = Mathf.Lerp(curPower, 0, 1f / dashTime);
             rb.velocity = dashVelocity;

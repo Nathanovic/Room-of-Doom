@@ -27,7 +27,7 @@ public class AbilityCoolDown : MonoBehaviour{
         abilitySource = GetComponent<AudioSource>();
         myButtonImage.sprite = ability.abilitySprite;
         darkMask.sprite = ability.abilitySprite;
-        coolDownDuration = ability.couldown;
+        coolDownDuration = ability.cooldown;
         //ability.Initialize(weaponHolder);
         AbilityReady();
     }

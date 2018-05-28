@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: Dash
   button: 3
-  couldown: 0
+  cooldown: 0
   castingTime: 0
   abilitySprite: {fileID: 0}
   soundEffect: {fileID: 0}

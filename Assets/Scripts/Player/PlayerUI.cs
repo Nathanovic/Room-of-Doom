@@ -12,7 +12,7 @@ public class PlayerUI : MonoBehaviour {
     private void Start(){
         CharacterAbilitieBehaviour ab = GetComponent<CharacterAbilitieBehaviour>();
 
-        foreach (var item in ab.characterAbilities){
+        foreach (var item in ab.cloneAbilities){
             if (item.abilitySprite != null){
                 GameObject newObj = new GameObject();
                 newObj.AddComponent<Image>();
@@ -20,7 +20,7 @@ public class PlayerUI : MonoBehaviour {
                 newObj.transform.SetParent(inforAbilities.transform);
                 newObj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
                 GameObject cdEffec = Instantiate(cdEffect, newObj.transform);
-                cdEffec.SetActive(false);
+                cdEffec.GetComponent<PlayerCooldownInfo>().ab = item;
             }        
         }
     }

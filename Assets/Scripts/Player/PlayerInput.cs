@@ -54,7 +54,6 @@ public class PlayerInput : MonoBehaviour {
             case Button.RB:
 			    return Input.GetButtonDown(rbButton);
             case Button.LB:
-                Debug.Log("lb");
                 return Input.GetButtonDown(lbButton);
             default: 
 				Debug.LogWarning ("unkown button: " + but);

@@ -10312,6 +10312,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc839e444c9571a4aac0c6c49dde40a4, type: 2}
   - {fileID: 11400000, guid: e9951b0a376274d468740ee5f8ae1dc6, type: 2}
   - {fileID: 11400000, guid: 3a9ee72179fd8f4408942b3e21f6d07e, type: 2}
+  cloneAbilities: []
 --- !u!114 &1182770739
 MonoBehaviour:
   m_ObjectHideFlags: 0
