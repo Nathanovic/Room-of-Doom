@@ -22,6 +22,14 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		CombatManager.Instance.RegisterPotentialTarget (this);
 	}
 
+	private void Start(){
+		if (hitPS == null) {
+			hitPS = transform.GetChild (1).GetComponent<ParticleSystem> ();
+			if (hitPS == null)
+				Debug.LogWarning ("hit ps not assigned???");
+		}
+	}
+
 	protected virtual void Update(){
 		if (remainingImmuneDuration > 0f) {
 			remainingImmuneDuration -= Time.deltaTime;

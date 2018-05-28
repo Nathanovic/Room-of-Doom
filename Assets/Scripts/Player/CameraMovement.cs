@@ -10,6 +10,10 @@ public class CameraMovement : MonoBehaviour {
     public static List<GameObject> players = new List<GameObject>();
     private Camera cam;
     
+	private void Awake(){
+		players.Clear ();
+	}
+
     private void Start () {
         cam = Camera.main;
 	}	

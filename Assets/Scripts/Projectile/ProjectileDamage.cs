@@ -16,17 +16,17 @@ public class ProjectileDamage : MonoBehaviour {
 	}
 
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if (startTime - Time.time >= hitDelay){
-		    if (!didDamage && other.transform.root.tag == "Enemy"){
-			    IAttackable attackable = other.GetComponent<IAttackable>();
-			    if (attackable != null){
-				    didDamage = true;
-				    attackable.ApplyDamage(damage, transform.position);
-                }
-
-			    DestroySelf ();
+	private void OnTriggerEnter2D(Collider2D other){
+		Debug.Log ("trigger: " + other.transform.root.name + "_tag: " + other.transform.root.tag);
+	    if (!didDamage && other.transform.root.tag == "Enemy"){
+			Debug.Log ("can attack");
+		    IAttackable attackable = other.GetComponent<IAttackable>();
+		    if (attackable != null){
+			    didDamage = true;
+			    attackable.ApplyDamage(damage, transform.position);
             }
+
+		    DestroySelf ();
         }
 
     }
