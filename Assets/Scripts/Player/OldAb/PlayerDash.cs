@@ -33,7 +33,7 @@ public class PlayerDash : MonoBehaviour {
 
 
     private IEnumerator Dash(){
-        Debug.Log("Dash");
+        //Debug.Log("Dash");
 
         curPower = power;
         dashTime += Time.deltaTime;
