@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: Dash
   button: 3
-  cooldown: 0
+  cooldown: 1.2
   castingTime: 0
   abilitySprite: {fileID: 0}
   soundEffect: {fileID: 0}
   readyAtTime: 0
-  dashDuration: 0.2
-  power: 15
+  dashDuration: 0.3
+  power: 20

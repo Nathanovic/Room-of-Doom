@@ -7053,10 +7053,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1634165886236396, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
-      propertyPath: m_Name
-      value: Boy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
   m_IsPrefabAsset: 0
@@ -19225,10 +19221,6 @@ Prefab:
     - target: {fileID: 4454415705537074, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1206540721547482, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
-      propertyPath: m_Name
-      value: Girl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
