@@ -11,7 +11,7 @@ public class PlayerDashAbility : Ability{
     private float dashTime;
     private float curPower;
 
-    public override void TriggerAbility(GameObject player){
+    public override IEnumerator TriggerAbility(GameObject player){
         Debug.Log("Dash");
 
         curPower = power;
@@ -22,12 +22,16 @@ public class PlayerDashAbility : Ability{
 
         Vector2 dashVelocity = player.transform.localScale.x > 0 ? Vector2.right * curPower : Vector2.left * curPower;
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        CharacterAbilitieBehaviour cb = player.GetComponent<CharacterAbilitieBehaviour>();
+        bool stun = cb.isStunned;
 
-        while (dashTime <= dashDuration){
+        while (dashTime <= dashDuration && stun == false){
+            stun = cb.isStunned;
+            Debug.Log(stun);
             dashTime += Time.deltaTime;
             curPower = Mathf.Lerp(curPower, 0, 1f / dashTime);
             rb.velocity = dashVelocity;
-            Debug.Log("while");
+            yield return new WaitForEndOfFrame();
         }
 
         pb.canControl = true;

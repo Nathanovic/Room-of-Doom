@@ -9,7 +9,7 @@ public class PlayerRangedSpecialAttack : Ability{
     public int amount;
     public float dis;
 
-    public override void TriggerAbility(GameObject player){
+    public override IEnumerator TriggerAbility(GameObject player){
         Debug.Log("PlayerRangedSpecialAttack");
 
         for (int i = 0; i < amount; i++){
@@ -21,6 +21,7 @@ public class PlayerRangedSpecialAttack : Ability{
             pm.target.Add(new Vector2(player.transform.position.x, player.transform.position.y + (amount - i) * dis));
             pm.target.Add(new Vector2(6, 5));
         }
-        
+
+        yield return null;
     }
 }

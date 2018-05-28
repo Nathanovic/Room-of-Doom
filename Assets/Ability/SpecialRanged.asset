@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: special
   button: 5
-  couldown: 0
+  couldown: 1
   castingTime: 0
-  abilitySprite: {fileID: 0}
+  abilitySprite: {fileID: 21300000, guid: 460800a21e82f2642accb9ebeab5b927, type: 3}
   soundEffect: {fileID: 0}
   readyAtTime: 0
   projectile: {fileID: 1513216415537730, guid: 1c462c67df84f2843b812a8722bfafb1, type: 2}
