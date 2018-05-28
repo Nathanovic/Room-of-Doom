@@ -12,6 +12,8 @@ public class WormSegment : MonoBehaviour, IAttackable {
 	private int id;
 	public static int segmentID;
 
+	public event SimpleDelegate onFinishedMoving;
+
 	private void Start(){
 		myCombat = transform.parent.GetComponent<CharacterCombat> ();
 		wormScript = transform.parent.GetComponent<MagmaWorm> ();
@@ -35,10 +37,10 @@ public class WormSegment : MonoBehaviour, IAttackable {
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 		Debug.DrawLine (transform.position, targetPos, new Color(0f, 0f, 0.1f * id));
-	}
 
-	public bool KeepTraversing(){
-		return moveT < 1f;	
+		if (moveT >= 1f && onFinishedMoving != null) {
+			onFinishedMoving ();
+		}
 	}
 		
 	private void OnTriggerEnter2D(Collider2D other){

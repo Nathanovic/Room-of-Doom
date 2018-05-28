@@ -32,6 +32,12 @@ public class MagmaWorm : MonoBehaviour {
 
 	public HealthBar myHealthBar;
 
+	private float undergroundTime;
+	private float currentUndergroundTime;
+	public float maxRespawnTime;
+	[Range(0f, 1f)]public float intensity;//bepaald hoe snel de worm weer tevoorschijn komt 1f = immediate respawn
+	public float rndmIntensity = 0.2f;
+
 	private void Start(){
 		head = transform.GetChild (0);
 		feedForwardVFX.transform.SetParent (null);
@@ -42,10 +48,54 @@ public class MagmaWorm : MonoBehaviour {
 		movementCurve.DetachSelf ();
 		wormSegments = GetComponentsInChildren<WormSegment> ();
 		lastSegment = wormSegments[wormSegments.Length - 1];
+		lastSegment.onFinishedMoving += OnAttackEnded;
 
 		CharacterCombat combatScript = GetComponent<CharacterCombat> ();
 		combatScript.onDie += DestroySelf;
 		myHealthBar.Init (combatScript, false);
+	}
+
+	private void Update(){
+		if (curveAttack) {
+			if (delay > 0f) {
+				delay -= Time.deltaTime;
+			} 
+			else {
+				moveT += curveMoveSpeed * Time.deltaTime;
+				transform.position = movementCurve.GetPoint (moveT);
+
+				Vector3 dir = movementCurve.GetPoint (moveT + 0.1f) - transform.position;
+				float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg + 180;
+				head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+				foreach (WormSegment segment in wormSegments) {
+					segment.TraverseCurve (movementCurve);
+				}
+			}
+		}
+		else {
+			currentUndergroundTime += Time.deltaTime;
+			if (currentUndergroundTime >= undergroundTime) {
+				StartCurveAttack ();
+			}
+		}
+
+		if (Input.GetKeyUp (KeyCode.Space) && targets.Length > 0) {
+			StartCurveAttack ();
+		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D other){
+		TryHitOther (other);
+	}
+
+	public void TryHitOther(Collider2D other){
+		if (other.tag == "Player") {
+			CharacterCombat target = other.GetComponent<CharacterCombat> ();
+			if (target.ValidTarget ()) {
+				target.ApplyDamage (attackDamage, transform.position);
+			}
+		}
 	}
 
 	private void DestroySelf(){
@@ -119,44 +169,12 @@ public class MagmaWorm : MonoBehaviour {
 		curveAttack = true;
 	}
 
-	private void Update(){
-		if (curveAttack) {
-			if (delay > 0f) {
-				delay -= Time.deltaTime;
-			} 
-			else {
-				moveT += curveMoveSpeed * Time.deltaTime;
-				transform.position = movementCurve.GetPoint (moveT);
-
-				Vector3 dir = movementCurve.GetPoint (moveT + 0.1f) - transform.position;
-				float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg + 180;
-				head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-				foreach (WormSegment segment in wormSegments) {
-					segment.TraverseCurve (movementCurve);
-				}
-
-				if (!lastSegment.KeepTraversing ()) {
-					curveAttack = false;
-				}
-			}
-		}
-
-		if (Input.GetKeyUp (KeyCode.Space) && targets.Length > 0) {
-			StartCurveAttack ();
-		}
-	}
-
-	private void OnTriggerEnter2D(Collider2D other){
-		TryHitOther (other);
-	}
-
-	public void TryHitOther(Collider2D other){
-		if (other.tag == "Player") {
-			CharacterCombat target = other.GetComponent<CharacterCombat> ();
-			if (target.ValidTarget ()) {
-				target.ApplyDamage (attackDamage, transform.position);
-			}
-		}
+	//calculate when we will appear again
+	private void OnAttackEnded(){
+		curveAttack = false;
+		float intensityFactor = Random.Range (-rndmIntensity, rndmIntensity) + 1f - intensity;
+		intensityFactor = Mathf.Clamp01 (intensityFactor);
+		undergroundTime = maxRespawnTime * intensityFactor;
+		currentUndergroundTime = 0f;
 	}
 }
