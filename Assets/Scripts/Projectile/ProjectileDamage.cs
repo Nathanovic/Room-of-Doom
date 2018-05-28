@@ -23,7 +23,8 @@ public class ProjectileDamage : MonoBehaviour {
 		    IAttackable attackable = other.GetComponent<IAttackable>();
 		    if (attackable != null){
 			    didDamage = true;
-			    attackable.ApplyDamage(damage, transform.position);
+				Vector3 hitDir = other.transform.position - transform.position;
+				attackable.ApplyDamage(damage, transform.position, hitDir);
             }
 
 		    DestroySelf ();

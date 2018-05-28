@@ -47,18 +47,15 @@ public class WormSegment : MonoBehaviour, IAttackable {
 		wormScript.TryHitOther (other);
 	} 
 
-	public void ApplyDamage (int dmg, Vector3 hitPos)
-	{
-		myCombat.ApplyDamage (dmg, hitPos);
+	public void ApplyDamage (int dmg, Vector3 hitPos, Vector3 hitDir){
+		myCombat.ApplyDamage (dmg, hitPos, hitDir);
 	}
 
-	public bool ValidTarget ()
-	{
+	public bool ValidTarget (){
 		return myCombat.health > 0f;
 	}
 
-	public Vector2 Position ()
-	{
+	public Vector2 Position (){
 		return (Vector2)transform.position;
 	}
 }

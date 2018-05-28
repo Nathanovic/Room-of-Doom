@@ -37,7 +37,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	}
 
 	//apply damage to character; can only be done if health > 0
-	public void ApplyDamage (int dmg, Vector3 hitPos){
+	public void ApplyDamage (int dmg, Vector3 hitPos, Vector3 hitDir){
 		health -= dmg;
 		remainingImmuneDuration = HITTED_IMMUNE_DURATION;
 		if (health <= 0) {
@@ -57,7 +57,11 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		}
 
 		//show the player visually that we have been hit:
+		hitDir.y = 0f;
+		hitDir.Normalize ();
+		hitDir.y = hitDir.z = 1f;
 		hitPS.transform.position = hitPos;
+		hitPS.transform.localScale = hitDir;
 		hitPS.Play ();
 	}
 

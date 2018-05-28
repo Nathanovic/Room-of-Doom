@@ -43,7 +43,7 @@ public class PlayerCombat : CharacterCombat {
         if (other != null) {
 			RaycastHit2D hit = Physics2D.Raycast (transform.position, (other.transform.position - transform.position), attackRange * 2f, enemyLM);
 			IAttackable combatScript = other.GetComponent<IAttackable> ();
-			combatScript.ApplyDamage (attackDamage, hit.point);
+			combatScript.ApplyDamage (attackDamage, hit.point, (Vector3)hit.point - transform.transform.position);
         }
 
 		anim.SetTrigger ("attack");

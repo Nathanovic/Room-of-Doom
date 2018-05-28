@@ -53,6 +53,8 @@ public class MagmaWorm : MonoBehaviour {
 		CharacterCombat combatScript = GetComponent<CharacterCombat> ();
 		combatScript.onDie += DestroySelf;
 		myHealthBar.Init (combatScript, false);
+
+		BossManager.instance.InitializeBoss (this);
 	}
 
 	private void Update(){
@@ -93,7 +95,7 @@ public class MagmaWorm : MonoBehaviour {
 		if (other.tag == "Player") {
 			CharacterCombat target = other.GetComponent<CharacterCombat> ();
 			if (target.ValidTarget ()) {
-				target.ApplyDamage (attackDamage, transform.position);
+				target.ApplyDamage (attackDamage, transform.position, target.transform.position - transform.position);
 			}
 		}
 	}
@@ -176,5 +178,9 @@ public class MagmaWorm : MonoBehaviour {
 		intensityFactor = Mathf.Clamp01 (intensityFactor);
 		undergroundTime = maxRespawnTime * intensityFactor;
 		currentUndergroundTime = 0f;
+	}
+
+	public Vector3 GetHeadPosition(){
+		return head.position;
 	}
 }
