@@ -19,5 +19,7 @@ MonoBehaviour:
   soundEffect: {fileID: 0}
   readyAtTime: 0
   projectile: {fileID: 1513216415537730, guid: 1c462c67df84f2843b812a8722bfafb1, type: 2}
-  amount: 5
-  dis: 0.6
+  attackRange: 10
+  spawnRadiusX: 1
+  SpawnRadiusY: 1
+  spawnWidth: 0.4

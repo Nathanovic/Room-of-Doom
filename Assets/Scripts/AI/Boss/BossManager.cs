@@ -7,7 +7,7 @@ using System.Linq;
 public class BossManager : MonoBehaviour {
 
 	public static BossManager instance;
-	private List<MagmaWorm> worms;
+	private List<MagmaWorm> worms = new List<MagmaWorm>();
 
 	private void Awake(){
 		if (instance != null) {
