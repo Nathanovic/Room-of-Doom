@@ -57,4 +57,7 @@ public class CharacterAbilitieBehaviour : MonoBehaviour {
         audioSource.Play();
     }
 
+    private void OnDrawGizmos(){
+        //Gizmos.DrawSphere(transform.position, 10);
+    }
 }

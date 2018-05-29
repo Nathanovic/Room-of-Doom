@@ -16,9 +16,11 @@ public class PlayerRangedSpecialAttack : Ability{
 
     private int amount;
     private Vector3 centrePos;
+    private Transform onGizPos;
 
     public override IEnumerator TriggerAbility(GameObject player){
         Debug.Log("PlayerRangedSpecialAttack");
+        onGizPos = player.transform;
 
         List <Vector3> mw = new List<Vector3>();
         if (BossManager.instance.GetHeadPositions(player.transform.position, attackRange).Count != 0){
@@ -53,7 +55,6 @@ public class PlayerRangedSpecialAttack : Ability{
 
         yield return null;
     }
- 
 }
 
 /*
