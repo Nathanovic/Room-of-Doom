@@ -18,6 +18,8 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	public bool customHealthBar;
 
+	public CameraShakeSettings hittedShakeSettings;
+
 	private void Awake(){
 		CombatManager.Instance.RegisterPotentialTarget (this);
 	}
@@ -63,6 +65,9 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		hitPS.transform.position = hitPos;
 		hitPS.transform.localScale = hitDir;
 		hitPS.Play ();
+
+		//shake the camera
+		CameraShake.instance.Shake(hittedShakeSettings, dmg);
 	}
 
 	public bool ValidTarget (){

@@ -18,9 +18,7 @@ public class ProjectileDamage : MonoBehaviour {
 
 
 	private void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("trigger: " + other.transform.root.name + "_tag: " + other.transform.root.tag);
 	    if (!didDamage && other.transform.root.tag == "Enemy"){
-			Debug.Log ("can attack");
 		    IAttackable attackable = other.GetComponent<IAttackable>();
 		    if (attackable != null){
 			    didDamage = true;

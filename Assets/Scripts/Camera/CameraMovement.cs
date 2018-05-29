@@ -8,21 +8,18 @@ public class CameraMovement : MonoBehaviour {
     public float maxY;
 
     public static List<GameObject> players = new List<GameObject>();
-    private Camera cam;
+
+	public delegate Vector2 ShakeMoveDelegate ();
+	public ShakeMoveDelegate shakeMovement;
     
 	private void Awake(){
 		players.Clear ();
 	}
 
-    private void Start () {
-        cam = Camera.main;
-	}	
-
 	private void Update () {
         if (players.Count > 0){
             SetCameraPos();  
         }
-        
     }
 
     private void SetCameraPos(){
@@ -36,13 +33,17 @@ public class CameraMovement : MonoBehaviour {
 
         middle /= numPlayers;
 
-        Vector3 camPos = cam.transform.position;
+		Vector2 camPos = (Vector2)transform.position;
 
         if (middle.y > minY && middle.y < maxY){
             camPos.y = middle.y;
         }
         camPos.x = middle.x;
-        cam.transform.position = camPos;
-    }
+		if (shakeMovement != null) {
+			camPos += shakeMovement();
+		}
 
+		Vector3 newPos = new Vector3 (camPos.x, camPos.y, transform.position.z);
+		transform.position = newPos;
+    }
 }
