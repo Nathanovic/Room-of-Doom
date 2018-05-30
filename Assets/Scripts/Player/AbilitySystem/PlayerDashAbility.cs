@@ -8,19 +8,51 @@ public class PlayerDashAbility : Ability{
     public float dashDuration;
     public float power;
 
+    public float ghostTimer;
+    public float ghostActiveTimer;
+    public GameObject ghostPrefab;
+    public int amountGhosts;
+
+
     private float dashTime;
     private float curPower;
     private GameObject player;
-    //private SpriteRenderer
+
+    private PlayerGhost ghostSprite;
+    private GameObject ghostParent;
+    private SpriteRenderer playerSprite;
+    private List<GameObject> ghostsObj = new List<GameObject>();
+    private List<PlayerGhost> ghostsScript = new List<PlayerGhost>();
+
+    private float nextGhost = 0;
+    private int currentGhostIndex = 0;
 
     public override void Init(GameObject p){
         player = p;
+        playerSprite = player.GetComponentInChildren<SpriteRenderer>();
+        ghostsScript.Clear();
+        ghostsObj.Clear();
+        nextGhost = 0;
+        currentGhostIndex = 0;
+        ghostParent = new GameObject();
+        ghostParent.name = "Ghost Parent";
+
+        for (int i = 0; i < amountGhosts; i++){
+            GameObject g = Instantiate(ghostPrefab, ghostParent.transform);
+            ghostSprite = ghostPrefab.GetComponent<PlayerGhost>();
+            ghostSprite.ghostTimer = ghostActiveTimer;
+            ghostSprite.SetSprite(player);
+            ghostsScript.Add(ghostSprite);
+            ghostsObj.Add(g);
+            g.transform.position = player.transform.position;
+        }
+
     }
 
     public override IEnumerator TriggerAbility(){
         Debug.Log("Dash");
-        Ghost();
-
+        currentGhostIndex = 0;
+    
         curPower = power;
         dashTime += Time.deltaTime;
 
@@ -32,7 +64,9 @@ public class PlayerDashAbility : Ability{
         CharacterAbilitieBehaviour cb = player.GetComponent<CharacterAbilitieBehaviour>();
         bool stun = cb.isStunned;
 
+        Ghost();
         while (dashTime <= dashDuration && stun == false){
+            Ghost();
             stun = cb.isStunned;
             dashTime += Time.deltaTime;
             curPower = Mathf.Lerp(curPower, 0, 1f / dashTime);
@@ -45,8 +79,17 @@ public class PlayerDashAbility : Ability{
         dashTime = 0;
     }
 
-    public void Ghost(){
-
+    private void Ghost(){
+        if (nextGhost < Time.time){
+            nextGhost = Time.time + ghostTimer;
+            currentGhostIndex += 1;
+            if (currentGhostIndex >= ghostsScript.Count){
+                currentGhostIndex = 0;
+            }
+            ghostsObj[currentGhostIndex].transform.position = player.transform.position;
+            ghostsObj[currentGhostIndex].transform.localScale = player.transform.localScale;
+            ghostsObj[currentGhostIndex].gameObject.SetActive(true);
+        }
 
     }
 }

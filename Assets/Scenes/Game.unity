@@ -2977,6 +2977,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694874fe3193f2e448bbc1b7c2e1a344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minCamViewSize: 6.5
+  maxCamViewSize: 10
+  playerOffset: 0.5
   minY: 0
   maxY: 0
 --- !u!1 &754476811
@@ -10346,6 +10349,7 @@ MonoBehaviour:
   health: 5
   hitPS: {fileID: 1204047681}
   customHealthBar: 0
+  hittedShakeSettings: {fileID: 0}
   enemyLM:
     serializedVersion: 2
     m_Bits: 1024
