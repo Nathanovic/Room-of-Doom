@@ -18,6 +18,7 @@ public class CharacterAbilitieBehaviour : MonoBehaviour {
         cloneAbilities = new Ability[characterAbilities.Length];
         for (int i = 0; i < characterAbilities.Length; i++) {
             cloneAbilities[i] = characterAbilities[i].Clone();
+            cloneAbilities[i].Init(gameObject);
         }
     }
 
@@ -32,7 +33,7 @@ public class CharacterAbilitieBehaviour : MonoBehaviour {
         if (isCasting == false && isStunned == false){ 
             foreach (var ab in cloneAbilities){
                 if (ab.readyAtTime <= Time.time && (playerInput.ButtonIsDown(ab.button) || Input.GetKeyDown(testBut))){
-                    StartCoroutine(ab.TriggerAbility(gameObject));
+                    StartCoroutine(ab.TriggerAbility());
                     ab.Cooldown();
                     AbilitySound(ab);
                     if (ab.castingTime != 0){

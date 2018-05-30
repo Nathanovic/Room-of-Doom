@@ -17,8 +17,13 @@ public class PlayerRangedSpecialAttack : Ability{
     private int amount;
     private Vector3 centrePos;
     private Transform onGizPos;
+    private GameObject player;
 
-    public override IEnumerator TriggerAbility(GameObject player){
+    public override void Init(GameObject p){
+        player = p;
+    }
+
+    public override IEnumerator TriggerAbility(){
         Debug.Log("PlayerRangedSpecialAttack");
         onGizPos = player.transform;
 

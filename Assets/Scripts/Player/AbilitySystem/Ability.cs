@@ -15,6 +15,7 @@ public abstract class Ability : ScriptableObject {
 
     public Ability Clone() { Ability other = (Ability)this.MemberwiseClone(); return other; }
     public void Cooldown() { readyAtTime = cooldown + Time.time; }
-    public abstract IEnumerator TriggerAbility(GameObject player);
+    public abstract void Init(GameObject p);
+    public abstract IEnumerator TriggerAbility();
 
 }
