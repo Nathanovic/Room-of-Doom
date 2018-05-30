@@ -11,7 +11,7 @@ public class PlayerDashAbility : Ability{
     private float dashTime;
     private float curPower;
     private GameObject player;
-    private SpriteRenderer
+    //private SpriteRenderer
 
     public override void Init(GameObject p){
         player = p;
