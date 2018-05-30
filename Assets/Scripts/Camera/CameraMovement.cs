@@ -5,12 +5,12 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour {
 
 	private Camera cam;
-	public float minCamViewSize = 6.5f;
-	public float maxCamViewSize = 10f;
-	public float playerOffset = 0.5f;
 
-    public float minY;
-    public float maxY;
+    public float minY = -1.5f;
+
+	public float playerOffset = 2f;
+	public float minCamViewSize = 7f;
+	public float maxCamViewSize = 12f;
 
     public static List<GameObject> players = new List<GameObject>();
 
