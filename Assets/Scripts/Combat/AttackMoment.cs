@@ -10,6 +10,6 @@ public class AttackMoment : MonoBehaviour {
 
 	public void DoDamage(){
 		Debug.Log ("damage now!");
-		combatScript.TryDamage ();
+		//combatScript.TryDamage ();
 	} 
 }

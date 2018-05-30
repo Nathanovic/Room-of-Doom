@@ -6975,25 +6975,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114057016351723346, guid: bf7427175d4a7c446a78ed42192117eb,
+    - target: {fileID: 114367618578221972, guid: bf7427175d4a7c446a78ed42192117eb,
         type: 2}
-      propertyPath: controllerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114459267774608690, guid: bf7427175d4a7c446a78ed42192117eb,
-        type: 2}
-      propertyPath: hittedShakeSettings
-      value: 
-      objectReference: {fileID: 11400000, guid: 284d9acfd13064549a259bd477ac38fb,
-        type: 2}
-    - target: {fileID: 1634165886236396, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114057016351723346, guid: bf7427175d4a7c446a78ed42192117eb,
-        type: 2}
-      propertyPath: keyboardInput
+      propertyPath: m_ChildControlWidth
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367618578221972, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: m_ChildControlHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114549184885962362, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224927429647298064, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 224927429647298064, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
@@ -72261,20 +72266,47 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 114665708308607302, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+    - target: {fileID: 114658028739606520, guid: 0193ce27cab7d8a4fadbb62524b375d2,
         type: 2}
-      propertyPath: hittedShakeSettings
-      value: 
-      objectReference: {fileID: 11400000, guid: 284d9acfd13064549a259bd477ac38fb,
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658028739606520, guid: 0193ce27cab7d8a4fadbb62524b375d2,
         type: 2}
-    - target: {fileID: 1206540721547482, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
-      propertyPath: m_IsActive
+      propertyPath: m_ChildControlHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658028739606520, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: m_ChildForceExpandWidth
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114538167954935278, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
-    - {fileID: 114130053234995328, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
-    - {fileID: 114794103864037490, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
+    - target: {fileID: 114658028739606520, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: m_ChildForceExpandHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658028739606520, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: m_ChildAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337314715165996, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224093614199377606, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 224093614199377606, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1740313773 stripped
