@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
+	private Camera cam;
+	public float minCamViewSize = 6.5f;
+	public float maxCamViewSize = 10f;
+	public float playerOffset = 0.5f;
+
     public float minY;
     public float maxY;
 
@@ -14,6 +19,10 @@ public class CameraMovement : MonoBehaviour {
     
 	private void Awake(){
 		players.Clear ();
+	}
+
+	private void Start(){
+		cam = GetComponent<Camera> ();
 	}
 
 	private void Update () {
@@ -42,6 +51,7 @@ public class CameraMovement : MonoBehaviour {
 		if (shakeMovement != null) {
 			camPos += shakeMovement();
 		}
+		Debug.DrawLine (middle, camPos, Color.red);
 
 		Vector3 newPos = new Vector3 (camPos.x, camPos.y, transform.position.z);
 		transform.position = newPos;
