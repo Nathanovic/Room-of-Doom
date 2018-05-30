@@ -21,7 +21,7 @@ MonoBehaviour:
   dashDuration: 0.3
   power: 20
   ghostTimer: 0.01
-  ghostActiveTimer: 0.2
+  ghostActiveTimer: 0.4
   ghostPrefab: {fileID: 1755305945599312, guid: da56d33c3c0488f40841b1ad9bebeb21,
     type: 2}
-  amountGhosts: 15
+  amountGhosts: 25

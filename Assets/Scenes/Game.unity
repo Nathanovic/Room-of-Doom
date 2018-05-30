@@ -2977,11 +2977,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694874fe3193f2e448bbc1b7c2e1a344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minY: 0
+  playerOffset: 0.5
   minCamViewSize: 6.5
   maxCamViewSize: 10
-  playerOffset: 0.5
-  minY: 0
-  maxY: 0
 --- !u!1 &754476811
 GameObject:
   m_ObjectHideFlags: 0
@@ -15587,6 +15586,21 @@ Prefab:
     - target: {fileID: 114750010307174848, guid: 9540080fc99162c46b49f92f8b10631a,
         type: 2}
       propertyPath: keyboardInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259794974385370, guid: 9540080fc99162c46b49f92f8b10631a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593036698666774, guid: 9540080fc99162c46b49f92f8b10631a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114288408578591990, guid: 9540080fc99162c46b49f92f8b10631a,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

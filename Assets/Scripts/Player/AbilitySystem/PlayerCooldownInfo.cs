@@ -36,7 +36,6 @@ public class PlayerCooldownInfo : MonoBehaviour {
     }
 
     private void CoolDown(){
-        Debug.Log("cd");
         coolDownTimeLeft -= Time.deltaTime;
         float roundedCd = Mathf.Round(coolDownTimeLeft);
         cdTime.text = roundedCd.ToString();
@@ -44,7 +43,6 @@ public class PlayerCooldownInfo : MonoBehaviour {
     }
 
     private void AbilityTriggered(){
-        Debug.Log("trigger");
         coolDownDuration = ab.cooldown;
         coolDownTimeLeft = ab.cooldown;
         cdTime.enabled = true;
