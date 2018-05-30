@@ -15,7 +15,13 @@ MonoBehaviour:
   button: 5
   cooldown: 3
   castingTime: 0
-  abilitySprite: {fileID: 0}
+  abilitySprite: {fileID: 21300000, guid: 993d47d2c9d49c4409f225b66c88794b, type: 3}
   soundEffect: {fileID: 0}
   readyAtTime: 0
+<<<<<<< HEAD:Assets/Ability/SpecialMelee.asset
   projectile: {fileID: 0}
+=======
+  projectile: {fileID: 1689378693750466, guid: d68d8ff78c1d4ba4b83fa9fbdab081dc, type: 2}
+  spawnOffset: {x: 1, y: -0.75, z: 0}
+  moveToOffset: {x: 0.5, y: 0.75, z: 0}
+>>>>>>> 67ba567c6618ceccdc2bcc419060d6189848ca61:Assets/Data/Ability/SpecialMelee.asset

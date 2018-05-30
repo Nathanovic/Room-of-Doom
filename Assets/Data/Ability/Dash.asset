@@ -15,8 +15,13 @@ MonoBehaviour:
   button: 3
   cooldown: 1.2
   castingTime: 0
-  abilitySprite: {fileID: 0}
+  abilitySprite: {fileID: 21300000, guid: e7fad9e9b2968c24c9d1741b0593adea, type: 3}
   soundEffect: {fileID: 0}
   readyAtTime: 0
   dashDuration: 0.3
   power: 20
+  ghostTimer: 0.01
+  ghostActiveTimer: 0.4
+  ghostPrefab: {fileID: 1755305945599312, guid: da56d33c3c0488f40841b1ad9bebeb21,
+    type: 2}
+  amountGhosts: 25
