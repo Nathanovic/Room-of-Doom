@@ -53,8 +53,14 @@ public class PlayerRangedSpecialAttack : Ability{
             pm.target.Add(pos);
 
             if (mw.Count > 0){
-                pm.target.Add(mw[pointNum]);
+                if (pointNum < mw.Count){
+                    pm.target.Add(mw[pointNum]);
+                }
+                else{
+                    pm.target.Add(mw[Random.Range(0, mw.Count)]);
+                }
             }
+
 
         }
 
