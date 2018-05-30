@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMeleeSpecialAttack : Ability{
 
     public GameObject projectile;
+    public Vector3 offset;
 
     private GameObject player;
 
@@ -14,7 +15,9 @@ public class PlayerMeleeSpecialAttack : Ability{
     }
 
     public override IEnumerator TriggerAbility(){
+        Debug.Log("PlayerMeleeSpecialAttack");
 
+        GameObject p = Instantiate(projectile, player.transform.position + offset, Quaternion.identity);
 
         yield return null;
     }

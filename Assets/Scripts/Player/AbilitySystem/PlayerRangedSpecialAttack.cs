@@ -14,7 +14,7 @@ public class PlayerRangedSpecialAttack : Ability{
     [Range(0, 1)]
     public float spawnWidth;
 
-    private int amount;
+    private int amount = 5;
     private Vector3 centrePos;
     private Transform onGizPos;
     private GameObject player;
@@ -34,9 +34,6 @@ public class PlayerRangedSpecialAttack : Ability{
             }
         }
 
-
-        amount = mw.Count;
-
         for (var pointNum = 0; pointNum < amount; pointNum++){
             centrePos = player.transform.position;
             var i = ((pointNum - ((amount - 1) * 0.5f)) * spawnWidth) / amount;
@@ -54,7 +51,10 @@ public class PlayerRangedSpecialAttack : Ability{
             pm.hasTarget = true;
             pm.delayNextTarget = Random.Range(0.7f, 1);
             pm.target.Add(pos);
-            pm.target.Add(mw[pointNum]);
+
+            if (mw.Count > 0){
+                pm.target.Add(mw[pointNum]);
+            }
 
         }
 

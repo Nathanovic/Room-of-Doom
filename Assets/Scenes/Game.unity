@@ -2978,7 +2978,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minY: 0
-  maxY: 0
+  playerOffset: 0.5
+  minCamViewSize: 6.5
+  maxCamViewSize: 10
 --- !u!1 &754476811
 GameObject:
   m_ObjectHideFlags: 0
@@ -10346,6 +10348,7 @@ MonoBehaviour:
   health: 5
   hitPS: {fileID: 1204047681}
   customHealthBar: 0
+  hittedShakeSettings: {fileID: 0}
   enemyLM:
     serializedVersion: 2
     m_Bits: 1024
@@ -15583,6 +15586,21 @@ Prefab:
     - target: {fileID: 114750010307174848, guid: 9540080fc99162c46b49f92f8b10631a,
         type: 2}
       propertyPath: keyboardInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259794974385370, guid: 9540080fc99162c46b49f92f8b10631a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593036698666774, guid: 9540080fc99162c46b49f92f8b10631a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114288408578591990, guid: 9540080fc99162c46b49f92f8b10631a,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
