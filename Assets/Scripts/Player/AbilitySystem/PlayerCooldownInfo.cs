@@ -36,6 +36,7 @@ public class PlayerCooldownInfo : MonoBehaviour {
     }
 
     private void CoolDown(){
+        Debug.Log("cd");
         coolDownTimeLeft -= Time.deltaTime;
         float roundedCd = Mathf.Round(coolDownTimeLeft);
         cdTime.text = roundedCd.ToString();
