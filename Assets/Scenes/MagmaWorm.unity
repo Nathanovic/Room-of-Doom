@@ -11545,7 +11545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 13
   hitPS: {fileID: 1817194573}
   customHealthBar: 1
   hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
@@ -11989,7 +11989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 25
   hitPS: {fileID: 0}
   customHealthBar: 1
   hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
@@ -18013,7 +18013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 13
   hitPS: {fileID: 160172539}
   customHealthBar: 1
   hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
@@ -24836,6 +24836,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
         type: 2}
+    - target: {fileID: 114615397721025446, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: health
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30d83a476ede914a90c5fca0e1aaeef, type: 2}
   m_IsPrefabAsset: 0
@@ -79219,7 +79224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 13
   hitPS: {fileID: 1024253799}
   customHealthBar: 1
   hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
