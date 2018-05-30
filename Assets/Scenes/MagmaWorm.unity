@@ -6953,6 +6953,17 @@ Prefab:
       propertyPath: MaxDistance
       value: 30.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114502132188888414, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: characterAbilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ebc046a99b37187499059438b95b540f,
+        type: 2}
+    - target: {fileID: 114502132188888414, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: testBut
+      value: 118
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
   m_IsPrefabAsset: 0
