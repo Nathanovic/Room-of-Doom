@@ -13,8 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: SpecialMelee
   button: 5
-  cooldown: 0
+  cooldown: 3
   castingTime: 0
   abilitySprite: {fileID: 0}
   soundEffect: {fileID: 0}
   readyAtTime: 0
+  projectile: {fileID: 0}

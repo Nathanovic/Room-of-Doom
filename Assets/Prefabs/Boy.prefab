@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334de183348065d41b5d8db86457cf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerNumber: 1
+  controllerNumber: 2
   Lhorizontal: 0
   Lvertical: 0
   Rhorizontal: 0
@@ -689,6 +689,8 @@ MonoBehaviour:
   health: 10
   hitPS: {fileID: 198454904809406642}
   customHealthBar: 0
+  hittedShakeSettings: {fileID: 11400000, guid: 284d9acfd13064549a259bd477ac38fb,
+    type: 2}
   enemyLM:
     serializedVersion: 2
     m_Bits: 1024
@@ -712,7 +714,8 @@ MonoBehaviour:
   isStunned: 0
   testBut: 99
   characterAbilities:
-  - {fileID: 11400000, guid: 3a9ee72179fd8f4408942b3e21f6d07e, type: 2}
+  - {fileID: 11400000, guid: ebc046a99b37187499059438b95b540f, type: 2}
+  - {fileID: 11400000, guid: 136c9dbd4b093104886c18b873a19dbd, type: 2}
   cloneAbilities: []
 --- !u!114 &114549184885962362
 MonoBehaviour:

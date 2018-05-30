@@ -39,14 +39,17 @@ public class PlayerCombat : CharacterCombat {
 	//activate the cooldown and try to hit someone
 	private void Attack(){
 		remainingCooldown = cooldown;
+		anim.SetTrigger ("attack");
+	}
+
+	//triggered by animation
+	public void TryDoDamage(){
 		Collider2D other = Physics2D.OverlapCircle(weaponCheck.position, attackRange, enemyLM);
-        if (other != null) {
+		if (other != null) {
 			RaycastHit2D hit = Physics2D.Raycast (transform.position, (other.transform.position - transform.position), attackRange * 2f, enemyLM);
 			IAttackable combatScript = other.GetComponent<IAttackable> ();
 			combatScript.ApplyDamage (attackDamage, hit.point, (Vector3)hit.point - transform.transform.position);
-        }
-
-		anim.SetTrigger ("attack");
+		}
 	}
 
 	private void Cooldown(){

@@ -46,7 +46,8 @@ public class CameraMovement : MonoBehaviour {
 		Vector2 camPos = Vector2.zero;
 
 		float minYCamPos = cam.orthographicSize + minY;
-		camPos.y = Mathf.Max (middle.y, minYCamPos);
+		Debug.DrawLine (transform.position, transform.up * minYCamPos, Color.red);
+		camPos.y = Mathf.Min (middle.y, minYCamPos);
         camPos.x = middle.x;
 
 		if (shakeMovement != null) {
