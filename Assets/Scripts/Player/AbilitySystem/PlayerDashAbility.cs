@@ -11,15 +11,14 @@ public class PlayerDashAbility : Ability{
     private float dashTime;
     private float curPower;
     private GameObject player;
-    //private SpriteRenderer
 
     public override void Init(GameObject p){
         player = p;
+
     }
 
     public override IEnumerator TriggerAbility(){
         Debug.Log("Dash");
-        Ghost();
 
         curPower = power;
         dashTime += Time.deltaTime;
@@ -43,10 +42,5 @@ public class PlayerDashAbility : Ability{
         pb.canControl = true;
         rb.velocity = Vector3.zero;
         dashTime = 0;
-    }
-
-    public void Ghost(){
-
-
     }
 }
