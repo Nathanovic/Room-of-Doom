@@ -17,10 +17,13 @@ public class PlayerCombat : CharacterCombat {
 	public float cooldown;
 	public float remainingCooldown;
 
+	public HealthBar hb;
+
 	private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
 		anim = GetComponentInChildren<Animator> ();
 		input = GetComponent<PlayerInput> ();
+		hb.Init (this, false);
 	}
 
 	protected override void Update () {
