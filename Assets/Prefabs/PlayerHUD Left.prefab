@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224727906771608304}
+  - component: {fileID: 114143646500485148}
   m_Layer: 0
   m_Name: PlayerHUD Left
   m_TagString: Untagged
@@ -240,6 +241,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114143646500485148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637537916945618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d8b95a59db4964cb7783d2dd8fbb4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthAmount: {fileID: 114503016786551050}
+  ability1: {fileID: 114858203825145000}
+  ability2: {fileID: 114958995834476480}
+  ability3: {fileID: 114164658506348950}
 --- !u!114 &114164658506348950
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class PlayerHUD : MonoBehaviour {
 
     public Image healthAmount;
-    public Image fd;
+    public Image ability1;
+    public Image ability2;
+    public Image ability3;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
