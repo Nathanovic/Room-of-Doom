@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Linq;
 
-//this script handles the boss state
+//this script handles the AI attack state, using the Boss script
 //can be used to get the closest hittable head of the ai's
 public class BossManager : MonoBehaviour {
 
@@ -33,5 +33,10 @@ public class BossManager : MonoBehaviour {
 		}
 
 		return availablePositions;
+	}
+
+	public enum BossPhase{
+		start,
+		heavy
 	}
 }

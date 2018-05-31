@@ -441,7 +441,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 90866677}
   serializedVersion: 5
-  lengthInSec: 0.6
+  lengthInSec: 2.2
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -513,7 +513,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5093,7 +5093,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 114365094}
   serializedVersion: 5
-  lengthInSec: 0.6
+  lengthInSec: 2.2
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -5165,7 +5165,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10180,37 +10180,37 @@ Prefab:
     - target: {fileID: 114366972297541578, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6698113
+      value: 0.36078432
       objectReference: {fileID: 0}
     - target: {fileID: 114366972297541578, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.21610788
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 114366972297541578, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
       propertyPath: m_Color.b
-      value: 0.028435374
+      value: 0.3647059
       objectReference: {fileID: 0}
     - target: {fileID: 224440482406126022, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.87
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224440482406126022, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: 362
       objectReference: {fileID: 0}
     - target: {fileID: 224440482406126022, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 224440482406126022, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.84
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1630409767772078, guid: d781716ae71b1364ba6e8c7d2b714336, type: 2}
       propertyPath: m_IsActive
@@ -10585,7 +10585,7 @@ Prefab:
     - target: {fileID: 224858242727008992, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 89
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 114461838591848410, guid: d781716ae71b1364ba6e8c7d2b714336,
         type: 2}
@@ -10646,6 +10646,76 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 0.10588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399612475242906, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399612475242906, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399612475242906, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.3647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114949455277659424, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 114949455277659424, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114949455277659424, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.3647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114636886033372066, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 114636886033372066, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114636886033372066, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.3647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803097727225770, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803097727225770, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803097727225770, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.3647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 224440482406126022, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 1010
+      objectReference: {fileID: 0}
+    - target: {fileID: 224831721680115348, guid: d781716ae71b1364ba6e8c7d2b714336,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d781716ae71b1364ba6e8c7d2b714336, type: 2}
@@ -12386,6 +12456,7 @@ MonoBehaviour:
   rndmIntensity: 0.2
   explodeColor: {r: 0.6, g: 0, b: 0, a: 0.7}
   explodePower: 1000
+  dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &520764044
 Transform:
   m_ObjectHideFlags: 0
@@ -12640,6 +12711,7 @@ GameObject:
   - component: {fileID: 630088302}
   - component: {fileID: 630088301}
   - component: {fileID: 630088300}
+  - component: {fileID: 630088304}
   m_Layer: 10
   m_Name: MagmaWorm (2) (OP)
   m_TagString: Enemy
@@ -12707,6 +12779,7 @@ MonoBehaviour:
   rndmIntensity: 0.05
   explodeColor: {r: 0.6, g: 0, b: 0, a: 0.7}
   explodePower: 1000
+  dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &630088303
 Transform:
   m_ObjectHideFlags: 0
@@ -12747,6 +12820,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &630088304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630088299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fa21c938bfa4f449b821b10c76b458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &636174764
 GameObject:
   m_ObjectHideFlags: 0
@@ -13818,7 +13902,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1020547513}
   serializedVersion: 5
-  lengthInSec: 0.6
+  lengthInSec: 2.2
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -13890,7 +13974,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19206,6 +19290,7 @@ MonoBehaviour:
   rndmIntensity: 0.2
   explodeColor: {r: 0.6, g: 0, b: 0, a: 0.7}
   explodePower: 1000
+  dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &1177859168
 Transform:
   m_ObjectHideFlags: 0
@@ -20785,7 +20870,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1472775395}
   serializedVersion: 5
-  lengthInSec: 0.6
+  lengthInSec: 2.2
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -20857,7 +20942,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -26290,8 +26375,19 @@ Prefab:
     - target: {fileID: 198497513571946602, guid: b30d83a476ede914a90c5fca0e1aaeef,
         type: 2}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 198497513571946602, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: lengthInSec
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114496871630337528, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: dieShake
+      value: 
+      objectReference: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30d83a476ede914a90c5fca0e1aaeef, type: 2}
   m_IsPrefabAsset: 0
@@ -80728,6 +80824,7 @@ MonoBehaviour:
   rndmIntensity: 0.2
   explodeColor: {r: 0.6, g: 0, b: 0, a: 0.7}
   explodePower: 1000
+  dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &2062042119
 Transform:
   m_ObjectHideFlags: 0
