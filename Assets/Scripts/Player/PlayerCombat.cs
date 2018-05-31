@@ -24,7 +24,6 @@ public class PlayerCombat : CharacterCombat {
 		anim = GetComponentInChildren<Animator> ();
 		input = GetComponent<PlayerInput> ();
 		hb.Init (this, false);
-		anim.SetInteger ("health", health);
 		base.onHealthChanged += OnHealthChanged;
 	}
 
@@ -65,6 +64,7 @@ public class PlayerCombat : CharacterCombat {
 	private void OnHealthChanged (int newHP){
 		if (newHP == 0) {
 			anim.SetTrigger ("die");
+			anim.SetBool ("dead", true);
 		}
 	}
 

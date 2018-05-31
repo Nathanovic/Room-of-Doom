@@ -7,7 +7,6 @@ public class PlayerBase : MonoBehaviour {
 
 	public bool canControl;
 
-
 	private void Start(){
         canControl = true;
 
@@ -27,7 +26,7 @@ public class PlayerBase : MonoBehaviour {
 
 	//restart the game after time
 	private IEnumerator RestartGame(){
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (2.5f);
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
 	}
 }
