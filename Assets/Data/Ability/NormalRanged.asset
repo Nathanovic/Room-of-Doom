@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: NormalRanged
   button: 1
-  cooldown: 1
+  cooldown: 0.2
   castingTime: 0
   abilitySprite: {fileID: 21300000, guid: 3053ca094700967448af84b4fdd20d14, type: 3}
   soundEffect: {fileID: 0}

@@ -953,6 +953,14 @@ MonoBehaviour:
   - {x: 15.42, y: -1, z: 0}
   - {x: -3.32, y: -1, z: 0}
   - {x: 26.43, y: -1, z: 0}
+  - {x: 29.27, y: -1, z: 0}
+  - {x: 23.6, y: -1, z: 0}
+  - {x: 18.5, y: -1, z: 0}
+  - {x: 10.5, y: -1, z: 0}
+  - {x: -0.2, y: -1, z: 0}
+  - {x: -5.01, y: -1, z: 0}
+  - {x: -8.84, y: -1, z: 0}
+  - {x: -13.82, y: -1, z: 0}
 --- !u!114 &114261660418729344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -990,6 +998,9 @@ MonoBehaviour:
   attackDamage: 3
   minXAttackDist: 5
   myHealthBar: {fileID: 0}
+  maxRespawnTime: 5
+  intensity: 0
+  rndmIntensity: 0.2
 --- !u!114 &114615397721025446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1001,9 +1012,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 13
   hitPS: {fileID: 0}
   customHealthBar: 1
+  hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
+    type: 2}
 --- !u!114 &114725799029762458
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,5 +19,6 @@ MonoBehaviour:
   soundEffect: {fileID: 0}
   readyAtTime: 0
   projectile: {fileID: 1689378693750466, guid: d68d8ff78c1d4ba4b83fa9fbdab081dc, type: 2}
+  aimDuration: 5
   spawnOffset: {x: 1, y: -0.75, z: 0}
-  moveToOffset: {x: 0.5, y: 0.75, z: 0}
+  moveToOffset: {x: 0.75, y: 0.75, z: 0}

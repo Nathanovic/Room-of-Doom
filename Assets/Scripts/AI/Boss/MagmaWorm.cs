@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 //handle the movement of the magma worm
@@ -26,6 +27,7 @@ public class MagmaWorm : MonoBehaviour {
 
 	private Vector3 deactivePosition;
 	private bool curveAttack;
+	private bool dead;
 
 	public int attackDamage;
 	public float minXAttackDist = 4f;
@@ -37,6 +39,9 @@ public class MagmaWorm : MonoBehaviour {
 	public float maxRespawnTime;
 	[Range(0f, 1f)]public float intensity;//bepaald hoe snel de worm weer tevoorschijn komt 1f = immediate respawn
 	public float rndmIntensity = 0.2f;
+
+	public Color explodeColor = new Color (0.6f, 0f, 0f, 0.7f);
+	public float explodePower;
 
 	private void Start(){
 		head = transform.GetChild (0);
@@ -51,13 +56,16 @@ public class MagmaWorm : MonoBehaviour {
 		lastSegment.onFinishedMoving += OnAttackEnded;
 
 		CharacterCombat combatScript = GetComponent<CharacterCombat> ();
-		combatScript.onDie += DestroySelf;
+		combatScript.onDie += OnDie;
 		myHealthBar.Init (combatScript, false);
 
 		BossManager.instance.InitializeBoss (this);
 	}
 
 	private void Update(){
+		if (dead)
+			return;
+
 		if (curveAttack) {
 			if (delay > 0f) {
 				delay -= Time.deltaTime;
@@ -98,10 +106,6 @@ public class MagmaWorm : MonoBehaviour {
 				target.ApplyDamage (attackDamage, transform.position, target.transform.position - transform.position);
 			}
 		}
-	}
-
-	private void DestroySelf(){
-		Destroy (gameObject);
 	}
 
 	private void StartCurveAttack(){
@@ -182,5 +186,40 @@ public class MagmaWorm : MonoBehaviour {
 
 	public Vector3 GetHeadPosition(){
 		return head.position;
+	}
+
+	//destroy the gameobject after time, first explode
+	private void OnDie(){
+		dead = true;
+		StartCoroutine (DestroySelf ());
+		attackDamage = 2;
+	}
+
+	private IEnumerator DestroySelf(){
+		yield return new WaitForSeconds (1f);
+
+		//set up for explosion
+		Vector2 explodeCenter = wormSegments [wormSegments.Length / 2].Position();
+
+		head.GetComponent<SpriteRenderer> ().color = explodeColor;
+		List<Rigidbody2D> explodables = new List<Rigidbody2D> ();
+		explodables.Add (gameObject.AddComponent<Rigidbody2D> ());
+		foreach (WormSegment segment in wormSegments) {
+			explodables.Add (segment.Detach(explodeColor));
+		}
+
+		//explode
+		foreach (Rigidbody2D rb in explodables) {
+			float x = Random.Range (-1f, 1f);
+			float y = Random.Range (-0.2f, 1f);
+			Vector2 force = new Vector2(x, y).normalized * explodePower;
+			rb.AddForceAtPosition (force, explodeCenter);
+		}
+
+		//destroy after time
+		yield return new WaitForSeconds (1.5f);
+		foreach (Rigidbody2D rb in explodables) {
+			Destroy (rb.gameObject);
+		}
 	}
 }
