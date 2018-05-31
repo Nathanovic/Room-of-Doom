@@ -514,7 +514,6 @@ MonoBehaviour:
   testBut: 99
   characterAbilities:
   - {fileID: 11400000, guid: ebc046a99b37187499059438b95b540f, type: 2}
-  - {fileID: 11400000, guid: 136c9dbd4b093104886c18b873a19dbd, type: 2}
   cloneAbilities: []
 --- !u!114 &114557627650589942
 MonoBehaviour:
