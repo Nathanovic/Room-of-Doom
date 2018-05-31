@@ -64,7 +64,6 @@ public class PlayerDashAbility : Ability{
         CharacterAbilitieBehaviour cb = player.GetComponent<CharacterAbilitieBehaviour>();
         bool stun = cb.isStunned;
 
-        Ghost();
         while (dashTime <= dashDuration && stun == false){
             Ghost();
             stun = cb.isStunned;

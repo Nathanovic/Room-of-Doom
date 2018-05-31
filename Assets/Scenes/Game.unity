@@ -10485,7 +10485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67e6ec8a26a1094ebdef621d08fa31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inforAbilities: {fileID: 1668387737}
+  infoAbilities: {fileID: 1668387737}
   cdEffect: {fileID: 1904663384604858, guid: 439b85558e16e3441919351f23f657f8, type: 2}
 --- !u!82 &1182770748
 AudioSource:
