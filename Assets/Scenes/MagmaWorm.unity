@@ -12454,7 +12454,7 @@ MonoBehaviour:
   maxRespawnTime: 5
   intensity: 0
   rndmIntensity: 0.2
-  explodeColor: {r: 0.6, g: 0, b: 0, a: 0.7}
+  explodeColor: {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 0.85490197}
   explodePower: 1000
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &520764044
@@ -12777,7 +12777,7 @@ MonoBehaviour:
   maxRespawnTime: 5
   intensity: 0.712
   rndmIntensity: 0.05
-  explodeColor: {r: 0.6, g: 0, b: 0, a: 0.7}
+  explodeColor: {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 0.85490197}
   explodePower: 1000
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &630088303
@@ -19288,7 +19288,7 @@ MonoBehaviour:
   maxRespawnTime: 5
   intensity: 0
   rndmIntensity: 0.2
-  explodeColor: {r: 0.6, g: 0, b: 0, a: 0.7}
+  explodeColor: {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 0.85490197}
   explodePower: 1000
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &1177859168
@@ -26388,6 +26388,26 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb,
         type: 2}
+    - target: {fileID: 114496871630337528, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: explodeColor.a
+      value: 0.85490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 114496871630337528, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: explodeColor.r
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 114496871630337528, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: explodeColor.g
+      value: 0.4269313
+      objectReference: {fileID: 0}
+    - target: {fileID: 114496871630337528, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: explodeColor.b
+      value: 0.4269313
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30d83a476ede914a90c5fca0e1aaeef, type: 2}
   m_IsPrefabAsset: 0
@@ -82351,7 +82371,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4454415705537074, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.24
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 4454415705537074, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -82402,6 +82422,12 @@ Prefab:
       propertyPath: hb
       value: 
       objectReference: {fileID: 1596004574}
+    - target: {fileID: 212080158260457740, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4ac3cee15bca85744b55f222da562efe,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
   m_IsPrefabAsset: 0
@@ -83782,7 +83808,7 @@ MonoBehaviour:
   maxRespawnTime: 5
   intensity: 0
   rndmIntensity: 0.2
-  explodeColor: {r: 0.6, g: 0, b: 0, a: 0.7}
+  explodeColor: {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 0.85490197}
   explodePower: 1000
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &2062042119

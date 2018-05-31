@@ -24,6 +24,8 @@ public class PlayerCombat : CharacterCombat {
 		anim = GetComponentInChildren<Animator> ();
 		input = GetComponent<PlayerInput> ();
 		hb.Init (this, false);
+		anim.SetInteger ("health", health);
+		base.onHealthChanged += OnHealthChanged;
 	}
 
 	protected override void Update () {
@@ -58,6 +60,12 @@ public class PlayerCombat : CharacterCombat {
 	private void Cooldown(){
 		remainingCooldown -= Time.deltaTime;
 		remainingCooldown = (remainingCooldown < 0f) ? 0f : remainingCooldown;
+	}
+
+	private void OnHealthChanged (int newHP){
+		if (newHP == 0) {
+			anim.SetTrigger ("die");
+		}
 	}
 
 	//draw a circle where the weapon can hit
