@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 4130109874291688}
   - component: {fileID: 212023977799846808}
   - component: {fileID: 95944497955587072}
+  - component: {fileID: 114270097656112924}
   m_Layer: 12
   m_Name: visuals
   m_TagString: Untagged
@@ -620,6 +621,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114270097656112924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385775018473686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03c8d8693085b64f8ba2f9bb4c18a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114333835161628046
 MonoBehaviour:
   m_ObjectHideFlags: 1

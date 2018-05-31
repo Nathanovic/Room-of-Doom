@@ -10,7 +10,7 @@ public class PlayerGhost : MonoBehaviour {
     public float ghostTimer;
     [HideInInspector]
     public Sprite currentSprite;
-    [HideInInspector]
+   // [HideInInspector]
     public SpriteRenderer playerSprite;
 
     private SpriteRenderer sp;
@@ -20,7 +20,12 @@ public class PlayerGhost : MonoBehaviour {
     }
 
     private void OnEnable(){
-        sp.sprite = playerSprite.sprite;
+        if (playerSprite != null ){
+            sp.sprite = playerSprite.sprite;
+        }
+        else{
+            sp.sprite = null;
+        }
     }
 
     private void Update(){
