@@ -582,7 +582,7 @@ MonoBehaviour:
   deccelerationTime: 0.15
   canDoubleJump: 0
   doubleJumpFactor: 0.55
-  jumpForce: 630
+  jumpForce: 600
   minJumpCountdownTime: 0.5
   doubleJumpTime: 0.3
   jumpPS: {fileID: 198259991725606698}

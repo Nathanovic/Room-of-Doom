@@ -513,7 +513,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5165,7 +5165,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -12059,7 +12059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 12
+  health: 250
   hitPS: {fileID: 1817194573}
   customHealthBar: 1
   hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
@@ -12097,7 +12097,7 @@ MonoBehaviour:
   groundLM:
     serializedVersion: 2
     m_Bits: 256
-  startDelay: 0.5
+  startDelay: 2
   headLength: 1
   movementSpeed: 7
   attackDamage: 3
@@ -12418,7 +12418,7 @@ MonoBehaviour:
   groundLM:
     serializedVersion: 2
     m_Bits: 256
-  startDelay: 0.5
+  startDelay: 2
   headLength: 1.2
   movementSpeed: 9
   attackDamage: 5
@@ -13602,7 +13602,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -18869,7 +18869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 12
+  health: 250
   hitPS: {fileID: 160172539}
   customHealthBar: 1
   hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
@@ -18907,7 +18907,7 @@ MonoBehaviour:
   groundLM:
     serializedVersion: 2
     m_Bits: 256
-  startDelay: 0.5
+  startDelay: 2
   headLength: 1
   movementSpeed: 7
   attackDamage: 3
@@ -20569,7 +20569,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -25973,7 +25973,17 @@ Prefab:
     - target: {fileID: 114615397721025446, guid: b30d83a476ede914a90c5fca0e1aaeef,
         type: 2}
       propertyPath: health
-      value: 12
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114496871630337528, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: startDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198497513571946602, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30d83a476ede914a90c5fca0e1aaeef, type: 2}
@@ -80352,7 +80362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bcfdd34bfd97343b58800e86888038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 12
+  health: 250
   hitPS: {fileID: 1024253799}
   customHealthBar: 1
   hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
@@ -80390,7 +80400,7 @@ MonoBehaviour:
   groundLM:
     serializedVersion: 2
     m_Bits: 256
-  startDelay: 0.5
+  startDelay: 2
   headLength: 1
   movementSpeed: 7
   attackDamage: 3
