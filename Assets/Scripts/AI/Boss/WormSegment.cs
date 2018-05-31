@@ -58,4 +58,10 @@ public class WormSegment : MonoBehaviour, IAttackable {
 	public Vector2 Position (){
 		return (Vector2)transform.position;
 	}
+
+	public Rigidbody2D Detach(Color deadColor){
+		transform.SetParent (null);
+		GetComponent<SpriteRenderer> ().color = deadColor;
+		return gameObject.AddComponent<Rigidbody2D> ();
+	}
 }
