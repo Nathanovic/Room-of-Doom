@@ -13196,6 +13196,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 136c9dbd4b093104886c18b873a19dbd,
         type: 2}
+    - target: {fileID: 114057016351723346, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: controllerNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
   m_IsPrefabAsset: 0
@@ -82442,6 +82447,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 4ac3cee15bca85744b55f222da562efe,
         type: 3}
+    - target: {fileID: 1206540721547482, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
   m_IsPrefabAsset: 0

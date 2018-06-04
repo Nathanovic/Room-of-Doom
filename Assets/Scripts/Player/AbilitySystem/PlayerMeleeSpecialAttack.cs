@@ -32,18 +32,22 @@ public class PlayerMeleeSpecialAttack : Ability{
     public override IEnumerator TriggerAbility() {
         Debug.Log("PlayerMeleeSpecialAttack");
 
-        var wait = new WaitForEndOfFrame();
         GameObject p = Instantiate(projectile, player.transform.position + moveToOffset, Quaternion.identity);
         endTime = Time.time + aimDuration;
 
+
+        yield return new WaitForEndOfFrame();
+
         while (endTime > Time.time) {
+            Aim(p.transform);
             if (playerInput.ButtonIsDown(button) || Input.GetKey(KeyCode.P)){
-                Shoot(p.transform);
-                break;
+                if (alReadySHot == false){
+                    Shoot(p.transform);
+                    break;
+                }
             }
 
-            Aim(p.transform);
-            yield return wait;
+            yield return null;
         }
 
         if (alReadySHot == false){
@@ -51,6 +55,7 @@ public class PlayerMeleeSpecialAttack : Ability{
         }
 
         charBehaviour.isCasting = false;
+        alReadySHot = false;
         yield return null;
     }
 
@@ -74,9 +79,7 @@ public class PlayerMeleeSpecialAttack : Ability{
             yDir = playerInput.Lvertical;
             Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
             rb.isKinematic = false;
-            rb.velocity = (new Vector2(xDir * force, yDir * force));
-
-            Debug.Log(xDir * force + " " + yDir * force);
+            rb.velocity = new Vector2(xDir, -yDir).normalized * force;
         }
 
     }

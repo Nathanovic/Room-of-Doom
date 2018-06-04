@@ -66,7 +66,6 @@ public class PlayerMovement : MonoBehaviour {
     public void StartCasting(){
         rb.velocity = new Vector2(0, 0);
         anim.SetFloat("moveSpeed", 0f);
-
     }
 
     #region Move Behaviour

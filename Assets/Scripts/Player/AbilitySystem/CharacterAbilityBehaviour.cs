@@ -43,16 +43,23 @@ public class CharacterAbilityBehaviour : MonoBehaviour {
                 }           
             }
         }
+        else{
+            WhileCasting();
+        }
 
     } 
 
     private IEnumerator Casting(Ability a){
         isCasting = true;
-        playerMovement.StartCasting();
 
         yield return new WaitForSeconds(a.castingTime);
 
         isCasting = false;
+    }
+
+    private void WhileCasting(){
+        playerMovement.StartCasting();
+
     }
 
     private void AbilitySound(Ability ab){

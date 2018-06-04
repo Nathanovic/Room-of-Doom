@@ -14,7 +14,7 @@ MonoBehaviour:
   nameAbility: special
   button: 5
   cooldown: 5
-  castingTime: 1.5
+  castingTime: 0
   abilitySprite: {fileID: 21300000, guid: 8eb8daf719b5ac9479f6cf82e2d6a319, type: 3}
   soundEffect: {fileID: 0}
   readyAtTime: 0
