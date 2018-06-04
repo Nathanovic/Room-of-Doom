@@ -17,10 +17,14 @@ public class PlayerCombat : CharacterCombat {
 	public float cooldown;
 	public float remainingCooldown;
 
+	public HealthBar hb;
+
 	private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
 		anim = GetComponentInChildren<Animator> ();
 		input = GetComponent<PlayerInput> ();
+		hb.Init (this, false);
+		base.onHealthChanged += OnHealthChanged;
 	}
 
 	protected override void Update () {
@@ -55,6 +59,13 @@ public class PlayerCombat : CharacterCombat {
 	private void Cooldown(){
 		remainingCooldown -= Time.deltaTime;
 		remainingCooldown = (remainingCooldown < 0f) ? 0f : remainingCooldown;
+	}
+
+	private void OnHealthChanged (int newHP){
+		if (newHP == 0) {
+			anim.SetTrigger ("die");
+			anim.SetBool ("dead", true);
+		}
 	}
 
 	//draw a circle where the weapon can hit

@@ -42,6 +42,9 @@ public class MagmaWorm : MonoBehaviour {
 
 	public Color explodeColor = new Color (0.6f, 0f, 0f, 0.7f);
 	public float explodePower;
+	public int explodeDamage = 1;
+
+	public CameraShakeSettings dieShake;
 
 	private void Start(){
 		head = transform.GetChild (0);
@@ -190,9 +193,10 @@ public class MagmaWorm : MonoBehaviour {
 
 	//destroy the gameobject after time, first explode
 	private void OnDie(){
+		CameraShake.instance.Shake (dieShake);
 		dead = true;
 		StartCoroutine (DestroySelf ());
-		attackDamage = 2;
+		attackDamage = explodeDamage;
 	}
 
 	private IEnumerator DestroySelf(){

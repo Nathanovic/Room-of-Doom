@@ -9,11 +9,12 @@ public class HealthBar : MonoBehaviour {
 
 	private int maxHealth;
 	public bool worldScale = true;
+	public int fillChildIndex = 0;
 	public float yOffset = 1f;
 	private float hbWidth;
 
 	private void Start(){
-		healthFill = transform.GetChild (0).GetComponent<RectTransform> ();
+		healthFill = transform.GetChild (fillChildIndex).GetComponent<RectTransform> ();
 		hbWidth = healthFill.sizeDelta.x;
 	}
 
@@ -38,7 +39,7 @@ public class HealthBar : MonoBehaviour {
 
 	//make sure our health is properly filled:
 	private void HealthChanged(int newHealth){ 
-		if (newHealth == 0) {
+		if (newHealth == 0 && worldScale) {
 			Destroy (gameObject);
 			return;
 		}
