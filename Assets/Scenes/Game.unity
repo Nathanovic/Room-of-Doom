@@ -15411,6 +15411,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ySpawnPos: 10
+  spawnSchedule:
+  - startSec: 0
+    endSec: 10
+    amountHealingSpawns: 5
+  - startSec: 30
+    endSec: 35
+    amountHealingSpawns: 10
   healingPacks:
   - {fileID: 1347103277540420, guid: 4a738b8f698e09b4f84b6c4ba67cc6e5, type: 2}
 --- !u!4 &1245424832

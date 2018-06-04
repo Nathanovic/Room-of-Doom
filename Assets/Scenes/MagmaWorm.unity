@@ -12456,6 +12456,7 @@ MonoBehaviour:
   rndmIntensity: 0.2
   explodeColor: {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 0.85490197}
   explodePower: 1000
+  explodeDamage: 1
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &520764044
 Transform:
@@ -12779,6 +12780,7 @@ MonoBehaviour:
   rndmIntensity: 0.05
   explodeColor: {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 0.85490197}
   explodePower: 1000
+  explodeDamage: 1
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &630088303
 Transform:
@@ -13126,6 +13128,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114502132188888414, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: characterAbilities.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4518076244467402, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.46
@@ -13183,6 +13190,12 @@ Prefab:
       propertyPath: hb
       value: 
       objectReference: {fileID: 468705784}
+    - target: {fileID: 114502132188888414, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: characterAbilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 136c9dbd4b093104886c18b873a19dbd,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
   m_IsPrefabAsset: 0
@@ -19290,6 +19303,7 @@ MonoBehaviour:
   rndmIntensity: 0.2
   explodeColor: {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 0.85490197}
   explodePower: 1000
+  explodeDamage: 1
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &1177859168
 Transform:
@@ -83810,6 +83824,7 @@ MonoBehaviour:
   rndmIntensity: 0.2
   explodeColor: {r: 0.7735849, g: 0.4269313, b: 0.4269313, a: 0.85490197}
   explodePower: 1000
+  explodeDamage: 1
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
 --- !u!4 &2062042119
 Transform:
