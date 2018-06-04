@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Animator anim;
 	private PlayerBase baseScript;
+    private CharacterAbilityBehaviour charBehabiour;
 
 	[Header("ground check values:")]
 	public Transform groundCheck;
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
 		baseScript = GetComponent<PlayerBase> ();
+        charBehabiour = GetComponent<CharacterAbilityBehaviour>();
 
 		jumpCounter = new Counter (minJumpCountdownTime);
 		jumpCounter.onCount += EnableJumping;
@@ -55,12 +57,20 @@ public class PlayerMovement : MonoBehaviour {
 		if (!baseScript.canControl)
 			return;
 
-		MoveBehaviour ();
-		JumpBehaviour ();
+        if (charBehabiour.isCasting == false && charBehabiour.isStunned == false){
+            MoveBehaviour();
+            JumpBehaviour();
+        }
 	}
 
-	#region Move Behaviour
-	private void MoveBehaviour(){
+    public void StartCasting(){
+        rb.velocity = new Vector2(0, 0);
+        anim.SetFloat("moveSpeed", 0f);
+
+    }
+
+    #region Move Behaviour
+    private void MoveBehaviour(){
 		float inputValue = input.Lhorizontal;
 		if (inputValue != 0 && !accelerate) {
 			curveT = GetCurveT (accelerationCurve);

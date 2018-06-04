@@ -61,7 +61,7 @@ public class PlayerDashAbility : Ability{
 
         Vector2 dashVelocity = player.transform.localScale.x > 0 ? Vector2.right * curPower : Vector2.left * curPower;
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
-        CharacterAbilitieBehaviour cb = player.GetComponent<CharacterAbilitieBehaviour>();
+        CharacterAbilityBehaviour cb = player.GetComponent<CharacterAbilityBehaviour>();
         bool stun = cb.isStunned;
 
         while (dashTime <= dashDuration && stun == false){

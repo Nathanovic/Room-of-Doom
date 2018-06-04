@@ -6,48 +6,78 @@ using UnityEngine;
 public class PlayerMeleeSpecialAttack : Ability{
 
     public GameObject projectile;
+    public float force;
     public float aimDuration;
     public Vector3 spawnOffset;
     public Vector3 moveToOffset;
 
     private GameObject player;
-    private PlayerInput playerInput;
     private Vector3 direction;
+    private PlayerInput playerInput;
+    private CharacterAbilityBehaviour charBehaviour;
 
     private float endTime;
+    private float xDir;
+    private float yDir;
+    private bool alReadySHot = false;
 
     public override void Init(GameObject p){
         player = p;
         playerInput = player.GetComponent<PlayerInput>();
+        charBehaviour = player.GetComponent<CharacterAbilityBehaviour>();
+        xDir = playerInput.Lhorizontal;
+        yDir = playerInput.Lvertical;
     }
 
-    public override IEnumerator TriggerAbility(){
+    public override IEnumerator TriggerAbility() {
         Debug.Log("PlayerMeleeSpecialAttack");
 
         var wait = new WaitForEndOfFrame();
         GameObject p = Instantiate(projectile, player.transform.position + moveToOffset, Quaternion.identity);
         endTime = Time.time + aimDuration;
 
-        while (endTime > Time.time){
-            if (Input.GetKey(KeyCode.O)){
+        while (endTime > Time.time) {
+            if (playerInput.ButtonIsDown(button) || Input.GetKey(KeyCode.P)){
+                Shoot(p.transform);
                 break;
             }
 
-            Aim();
-
+            Aim(p.transform);
             yield return wait;
         }
 
+        if (alReadySHot == false){
+            Shoot(p.transform);
+        }
+
+        charBehaviour.isCasting = false;
         yield return null;
     }
 
-    private void Aim(){
+    private void Aim(Transform proj){
         Debug.Log("Aim");
+        xDir = playerInput.Lhorizontal;
+        yDir = playerInput.Lvertical;
 
-        //while (endTime > Time.time || Input.GetKey(KeyCode.O) == false){
+        //proj.transform.rotation = Quaternion.LookRotation(proj.transform.position - new Vector3(xDir, yDir)) ;
+        float angle = Mathf.Atan2(xDir, yDir) * Mathf.Rad2Deg;
+        proj.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        //}
+        charBehaviour.isCasting = true;
+    }
 
+    private void Shoot(Transform proj){
+        if (alReadySHot == false){
+            alReadySHot = true;
+
+            xDir = playerInput.Lhorizontal;
+            yDir = playerInput.Lvertical;
+            Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
+            rb.isKinematic = false;
+            rb.velocity = (new Vector2(xDir * force, yDir * force));
+
+            Debug.Log(xDir * force + " " + yDir * force);
+        }
 
     }
 }

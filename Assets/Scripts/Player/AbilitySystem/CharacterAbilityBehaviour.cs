@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAbilitieBehaviour : MonoBehaviour {
+public class CharacterAbilityBehaviour : MonoBehaviour {
 
     public bool isCasting;
     public bool isStunned;
@@ -13,6 +13,7 @@ public class CharacterAbilitieBehaviour : MonoBehaviour {
 
     private PlayerInput playerInput;
     private AudioSource audioSource;
+    private PlayerMovement playerMovement;
 
     private void Awake(){
         cloneAbilities = new Ability[characterAbilities.Length];
@@ -25,7 +26,7 @@ public class CharacterAbilitieBehaviour : MonoBehaviour {
     private void Start(){
         playerInput = GetComponent<PlayerInput>();
         audioSource = GetComponent<AudioSource>();
-
+        playerMovement = GetComponent<PlayerMovement>();
 
     }
 
@@ -37,7 +38,7 @@ public class CharacterAbilitieBehaviour : MonoBehaviour {
                     ab.Cooldown();
                     AbilitySound(ab);
                     if (ab.castingTime != 0){
-                        StartCoroutine(Casting(ab.castingTime));
+                        StartCoroutine(Casting(ab));
                     }
                 }           
             }
@@ -45,10 +46,11 @@ public class CharacterAbilitieBehaviour : MonoBehaviour {
 
     } 
 
-    private IEnumerator Casting(float t){
+    private IEnumerator Casting(Ability a){
         isCasting = true;
+        playerMovement.StartCasting();
 
-        yield return new WaitForSeconds(t);
+        yield return new WaitForSeconds(a.castingTime);
 
         isCasting = false;
     }

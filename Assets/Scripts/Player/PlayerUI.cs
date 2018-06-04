@@ -10,7 +10,7 @@ public class PlayerUI : MonoBehaviour {
     public List<GameObject> abilities = new List<GameObject>();
 
     private void Start(){
-        CharacterAbilitieBehaviour ab = GetComponent<CharacterAbilitieBehaviour>();
+        CharacterAbilityBehaviour ab = GetComponent<CharacterAbilityBehaviour>();
 
         for (int i = 0; i < ab.cloneAbilities.Length; i++){
             if (ab.cloneAbilities[i].abilitySprite != null){
