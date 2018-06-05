@@ -9,6 +9,8 @@ public class WormBoss : WormBase {
 	private int state;
 
 	public BossPhase[] bossPhases = new BossPhase[3];
+	public delegate void BossPhaseDelegate(int stateIndex);
+	public event BossPhaseDelegate onPhaseUp;
 
 	protected override void Start(){
 		base.Start ();
@@ -29,7 +31,7 @@ public class WormBoss : WormBase {
 		base.HandleLastSegment (lastSegment);
 	}
 	
-	protected override void Update(){
+	public override void WormUpdate(){
 		fsm.Run ();
 	}
 
@@ -43,45 +45,43 @@ public class WormBoss : WormBase {
 			else {
 				State nextState = bossPhases [state].nextState;
 				fsm.TriggerNextState (nextState);
+				onPhaseUp (state);
+
 				Debug.Log ("trigger state " + nextState.ToString ());
 			}
 		}
 	}
 
 	public void BeginningState(){
-		base.Update ();
+		base.WormUpdate ();
 	}
 
 	public void TriggerHardState(){
-		intensity = 0.8f;
+		intensity = 0.6f;
 	}
-
 	public void HardState(){
-		base.Update ();
-		Debug.Log ("man that's hard!");
+		base.WormUpdate ();
 	}
 
 	public void TriggerImpossibleState(){
 		intensity = 1f;
 	}
-
 	public void ImpossibleState(){
-		base.Update ();
-		Debug.Log ("impossiblee hard");
+		base.WormUpdate ();
+	}
+}
+
+[System.Serializable]
+public class BossPhase{
+	[SerializeField]private float stateUpPercentage = 0.3f;
+
+	public State nextState{ get; private set; }
+
+	public void Init(State state){
+		nextState = state;
 	}
 
-	[System.Serializable]
-	public class BossPhase{
-		[SerializeField]private float stateUpPercentage = 0.3f;
-
-		public State nextState{ get; private set; }
-
-		public void Init(State state){
-			nextState = state;
-		}
-
-		public bool CanStateUp(float hpPercentage){
-			return (nextState != null && hpPercentage <= stateUpPercentage);
-		}
+	public bool CanStateUp(float hpPercentage){
+		return (nextState != null && hpPercentage <= stateUpPercentage);
 	}
 }

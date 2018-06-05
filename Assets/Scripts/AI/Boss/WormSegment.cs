@@ -48,7 +48,9 @@ public class WormSegment : MonoBehaviour, IAttackable {
 	} 
 
 	public void ApplyDamage (int dmg, Vector3 hitPos, Vector3 hitDir){
-		myCombat.ApplyDamage (dmg, hitPos, hitDir);
+		if (myCombat.health > 0) {
+			myCombat.ApplyDamage (dmg, hitPos, hitDir);
+		}
 	}
 
 	public bool ValidTarget (){

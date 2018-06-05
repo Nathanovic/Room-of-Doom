@@ -1,13 +1,21 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Boss_FSM;
 
 //this script handles the AI attack state, using the Boss script
 //can be used to get the closest hittable head of the ai's
 public class BossManager : MonoBehaviour {
 
+	private FSM fsm;
+
 	public static BossManager instance;
 	private List<WormBase> worms = new List<WormBase>();
+	private WormBoss boss;
+
+	public CameraShakeSettings wormDeadShake;
+
+	private State[] gamePhases = new State[3];
 
 	private void Awake(){
 		if (instance != null) {
@@ -18,8 +26,63 @@ public class BossManager : MonoBehaviour {
 		}
 	}
 
-	public void InitializeBoss(WormBase boss){
-		worms.Add (boss);
+	public void InitializeWorm(WormBase worm){
+		if (worm is WormBoss) {
+			boss = (WormBoss)worm;
+			boss.onPhaseUp += StateUp;
+		}
+		else {
+			worm.onWormDied += OnWormDied;
+			worms.Add (worm);			
+		}
+	}
+
+	private void Start(){
+		gamePhases[0] = new GameStartPhase (this);
+		gamePhases[1] = new MultiWormPhase (this);
+		gamePhases[2] = new FinalPhase (this);
+		fsm = new FSM (gamePhases[0]);
+	}
+
+	public void DetachWormObject(Transform wormObj){
+		wormObj.SetParent (transform);
+	}
+
+	#region FSM implementation
+	private void Update(){
+		fsm.Run ();
+	}
+
+	public void StartPhase(){
+		boss.WormUpdate ();
+	}
+
+	public void MultiWormPhase(){
+		boss.WormUpdate ();
+		foreach (WormBase worm in worms) {
+			worm.WormUpdate ();
+		}
+	}
+
+	public void FinalPhase(){
+		boss.WormUpdate ();
+		foreach (WormBase worm in worms) {
+			worm.WormUpdate ();
+		}
+	}
+
+	private void StateUp(int phaseIndex){
+		float intensity = phaseIndex == 2 ? 1f : 0f;
+		foreach (WormBase worm in worms) {
+			worm.intensity = intensity;
+		}
+		fsm.TriggerNextState (gamePhases [phaseIndex]);
+	}
+	#endregion
+
+	private void OnWormDied(WormBase worm){
+		worms.Remove (worm);
+		CameraShake.instance.Shake (wormDeadShake);
 	}
 
 	public List<Vector3> GetHeadPositions(Vector3 origin, float range){
@@ -33,11 +96,6 @@ public class BossManager : MonoBehaviour {
 		}
 
 		return availablePositions;
-	}
-
-	public enum BossPhase{
-		start,
-		heavy
 	}
 
 	[System.Serializable]

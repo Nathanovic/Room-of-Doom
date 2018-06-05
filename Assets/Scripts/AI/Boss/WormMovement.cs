@@ -18,7 +18,10 @@ public class WormMovement : MonoBehaviour {
 	private BezierCurve movementCurve;
 	private float moveT = 0f;
 	private float curveMoveSpeed;
-	public float movementSpeed = 2f;
+
+	public float minMoveSpeed = 5f;
+	public float maxMoveSpeed = 10f;
+	private float movementSpeed = 2f;
 
 	private void Start(){
 		head = transform.GetChild (0);
@@ -46,7 +49,7 @@ public class WormMovement : MonoBehaviour {
 		}
 	}
 
-	public void StartCurveAttack(Vector3 startPos, Vector3 enemyPos){
+	public void StartCurveAttack(Vector3 startPos, Vector3 enemyPos, float attackIntensity){
 		//calculate a control point
 		Vector3 controlPoint = Vector3.Lerp (startPos, enemyPos, 0.7f);
 		float xDist = Mathf.Abs (startPos.x - enemyPos.x);
@@ -76,6 +79,7 @@ public class WormMovement : MonoBehaviour {
 		Debug.DrawLine (controlPoint, targetPos, Color.red, 1f);
 
 		float moveCurveLength = movementCurve.GetLength ();
+		movementSpeed = Mathf.Lerp (minMoveSpeed, maxMoveSpeed, attackIntensity);
 		curveMoveSpeed = movementSpeed / moveCurveLength;
 
 		Transform prevSegment = head;

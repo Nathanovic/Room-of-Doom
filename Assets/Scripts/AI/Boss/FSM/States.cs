@@ -53,4 +53,42 @@ namespace Boss_FSM{
 		}
 	}
 	#endregion
+
+	#region bossmanager states
+	public class GameStartPhase : State{
+		private BossManager manager;
+
+		public GameStartPhase(BossManager _manager){
+			manager = _manager;
+		}
+
+		public override void Run () {
+			manager.StartPhase ();
+		}
+	}
+
+	public class MultiWormPhase : State{
+		private BossManager manager;
+
+		public MultiWormPhase(BossManager _manager){
+			manager = _manager;
+		}
+
+		public override void Run () {
+			manager.MultiWormPhase ();
+		}
+	}
+
+	public class FinalPhase : State{
+		private BossManager manager;
+
+		public FinalPhase(BossManager _manager){
+			manager = _manager;
+		}
+
+		public override void Run () {
+			manager.MultiWormPhase ();
+		}
+	}
+	#endregion
 }

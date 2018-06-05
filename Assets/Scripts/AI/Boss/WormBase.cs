@@ -5,12 +5,11 @@ using UnityEngine;
 //used by all worms
 //used to manage what actions should be done by the worm
 //all of the movement is done by WormMovement
+//the entire update behaviour is called from BossManager
 public class WormBase : MonoBehaviour {
 
 	private WormMovement moveScript;
 	private WormSegment[] wormSegments;
-
-	protected bool isDead;
 
 	public Transform[] targets;//the players
 	private SpawnPositions spawner;
@@ -32,19 +31,21 @@ public class WormBase : MonoBehaviour {
 	public float maxRespawnTime;
 	[Range(0f, 1f)]public float intensity;//bepaald hoe snel de worm weer tevoorschijn komt 1f = immediate respawn
 	public float rndmIntensity = 0.2f;
+	private float intensityFactor;
 
 	public Color explodeColor = new Color (0.6f, 0f, 0f, 0.7f);
 	public float explodePower;
 	public float explodeDelay = 2f;
 	public int explodeDamage = 1;
 
-	public CameraShakeSettings dieShake;
+	public delegate void WormDelegate(WormBase worm);
+	public event WormDelegate onWormDied;
 
 	protected virtual void Start(){
-		BossManager.instance.InitializeBoss (this);
+		BossManager.instance.InitializeWorm (this);
 		moveScript = GetComponent<WormMovement> ();
 		deactivePosition = transform.position;
-		feedForwardVFX.transform.SetParent (null);
+		BossManager.instance.DetachWormObject(feedForwardVFX.transform);
 		head = transform.GetChild (0);
 		spawner = GetComponentInChildren<SpawnPositions> ();
 
@@ -55,16 +56,15 @@ public class WormBase : MonoBehaviour {
 		CharacterCombat combatScript = GetComponent<CharacterCombat> ();
 		combatScript.onDie += OnDie;
 		myHealthBar.Init (combatScript, false);
+
+		OnAttackEnded ();
 	}
 
 	protected virtual void HandleLastSegment(WormSegment lastSegment){
 		lastSegment.onFinishedMoving += OnAttackEnded;		
 	}
 
-	protected virtual void Update(){
-		if (isDead)
-			return;
-
+	public virtual void WormUpdate(){
 		if (attacking) {
 			moveScript.CurveAttackUpdate ();
 		} 
@@ -104,16 +104,15 @@ public class WormBase : MonoBehaviour {
 		feedForwardVFX.transform.position = new Vector3 (startPos.x, 0f, 0f);
 		feedForwardVFX.Play ();
 
-		moveScript.StartCurveAttack (startPos, enemyPos);
+		moveScript.StartCurveAttack (startPos, enemyPos, intensityFactor);
 	}
 
 	//calculate when we will appear again
 	private void OnAttackEnded(){
 		attacking = false;
-		float intensityFactor = Random.Range (-rndmIntensity, rndmIntensity) + 1f - intensity;
-		intensityFactor = Mathf.Clamp01 (intensityFactor);
+		float rndmIntensityFactor = Random.Range (-rndmIntensity, rndmIntensity) + intensity;
+		intensityFactor = Mathf.Clamp01 (rndmIntensityFactor);
 		undergroundTime = Mathf.Lerp (minRespawnTime, maxRespawnTime, intensityFactor);
-		Debug.Log (undergroundTime);
 		currentUndergroundTime = 0f;
 	}
 
@@ -133,31 +132,35 @@ public class WormBase : MonoBehaviour {
 
 	//destroy the gameobject after time, first explode
 	private void OnDie(){
-		CameraShake.instance.Shake (dieShake);
-		isDead = true;
+		onWormDied (this);
 		StartCoroutine (DestroySelf ());
 		bodyDamage = explodeDamage;
 	}
 	#endregion
 
 	private IEnumerator DestroySelf(){
-		yield return new WaitForSeconds (explodeDelay);
-
 		//set up for explosion
 		Vector2 explodeCenter = wormSegments [wormSegments.Length / 2].Position();
 
 		head.GetComponent<SpriteRenderer> ().color = explodeColor;
 		List<Rigidbody2D> explodables = new List<Rigidbody2D> ();
-		explodables.Add (gameObject.AddComponent<Rigidbody2D> ());
+		Rigidbody2D headRB = head.gameObject.AddComponent<Rigidbody2D> ();
+		headRB.gravityScale = 0f;
+		explodables.Add (headRB);
 		foreach (WormSegment segment in wormSegments) {
-			explodables.Add (segment.Detach(explodeColor));
+			Rigidbody2D rb = segment.Detach (explodeColor);
+			rb.gravityScale = 0f;
+			explodables.Add (rb);
 		}
+
+		yield return new WaitForSeconds (explodeDelay);
 
 		//explode
 		foreach (Rigidbody2D rb in explodables) {
 			float x = Random.Range (-1f, 1f);
 			float y = Random.Range (-0.2f, 1f);
 			Vector2 force = new Vector2(x, y).normalized * explodePower;
+			rb.gravityScale = 1f;
 			rb.AddForceAtPosition (force, explodeCenter);
 		}
 
