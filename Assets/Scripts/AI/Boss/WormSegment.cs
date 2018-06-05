@@ -3,7 +3,7 @@
 public class WormSegment : MonoBehaviour, IAttackable {
 
 	private CharacterCombat myCombat;//used to damage the worm
-	private MagmaWorm wormScript;
+	private WormBase wormScript;
 
 	public Transform prevSegment;
 	public float length;
@@ -16,7 +16,7 @@ public class WormSegment : MonoBehaviour, IAttackable {
 
 	private void Start(){
 		myCombat = transform.parent.GetComponent<CharacterCombat> ();
-		wormScript = transform.parent.GetComponent<MagmaWorm> ();
+		wormScript = transform.parent.GetComponent<WormBase> ();
 	}
 
 	public void Prepare(Transform otherSegment, float beforeSegmentDelay, float speed){

@@ -7,7 +7,7 @@ using System.Linq;
 public class BossManager : MonoBehaviour {
 
 	public static BossManager instance;
-	private List<MagmaWorm> worms = new List<MagmaWorm>();
+	private List<WormBase> worms = new List<WormBase>();
 
 	private void Awake(){
 		if (instance != null) {
@@ -18,16 +18,16 @@ public class BossManager : MonoBehaviour {
 		}
 	}
 
-	public void InitializeBoss(MagmaWorm boss){
+	public void InitializeBoss(WormBase boss){
 		worms.Add (boss);
 	}
 
 	public List<Vector3> GetHeadPositions(Vector3 origin, float range){
 		List<Vector3> availablePositions = new List<Vector3> ();
 
-		foreach (MagmaWorm worm in worms) {
+		foreach (WormBase worm in worms) {
 			Vector3 headPos = worm.GetHeadPosition ();
-			if (Vector3.Distance (origin, headPos) <= range) {
+			if (Vector3.Distance (origin, headPos) <= range && headPos.y > 0f) {
 				availablePositions.Add (headPos);
 			}
 		}
@@ -38,5 +38,10 @@ public class BossManager : MonoBehaviour {
 	public enum BossPhase{
 		start,
 		heavy
+	}
+
+	[System.Serializable]
+	public class BossPhaseData{
+		public float phaseStartThreshold = 0.5f;
 	}
 }
