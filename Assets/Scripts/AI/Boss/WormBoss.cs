@@ -8,7 +8,7 @@ public class WormBoss : WormBase {
 	private FSM fsm;
 	private int state;
 
-	public BossPhase[] bossPhases = new BossPhase[2];
+	public BossPhase[] bossPhases = new BossPhase[3];
 
 	protected override void Start(){
 		base.Start ();
@@ -23,8 +23,10 @@ public class WormBoss : WormBase {
 		combatScript = GetComponent<CharacterCombat> ();
 	}
 
+	//first evaluate state, then think about when to get out of the ground
 	protected override void HandleLastSegment(WormSegment lastSegment){
 		lastSegment.onFinishedMoving += EvaluateState;
+		base.HandleLastSegment (lastSegment);
 	}
 	
 	protected override void Update(){
@@ -34,9 +36,15 @@ public class WormBoss : WormBase {
 	private void EvaluateState(){
 		float hpPercentage = combatScript.HPPercentage ();
 		if (bossPhases [state].CanStateUp (hpPercentage)) {
-			State nextState = bossPhases [state].nextState;
-			fsm.TriggerNextState (nextState);
 			state++;
+			if (state == bossPhases.Length) {
+				Debug.LogWarning ("game should be over now");
+			}
+			else {
+				State nextState = bossPhases [state].nextState;
+				fsm.TriggerNextState (nextState);
+				Debug.Log ("trigger state " + nextState.ToString ());
+			}
 		}
 	}
 
@@ -58,6 +66,7 @@ public class WormBoss : WormBase {
 	}
 
 	public void ImpossibleState(){
+		base.Update ();
 		Debug.Log ("impossiblee hard");
 	}
 

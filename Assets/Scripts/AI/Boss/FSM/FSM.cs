@@ -11,15 +11,15 @@ namespace Boss_FSM{
 
 		public void TriggerNextState(State nextState){
 			if (currentState != null) {
-				currentState.ExitState ();
+				currentState.Exit ();
 			}
 
-			nextState.NextState ();
+			nextState.Enter ();
 			currentState = nextState;
 		}
 
 		public void Run(){
-			currentState.RunState ();
+			currentState.Run ();
 		}
 	}
 }

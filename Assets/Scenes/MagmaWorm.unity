@@ -1525,10 +1525,9 @@ MonoBehaviour:
   - {fileID: 1831034065}
   - {fileID: 626566212}
   feedForwardVFX: {fileID: 294314568}
-  attackDamage: 3
   minXAttackDist: 5
-  myHealthBar: {fileID: 1098968129}
   bodyDamage: 3
+  myHealthBar: {fileID: 1098968129}
   minRespawnTime: 2
   maxRespawnTime: 10
   intensity: 0
@@ -2019,8 +2018,8 @@ GameObject:
   - component: {fileID: 630088303}
   - component: {fileID: 630088301}
   - component: {fileID: 630088300}
-  - component: {fileID: 630088302}
   - component: {fileID: 630088304}
+  - component: {fileID: 630088302}
   m_Layer: 10
   m_Name: MagmaWorm (2) (OP)
   m_TagString: Enemy
@@ -2067,26 +2066,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 630088299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 231bdf3bfed6ef345a5ef3195a7bb329, type: 3}
+  m_Script: {fileID: 11500000, guid: 166c37742744c8b42a1f8ad90830ec51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targets:
   - {fileID: 1831034065}
   - {fileID: 626566212}
-  feedForwardVFX: {fileID: 0}
-  attackDamage: 4
+  feedForwardVFX: {fileID: 1020547514}
   minXAttackDist: 5
+  bodyDamage: 4
   myHealthBar: {fileID: 1244220754}
-  bodyDamage: 3
   minRespawnTime: 2
-  maxRespawnTime: 10
+  maxRespawnTime: 12
   intensity: 0
   rndmIntensity: 0.05
-  explodeColor: {r: 0.8113208, g: 0.41714135, b: 0.41714135, a: 0.8235294}
+  explodeColor: {r: 0.8584906, g: 0.44949272, b: 0.44949272, a: 0.7921569}
   explodePower: 2000
   explodeDelay: 2
   explodeDamage: 1
   dieShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
+  bossPhases:
+  - stateUpPercentage: 0.8
+  - stateUpPercentage: 0.5
+  - stateUpPercentage: 0.3
 --- !u!4 &630088303
 Transform:
   m_ObjectHideFlags: 0
@@ -2380,6 +2382,11 @@ Prefab:
       propertyPath: hb
       value: 
       objectReference: {fileID: 468705784}
+    - target: {fileID: 114459267774608690, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: health
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
   m_IsPrefabAsset: 0
@@ -2646,10 +2653,9 @@ MonoBehaviour:
   - {fileID: 1831034065}
   - {fileID: 626566212}
   feedForwardVFX: {fileID: 865648658}
-  attackDamage: 3
   minXAttackDist: 5
-  myHealthBar: {fileID: 153299533}
   bodyDamage: 3
+  myHealthBar: {fileID: 153299533}
   minRespawnTime: 2
   maxRespawnTime: 10
   intensity: 0
@@ -2818,10 +2824,9 @@ MonoBehaviour:
   - {fileID: 1831034065}
   - {fileID: 626566212}
   feedForwardVFX: {fileID: 893311517}
-  attackDamage: 3
   minXAttackDist: 5
-  myHealthBar: {fileID: 1013809016}
   bodyDamage: 3
+  myHealthBar: {fileID: 1013809016}
   minRespawnTime: 2
   maxRespawnTime: 10
   intensity: 0
@@ -2973,7 +2978,6 @@ GameObject:
   m_Component:
   - component: {fileID: 933004604}
   - component: {fileID: 933004603}
-  - component: {fileID: 933004602}
   m_Layer: 0
   m_Name: Parallax Camera
   m_TagString: Untagged
@@ -2981,13 +2985,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &933004602
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 933004600}
-  m_Enabled: 1
 --- !u!20 &933004603
 Camera:
   m_ObjectHideFlags: 0
@@ -9407,10 +9404,9 @@ MonoBehaviour:
   - {fileID: 1831034065}
   - {fileID: 626566212}
   feedForwardVFX: {fileID: 1607451441}
-  attackDamage: 3
   minXAttackDist: 5
-  myHealthBar: {fileID: 1830382149}
   bodyDamage: 3
+  myHealthBar: {fileID: 1830382149}
   minRespawnTime: 2
   maxRespawnTime: 10
   intensity: 0
@@ -65431,6 +65427,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 4ac3cee15bca85744b55f222da562efe,
         type: 3}
+    - target: {fileID: 114665708308607302, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: health
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
   m_IsPrefabAsset: 0

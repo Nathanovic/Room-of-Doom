@@ -3,9 +3,9 @@
 namespace Boss_FSM{
 	
 	public abstract class State{
-		public virtual void NextState (){}
-		public abstract void RunState ();
-		public virtual void ExitState(){}
+		public virtual void Enter (){}
+		public abstract void Run ();
+		public virtual void Exit(){}
 	}
 
 	#region boss states
@@ -16,7 +16,7 @@ namespace Boss_FSM{
 			boss = worm;
 		}
 
-		public override void RunState () {
+		public override void Run () {
 			boss.BeginningState ();
 		}
 	}
@@ -28,11 +28,11 @@ namespace Boss_FSM{
 			boss = worm;
 		}
 
-		public override void NextState (){
+		public override void Enter (){
 			boss.TriggerHardState ();
 		}
 
-		public override void RunState () {
+		public override void Run () {
 			boss.HardState ();
 		}
 	}
@@ -44,7 +44,11 @@ namespace Boss_FSM{
 			boss = worm;
 		}
 
-		public override void RunState () {
+		public override void Enter (){
+			boss.TriggerImpossibleState ();
+		}
+
+		public override void Run () {
 			boss.ImpossibleState ();
 		}
 	}

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//used by all worms
+//used to manage what actions should be done by the worm
+//all of the movement is done by WormMovement
 public class WormBase : MonoBehaviour {
 
 	private WormMovement moveScript;
@@ -16,12 +19,11 @@ public class WormBase : MonoBehaviour {
 
 	private Vector3 deactivePosition;
 
-	public int attackDamage;
 	public float minXAttackDist = 4f;
+	public int bodyDamage = 3;
 
 	public HealthBar myHealthBar;
 
-	public int bodyDamage = 3;
 	private bool attacking;
 	private float undergroundTime;
 	private float currentUndergroundTime;
@@ -48,7 +50,6 @@ public class WormBase : MonoBehaviour {
 
 		wormSegments = GetComponentsInChildren<WormSegment> ();
 		WormSegment lastSegment = wormSegments[wormSegments.Length - 1];
-		lastSegment.onFinishedMoving += OnAttackEnded;
 		HandleLastSegment (lastSegment);
 
 		CharacterCombat combatScript = GetComponent<CharacterCombat> ();
@@ -56,7 +57,9 @@ public class WormBase : MonoBehaviour {
 		myHealthBar.Init (combatScript, false);
 	}
 
-	protected virtual void HandleLastSegment(WormSegment lastSegment){}
+	protected virtual void HandleLastSegment(WormSegment lastSegment){
+		lastSegment.onFinishedMoving += OnAttackEnded;		
+	}
 
 	protected virtual void Update(){
 		if (isDead)
@@ -79,6 +82,8 @@ public class WormBase : MonoBehaviour {
 	}
 
 	private void StartCurveAttack(){
+		attacking = true;
+
 		int rndmTargetIndex = Random.Range (0, targets.Length);
 		Vector3 enemyPos = targets [rndmTargetIndex].position;
 
@@ -107,7 +112,8 @@ public class WormBase : MonoBehaviour {
 		attacking = false;
 		float intensityFactor = Random.Range (-rndmIntensity, rndmIntensity) + 1f - intensity;
 		intensityFactor = Mathf.Clamp01 (intensityFactor);
-		undergroundTime = maxRespawnTime * intensityFactor;
+		undergroundTime = Mathf.Lerp (minRespawnTime, maxRespawnTime, intensityFactor);
+		Debug.Log (undergroundTime);
 		currentUndergroundTime = 0f;
 	}
 
@@ -130,7 +136,7 @@ public class WormBase : MonoBehaviour {
 		CameraShake.instance.Shake (dieShake);
 		isDead = true;
 		StartCoroutine (DestroySelf ());
-		attackDamage = explodeDamage;
+		bodyDamage = explodeDamage;
 	}
 	#endregion
 
