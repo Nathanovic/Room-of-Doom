@@ -68,9 +68,11 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 			health = 0;
 		}
 
-		if (onHealthChanged != null) {
+/*		if (onHealthChanged != null) {
 			onHealthChanged (health);
 		}
+*/
+        HealthChangedEvent();
 
 		//make sure we cannot be attacked anymore:
 		if (health == 0 && lives == 0) {
@@ -83,6 +85,13 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		//shake the camera
 		CameraShake.instance.Shake(hittedShakeSettings, dmg);
 	}
+
+    public void HealthChangedEvent(){
+        if (onHealthChanged != null){
+            onHealthChanged(health);
+        }
+    }
+
 
 	public bool ValidTarget (){
 		return health > 0 && remainingImmuneDuration <= 0f;
