@@ -76,6 +76,7 @@ public class PlayerDashAbility : Ability{
         pb.canControl = true;
         rb.velocity = Vector3.zero;
         dashTime = 0;
+
     }
 
     private void Ghost(){
@@ -85,6 +86,7 @@ public class PlayerDashAbility : Ability{
             if (currentGhostIndex >= ghostsScript.Count){
                 currentGhostIndex = 0;
             }
+
             ghostsObj[currentGhostIndex].transform.position = player.transform.position;
             ghostsObj[currentGhostIndex].transform.localScale = player.transform.localScale;
             ghostsObj[currentGhostIndex].gameObject.SetActive(true);
