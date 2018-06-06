@@ -60,8 +60,6 @@ public class PlayerMeleeSpecialAttack : Ability{
     }
 
     private void Aim(Transform proj){
-        Debug.Log("Aim");
-
         if (playerInput.Lhorizontal != 0 && playerInput.Lvertical != 0){
             xDir = playerInput.Lhorizontal;
             yDir = playerInput.Lvertical;
