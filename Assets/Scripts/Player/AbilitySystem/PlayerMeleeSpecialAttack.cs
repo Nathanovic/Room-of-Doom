@@ -34,7 +34,7 @@ public class PlayerMeleeSpecialAttack : Ability{
 
         GameObject p = Instantiate(projectile, player.transform.position + moveToOffset, Quaternion.identity);
         endTime = Time.time + aimDuration;
-
+        xDir = player.transform.localScale.x > 0 ? 1 : -1;
 
         yield return new WaitForEndOfFrame();
 
@@ -61,9 +61,12 @@ public class PlayerMeleeSpecialAttack : Ability{
 
     private void Aim(Transform proj){
         Debug.Log("Aim");
-        xDir = playerInput.Lhorizontal;
-        yDir = playerInput.Lvertical;
 
+        if (playerInput.Lhorizontal != 0 && playerInput.Lvertical != 0){
+            xDir = playerInput.Lhorizontal;
+            yDir = playerInput.Lvertical;
+        }
+        
         //proj.transform.rotation = Quaternion.LookRotation(proj.transform.position - new Vector3(xDir, yDir)) ;
         float angle = Mathf.Atan2(xDir, yDir) * Mathf.Rad2Deg;
         proj.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
@@ -75,8 +78,11 @@ public class PlayerMeleeSpecialAttack : Ability{
         if (alReadySHot == false){
             alReadySHot = true;
 
-            xDir = playerInput.Lhorizontal;
-            yDir = playerInput.Lvertical;
+            if (playerInput.Lhorizontal != 0 && playerInput.Lvertical != 0){
+                xDir = playerInput.Lhorizontal;
+                yDir = playerInput.Lvertical;
+            }
+
             Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
             rb.isKinematic = false;
             rb.velocity = new Vector2(xDir, -yDir).normalized * force;
