@@ -2700,6 +2700,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &655162324
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4378725105425270, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378725105425270, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378725105425270, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378725105425270, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378725105425270, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378725105425270, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378725105425270, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378725105425270, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad17a00b42342be4798938152e0350fc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &673992816
 GameObject:
   m_ObjectHideFlags: 0
@@ -10271,6 +10313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  hittedImmuneDuration: 2
   hitPS: {fileID: 1204047681}
   customHealthBar: 0
   hittedShakeSettings: {fileID: 0}
@@ -10280,10 +10323,7 @@ MonoBehaviour:
   weaponCheck: {fileID: 144565358}
   attackDamage: 0
   attackRange: 0
-  cooldown: 1
-  remainingCooldown: 0
   hb: {fileID: 0}
-  maxHealth: 0
 --- !u!114 &1182770741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15384,57 +15424,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1245424830
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1245424832}
-  - component: {fileID: 1245424831}
-  m_Layer: 0
-  m_Name: HealingSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1245424831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1245424830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bc23a650a6732f46b5d24366ab24437, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ySpawnHight: 10
-  xSpawnWidth: 10
-  spawnSchedule:
-  - startSec: 0
-    endSec: 5
-    amountHealingSpawns: 2
-  - startSec: 20
-    endSec: 30
-    amountHealingSpawns: 2
-  healingPacksPrefab: {fileID: 1347103277540420, guid: 4a738b8f698e09b4f84b6c4ba67cc6e5,
-    type: 2}
---- !u!4 &1245424832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1245424830}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1266493036
 GameObject:
   m_ObjectHideFlags: 0
