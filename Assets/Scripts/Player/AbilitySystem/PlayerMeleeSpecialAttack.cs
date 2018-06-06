@@ -39,18 +39,24 @@ public class PlayerMeleeSpecialAttack : Ability{
         yield return new WaitForEndOfFrame();
 
         while (endTime > Time.time) {
-            Aim(p.transform);
-            if (playerInput.ButtonIsDown(button) || Input.GetKey(KeyCode.P)){
-                if (alReadySHot == false){
-                    Shoot(p.transform);
-                    break;
+            if (p != null){
+                Aim(p.transform);
+                if (playerInput.ButtonIsDown(button) || Input.GetKey(KeyCode.P)){
+                    if (alReadySHot == false){
+                        Shoot(p.transform);
+                        break;
+                    }
                 }
             }
+            else{
+                break;
+            }
+
 
             yield return null;
         }
 
-        if (alReadySHot == false){
+        if (alReadySHot == false && p != null){
             Shoot(p.transform);
         }
 

@@ -10,7 +10,7 @@ public class BossManager : MonoBehaviour {
 	private FSM fsm;
 
 	public static BossManager instance;
-	private List<WormBase> worms = new List<WormBase>();
+	public List<WormBase> worms = new List<WormBase>();
 	private WormBoss boss;
 
 	public CameraShakeSettings wormDeadShake;
