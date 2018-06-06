@@ -9,83 +9,76 @@ using System.Collections.Generic;
 public class WormMovement : MonoBehaviour {
 
 	public WormSegment[] wormSegments{ get; private set; }
-	public LayerMask groundLM;
 
 	public float startDelay = 1f;
 	private float delay = 0f;
 	private Transform head;
 	public float headLength;
-	private BezierCurve movementCurve;
+
+	private IWormTraverseable[] attackTraverseables;
+	private IWormTraverseable attackTraverseable;
 	private float moveT = 0f;
-	private float curveMoveSpeed;
+	private float traverseSpeed;
 
 	public float minMoveSpeed = 5f;
 	public float maxMoveSpeed = 10f;
 	private float movementSpeed = 2f;
 
+	public event SimpleDelegate onReachedLineEnd;
+	public event SimpleDelegate onAttackEnded;
+
 	private void Start(){
 		head = transform.GetChild (0);
 
-		movementCurve = GetComponentInChildren<BezierCurve> ();
-		movementCurve.DetachSelf ();
+		attackTraverseables = GetComponents<IWormTraverseable> ();
 		wormSegments = GetComponentsInChildren<WormSegment> ();
 	}
 
-	public void CurveAttackUpdate(){
+	public void AttackUpdate(){
 		if (delay > 0f) {
 			delay -= Time.deltaTime;
 		} 
 		else {
-			moveT += curveMoveSpeed * Time.deltaTime;
-			transform.position = movementCurve.GetPoint (moveT);
+			if (moveT < 1f) {
+				moveT += traverseSpeed * Time.deltaTime;
+				transform.position = attackTraverseable.GetPoint (moveT);
 
-			Vector3 dir = movementCurve.GetPoint (moveT + 0.1f) - transform.position;
-			float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg + 180;
-			head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+				Vector3 dir = attackTraverseable.GetPoint (moveT + 0.1f) - transform.position;
+				float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg + 180;
+				head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-			foreach (WormSegment segment in wormSegments) {
-				segment.TraverseCurve (movementCurve);
+				if (moveT >= 1f && onReachedLineEnd != null) {
+					Debug.Log ("reached the end");
+					onReachedLineEnd ();
+				}
 			}
+
+			attackTraverseable.Run (wormSegments);
 		}
 	}
 
-	public void StartCurveAttack(Vector3 startPos, Vector3 enemyPos, float attackIntensity){
-		//calculate a control point
-		Vector3 controlPoint = Vector3.Lerp (startPos, enemyPos, 0.7f);
-		float xDist = Mathf.Abs (startPos.x - enemyPos.x);
-		controlPoint.y += xDist * 1.5f;
+	public void PrepareAttack(Vector3 startPos, Vector3 enemyPos, float attackIntensity){
+		int rndmTraverseableIndex = Random.Range (0, attackTraverseables.Length);
+		attackTraverseable = attackTraverseables [rndmTraverseableIndex];
+		attackTraverseable.Prepare (startPos, enemyPos);
+		StartAttack (attackIntensity);
+	}
 
-		//make sure our targetPos is beneath the ground surface:
-		Vector3 targetPos = enemyPos;
-		Vector3 enemyDir = (enemyPos - controlPoint);
-		RaycastHit2D[] hits = Physics2D.RaycastAll(enemyPos, enemyDir, 20f, groundLM);
-		foreach (RaycastHit2D hit in hits) {
-			if (hit.collider != null && hit.point.y < 0.3f) {
-				targetPos = hit.point + (Vector2)enemyDir.normalized * 2.5f;
-				Debug.DrawLine (controlPoint, targetPos, Color.yellow, 2f);
-				break;
-			}
+	public void EndAttack(){
+		if (onAttackEnded != null) {
+			onAttackEnded ();
 		}
+	}
 
-		if (targetPos.y > 0f)
-			targetPos.y = -1.5f;
-
-		movementCurve.points [0] = startPos;
-		movementCurve.points [1] = controlPoint;
-		movementCurve.points [2] = targetPos;
-
-		//debug visually:
-		Debug.DrawLine (startPos, controlPoint, Color.red, 1f);
-		Debug.DrawLine (controlPoint, targetPos, Color.red, 1f);
-
-		float moveCurveLength = movementCurve.GetLength ();
+	private void StartAttack(float attackIntensity){
+		float moveCurveLength = attackTraverseable.GetLength ();
 		movementSpeed = Mathf.Lerp (minMoveSpeed, maxMoveSpeed, attackIntensity);
-		curveMoveSpeed = movementSpeed / moveCurveLength;
+		traverseSpeed = movementSpeed / moveCurveLength;
 
 		Transform prevSegment = head;
 		float beforeSegmentDelay = headLength / moveCurveLength;
 		foreach (WormSegment segment in wormSegments) {
-			segment.Prepare (prevSegment, beforeSegmentDelay, curveMoveSpeed);
+			segment.Prepare (prevSegment, beforeSegmentDelay, traverseSpeed);
 			beforeSegmentDelay += segment.length / moveCurveLength;
 			prevSegment = segment.transform;
 		}

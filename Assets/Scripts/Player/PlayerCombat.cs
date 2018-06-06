@@ -14,8 +14,6 @@ public class PlayerCombat : CharacterCombat {
 	[Header("weapon values")]
 	public int attackDamage;
 	public float attackRange;
-	public float cooldown;
-	public float remainingCooldown;
 
 	public HealthBar hb;
 
@@ -29,21 +27,6 @@ public class PlayerCombat : CharacterCombat {
 
 	protected override void Update () {
 		base.Update ();
-		if (!baseScript.canControl)
-			return;
-
-		//if (remainingCooldown == 0f && input.ButtonIsDown(PlayerInput.Button.B)) {
-		//	 Attack ();
-		//}
-		//else if (remainingCooldown > 0f) {
-		//	Cooldown ();
-		//}
-	}
-
-	//activate the cooldown and try to hit someone
-	private void Attack(){
-		remainingCooldown = cooldown;
-		anim.SetTrigger ("attack");
 	}
 
 	//triggered by animation
@@ -52,13 +35,10 @@ public class PlayerCombat : CharacterCombat {
 		if (other != null) {
 			RaycastHit2D hit = Physics2D.Raycast (transform.position, (other.transform.position - transform.position), attackRange * 2f, enemyLM);
 			IAttackable combatScript = other.GetComponent<IAttackable> ();
-			combatScript.ApplyDamage (attackDamage, hit.point, (Vector3)hit.point - transform.transform.position);
+			if (combatScript.ValidTarget ()) {
+				combatScript.ApplyDamage (attackDamage, hit.point, (Vector3)hit.point - transform.transform.position);
+			}
 		}
-	}
-
-	private void Cooldown(){
-		remainingCooldown -= Time.deltaTime;
-		remainingCooldown = (remainingCooldown < 0f) ? 0f : remainingCooldown;
 	}
 
 	private void OnHealthChanged (int newHP){

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
+/*
 [CustomEditor(typeof(BezierCurve))]
 public class BezierCurveEditor : Editor {
 
@@ -51,3 +52,4 @@ public class BezierCurveEditor : Editor {
 		return point;
 	}
 }
+*/

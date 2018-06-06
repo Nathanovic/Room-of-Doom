@@ -7,12 +7,10 @@ public class WormSegment : MonoBehaviour, IAttackable {
 
 	public Transform prevSegment;
 	public float length;
-	private float moveT = 0f;
+	public float moveT{get;private set;}
 	private float curveMoveSpeed;
 	private int id;
 	public static int segmentID;
-
-	public event SimpleDelegate onFinishedMoving;
 
 	private void Start(){
 		myCombat = transform.parent.GetComponent<CharacterCombat> ();
@@ -27,20 +25,16 @@ public class WormSegment : MonoBehaviour, IAttackable {
 		curveMoveSpeed = speed;
 	}
 
-	public void TraverseCurve(BezierCurve curve){
+	public void TraverseCurve(IWormTraverseable line){
 		moveT += curveMoveSpeed * Time.deltaTime;
-		transform.position = curve.GetPoint (moveT);
+		transform.position = line.GetPoint (moveT);
 
-		Vector3 targetPos = prevSegment.position;curve.GetPoint (moveT + 0.1f);
+		Vector3 targetPos = prevSegment.position;line.GetPoint (moveT + 0.1f);
 		Vector3 dir = targetPos - transform.position;
 		float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg + 180;
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 		Debug.DrawLine (transform.position, targetPos, new Color(0f, 0f, 0.1f * id));
-
-		if (moveT >= 1f && onFinishedMoving != null) {
-			onFinishedMoving ();
-		}
 	}
 		
 	private void OnTriggerEnter2D(Collider2D other){
@@ -48,9 +42,7 @@ public class WormSegment : MonoBehaviour, IAttackable {
 	} 
 
 	public void ApplyDamage (int dmg, Vector3 hitPos, Vector3 hitDir){
-		if (myCombat.health > 0) {
-			myCombat.ApplyDamage (dmg, hitPos, hitDir);
-		}
+		myCombat.ApplyDamage (dmg, hitPos, hitDir);
 	}
 
 	public bool ValidTarget (){

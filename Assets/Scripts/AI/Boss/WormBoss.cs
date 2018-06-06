@@ -13,6 +13,9 @@ public class WormBoss : WormBase {
 	public event BossPhaseDelegate onPhaseUp;
 
 	protected override void Start(){
+		worm = GetComponent<WormMovement> ();
+		worm.onAttackEnded += EvaluateState;
+		
 		base.Start ();
 
 		State beginState = new BeginningState (this);
@@ -21,14 +24,7 @@ public class WormBoss : WormBase {
 		bossPhases [2].Init (new ImpossibleState (this));
 		fsm = new FSM (beginState);
 
-		worm = GetComponent<WormMovement> ();
 		combatScript = GetComponent<CharacterCombat> ();
-	}
-
-	//first evaluate state, then think about when to get out of the ground
-	protected override void HandleLastSegment(WormSegment lastSegment){
-		lastSegment.onFinishedMoving += EvaluateState;
-		base.HandleLastSegment (lastSegment);
 	}
 	
 	public override void WormUpdate(){
@@ -47,7 +43,7 @@ public class WormBoss : WormBase {
 				fsm.TriggerNextState (nextState);
 				onPhaseUp (state);
 
-				Debug.Log ("trigger state " + nextState.ToString ());
+				EvaluateState ();
 			}
 		}
 	}
@@ -58,6 +54,7 @@ public class WormBoss : WormBase {
 
 	public void TriggerHardState(){
 		intensity = 0.6f;
+		GetComponent<Healer> ().Heal ();
 	}
 	public void HardState(){
 		base.WormUpdate ();

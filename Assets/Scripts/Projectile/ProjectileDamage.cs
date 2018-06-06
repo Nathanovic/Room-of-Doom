@@ -20,7 +20,7 @@ public class ProjectileDamage : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D other){
 	    if (!didDamage && other.transform.root.tag == "Enemy"){
 		    IAttackable attackable = other.GetComponent<IAttackable>();
-		    if (attackable != null){
+			if (attackable != null && attackable.ValidTarget()){
 			    didDamage = true;
 				Vector3 hitDir = other.transform.position - transform.position;
 				attackable.ApplyDamage(damage, transform.position, hitDir);

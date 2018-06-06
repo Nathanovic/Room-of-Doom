@@ -6,9 +6,9 @@ using UnityEngine;
 //this script is used to make sure the player has health and can be hitted
 public class CharacterCombat : MonoBehaviour, IAttackable {
 
-	private int maxHealth;
+	public int maxHealth{ get; private set; }
 	public int health = 5;
-	private const float HITTED_IMMUNE_DURATION = 2f;
+	public float hittedImmuneDuration = 2f;//2f for players, 0 for AI
 	private float remainingImmuneDuration = 0f;
 
 	public delegate void HealthUpdateDelegate (int newHP);
@@ -21,6 +21,8 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	public CameraShakeSettings hittedShakeSettings;
 
+	private int lives;
+
 	private void Awake(){
 		CombatManager.Instance.RegisterPotentialTarget (this);
 		maxHealth = health;
@@ -32,6 +34,12 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 			if (hitPS == null)
 				Debug.LogWarning ("hit ps not assigned???");
 		}
+
+		Healer healScript = GetComponent<Healer> ();
+		if (healScript != null) {
+			lives = healScript.healCount;
+			healScript.onHeal += OnHeal;
+		}
 	}
 
 	protected virtual void Update(){
@@ -42,23 +50,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	//apply damage to character; can only be done if health > 0
 	public void ApplyDamage (int dmg, Vector3 hitPos, Vector3 hitDir){
-		health -= dmg;
-		remainingImmuneDuration = HITTED_IMMUNE_DURATION;
-		if (health <= 0) {
-			health = 0;
-			if(onDie != null)
-				onDie ();
-		}
-
-		//make sure all related systems know that the health changed:
-		if (onHealthChanged != null) {
-			onHealthChanged (health);
-		}
-
-		//make sure we cannot be attacked anymore:
-		if (health == 0) {
-			CombatManager.Instance.PotentialTargetDied (this);
-		}
+		ApplyDamage (dmg);
 
 		//show the player visually that we have been hit:
 		hitDir.y = 0f;
@@ -67,6 +59,26 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		hitPS.transform.position = hitPos;
 		hitPS.transform.localScale = hitDir;
 		hitPS.Play ();
+	}
+
+	//simplified version (without hitPS)
+	public void ApplyDamage(int dmg){health -= dmg;
+		remainingImmuneDuration = hittedImmuneDuration;
+		if (health <= 0) {
+			health = 0;
+			if(lives == 0 && onDie != null) {
+				onDie ();
+			}
+		}
+
+		if (onHealthChanged != null) {
+			onHealthChanged (health);
+		}
+
+		//make sure we cannot be attacked anymore:
+		if (health == 0 && lives == 0) {
+			CombatManager.Instance.PotentialTargetDied (this);
+		}
 
 		//shake the camera
 		CameraShake.instance.Shake(hittedShakeSettings, dmg);
@@ -82,5 +94,20 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	public float HPPercentage(){
 		return (float)health / maxHealth;
+	}
+
+	public void MakeImmune(float duration){
+		remainingImmuneDuration = duration;
+	}
+
+	public void HealUp(float hpPercentage){
+		health = Mathf.RoundToInt ((float)maxHealth * hpPercentage);
+		if (onHealthChanged != null) {
+			onHealthChanged (health);
+		}
+	}
+
+	private void OnHeal(){
+		lives--;
 	}
 }

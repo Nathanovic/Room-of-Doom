@@ -17,6 +17,8 @@ public class BossManager : MonoBehaviour {
 
 	private State[] gamePhases = new State[3];
 
+	public float[] regionHeights = new float[3];
+
 	private void Awake(){
 		if (instance != null) {
 			Destroy (gameObject);
@@ -96,6 +98,16 @@ public class BossManager : MonoBehaviour {
 		}
 
 		return availablePositions;
+	}
+
+	private void OnDrawGizmos(){
+		Gizmos.color = Color.red;
+
+		for (int i = 0; i < regionHeights.Length; i++) {
+			Vector3 regionCenter = new Vector3 (0f, regionHeights [i], 0f);
+			Vector3 regionSize = new Vector3 (30f, 1f);
+			Gizmos.DrawWireCube (regionCenter, regionSize);
+		}
 	}
 
 	[System.Serializable]

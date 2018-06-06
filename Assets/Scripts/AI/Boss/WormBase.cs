@@ -50,8 +50,7 @@ public class WormBase : MonoBehaviour {
 		spawner = GetComponentInChildren<SpawnPositions> ();
 
 		wormSegments = GetComponentsInChildren<WormSegment> ();
-		WormSegment lastSegment = wormSegments[wormSegments.Length - 1];
-		HandleLastSegment (lastSegment);
+		moveScript.onAttackEnded += OnAttackEnded;
 
 		CharacterCombat combatScript = GetComponent<CharacterCombat> ();
 		combatScript.onDie += OnDie;
@@ -60,13 +59,9 @@ public class WormBase : MonoBehaviour {
 		OnAttackEnded ();
 	}
 
-	protected virtual void HandleLastSegment(WormSegment lastSegment){
-		lastSegment.onFinishedMoving += OnAttackEnded;		
-	}
-
 	public virtual void WormUpdate(){
 		if (attacking) {
-			moveScript.CurveAttackUpdate ();
+			moveScript.AttackUpdate ();
 		} 
 		else {
 			Cooldown ();
@@ -77,11 +72,11 @@ public class WormBase : MonoBehaviour {
 		currentUndergroundTime += Time.deltaTime;
 
 		if (currentUndergroundTime >= undergroundTime) {
-			StartCurveAttack ();
+			StartAttack ();
 		}		
 	}
 
-	private void StartCurveAttack(){
+	protected virtual void StartAttack(){
 		attacking = true;
 
 		int rndmTargetIndex = Random.Range (0, targets.Length);
@@ -104,7 +99,7 @@ public class WormBase : MonoBehaviour {
 		feedForwardVFX.transform.position = new Vector3 (startPos.x, 0f, 0f);
 		feedForwardVFX.Play ();
 
-		moveScript.StartCurveAttack (startPos, enemyPos, intensityFactor);
+		moveScript.PrepareAttack (startPos, enemyPos, intensityFactor);
 	}
 
 	//calculate when we will appear again
@@ -132,13 +127,16 @@ public class WormBase : MonoBehaviour {
 
 	//destroy the gameobject after time, first explode
 	private void OnDie(){
-		onWormDied (this);
+		if (onWormDied != null) {
+			onWormDied (this);
+		}
 		StartCoroutine (DestroySelf ());
 		bodyDamage = explodeDamage;
 	}
 	#endregion
 
 	private IEnumerator DestroySelf(){
+		Debug.Log ("destroying self: " + transform.name);
 		//set up for explosion
 		Vector2 explodeCenter = wormSegments [wormSegments.Length / 2].Position();
 
