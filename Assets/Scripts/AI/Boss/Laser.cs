@@ -32,9 +32,7 @@ public class Laser : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("hit: " + other.name + "_" + other.tag);
 		if (other.tag == "Player") {
-			Debug.Log ("hit player!!!");
 			CharacterCombat combatScript = other.GetComponent<CharacterCombat> ();
 			if (combatScript.ValidTarget ()) {
 				combatScript.ApplyDamage (damage);					

@@ -48,7 +48,6 @@ public class WormMovement : MonoBehaviour {
 				head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 				if (moveT >= 1f && onReachedLineEnd != null) {
-					Debug.Log ("reached the end");
 					onReachedLineEnd ();
 				}
 			}

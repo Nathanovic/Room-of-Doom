@@ -17,12 +17,13 @@ public class PlayerCombat : CharacterCombat {
 
 	public HealthBar hb;
 
-	private void Start(){
+    private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
 		anim = GetComponentInChildren<Animator> ();
 		input = GetComponent<PlayerInput> ();
 		hb.Init (this, false);
 		base.onHealthChanged += OnHealthChanged;
+
 	}
 
 	protected override void Update () {
