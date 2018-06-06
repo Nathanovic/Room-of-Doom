@@ -26,13 +26,13 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		possibleHeights = BossManager.instance.regionHeights;
 
 		moveScript = GetComponent<WormMovement> ();
-		moveScript.onReachedLineEnd += StartAttack;
 
 		laser = Laser.Instantiate (laser, transform) as Laser;
 		laser.Init (attackDamage);
 	}
 
 	public void Prepare(Vector3 startPos, Vector3 enemyPos){
+		moveScript.onReachedLineEnd += StartAttack;
 		startPoint = startPos;
 		endPoint.x = startPoint.x;
 		int rndmIndex = Random.Range (0, possibleHeights.Length);
@@ -78,6 +78,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 	}
 
 	private void StartAttack(){
+		moveScript.onReachedLineEnd -= StartAttack;
 		remainingAttackTime = attackDuration;
 		attackState = AttackState.Attack;
 		Vector3[] laserPoints =	new Vector3[] {

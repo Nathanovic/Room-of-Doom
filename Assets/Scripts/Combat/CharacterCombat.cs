@@ -66,9 +66,6 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		remainingImmuneDuration = hittedImmuneDuration;
 		if (health <= 0) {
 			health = 0;
-			if(lives == 0 && onDie != null) {
-				onDie ();
-			}
 		}
 
 		if (onHealthChanged != null) {
@@ -77,6 +74,9 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 		//make sure we cannot be attacked anymore:
 		if (health == 0 && lives == 0) {
+			if(onDie != null) {
+				onDie ();
+			}
 			CombatManager.Instance.PotentialTargetDied (this);
 		}
 
