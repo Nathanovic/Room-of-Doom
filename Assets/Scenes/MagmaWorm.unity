@@ -7396,6 +7396,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114502132188888414, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: characterAbilities.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4518076244467402, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.46
@@ -7476,6 +7481,12 @@ Prefab:
       propertyPath: attackDamage
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114502132188888414, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: characterAbilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 136c9dbd4b093104886c18b873a19dbd,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
   m_IsPrefabAsset: 0

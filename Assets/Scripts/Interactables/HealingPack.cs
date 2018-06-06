@@ -7,6 +7,7 @@ public class HealingPack : MonoBehaviour {
     public int healing;
 
     private void OnCollisionEnter2D(Collision2D collision){
+        if (collision.transform.root.tag == "Player"){
             PlayerCombat pc = collision.gameObject.GetComponent<PlayerCombat>();
             Debug.Log(pc.health + " " + pc.maxHealth);
             if (pc.health < pc.maxHealth){
