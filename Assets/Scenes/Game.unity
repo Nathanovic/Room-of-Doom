@@ -10283,6 +10283,7 @@ MonoBehaviour:
   cooldown: 1
   remainingCooldown: 0
   hb: {fileID: 0}
+  maxHealth: 0
 --- !u!114 &1182770741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15410,16 +15411,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc23a650a6732f46b5d24366ab24437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ySpawnPos: 10
+  ySpawnHight: 10
+  xSpawnWidth: 10
   spawnSchedule:
   - startSec: 0
-    endSec: 10
-    amountHealingSpawns: 5
-  - startSec: 30
-    endSec: 35
-    amountHealingSpawns: 10
-  healingPacks:
-  - {fileID: 1347103277540420, guid: 4a738b8f698e09b4f84b6c4ba67cc6e5, type: 2}
+    endSec: 5
+    amountHealingSpawns: 2
+  - startSec: 20
+    endSec: 30
+    amountHealingSpawns: 2
+  healingPacksPrefab: {fileID: 1347103277540420, guid: 4a738b8f698e09b4f84b6c4ba67cc6e5,
+    type: 2}
 --- !u!4 &1245424832
 Transform:
   m_ObjectHideFlags: 0
@@ -23945,6 +23947,11 @@ Prefab:
         type: 2}
       propertyPath: controllerNumber
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114780145793488468, guid: b51daa7f3744470409ee63a7392d4e97,
+        type: 2}
+      propertyPath: health
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b51daa7f3744470409ee63a7392d4e97, type: 2}

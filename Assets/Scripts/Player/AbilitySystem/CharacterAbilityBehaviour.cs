@@ -21,6 +21,7 @@ public class CharacterAbilityBehaviour : MonoBehaviour {
             cloneAbilities[i] = characterAbilities[i].Clone();
             cloneAbilities[i].Init(gameObject);
         }
+
     }
 
     private void Start(){
@@ -42,6 +43,7 @@ public class CharacterAbilityBehaviour : MonoBehaviour {
                     }
                 }           
             }
+
         }
         else{
             WhileCasting();
@@ -55,6 +57,7 @@ public class CharacterAbilityBehaviour : MonoBehaviour {
         yield return new WaitForSeconds(a.castingTime);
 
         isCasting = false;
+
     }
 
     private void WhileCasting(){
@@ -65,9 +68,7 @@ public class CharacterAbilityBehaviour : MonoBehaviour {
     private void AbilitySound(Ability ab){
         audioSource.clip = ab.soundEffect;
         audioSource.Play();
+
     }
 
-    private void OnDrawGizmos(){
-        //Gizmos.DrawSphere(transform.position, 10);
-    }
 }

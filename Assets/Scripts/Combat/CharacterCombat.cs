@@ -30,9 +30,10 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 			if (hitPS == null)
 				Debug.LogWarning ("hit ps not assigned???");
 		}
-	}
 
-	protected virtual void Update(){
+    }
+
+    protected virtual void Update(){
 		if (remainingImmuneDuration > 0f) {
 			remainingImmuneDuration -= Time.deltaTime;
 		}
