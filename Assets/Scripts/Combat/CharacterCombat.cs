@@ -6,6 +6,7 @@ using UnityEngine;
 //this script is used to make sure the player has health and can be hitted
 public class CharacterCombat : MonoBehaviour, IAttackable {
 
+	public int maxHealth{ get; private set; }
 	public int health = 5;
 	private const float HITTED_IMMUNE_DURATION = 2f;
 	private float remainingImmuneDuration = 0f;
@@ -22,6 +23,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	private void Awake(){
 		CombatManager.Instance.RegisterPotentialTarget (this);
+		maxHealth = health;
 	}
 
 	private void Start(){
