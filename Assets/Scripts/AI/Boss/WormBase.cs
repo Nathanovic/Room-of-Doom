@@ -107,7 +107,7 @@ public class WormBase : MonoBehaviour {
 		attacking = false;
 		float rndmIntensityFactor = Random.Range (-rndmIntensity, rndmIntensity) + intensity;
 		intensityFactor = Mathf.Clamp01 (rndmIntensityFactor);
-		undergroundTime = Mathf.Lerp (minRespawnTime, maxRespawnTime, intensityFactor);
+		undergroundTime = Mathf.Lerp (maxRespawnTime, minRespawnTime, intensityFactor);
 		currentUndergroundTime = 0f;
 	}
 

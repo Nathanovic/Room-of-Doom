@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963ddb36dbab024985ec587c980fb0c, type: 3}
   m_Name: WormPhase
   m_EditorClassIdentifier: 
-  duration: 1.5
+  duration: 3
   amount: 0.7

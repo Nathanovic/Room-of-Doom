@@ -79,9 +79,9 @@ public class BossManager : MonoBehaviour {
 		foreach (WormBase worm in worms) {
 			worm.intensity = intensity;
 		}
-		fsm.TriggerNextState (gamePhases [phaseIndex]);
 
 		Shaker.instance.ControllerShake (bossPhaseShake);
+		fsm.TriggerNextState (gamePhases [phaseIndex]);
 	}
 	#endregion
 

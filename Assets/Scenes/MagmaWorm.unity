@@ -6132,7 +6132,7 @@ MonoBehaviour:
   hittedImmuneDuration: 0
   hitPS: {fileID: 822482549}
   customHealthBar: 1
-  hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
+  hittedShakeSettings: {fileID: 11400000, guid: 101b24783bd420a4eb9ddff99a66a81d,
     type: 2}
 --- !u!58 &294314572
 CircleCollider2D:
@@ -6764,6 +6764,12 @@ Prefab:
       propertyPath: myHealthBar
       value: 
       objectReference: {fileID: 1830382149}
+    - target: {fileID: 114615397721025446, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: hittedShakeSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 101b24783bd420a4eb9ddff99a66a81d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30d83a476ede914a90c5fca0e1aaeef, type: 2}
   m_IsPrefabAsset: 0
@@ -7093,7 +7099,7 @@ MonoBehaviour:
   hittedImmuneDuration: 0
   hitPS: {fileID: 0}
   customHealthBar: 1
-  hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
+  hittedShakeSettings: {fileID: 11400000, guid: 101b24783bd420a4eb9ddff99a66a81d,
     type: 2}
 --- !u!58 &630088301
 CircleCollider2D:
@@ -7507,6 +7513,18 @@ Prefab:
       propertyPath: controllerNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114459267774608690, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: hittedShakeSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 83f1212ef1a401240b122d709a41f216,
+        type: 2}
+    - target: {fileID: 114459267774608690, guid: bf7427175d4a7c446a78ed42192117eb,
+        type: 2}
+      propertyPath: hittedControllerShakeSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: ee19ec3030b198545926b80d7fb0b601,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7427175d4a7c446a78ed42192117eb, type: 2}
   m_IsPrefabAsset: 0
@@ -17501,7 +17519,7 @@ MonoBehaviour:
   hittedImmuneDuration: 0
   hitPS: {fileID: 1826870053}
   customHealthBar: 1
-  hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
+  hittedShakeSettings: {fileID: 11400000, guid: 101b24783bd420a4eb9ddff99a66a81d,
     type: 2}
 --- !u!58 &865648662
 CircleCollider2D:
@@ -17906,7 +17924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48ee20dd1c60fd42957cd76b45da363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wormDeadShake: {fileID: 11400000, guid: 32763a905285e3b4ca82b0aba15650eb, type: 2}
+  worms: []
+  wormDieCamShake: {fileID: 11400000, guid: 916da4a9609f7f54c95ba4655baae117, type: 2}
+  bossPhaseShake: {fileID: 11400000, guid: 79b38d4b9b0cf7948943bfd7517b95ab, type: 2}
   regionHeights:
   - 1
   - 3.8
@@ -23762,7 +23782,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1390353446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 219a7adb9cdd1d54bbfe051651327f84, type: 3}
+  m_Script: {fileID: 11500000, guid: 81cac954ea3132743b4b20cd9e7923bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1394779258
@@ -80516,6 +80536,18 @@ Prefab:
       propertyPath: health
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114665708308607302, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: hittedShakeSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 83f1212ef1a401240b122d709a41f216,
+        type: 2}
+    - target: {fileID: 114665708308607302, guid: 0193ce27cab7d8a4fadbb62524b375d2,
+        type: 2}
+      propertyPath: hittedControllerShakeSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: ee19ec3030b198545926b80d7fb0b601,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0193ce27cab7d8a4fadbb62524b375d2, type: 2}
   m_IsPrefabAsset: 0
@@ -85480,6 +85512,12 @@ Prefab:
       propertyPath: targets.Array.data[1]
       value: 
       objectReference: {fileID: 626566212}
+    - target: {fileID: 114615397721025446, guid: b30d83a476ede914a90c5fca0e1aaeef,
+        type: 2}
+      propertyPath: hittedShakeSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 101b24783bd420a4eb9ddff99a66a81d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30d83a476ede914a90c5fca0e1aaeef, type: 2}
   m_IsPrefabAsset: 0
