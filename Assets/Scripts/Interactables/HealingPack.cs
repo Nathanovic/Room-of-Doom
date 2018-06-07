@@ -11,16 +11,14 @@ public class HealingPack : MonoBehaviour {
             PlayerCombat pc = collision.gameObject.GetComponent<PlayerCombat>();
             Debug.Log(pc.health + " " + pc.maxHealth);
             if (pc.health < pc.maxHealth){
-                Debug.Log("ddd");
-
                 if (pc.maxHealth - pc.health >= healing){
                     collision.gameObject.GetComponent<PlayerCombat>().health += healing;
                 }
                 else{
                     int restHealing = pc.maxHealth - pc.health;
                     collision.gameObject.GetComponent<PlayerCombat>().health += restHealing;
-                } 
-
+                }
+                pc.HealthChangedEvent();
                 gameObject.SetActive(false);
             }
         }

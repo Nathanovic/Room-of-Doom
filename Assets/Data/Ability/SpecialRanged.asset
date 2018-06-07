@@ -18,7 +18,8 @@ MonoBehaviour:
   abilitySprite: {fileID: 21300000, guid: 8eb8daf719b5ac9479f6cf82e2d6a319, type: 3}
   soundEffect: {fileID: 0}
   readyAtTime: 0
-  projectile: {fileID: 1513216415537730, guid: 1c462c67df84f2843b812a8722bfafb1, type: 2}
+  projectile: {fileID: 1513216415537730, guid: 6fb9e84050650064c8b32232a221770d, type: 2}
+  growTime: 1
   attackRange: 10
   spawnRadiusX: 1
   SpawnRadiusY: 1

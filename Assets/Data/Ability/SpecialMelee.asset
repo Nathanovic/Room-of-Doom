@@ -13,13 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: SpecialMelee
   button: 5
-  cooldown: 1
+  cooldown: 5
   castingTime: 1
   abilitySprite: {fileID: 21300000, guid: 993d47d2c9d49c4409f225b66c88794b, type: 3}
   soundEffect: {fileID: 0}
   readyAtTime: 0
-  projectile: {fileID: 1689378693750466, guid: d68d8ff78c1d4ba4b83fa9fbdab081dc, type: 2}
-  force: 7
+  projectile: {fileID: 1906466023655126, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+  force: 20
   aimDuration: 5
   spawnOffset: {x: 1, y: -0.75, z: 0}
   moveToOffset: {x: 0.75, y: 0.75, z: 0}

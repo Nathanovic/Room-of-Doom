@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerRangedSpecialAttack : Ability{
 
     public GameObject projectile;
-    //public float dis;
+    public float growTime;
 
     public float attackRange;
     public float spawnRadiusX;
@@ -18,6 +18,7 @@ public class PlayerRangedSpecialAttack : Ability{
     private Vector3 centrePos;
     private Transform onGizPos;
     private GameObject player;
+    private float endGrowingTime;
 
     public override void Init(GameObject p){
         player = p;
@@ -26,11 +27,16 @@ public class PlayerRangedSpecialAttack : Ability{
     public override IEnumerator TriggerAbility(){
         Debug.Log("PlayerRangedSpecialAttack");
         onGizPos = player.transform;
+        endGrowingTime = Time.time + growTime;
 
         List <Vector3> mw = new List<Vector3>();
+        Debug.Log(BossManager.instance.GetHeadPositions(player.transform.position, attackRange).Count + " wormen ");
         if (BossManager.instance.GetHeadPositions(player.transform.position, attackRange).Count != 0){
             foreach (var item in BossManager.instance.GetHeadPositions(player.transform.position, attackRange)){
-                mw.Add(item);
+                Debug.Log(item);
+                if (item.y > 1){
+                    mw.Add(item);
+                }
             }
         }
 
