@@ -21,366 +21,51 @@
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSound                     : filename = E:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Build\Desktop/Master Bank.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Priority: 1, Stack Size: 81920, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] SystemI::createSound                     : setdata soundi = 0000000048A01158 : node = 0000000048C26DB0
+[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F724D8.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048A01158
+[LOG] SystemI::createSoundInternal             :     Create name='E:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Build\Desktop/Master Bank.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1586560
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 14304
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000000048C26EC8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='bossfight v3', format=2, channels=2, frequency=48000, lengthbytes=1585568, lengthpcm=5200000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.975677.
+[LOG] Thread::initThread                       :     Init FMOD file thread. Priority: 1, Stack Size: 16384, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048A01158
+[LOG] SoundI::getSubSound                      : sound 0000000048A01158.  Subsound index 0 / 1
 [LOG] Thread::initThread                       : Init FMOD profiler thread (recv). Priority: 0, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
 [LOG] Thread::initThread                       : Init FMOD profiler thread (send). Priority: 0, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
-[LOG] LiveUpdate::clientConnected              : client = 000000000EAE13B8
-[LOG] LiveUpdate::readPacket                   : Accepting init message for client 000000000EAE13B8
+[LOG] LiveUpdate::clientConnected              : client = 0000000044099418
+[LOG] LiveUpdate::readPacket                   : Accepting init message for client 0000000044099418
 [LOG] LiveUpdate::transitionToConnected        : 
 [LOG] Manager::sendConnectTimeHash             : 
 [LOG] LiveUpdate::sendBankHash                 : 
 [LOG] LiveUpdate::sendBankHash                 : 
 [LOG] LiveUpdate::sendBankHash                 : 
-[LOG] LiveUpdate::acceptInitPacket             : Client 000000000EAE13B8 connected, entering connected state
-[LOG] SystemI::createSound                     : filename = E:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Build\Desktop/Master Bank.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Priority: 1, Stack Size: 81920, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF77E8 : node = 0000000048C25610
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF77E8
-[LOG] SystemI::createSoundInternal             :     Create name='E:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Build\Desktop/Master Bank.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1586400
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 13952
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000000048C25728
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='bossfight v3', format=2, channels=2, frequency=48000, lengthbytes=1585408, lengthpcm=5200000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.975677.
-[LOG] Thread::initThread                       :     Init FMOD file thread. Priority: 1, Stack Size: 16384, Semaphore: No, Sleep Time: 10, Looping: Yes.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF77E8
-[LOG] SoundI::getSubSound                      : sound 0000000048EF77E8.  Subsound index 0 / 1
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_136.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_136.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[WRN] ObjectLookup::get                        : Lookup failed for Routable: {2c05772c-5c76-4dfa-b4ca-ee6ee30faa26}
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF7488 : node = 000000000EAA4610
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF7488
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 64
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF7488
-[LOG] SoundI::release                          : bossfight v3 (0000000048EF77E8)
-[LOG] SoundI::release                          :     bossfight v3 (0000000048F22ED8)
-[LOG] SoundI::release                          :     bossfight v3 (0000000048EF7B48)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF77E8 : node = 000000000EAA3C10
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF77E8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 28333
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF77E8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF7488)
-[LOG] SoundI::release                          :     (null) (0000000048F22D38)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF7B48 : node = 000000000EAA44D0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF7B48
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 28333
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF7B48
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF77E8)
-[LOG] SoundI::release                          :     (null) (0000000048F22ED8)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF63A8 : node = 000000000EAA4610
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF63A8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 55000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF63A8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF7B48)
-[LOG] SoundI::release                          :     (null) (000000000EAEF9D8)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF68B8 : node = 000000000EAA4250
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF68B8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF68B8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF63A8)
-[LOG] SoundI::release                          :     (null) (0000000043FB7BC8)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF72D8 : node = 000000000EAA4390
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF72D8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 28333
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF72D8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF68B8)
-[LOG] SoundI::release                          :     (null) (0000000043FB7F08)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF7488 : node = 000000000EAA44D0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF7488
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 55000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF7488
+[LOG] LiveUpdate::acceptInitPacket             : Client 0000000044099418 connected, entering connected state
 [LOG] SystemI::mixerSuspend                    : Suspending output.
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF72D8)
-[LOG] SoundI::release                          :     (null) (0000000043FB7D68)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_137.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_137.bank'
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_156.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_156.bank'
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
 [LOG] SystemI::mixerResume                     : Resuming output.
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF7488
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF7488
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF63A8 : node = 000000000EAA3FD0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF63A8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF63A8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF7488)
-[LOG] SoundI::release                          :     (null) (0000000048F22D38)
-[LOG] SystemI::mixerSuspend                    : Suspending output.
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_138.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_138.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_139.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_139.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_140.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_140.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_141.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_141.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_142.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_142.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_143.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_143.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_144.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_144.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_145.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_145.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_146.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_146.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_147.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_147.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_148.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_148.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_149.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_149.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_150.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_150.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SystemI::mixerResume                     : Resuming output.
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF63A8
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF63A8
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF7CF8 : node = 000000000EAA4610
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF7CF8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 28333
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF7CF8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF63A8)
-[LOG] SoundI::release                          :     (null) (0000000048A34748)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF72D8 : node = 000000000EAA3C10
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF72D8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 55000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF72D8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF7CF8)
-[LOG] SoundI::release                          :     (null) (0000000048A345A8)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF7488 : node = 000000000EAA4390
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF7488
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF7488
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF72D8)
-[LOG] SoundI::release                          :     (null) (000000000EAEF9D8)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF7CF8 : node = 000000000EAA3FD0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF7CF8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 55000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF7CF8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF7488)
-[LOG] SoundI::release                          :     (null) (0000000048C33208)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF72D8 : node = 000000000EAA4250
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF72D8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 55000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF72D8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF7CF8)
-[LOG] SoundI::release                          :     (null) (0000000048F22D38)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF7488 : node = 000000000EAA3C10
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF7488
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF7488
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF72D8)
-[LOG] SoundI::release                          :     (null) (0000000043FB7D68)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF72D8 : node = 000000000EAA3FD0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF72D8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 55000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF72D8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF7488)
-[LOG] SoundI::release                          :     (null) (0000000048A345A8)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF6558 : node = 000000000EAA3C10
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF6558
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF6558
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF72D8)
-[LOG] SoundI::release                          :     (null) (0000000048F22D38)
-[LOG] SystemI::mixerSuspend                    : Suspending output.
-[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_151.bank
-[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/genec/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-d2pZh5/hotswap_151.bank'
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SystemI::mixerResume                     : Resuming output.
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF6558
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF6558
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF6708 : node = 000000000EAA3FD0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF6708
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 28333
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF6708
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF6558)
-[LOG] SoundI::release                          :     (null) (0000000048A348E8)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF63A8 : node = 000000000EAA4610
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF63A8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 55000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF63A8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF6708)
-[LOG] SoundI::release                          :     (null) (00000000496158F8)
-[LOG] SystemI::createSound                     : filename = fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav : mode 0201c082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000048EF72D8 : node = 000000000EAA4390
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000048F22CE8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048EF72D8
-[LOG] SystemI::createSoundInternal             :     Create name='fmod:///remote/E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav', mode=0x0201C082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 55000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] ProfileRemoteFile::fileOpen              :     Attemping to open remote file 'E:/HKU/2017-2018/SID 2d Game Audio/Room-of-Doom-audio/Assets/bossfight v3.wav'
-[LOG] SystemI::createSoundInternal             :     Stream: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=19110000, lengthpcm=4777500, pcmblocksize=0, loopstart=0, loopend=4777499, mode=0x00000002, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048EF72D8
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF63A8)
-[LOG] SoundI::release                          :     (null) (0000000048F22D38)
-[LOG] SoundI::release                          : bossfight v3.wav (0000000048EF72D8)
-[LOG] SoundI::release                          :     (null) (000000000EAEF9D8)
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000048A023E8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000048A023E8
+[LOG] SoundI::release                          : bossfight v3 (0000000048A01158)
+[LOG] SoundI::release                          :     bossfight v3 (0000000048A35108)
+[LOG] SoundI::release                          :     bossfight v3 (0000000048A023E8)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] ProfileClient::markForDead               : Closing client connection
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD profiler thread (send) finished.
-[LOG] FMOD_OS_Net_Read                         : Interrupted.[ERR] ProfileClient::recvThreadLoopFunction    : Recv thread loop returned 16
+[LOG] FMOD_OS_Net_Read                         : Interrupted.[LOG] Thread::callback                         : FMOD profiler thread (send) finished.
+[ERR] ProfileClient::recvThreadLoopFunction    : Recv thread loop returned 16
 [LOG] Thread::callback                         : FMOD profiler thread (recv) finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 

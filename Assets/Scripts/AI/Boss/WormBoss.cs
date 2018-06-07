@@ -36,7 +36,10 @@ public class WormBoss : WormBase {
 	
 	public override void WormUpdate(){
 		fsm.Run ();
-	}
+
+        // Set the wormHealth parameter
+        emitter.SetParameter("wormHealth", combatScript.health);
+    }
 
 	private void EvaluateState(){
         // Set the state parameter
