@@ -13,7 +13,8 @@ public class BossManager : MonoBehaviour {
 	private List<WormBase> worms = new List<WormBase>();
 	private WormBoss boss;
 
-	public CameraShakeSettings wormDeadShake;
+	public ShakeSettings wormDieCamShake;
+	public ShakeSettings bossPhaseShake;
 
 	private State[] gamePhases = new State[3];
 
@@ -79,12 +80,14 @@ public class BossManager : MonoBehaviour {
 			worm.intensity = intensity;
 		}
 		fsm.TriggerNextState (gamePhases [phaseIndex]);
+
+		Shaker.instance.ControllerShake (bossPhaseShake);
 	}
 	#endregion
 
 	private void OnWormDied(WormBase worm){
 		worms.Remove (worm);
-		CameraShake.instance.Shake (wormDeadShake);
+		Shaker.instance.CameraShake (wormDieCamShake);
 	}
 
 	public List<Vector3> GetHeadPositions(Vector3 origin, float range){

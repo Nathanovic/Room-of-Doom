@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
+using XInputDotNetPure;
 
 //the player implementation for combat
 public class PlayerCombat : CharacterCombat {
 
-	private PlayerInput input;
 	private PlayerBase baseScript;
 	private Animator anim;
+
+	private PlayerIndex playerIndex;
+	public ShakeSettings hittedControllerShakeSettings;
+	public float remainingShakeDuration;
 
 	[Header("hit check values")]
 	public LayerMask enemyLM;
@@ -16,14 +20,18 @@ public class PlayerCombat : CharacterCombat {
 	public float attackRange;
 
 	public HealthBar hb;
+	private int previousHealth;
 
     private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
 		anim = GetComponentInChildren<Animator> ();
-		input = GetComponent<PlayerInput> ();
 		hb.Init (this, false);
-		base.onHealthChanged += OnHealthChanged;
 
+		playerIndex = (PlayerIndex)(GetComponent<PlayerInput> ().controllerNumber - 1);
+
+		previousHealth = base.health;
+		base.onHealthChanged += OnHealthChanged;
+		base.onDie += OnDie;
 	}
 
 	protected override void Update () {
@@ -43,10 +51,29 @@ public class PlayerCombat : CharacterCombat {
 	}
 
 	private void OnHealthChanged (int newHP){
-		if (newHP == 0) {
-			anim.SetTrigger ("die");
-			anim.SetBool ("dead", true);
+		if (newHP < previousHealth) {
+			remainingShakeDuration = hittedControllerShakeSettings.duration;
 		}
+
+		previousHealth = newHP;
+	}
+
+	private void FixedUpdate(){
+		if (remainingShakeDuration > 0f) {
+			remainingShakeDuration -= Time.fixedDeltaTime;
+
+			if (remainingShakeDuration > 0f) {
+				GamePad.SetVibration (playerIndex, hittedControllerShakeSettings.amount, 0f);
+			}
+			else {
+				GamePad.SetVibration (playerIndex, 0f, 0f);
+			}
+		}
+	}
+
+	private void OnDie(){
+		anim.SetTrigger ("die");
+		anim.SetBool ("dead", true);		
 	}
 
 	//draw a circle where the weapon can hit

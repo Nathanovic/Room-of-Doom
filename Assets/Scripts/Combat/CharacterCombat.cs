@@ -19,7 +19,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	public bool customHealthBar;
 
-	public CameraShakeSettings hittedShakeSettings;
+	public ShakeSettings hittedShakeSettings;
 
 	private int lives;
 
@@ -81,7 +81,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		}
 
 		//shake the camera
-		CameraShake.instance.Shake(hittedShakeSettings, dmg);
+		Shaker.instance.CameraShake(hittedShakeSettings, dmg);
 	}
 
 	public bool ValidTarget (){
