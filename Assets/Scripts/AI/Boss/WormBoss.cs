@@ -12,7 +12,10 @@ public class WormBoss : WormBase {
 	public delegate void BossPhaseDelegate(int stateIndex);
 	public event BossPhaseDelegate onPhaseUp;
 
-	protected override void Start(){
+    // FMOD event emitter
+    FMODUnity.StudioEventEmitter emitter;
+
+    protected override void Start(){
 		worm = GetComponent<WormMovement> ();
 		worm.onAttackEnded += EvaluateState;
 		
@@ -25,13 +28,20 @@ public class WormBoss : WormBase {
 		fsm = new FSM (beginState);
 
 		combatScript = GetComponent<CharacterCombat> ();
-	}
+
+        // Set the FMOD event emitter
+        var target = GameObject.Find("Main Camera");
+        emitter = target.GetComponent<FMODUnity.StudioEventEmitter>();
+    }
 	
 	public override void WormUpdate(){
 		fsm.Run ();
 	}
 
 	private void EvaluateState(){
+        // Set the state parameter
+        emitter.SetParameter("state", state);
+
 		float hpPercentage = combatScript.HPPercentage ();
 		if (bossPhases [state].CanStateUp (hpPercentage)) {
 			state++;

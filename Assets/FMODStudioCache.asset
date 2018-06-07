@@ -11,9 +11,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
-  MasterBankRef: {fileID: 0}
-  StringsBankRef: {fileID: 0}
-  stringsBankWriteTime: 0
+  EditorBanks:
+  - {fileID: 114288602839734308}
+  - {fileID: 114567495441547264}
+  EditorEvents:
+  - {fileID: 114616919049941812}
+  MasterBankRef: {fileID: 114567495441547264}
+  StringsBankRef: {fileID: 114288602839734308}
+  stringsBankWriteTime: 636639887803730419
   cacheVersion: 2
+--- !u!114 &114288602839734308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: E:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Build\Desktop\Master
+    Bank.strings.bank
+  lastModified: 636639887803730419
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 716
+  Exists: 1
+--- !u!114 &114567495441547264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: E:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636639887803660633
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1187456
+  Exists: 1
+--- !u!114 &114616919049941812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/music
+  guid: 35b675c02adaf045af0261b65a5b7399
+  Banks:
+  - {fileID: 114567495441547264}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 80000
