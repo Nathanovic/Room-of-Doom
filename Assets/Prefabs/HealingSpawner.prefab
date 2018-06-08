@@ -62,3 +62,6 @@ MonoBehaviour:
   - startSec: 35
     endSec: 50
     amountHealingSpawns: 3
+  - startSec: 50
+    endSec: 100
+    amountHealingSpawns: 10
