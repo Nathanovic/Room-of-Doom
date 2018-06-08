@@ -197,7 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1074380640574924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.78, y: 0.09, z: 0}
+  m_LocalPosition: {x: 1.22, y: 0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4518076244467402}
@@ -485,19 +485,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec38b40ca1f15e48bf6d8dc16d70100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 12
+  hittedImmuneDuration: 2
   hitPS: {fileID: 198454904809406642}
-  customHealthBar: 0
-  hittedShakeSettings: {fileID: 11400000, guid: 284d9acfd13064549a259bd477ac38fb,
+  customHealthBar: 1
+  hittedShakeSettings: {fileID: 11400000, guid: 83f1212ef1a401240b122d709a41f216,
     type: 2}
+  hittedControllerShakeSettings: {fileID: 11400000, guid: ee19ec3030b198545926b80d7fb0b601,
+    type: 2}
+  remainingShakeDuration: 0
   enemyLM:
     serializedVersion: 2
     m_Bits: 1024
   weaponCheck: {fileID: 4248581300621906}
-  attackDamage: 3
-  attackRange: 1
-  cooldown: 0.5
-  remainingCooldown: 0
+  attackDamage: 30
+  attackRange: 1.4
+  hb: {fileID: 0}
 --- !u!114 &114502132188888414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +517,7 @@ MonoBehaviour:
   testBut: 99
   characterAbilities:
   - {fileID: 11400000, guid: ebc046a99b37187499059438b95b540f, type: 2}
+  - {fileID: 11400000, guid: 136c9dbd4b093104886c18b873a19dbd, type: 2}
   cloneAbilities: []
 --- !u!114 &114557627650589942
 MonoBehaviour:

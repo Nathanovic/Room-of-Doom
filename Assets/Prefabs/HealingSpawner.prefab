@@ -56,9 +56,21 @@ MonoBehaviour:
   healingPacksPrefab: {fileID: 1347103277540420, guid: 4a738b8f698e09b4f84b6c4ba67cc6e5,
     type: 2}
   spawnSchedule:
-  - startSec: 0
-    endSec: 5
-    amountHealingSpawns: 2
   - startSec: 20
     endSec: 30
-    amountHealingSpawns: 2
+    amountHealingSpawns: 1
+  - startSec: 35
+    endSec: 50
+    amountHealingSpawns: 3
+  - startSec: 50
+    endSec: 100
+    amountHealingSpawns: 10
+  - startSec: 100
+    endSec: 200
+    amountHealingSpawns: 5
+  - startSec: 200
+    endSec: 300
+    amountHealingSpawns: 6
+  - startSec: 300
+    endSec: 400
+    amountHealingSpawns: 6

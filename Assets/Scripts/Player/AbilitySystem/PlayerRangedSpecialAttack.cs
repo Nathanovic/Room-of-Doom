@@ -30,7 +30,6 @@ public class PlayerRangedSpecialAttack : Ability{
         endGrowingTime = Time.time + growTime;
 
         List <Vector3> mw = new List<Vector3>();
-        Debug.Log(BossManager.instance.GetHeadPositions(player.transform.position, attackRange).Count + " wormen ");
         if (BossManager.instance.GetHeadPositions(player.transform.position, attackRange).Count != 0){
             foreach (var item in BossManager.instance.GetHeadPositions(player.transform.position, attackRange)){
                 Debug.Log(item);

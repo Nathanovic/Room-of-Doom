@@ -12,6 +12,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	private float remainingImmuneDuration = 0f;
 
 	public delegate void HealthUpdateDelegate (int newHP);
+	public event HealthUpdateDelegate onMaxHealthChanged;
 	public event HealthUpdateDelegate onHealthChanged;
 	public event SimpleDelegate onDie;
 
@@ -68,10 +69,6 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 			health = 0;
 		}
 
-/*		if (onHealthChanged != null) {
-			onHealthChanged (health);
-		}
-*/
         HealthChangedEvent();
 
 		//make sure we cannot be attacked anymore:
@@ -92,7 +89,6 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
         }
     }
 
-
 	public bool ValidTarget (){
 		return health > 0 && remainingImmuneDuration <= 0f;
 	}
@@ -107,6 +103,12 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	public void MakeImmune(float duration){
 		remainingImmuneDuration = duration;
+	}
+
+	public void PrepareRevive(int newMaxHP){
+		health = 0;
+		maxHealth = newMaxHP;		
+		onMaxHealthChanged (newMaxHP);
 	}
 
 	public void HealUp(float hpPercentage){
