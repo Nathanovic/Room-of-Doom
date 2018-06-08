@@ -190,9 +190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67da14ad313128a47bf8ff6d64f5a9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 50
   hitDelay: 0
   projectileAutoDestroy: 10
+  destroyOnHit: 1
 --- !u!198 &198116397880124100
 ParticleSystem:
   m_ObjectHideFlags: 1
