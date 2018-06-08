@@ -193,7 +193,7 @@ MonoBehaviour:
   damage: 50
   hitDelay: 0
   projectileAutoDestroy: 10
-  destroyOnHit: 1
+  destroyOnHit: 0
 --- !u!198 &198116397880124100
 ParticleSystem:
   m_ObjectHideFlags: 1
