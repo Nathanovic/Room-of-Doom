@@ -104,6 +104,10 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		remainingImmuneDuration = duration;
 	}
 
+	public void IncreaseMaxHealth(int newMaxHP){
+		maxHealth = newMaxHP;		
+	}
+
 	public void HealUp(float hpPercentage){
 		health = Mathf.RoundToInt ((float)maxHealth * hpPercentage);
 		if (onHealthChanged != null) {

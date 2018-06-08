@@ -73,4 +73,8 @@ public class Shaker : MonoBehaviour {
 		contrShakeTimer = shake.duration;
 		contrShakeAmount = shake.amount;
 	}
+
+	private void OnApplicationQuit(){
+		UpdateControllerShake (0f);
+	}
 }

@@ -7,6 +7,7 @@ public class Healer : MonoBehaviour {
 
 	public int healCount = 1;
 	public float healDuration = 3f;
+	public int newHP = 2000;
 
 	private CharacterCombat combatScript;
 	public event SimpleDelegate onHeal;
@@ -18,6 +19,7 @@ public class Healer : MonoBehaviour {
 	public void Heal(){	
 		healCount--;
 		combatScript.MakeImmune (healDuration);
+		combatScript.IncreaseMaxHealth (newHP);
 		StartCoroutine (HealOverTime ());
 		if (onHeal != null) {
 			onHeal ();
