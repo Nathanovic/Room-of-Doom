@@ -7,6 +7,7 @@ public class ProjectileDamage : MonoBehaviour {
     public int damage;
     public float hitDelay = 0.2f;
     public float projectileAutoDestroy;
+    public bool destroyOnHit = true;
 
     private float startTime;
 	private bool didDamage;
@@ -25,15 +26,20 @@ public class ProjectileDamage : MonoBehaviour {
 				Vector3 hitDir = other.transform.position - transform.position;
 				attackable.ApplyDamage(damage, transform.position, hitDir);
             }
+            if (destroyOnHit){
+		        DestroySelf ();
 
-		    DestroySelf ();
+            }
         }
 
     }
 
 	private void OnCollisionEnter2D(Collision2D coll){
         if (startTime - Time.time >= hitDelay){
-            DestroySelf();
+            if (destroyOnHit){
+                DestroySelf();
+
+            }
         }        
 	}
 
