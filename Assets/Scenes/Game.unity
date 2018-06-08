@@ -3272,11 +3272,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4127722025022654, guid: e8c65802c951a37458ccec551810eabf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.471141
+      value: 8.14
       objectReference: {fileID: 0}
     - target: {fileID: 4127722025022654, guid: e8c65802c951a37458ccec551810eabf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.0557103
+      value: 4.08
       objectReference: {fileID: 0}
     - target: {fileID: 4127722025022654, guid: e8c65802c951a37458ccec551810eabf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3300,6 +3300,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4127722025022654, guid: e8c65802c951a37458ccec551810eabf, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127722025022654, guid: e8c65802c951a37458ccec551810eabf, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127722025022654, guid: e8c65802c951a37458ccec551810eabf, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127722025022654, guid: e8c65802c951a37458ccec551810eabf, type: 2}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4752,23 +4764,23 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1880786966}
     m_ColliderPaths:
     - - X: 20000000
-        Y: 4477694
+        Y: 977693
       - X: 10000000
-        Y: 4477694
+        Y: 977693
       - X: 10000000
-        Y: 401792
+        Y: -3098207
       - X: 20000000
-        Y: 401792
+        Y: -3098207
   - m_Collider: {fileID: 1180488573}
     m_ColliderPaths:
     - - X: 10000000
-        Y: 4477694
+        Y: 977693
       - X: 0
-        Y: 4477694
+        Y: 977693
       - X: 0
-        Y: 401792
+        Y: -3098207
       - X: 10000000
-        Y: 401792
+        Y: -3098207
   - m_Collider: {fileID: 648425945}
     m_ColliderPaths:
     - - X: 40000000
@@ -4811,10 +4823,18 @@ CompositeCollider2D:
         Y: 401792
   m_CompositePaths:
     m_Paths:
-    - - {x: -0.954688, y: 0.0401792}
-      - {x: 5.954688, y: 0.0401792}
-      - {x: 5.954688, y: 0.4477694}
+    - - {x: 5.954688, y: 0.4477694}
+      - {x: 2, y: 0.4477694}
+      - {x: 2, y: 0.0977693}
+      - {x: 0, y: 0.0977693}
+      - {x: 0, y: 0.4477694}
       - {x: -0.954688, y: 0.4477694}
+      - {x: -0.954688, y: 0.0401792}
+      - {x: 0, y: 0.0401792}
+      - {x: 0, y: -0.3098207}
+      - {x: 2, y: -0.3098207}
+      - {x: 2, y: 0.0401792}
+      - {x: 5.954688, y: 0.0401792}
   m_VertexDistance: 0.0005
 --- !u!50 &1059928532
 Rigidbody2D:
@@ -10158,7 +10178,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1180488571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.35000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1059928533}
@@ -10262,7 +10282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1182770738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10317,6 +10337,8 @@ MonoBehaviour:
   hitPS: {fileID: 1204047681}
   customHealthBar: 0
   hittedShakeSettings: {fileID: 0}
+  hittedControllerShakeSettings: {fileID: 0}
+  remainingShakeDuration: 0
   enemyLM:
     serializedVersion: 2
     m_Bits: 1024
@@ -18695,7 +18717,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1880786964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1059928533}
@@ -23944,7 +23966,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1927424920919148, guid: b51daa7f3744470409ee63a7392d4e97, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b51daa7f3744470409ee63a7392d4e97, type: 2}
