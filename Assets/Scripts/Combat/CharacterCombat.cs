@@ -68,10 +68,6 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 			health = 0;
 		}
 
-/*		if (onHealthChanged != null) {
-			onHealthChanged (health);
-		}
-*/
         HealthChangedEvent();
 
 		//make sure we cannot be attacked anymore:
@@ -91,7 +87,6 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
             onHealthChanged(health);
         }
     }
-
 
 	public bool ValidTarget (){
 		return health > 0 && remainingImmuneDuration <= 0f;

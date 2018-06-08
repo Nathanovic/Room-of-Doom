@@ -93,14 +93,19 @@ public class BossManager : MonoBehaviour {
 	public List<Vector3> GetHeadPositions(Vector3 origin, float range){
 		List<Vector3> availablePositions = new List<Vector3> ();
 
+		TryAddHeadPos (origin, range, boss, ref availablePositions);
 		foreach (WormBase worm in worms) {
-			Vector3 headPos = worm.GetHeadPosition ();
-			if (Vector3.Distance (origin, headPos) <= range && headPos.y > 0f) {
-				availablePositions.Add (headPos);
-			}
+			TryAddHeadPos (origin, range, worm, ref availablePositions);
 		}
 
 		return availablePositions;
+	}
+
+	private void TryAddHeadPos(Vector3 origin, float range, WormBase worm, ref List<Vector3> positions){
+		Vector3 headPos = worm.GetHeadPosition ();
+		if (Vector3.Distance (origin, headPos) <= range && headPos.y > 0f) {
+			positions.Add (headPos);
+		}
 	}
 
 	private void OnDrawGizmos(){
