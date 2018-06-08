@@ -19,7 +19,7 @@ public class Healer : MonoBehaviour {
 	public void Heal(){	
 		healCount--;
 		combatScript.MakeImmune (healDuration);
-		combatScript.IncreaseMaxHealth (newHP);
+		combatScript.PrepareRevive (newHP);
 		StartCoroutine (HealOverTime ());
 		if (onHeal != null) {
 			onHeal ();
