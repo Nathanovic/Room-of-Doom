@@ -30,6 +30,7 @@ public class Healer : MonoBehaviour {
 		float t = 0f;
 		while (t < 1f) {
 			t += Time.deltaTime / healDuration;
+			t = Mathf.Clamp01 (t);
 			combatScript.HealUp (t);
 			yield return null;
 		}

@@ -72,7 +72,6 @@ public class HealingPackSpawnManager : MonoBehaviour {
             float timeSlot = ((currentHT.endSec - currentHT.startSec) / (float)currentHT.amountHealingSpawns);
             float randomTime = Random.Range(0, timeSlot) + (timeSlot * i) + currentHT.startSec;
             SpawnTimes.Add(randomTime);
-            Debug.Log("healingPack spawns at " + randomTime);
         }
 
     }

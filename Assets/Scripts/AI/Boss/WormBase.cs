@@ -24,7 +24,7 @@ public class WormBase : MonoBehaviour {
 	public HealthBar myHealthBar;
 
 	private bool attacking;
-	private float undergroundTime;
+	protected float undergroundTime;
 	private float currentUndergroundTime;
 
 	public float minRespawnTime;
@@ -103,7 +103,7 @@ public class WormBase : MonoBehaviour {
 	}
 
 	//calculate when we will appear again
-	private void OnAttackEnded(){
+	protected virtual void OnAttackEnded(){
 		attacking = false;
 		float rndmIntensityFactor = Random.Range (-rndmIntensity, rndmIntensity) + intensity;
 		intensityFactor = Mathf.Clamp01 (rndmIntensityFactor);

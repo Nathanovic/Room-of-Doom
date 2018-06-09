@@ -12,6 +12,9 @@ public class WormBoss : WormBase {
 	public delegate void BossPhaseDelegate(int stateIndex);
 	public event BossPhaseDelegate onPhaseUp;
 
+	public float phaseUpDuration = 3f;
+	private bool phaseIncreasedUndergroundTime;
+
   // FMOD parameter trigger
   private FMODUnity.StudioParameterTrigger parameterTrigger;
 
@@ -40,20 +43,33 @@ public class WormBoss : WormBase {
 	private void EvaluateState(){
 		float hpPercentage = combatScript.HPPercentage ();
 		if (bossPhases [state].CanStateUp (hpPercentage)) {
-			state++;
-			if (state == bossPhases.Length) {
-				Debug.LogWarning ("game should be over now");
-			}
-			else {
-				State nextState = bossPhases [state].nextState;
-				fsm.TriggerNextState (nextState);
-				onPhaseUp (state);
+			StateUp ();
+		}
+	}
 
-				EvaluateState ();
-			}
+	private void StateUp(){
+		state++;
+		if (state == bossPhases.Length) {
+			Debug.LogWarning ("game should be over now");
+		}
+		else {
+			State nextState = bossPhases [state].nextState;
+			fsm.TriggerNextState (nextState);
+			onPhaseUp (state);
+			phaseIncreasedUndergroundTime = true;
 
-      // Set the state in FMOD
-      parameterTrigger.TriggerParameters();
+			EvaluateState ();
+		}
+
+	// Set the state in FMOD
+	parameterTrigger.TriggerParameters();
+	}
+
+	protected override void OnAttackEnded () {
+		base.OnAttackEnded ();
+		if (phaseIncreasedUndergroundTime) {
+			phaseIncreasedUndergroundTime = false;
+			undergroundTime = phaseUpDuration;
 		}
 	}
 
