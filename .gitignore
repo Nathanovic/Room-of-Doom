@@ -34,5 +34,7 @@ sysinfo.txt
 *.unitypackage
 
 # FMOD logs
+Assets/FMODStudioCache.asset
+Assets/StreamingAssets/*.bank
 fmod.log
 fmod_editor.log
