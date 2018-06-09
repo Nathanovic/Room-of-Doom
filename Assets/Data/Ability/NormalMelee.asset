@@ -16,7 +16,7 @@ MonoBehaviour:
   cooldown: 0.5
   castingTime: 0
   abilitySprite: {fileID: 21300000, guid: 6e0f97360aa3da542b8c248c92c86c94, type: 3}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 74cc38946dcc6d244a113feb577800c2, type: 3}
   readyAtTime: 0
   attackRange: 0
   attackDamage: 30
