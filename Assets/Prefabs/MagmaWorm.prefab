@@ -987,7 +987,7 @@ MonoBehaviour:
   hittedImmuneDuration: 0
   hitPS: {fileID: 0}
   customHealthBar: 1
-  hittedShakeSettings: {fileID: 11400000, guid: 26845c06081b4a944902e5d13c104c5a,
+  hittedShakeSettings: {fileID: 11400000, guid: 101b24783bd420a4eb9ddff99a66a81d,
     type: 2}
 --- !u!114 &114714104358967848
 MonoBehaviour:

@@ -23,6 +23,7 @@ public class HealthBar : MonoBehaviour {
 		combat = combatScript;
 		transform.name = "Health Bar";
 		combat.onHealthChanged += HealthChanged;
+		combat.onMaxHealthChanged += MaxHealthChanged;
 		maxHealth = combat.health;
 		worldScale = _worldScale;
 	}
@@ -48,5 +49,9 @@ public class HealthBar : MonoBehaviour {
 		Vector2 healthBarSize = healthFill.sizeDelta;
 		healthBarSize.x = hbWidth * percentage;
 		healthFill.sizeDelta = healthBarSize;
+	}
+
+	private void MaxHealthChanged(int newMaxHealth){
+		maxHealth = newMaxHealth;
 	}
 }

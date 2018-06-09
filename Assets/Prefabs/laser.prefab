@@ -78,7 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c36b9bec139574188bb32c938a3527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  playerLM:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!120 &120390086424573842
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -94,7 +96,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0104922b484946747ae842788b72aca3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,7 +157,7 @@ LineRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0

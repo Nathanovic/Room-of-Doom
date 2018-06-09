@@ -12,10 +12,13 @@ public class WormBoss : WormBase {
 	public delegate void BossPhaseDelegate(int stateIndex);
 	public event BossPhaseDelegate onPhaseUp;
 
+  // FMOD parameter trigger
+  private FMODUnity.StudioParameterTrigger parameterTrigger;
+
 	protected override void Start(){
 		worm = GetComponent<WormMovement> ();
 		worm.onAttackEnded += EvaluateState;
-		
+
 		base.Start ();
 
 		State beginState = new BeginningState (this);
@@ -25,8 +28,11 @@ public class WormBoss : WormBase {
 		fsm = new FSM (beginState);
 
 		combatScript = GetComponent<CharacterCombat> ();
+
+    // Set the FMOD parameter trigger
+    parameterTrigger = GetComponent<FMODUnity.StudioParameterTrigger> ();
 	}
-	
+
 	public override void WormUpdate(){
 		fsm.Run ();
 	}
@@ -45,6 +51,9 @@ public class WormBoss : WormBase {
 
 				EvaluateState ();
 			}
+
+      // Set the state in FMOD
+      parameterTrigger.TriggerParameters();
 		}
 	}
 

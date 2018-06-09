@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4116161658720842}
   - component: {fileID: 212936397016121070}
   - component: {fileID: 50926448502511262}
-  - component: {fileID: 58595184506934658}
   - component: {fileID: 114763632448370616}
+  - component: {fileID: 61053625048370642}
   m_Layer: 0
   m_Name: HealingPack
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1347103277540420}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
@@ -55,16 +55,16 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 2
+  m_AngularDrag: 2
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
---- !u!58 &58595184506934658
-CircleCollider2D:
+  m_Constraints: 4
+--- !u!61 &61053625048370642
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -75,9 +75,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.49999997, y: -0.53}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.8, y: 0.8}
+    oldSize: {x: 1.6666666, y: 1.6666666}
+    newSize: {x: 1.86, y: 1.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.93
+  m_Size: {x: 1.43, y: 0.92}
+  m_EdgeRadius: 0
 --- !u!114 &114763632448370616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511b305b64af0204fa86f55d971f57a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healing: 2
+  healing: 4
 --- !u!212 &212936397016121070
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -125,7 +135,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e9ca2e9180b05f48aa65baee783a8f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfd2d18d700a5f348a0f37691cdcb467, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

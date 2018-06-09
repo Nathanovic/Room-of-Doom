@@ -47,7 +47,7 @@ public class CameraMovement : MonoBehaviour {
 
 		float minYCamPos = cam.orthographicSize + minY;
 		Debug.DrawLine (transform.position, transform.position + transform.up * minYCamPos, Color.red);
-		camPos.y = minYCamPos;
+		camPos.y = Mathf.Max(minYCamPos, middle.y);
         camPos.x = middle.x;
 
 		if (shakeMovement != null) {
@@ -58,13 +58,17 @@ public class CameraMovement : MonoBehaviour {
 		transform.position = newPos;
     }
 
+
+	public bool testNewY;
 	private void SetCameraViewSize(){
 		float playerXDist = Mathf.Abs(players [0].transform.position.x - players [1].transform.position.x);
 		float preferredViewWidth = playerXDist + playerOffset * 2;//cam.aspect * 2 * cam.orthographicSize;
 		float xOrthoSize = preferredViewWidth / 2f / cam.aspect;
 
 		float playerYDist = Mathf.Abs(players [0].transform.position.y - players [1].transform.position.y);
-		float preferredViewHeight = playerYDist + playerOffset * 2;//cam.aspect * 2 * cam.orthographicSize;
+		//float avgPlayerY = (players [0].transform.position.y + players [1].transform.position.y) * 0.5f;
+		float preferredViewHeight = playerYDist + playerOffset * 2;
+
 		float yOrthoSize = preferredViewHeight / 2f;
 
 		float greatestOrthoSize = Mathf.Max (xOrthoSize, yOrthoSize);
@@ -72,3 +76,5 @@ public class CameraMovement : MonoBehaviour {
 		cam.orthographicSize = preferredOrthoSize;
 	}
 }
+
+//cam collider
