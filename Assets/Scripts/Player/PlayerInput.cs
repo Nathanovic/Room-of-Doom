@@ -5,12 +5,14 @@ using UnityEngine;
 //handles all of the input for one player
 public class PlayerInput : MonoBehaviour {
 
-    public enum Button {A, B, Y, X, RB, LB}//A = jumping&continue, B = back, X = oppakken, RB = attack
+    public enum Button {A, B, Y, X, RB, LB, RT, LT}//A = jumping&continue, B = back, X = oppakken, RB = attack
 
     private string LhorizontalAxis;
     private string LverticalAxis;
     private string RhorizontalAxis;
     private string RverticalAxis;
+    private string ltButtonAxis;
+    private string rtButtonAxis;
     private string aButton;
     private string bButton;
     private string yButton;
@@ -18,6 +20,7 @@ public class PlayerInput : MonoBehaviour {
 
     private string rbButton;
     private string lbButton;
+
 
 
     public int controllerNumber;
@@ -30,8 +33,12 @@ public class PlayerInput : MonoBehaviour {
     public float Rhorizontal;
     [HideInInspector]
     public float Rvertical;
+    [HideInInspector]
+    public float ltButton;
+    [HideInInspector]
+    public float rtButton;
 
-	public bool keyboardInput;
+    public bool keyboardInput;
 
     private void Awake(){
         controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
@@ -55,6 +62,16 @@ public class PlayerInput : MonoBehaviour {
 			    return Input.GetButtonDown(rbButton);
             case Button.LB:
                 return Input.GetButtonDown(lbButton);
+            case Button.RT:
+                if (Input.GetAxis(rtButtonAxis) > 0.05f){
+                    return true;
+                }
+                return false;
+            case Button.LT:
+                if (Input.GetAxis(ltButtonAxis) > 0.05f){
+                    return true;
+                }
+                return false;
             default: 
 				Debug.LogWarning ("unkown button: " + but);
 				break;
@@ -75,7 +92,8 @@ public class PlayerInput : MonoBehaviour {
 
         rbButton = "J" + controllerNumber + "RB";
         lbButton = "J" + controllerNumber + "LB";
-
+        rtButtonAxis = "J" + controllerNumber + "RT";
+        ltButtonAxis = "J" + controllerNumber + "LT";
     }
 
     private void Update(){
@@ -84,6 +102,9 @@ public class PlayerInput : MonoBehaviour {
             Lvertical = Input.GetAxis(LverticalAxis);
             Rhorizontal = Input.GetAxis(RhorizontalAxis);
             Rvertical = Input.GetAxis(RverticalAxis);
+
+            rtButton = Input.GetAxis(rtButtonAxis);
+            ltButton = Input.GetAxis(ltButtonAxis);
         }
     }
 }

@@ -41,7 +41,7 @@ public class PlayerMeleeSpecialAttack : Ability{
         while (endTime > Time.time) {
             if (p != null){
                 Aim(p.transform);
-                if (playerInput.ButtonIsDown(button) || Input.GetKey(KeyCode.P)){
+                if (playerInput.ButtonIsDown(button) == false || Input.GetKey(KeyCode.P)){
                     if (alReadySHot == false){
                         Shoot(p.transform);
                         break;

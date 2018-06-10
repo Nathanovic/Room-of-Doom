@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: NormalMelee
   m_EditorClassIdentifier: 
   nameAbility: NormalMelee
-  button: 1
+  button: 6
   cooldown: 0.5
   castingTime: 0
   abilitySprite: {fileID: 21300000, guid: 6e0f97360aa3da542b8c248c92c86c94, type: 3}
