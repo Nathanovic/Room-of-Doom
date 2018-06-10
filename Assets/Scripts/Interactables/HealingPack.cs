@@ -5,12 +5,19 @@ using UnityEngine;
 public class HealingPack : MonoBehaviour {
 
     public int healing;
+    public ParticleSystem particle;
+    public float autoDestroyTime;
+
+    private void OnEnable(){
+        StartCoroutine(EnableAfterDelay());
+    }
 
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.transform.root.tag == "Player"){
             PlayerCombat pc = collision.gameObject.GetComponent<PlayerCombat>();
             Debug.Log(pc.health + " " + pc.maxHealth);
-            if (pc.health < pc.maxHealth){
+
+            if (pc.health < pc.maxHealth){               
                 if (pc.maxHealth - pc.health >= healing){
                     collision.gameObject.GetComponent<PlayerCombat>().health += healing;
                 }
@@ -20,9 +27,18 @@ public class HealingPack : MonoBehaviour {
                 }
                 pc.HealthChangedEvent();
                 gameObject.SetActive(false);
+
+                ParticleSystem p = Instantiate(particle, transform.position + new Vector3(0, 0, 1), Quaternion.identity);
+                Destroy(p, 5f);
+
             }
         }
 
     }
 
+    private IEnumerator EnableAfterDelay(){
+        yield return new WaitForSeconds(autoDestroyTime);
+        gameObject.SetActive(false);
+
+    }
 }

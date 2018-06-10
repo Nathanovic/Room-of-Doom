@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healing: 4
+  particle: {fileID: 198196303459310808, guid: b44871b6b1735a8459ddf27a42556645, type: 2}
+  autoDestroyTime: 10
 --- !u!212 &212936397016121070
 SpriteRenderer:
   m_ObjectHideFlags: 1
