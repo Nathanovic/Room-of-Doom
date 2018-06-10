@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using XInputDotNetPure;
+using System.Collections;
 
 //the player implementation for combat
 public class PlayerCombat : CharacterCombat {
@@ -10,6 +11,7 @@ public class PlayerCombat : CharacterCombat {
 	private PlayerIndex playerIndex;
 	public ShakeSettings hittedControllerShakeSettings;
 	public float remainingShakeDuration;
+    public int blinkingSpeed = 3;
 
 	[Header("hit check values")]
 	public LayerMask enemyLM;
@@ -21,11 +23,14 @@ public class PlayerCombat : CharacterCombat {
 
 	public HealthBar hb;
 	private int previousHealth;
+    private SpriteRenderer sp;
 
     private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
 		anim = GetComponentInChildren<Animator> ();
-		hb.Init (this, false);
+        sp = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        hb.Init (this, false);
 
 		playerIndex = (PlayerIndex)(GetComponent<PlayerInput> ().controllerNumber - 1);
 
@@ -56,9 +61,23 @@ public class PlayerCombat : CharacterCombat {
 		}
 
 		previousHealth = newHP;
+        StartCoroutine(PlayerBlink());
 	}
 
-	private void FixedUpdate(){
+    private IEnumerator PlayerBlink(){
+        float t = Time.time + hittedImmuneDuration;
+
+        while (Time.time < t){
+            var pingPong = Mathf.PingPong(Time.time * blinkingSpeed, 1);
+            var color = Color.Lerp(Color.white, new Color(1, 1, 1, 0), pingPong);
+            sp.color = color;
+            yield return null;
+        }
+
+        sp.color = Color.white;
+    }
+
+    private void FixedUpdate(){
 		if (remainingShakeDuration > 0f) {
 			remainingShakeDuration -= Time.fixedDeltaTime;
 
