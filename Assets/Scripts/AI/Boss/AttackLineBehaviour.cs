@@ -69,6 +69,10 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		}
 	}
 
+	public bool SpawnCentered(){
+		return true;
+	}
+
 	private void MoveUp(WormSegment[] wormSegments){
 		foreach (WormSegment segment in wormSegments) {
 			segment.TraverseCurve (this);
@@ -125,8 +129,6 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 		public void StartAttack(MonoBehaviour ienumeratable, Vector3 targetPos, UnityAction callback){
 			finishCallback = callback;
-			laser.SetActive (true);
-			laser.transform.rotation = Quaternion.Euler (0, 0, 0);
 			ienumeratable.StartCoroutine (BeamAttack (
 					parentTransform.position, 
 					targetPos)
@@ -134,6 +136,13 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		}
 
 		private IEnumerator BeamAttack(Vector3 myPos, Vector3 targetPos){
+			//prepare:
+			Vector3 startEuler = (targetPos.x > myPos.x) ? -Vector3.forward * 90f : Vector3.forward * 90f;
+			Quaternion startRot = Quaternion.Euler (startEuler);
+			Quaternion endRot = laser.transform.rotation;
+			laser.transform.rotation = startRot;
+			laser.SetActive (true);
+
 			//appear
 			float t = 0;
 			while (t < 1f) {
@@ -144,9 +153,6 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 			laserColl.enabled = true;
 
 			//rotate
-			Quaternion startRot = laser.transform.rotation;
-			Vector3 endEuler = (targetPos.x > myPos.x) ? -Vector3.forward * 90f : Vector3.forward * 90f;
-			Quaternion endRot = Quaternion.Euler (endEuler);
 			t = 0;
 			while (t < 1f) {
 				t += Time.deltaTime / rotateDuration;
