@@ -458,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCasting: 0
   isStunned: 0
-  testBut: 99
+  testBut: 118
   characterAbilities:
   - {fileID: 11400000, guid: fc839e444c9571a4aac0c6c49dde40a4, type: 2}
   - {fileID: 11400000, guid: e9951b0a376274d468740ee5f8ae1dc6, type: 2}
