@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.Events;
 
 //used for laser attack
 [RequireComponent(typeof(WormMovement))]
@@ -14,11 +16,8 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 	public float moveDownSpeed = 5f;
 
 	public int attackDamage;
-	public float attackDuration = 2f;
-	public float laserReach = 30f;
-	private float remainingAttackTime;
 
-	public Laser laser;
+	public LaserAttack laserAttack;
 	private Vector3 laserTargetPos;
 
 	private void Start(){
@@ -27,8 +26,10 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 		moveScript = GetComponent<WormMovement> ();
 
-		laser = Laser.Instantiate (laser, transform) as Laser;
-		laser.Init (attackDamage);
+		GameObject laserObj = GameObject.Instantiate (laserAttack.prefab, transform) as GameObject;
+		laserObj.transform.localPosition = Vector3.zero;
+		laserObj.GetComponent<Laser> ().damage = attackDamage;
+		laserAttack.Init (laserObj, transform);
 	}
 
 	public void Prepare(Vector3 startPos, Vector3 enemyPos){
@@ -41,7 +42,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 		laserTargetPos = new Vector2 ();
 		int dir = enemyPos.x > startPos.x ? 1 : -1;
-		laserTargetPos.x = startPoint.x + dir * laserReach;
+		laserTargetPos.x = startPoint.x + dir;
 		laserTargetPos.y = endPoint.y;
 	}
 
@@ -62,9 +63,6 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		case AttackState.MoveUp:
 			MoveUp (wormSegments);
 			break;
-		case AttackState.Attack:
-			Attack ();
-			break;
 		case AttackState.MoveDown:
 			MoveDown ();
 			break;
@@ -79,25 +77,14 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 	private void StartAttack(){
 		moveScript.onReachedLineEnd -= StartAttack;
-		remainingAttackTime = attackDuration;
 		attackState = AttackState.Attack;
-		Vector3[] laserPoints =	new Vector3[] {
-				transform.position, 
-				laserTargetPos
-			};
 
-		Vector2 laserOffset = new Vector2 (0.5f * (laserTargetPos.x - transform.position.x), 0f);
-		Vector2 laserSize = new Vector2 (Mathf.Abs(laserOffset.x) * 2f, 1f);
-
-		laser.Enable (laserOffset, laserSize, laserPoints);
+		moveScript.RotateHeadToPos (laserTargetPos);
+		laserAttack.StartAttack (this, laserTargetPos, StopAttack);
 	}
 
-	private void Attack(){
-		remainingAttackTime -= Time.deltaTime;
-		if (remainingAttackTime <= 0f) {
-			laser.Disable ();
-			attackState = AttackState.MoveDown;		
-		}
+	private void StopAttack(){
+		attackState = AttackState.MoveDown;				
 	}
 
 	private void MoveDown(){
@@ -113,6 +100,71 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 	private void ReachedLineEnd(){
 		attackState = AttackState.MoveDown;
+	}
+
+	[System.Serializable]
+	public class LaserAttack{
+		private Transform parentTransform;
+		private GameObject laser;
+		private Collider2D laserColl;
+
+		public GameObject prefab;
+
+		public float appearDuration;
+		public float rotateDuration;
+		public float stayDuration;
+
+		private UnityAction finishCallback;
+
+		public void Init(GameObject spawnedLaser, Transform transform){
+			laser = spawnedLaser;
+			laser.SetActive (false);
+			laserColl = laser.GetComponent<Collider2D> ();
+			this.parentTransform = transform;
+		}
+
+		public void StartAttack(MonoBehaviour ienumeratable, Vector3 targetPos, UnityAction callback){
+			finishCallback = callback;
+			laser.SetActive (true);
+			laser.transform.rotation = Quaternion.Euler (0, 0, 0);
+			ienumeratable.StartCoroutine (BeamAttack (
+					parentTransform.position, 
+					targetPos)
+			);
+		}
+
+		private IEnumerator BeamAttack(Vector3 myPos, Vector3 targetPos){
+			//appear
+			float t = 0;
+			while (t < 1f) {
+				t += Time.deltaTime / appearDuration;
+				laser.transform.localScale = new Vector3 (t, 1f, 1f);
+				yield return null;
+			}
+			laserColl.enabled = true;
+
+			//rotate
+			Quaternion startRot = laser.transform.rotation;
+			Vector3 endEuler = (targetPos.x > myPos.x) ? -Vector3.forward * 90f : Vector3.forward * 90f;
+			Quaternion endRot = Quaternion.Euler (endEuler);
+			t = 0;
+			while (t < 1f) {
+				t += Time.deltaTime / rotateDuration;
+				laser.transform.rotation = Quaternion.Lerp (startRot, endRot, t);
+				yield return null;
+			}
+
+			//stay
+			yield return new WaitForSeconds (stayDuration);
+
+			StopAttack ();
+		}
+
+		private void StopAttack(){
+			laserColl.enabled = false;
+			laser.SetActive (false);
+			finishCallback ();
+		}
 	}
 
 	public enum AttackState{
