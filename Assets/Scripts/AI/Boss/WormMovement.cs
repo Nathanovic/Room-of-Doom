@@ -42,10 +42,7 @@ public class WormMovement : MonoBehaviour {
 			if (moveT < 1f) {
 				moveT += traverseSpeed * Time.deltaTime;
 				transform.position = attackTraverseable.GetPoint (moveT);
-
-				Vector3 dir = attackTraverseable.GetPoint (moveT + 0.1f) - transform.position;
-				float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg + 180;
-				head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+				RotateHeadToPos (attackTraverseable.GetPoint (moveT + 0.1f));
 
 				if (moveT >= 1f && onReachedLineEnd != null) {
 					onReachedLineEnd ();
@@ -54,6 +51,12 @@ public class WormMovement : MonoBehaviour {
 
 			attackTraverseable.Run (wormSegments);
 		}
+	}
+
+	public void RotateHeadToPos(Vector3 targetPos){
+		Vector3 dir = targetPos - transform.position;
+		float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg + 180;
+		head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
 
 	public void PrepareAttack(Vector3 startPos, Vector3 enemyPos, float attackIntensity){
