@@ -58,28 +58,28 @@ MonoBehaviour:
   spawnSchedule:
   - startSec: 20
     endSec: 30
-    amountHealingSpawns: 1
+    amountHealingSpawns: 3
   - startSec: 35
     endSec: 50
-    amountHealingSpawns: 3
+    amountHealingSpawns: 8
   - startSec: 50
     endSec: 100
-    amountHealingSpawns: 10
+    amountHealingSpawns: 14
   - startSec: 100
     endSec: 200
-    amountHealingSpawns: 5
+    amountHealingSpawns: 7
   - startSec: 200
     endSec: 300
-    amountHealingSpawns: 6
+    amountHealingSpawns: 8
   - startSec: 300
     endSec: 400
-    amountHealingSpawns: 6
+    amountHealingSpawns: 8
   - startSec: 400
     endSec: 600
-    amountHealingSpawns: 12
+    amountHealingSpawns: 14
   - startSec: 600
     endSec: 1200
-    amountHealingSpawns: 24
+    amountHealingSpawns: 26
   - startSec: 1200
     endSec: 2400
-    amountHealingSpawns: 32
+    amountHealingSpawns: 35

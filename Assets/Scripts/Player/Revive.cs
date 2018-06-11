@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Revive : MonoBehaviour {
 
+    public int newHealth;
     public float radius;
     public LayerMask layer;
     public PlayerCombat otherPlayerCombat;
@@ -28,7 +29,7 @@ public class Revive : MonoBehaviour {
 
             foreach (var item in hitCollider){
                 if (item.transform.root.gameObject == otherPlayerCombat.transform.root.gameObject){
-                    otherPlayerCombat.health = 10;
+                    otherPlayerCombat.health = newHealth;
                     anim.SetBool("dead", false);
                     
                     Debug.Log("revived");
