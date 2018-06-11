@@ -57,8 +57,7 @@ public class HealthBar : MonoBehaviour {
 			Destroy (gameObject);
 			return;
 		}
-        Debug.Log(newHealth);
-        Debug.Log(maxHealth);
+
         lastHealth = healthFill.sizeDelta.x;
 
         float percentage = (float)newHealth / maxHealth;
@@ -68,6 +67,7 @@ public class HealthBar : MonoBehaviour {
 
         currentHealth = healthBarSize.x;
         StartCoroutine(LerpRedHealthbar());
+        Debug.Log(percentage);
 
         if (newHealth <= 0){
             StartCoroutine(IconBlink());

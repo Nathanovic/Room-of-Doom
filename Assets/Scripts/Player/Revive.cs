@@ -25,10 +25,11 @@ public class Revive : MonoBehaviour {
             if (hitCollider != null){
                 if (otherPlayerCombat.health <= 0){
                     otherPlayerCombat.health = 10;
-                    otherPlayerCombat.HealthChangedEvent();
                     anim.SetBool("dead", false);
-
+                    
                     Debug.Log("revived");
+                    otherPlayerCombat.HealthChangedEvent();
+
                 }
             }
         }

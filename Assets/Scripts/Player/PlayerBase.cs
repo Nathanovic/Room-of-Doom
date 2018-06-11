@@ -20,9 +20,13 @@ public class PlayerBase : MonoBehaviour {
 	private void OnHealthChanged(int newHealth){
 		if (newHealth == 0) {
 			canControl = false;
-			//StartCoroutine (RestartGame ());
-		}
-	}
+            //StartCoroutine (RestartGame ());
+        }
+        else{
+            canControl = true;
+
+        }
+    }
 
 	//restart the game after time
 	private IEnumerator RestartGame(){

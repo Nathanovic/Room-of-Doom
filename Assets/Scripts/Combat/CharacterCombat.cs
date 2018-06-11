@@ -63,7 +63,8 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	}
 
 	//simplified version (without hitPS)
-	public void ApplyDamage(int dmg){health -= dmg;
+	public void ApplyDamage(int dmg){
+        health -= dmg;
 		remainingImmuneDuration = hittedImmuneDuration;
 		if (health <= 0) {
 			health = 0;
