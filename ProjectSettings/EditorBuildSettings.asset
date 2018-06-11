@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PressX.unity
     guid: d140d2d598dff2d42b8838f8f4976030
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainScreen.unity
     guid: 95ce8e7d06d664c4ead727b71cf1c0c7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 9fa74f32e8d81a645a801fb4edf5fbc5
   - enabled: 0
