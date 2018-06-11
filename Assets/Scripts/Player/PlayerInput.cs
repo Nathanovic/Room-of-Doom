@@ -63,12 +63,12 @@ public class PlayerInput : MonoBehaviour {
             case Button.LB:
                 return Input.GetButtonDown(lbButton);
             case Button.RT:
-                if (Input.GetAxis(rtButtonAxis) > 0.05f){
+                if (rtButton > 0.05f){
                     return true;
                 }
                 return false;
             case Button.LT:
-                if (Input.GetAxis(ltButtonAxis) > 0.05f){
+                if (ltButton > 0.05f){
                     return true;
                 }
                 return false;
