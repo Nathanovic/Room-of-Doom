@@ -62,8 +62,12 @@ public class HealthBar : MonoBehaviour {
 		healthFill.sizeDelta = healthBarSize;
 
         currentHealth = healthBarSize.x;
-
         StartCoroutine(LerpRedHealthbar());
+
+        if (true)
+        {
+
+        }
 	}
 
 	private void MaxHealthChanged(int newMaxHealth){

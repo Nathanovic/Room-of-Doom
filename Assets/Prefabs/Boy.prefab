@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 114502132188888414}
   - component: {fileID: 82615916504214568}
   - component: {fileID: 114884862659799926}
+  - component: {fileID: 114334899716744406}
   m_Layer: 12
   m_Name: Boy
   m_TagString: Player
@@ -461,6 +462,8 @@ MonoBehaviour:
   Lvertical: 0
   Rhorizontal: 0
   Rvertical: 0
+  ltButton: 0
+  rtButton: 0
   keyboardInput: 0
 --- !u!114 &114333835161628046
 MonoBehaviour:
@@ -474,6 +477,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canControl: 0
+--- !u!114 &114334899716744406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634165886236396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbee1fac9b56c0b47b4beb9ea32b0be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  layer:
+    serializedVersion: 2
+    m_Bits: 4096
+  otherPlayer: {fileID: 0}
+  buttonToRevive: 2
 --- !u!114 &114459267774608690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -494,6 +514,7 @@ MonoBehaviour:
   hittedControllerShakeSettings: {fileID: 11400000, guid: ee19ec3030b198545926b80d7fb0b601,
     type: 2}
   remainingShakeDuration: 0
+  blinkingSpeed: 3
   enemyLM:
     serializedVersion: 2
     m_Bits: 1024
