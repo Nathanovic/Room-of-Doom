@@ -4,20 +4,43 @@ using UnityEngine;
 
 public class DeadManager : MonoBehaviour {
 
+    public static DeadManager instance;
 
-    public static int deadCount;
-    public static int winCount;
+    public int deadCount;
+    public int winCount;
+    public int playersRevived;
 
-    private int playersAlive;
+    public int playersAlive;
+
+    private void Awake(){
+        instance = this;
+
+    }
 
     private void Start(){
-        playersAlive = CameraMovement.players.Count;
+        StartCoroutine(GetPlayersAliveDelay());
 
     }
 
     private void Update(){
         
 
+
+    }
+
+    public void OnPlayerRevive(){
+        playersRevived++;
+        playersAlive++;
+    }
+
+    public void OnPlayerDead(){
+        deadCount++;
+        playersAlive--;
+    }
+
+    private IEnumerator GetPlayersAliveDelay(){
+        yield return new WaitForSeconds(0.3f);
+        playersAlive = CameraMovement.players.Count;
 
     }
 
