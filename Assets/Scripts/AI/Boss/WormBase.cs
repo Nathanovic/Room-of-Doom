@@ -11,10 +11,7 @@ public class WormBase : MonoBehaviour {
 	private WormMovement moveScript;
 	private WormSegment[] wormSegments;
 
-	public Transform[] targets;//the players
-	private SpawnPositions spawner;
 	private Transform head;
-	public ParticleSystem feedForwardVFX;
 
 	private Vector3 deactivePosition;
 
@@ -45,9 +42,7 @@ public class WormBase : MonoBehaviour {
 		BossManager.instance.InitializeWorm (this);
 		moveScript = GetComponent<WormMovement> ();
 		deactivePosition = transform.position;
-		BossManager.instance.DetachWormObject(feedForwardVFX.transform);
 		head = transform.GetChild (0);
-		spawner = GetComponentInChildren<SpawnPositions> ();
 
 		wormSegments = GetComponentsInChildren<WormSegment> ();
 		moveScript.onAttackEnded += OnAttackEnded;
@@ -78,28 +73,7 @@ public class WormBase : MonoBehaviour {
 
 	protected virtual void StartAttack(){
 		attacking = true;
-
-		int rndmTargetIndex = Random.Range (0, targets.Length);
-		Vector3 enemyPos = targets [rndmTargetIndex].position;
-
-		//choose a random start pos that is far away from it:
-		List<Vector3> availableSpawnPositions = new List<Vector3>();
-		Vector3 startPos = Vector3.zero;
-		int i = 0;
-		foreach (Vector3 point in spawner.points) {
-			float dist = Mathf.Abs (point.x - enemyPos.x);
-			if (dist > minXAttackDist) {
-				availableSpawnPositions.Add (point);
-			}
-			i++;
-		}
-
-		int rndmIndex = Random.Range (0, availableSpawnPositions.Count);
-		startPos = availableSpawnPositions [rndmIndex];
-		feedForwardVFX.transform.position = new Vector3 (startPos.x, 0f, 0f);
-		feedForwardVFX.Play ();
-
-		moveScript.PrepareAttack (startPos, enemyPos, intensityFactor);
+		moveScript.PrepareAttack (intensityFactor);
 	}
 
 	//calculate when we will appear again

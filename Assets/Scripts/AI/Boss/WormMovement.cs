@@ -27,11 +27,17 @@ public class WormMovement : MonoBehaviour {
 	public event SimpleDelegate onReachedLineEnd;
 	public event SimpleDelegate onAttackEnded;
 
+	private SpawnPositions spawner;
+	public ParticleSystem feedForwardVFX;
+
 	private void Start(){
 		head = transform.GetChild (0);
 
 		attackTraverseables = GetComponents<IWormTraverseable> ();
 		wormSegments = GetComponentsInChildren<WormSegment> ();
+
+		spawner = BossManager.instance.spawner;
+		BossManager.instance.DetachWormObject(feedForwardVFX.transform);
 	}
 
 	public void AttackUpdate(){
@@ -59,9 +65,19 @@ public class WormMovement : MonoBehaviour {
 		head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
 
-	public void PrepareAttack(Vector3 startPos, Vector3 enemyPos, float attackIntensity){
+	public void PrepareAttack(float attackIntensity){
 		int rndmTraverseableIndex = Random.Range (0, attackTraverseables.Length);
 		attackTraverseable = attackTraverseables [rndmTraverseableIndex];
+
+		Vector3 enemyPos = BossManager.instance.GetRandomTargetPos ();
+		SpawnSettings settings = new SpawnSettings ();
+		settings.targetPos = enemyPos;
+		settings.spawnCentered = attackTraverseable.SpawnCentered();
+		Vector3 startPos = BossManager.instance.spawner.GetRandomPoint (settings);
+
+		feedForwardVFX.transform.position = new Vector3 (startPos.x, 0f, 0f);
+		feedForwardVFX.Play ();
+
 		attackTraverseable.Prepare (startPos, enemyPos);
 		StartAttack (attackIntensity);
 	}

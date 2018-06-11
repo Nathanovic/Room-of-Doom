@@ -13,4 +13,5 @@ public interface IWormTraverseable{
 	void Run(WormSegment[] wormSegments);
 	void Prepare (Vector3 startPos, Vector3 targetPos);
 	Vector3 GetPoint(float t);//t Range(0, 1)
+	bool SpawnCentered();
 }

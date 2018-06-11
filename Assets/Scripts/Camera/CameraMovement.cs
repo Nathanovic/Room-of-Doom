@@ -57,13 +57,11 @@ public class CameraMovement : MonoBehaviour {
 		Vector3 newPos = new Vector3 (camPos.x, camPos.y, transform.position.z);
 		transform.position = newPos;
     }
-
-
-	public bool testNewY;
+		
 	private void SetCameraViewSize(){
 		float playerXDist = Mathf.Abs(players [0].transform.position.x - players [1].transform.position.x);
-		float preferredViewWidth = playerXDist + playerOffset * 2;//cam.aspect * 2 * cam.orthographicSize;
-		float xOrthoSize = preferredViewWidth / 2f / cam.aspect;
+		float preferredViewWidth = playerXDist + playerOffset;//cam.aspect * 2 * cam.orthographicSize;
+		float xOrthoSize = preferredViewWidth / cam.aspect;
 
 		float playerYDist = Mathf.Abs(players [0].transform.position.y - players [1].transform.position.y);
 		//float avgPlayerY = (players [0].transform.position.y + players [1].transform.position.y) * 0.5f;

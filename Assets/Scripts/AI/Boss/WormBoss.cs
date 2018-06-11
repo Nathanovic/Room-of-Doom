@@ -5,6 +5,7 @@ public class WormBoss : WormBase {
 
 	private WormMovement worm;
 	private CharacterCombat combatScript;
+	private SpawnPositions spawner;
 	private FSM fsm;
 	private int state;
 
@@ -31,6 +32,8 @@ public class WormBoss : WormBase {
 		fsm = new FSM (beginState);
 
 		combatScript = GetComponent<CharacterCombat> ();
+		spawner = BossManager.instance.spawner;
+		spawner.SetSpawnMethod (bossPhases [0].SpawnInCameraView ());
 
     // Set the FMOD parameter trigger
     parameterTrigger = GetComponent<FMODUnity.StudioParameterTrigger> ();
@@ -57,6 +60,7 @@ public class WormBoss : WormBase {
 			fsm.TriggerNextState (nextState);
 			onPhaseUp (state);
 			phaseIncreasedUndergroundTime = true;
+			spawner.SetSpawnMethod (bossPhases [state].SpawnInCameraView ());
 
 			EvaluateState ();
 		}
@@ -96,6 +100,7 @@ public class WormBoss : WormBase {
 [System.Serializable]
 public class BossPhase{
 	[SerializeField]private float stateUpPercentage = 0.3f;
+	[SerializeField]private bool spawnInCameraView;
 
 	public State nextState{ get; private set; }
 
@@ -105,5 +110,9 @@ public class BossPhase{
 
 	public bool CanStateUp(float hpPercentage){
 		return (nextState != null && hpPercentage <= stateUpPercentage);
+	}
+
+	public bool SpawnInCameraView(){
+		return spawnInCameraView;
 	}
 }
