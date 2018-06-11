@@ -2948,6 +2948,7 @@ MonoBehaviour:
   playerOffset: 0.5
   minCamViewSize: 6.5
   maxCamViewSize: 10
+  testNewY: 0
 --- !u!1 &754476811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,6 +3054,48 @@ Transform:
   m_Father: {fileID: 1001297457}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &782172640
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4878910105345726, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878910105345726, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878910105345726, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878910105345726, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878910105345726, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878910105345726, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878910105345726, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878910105345726, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90356cf617dc4ef4d96ab0aaae5a71d1, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &787097388
 GameObject:
   m_ObjectHideFlags: 0
@@ -10319,6 +10362,8 @@ MonoBehaviour:
   Lvertical: 0
   Rhorizontal: 0
   Rvertical: 0
+  ltButton: 0
+  rtButton: 0
   keyboardInput: 0
 --- !u!114 &1182770740
 MonoBehaviour:
@@ -10339,6 +10384,7 @@ MonoBehaviour:
   hittedShakeSettings: {fileID: 0}
   hittedControllerShakeSettings: {fileID: 0}
   remainingShakeDuration: 0
+  blinkingSpeed: 3
   enemyLM:
     serializedVersion: 2
     m_Bits: 1024
