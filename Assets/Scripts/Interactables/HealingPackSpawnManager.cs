@@ -17,7 +17,7 @@ public class HealingPackSpawnManager : MonoBehaviour {
     private bool endOfInterval = true;
     private List<float> SpawnTimes = new List<float>();
     private List<GameObject> healingPacksPool = new List<GameObject>();
-
+    private float startTime;
 
     private void Start(){
         currentHT = spawnSchedule[scheduleIndex];
@@ -26,19 +26,19 @@ public class HealingPackSpawnManager : MonoBehaviour {
         pack.transform.parent = transform;
         pack.gameObject.SetActive(false);
         healingPacksPool.Add(pack);
-
+        startTime = Time.time;
     }
 
     private void Update(){
         if (scheduleIndex < spawnSchedule.Count){
-            if (currentHT.startSec < Time.time && endOfInterval == true){
+            if (currentHT.startSec < Time.time - startTime && endOfInterval == true){
                 endOfInterval = false;
                 currentHT = spawnSchedule[scheduleIndex];
                 SetSpawnTimes();
             }
 
             if (spawnIndex < SpawnTimes.Count){
-                if (SpawnTimes.Count > 0 && SpawnTimes[spawnIndex] < Time.time){
+                if (SpawnTimes.Count > 0 && SpawnTimes[spawnIndex] < Time.time - startTime){
                     for (int i = 0; i < healingPacksPool.Count; i++){
                         if (healingPacksPool[i].activeInHierarchy == false){
                             healingPacksPool[i].transform.position = new Vector3(Random.Range(-xSpawnWidth * 0.5f, xSpawnWidth * 0.5f), ySpawnHight, 0);
@@ -57,7 +57,7 @@ public class HealingPackSpawnManager : MonoBehaviour {
                 }
             }
 
-            if (currentHT.endSec <= Time.time && endOfInterval == false){
+            if (currentHT.endSec <= Time.time - startTime && endOfInterval == false){
                 endOfInterval = true;
                 SpawnTimes.Clear();
                 spawnIndex = 0;

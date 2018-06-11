@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 222413493834214728}
   - component: {fileID: 114399612475242906}
   - component: {fileID: 114691283659129842}
+  - component: {fileID: 114085191549317040}
   m_Layer: 5
   m_Name: aiHealthBar (2)
   m_TagString: Untagged
@@ -378,6 +379,7 @@ GameObject:
   - component: {fileID: 222780332440953630}
   - component: {fileID: 114949455277659424}
   - component: {fileID: 114940610239736118}
+  - component: {fileID: 114928182868028912}
   m_Layer: 5
   m_Name: aiHealthBar (1)
   m_TagString: Untagged
@@ -481,6 +483,7 @@ GameObject:
   - component: {fileID: 222113424117060700}
   - component: {fileID: 114803097727225770}
   - component: {fileID: 114803104217810560}
+  - component: {fileID: 114727538450820042}
   m_Layer: 5
   m_Name: aiHealthBar
   m_TagString: Untagged
@@ -817,6 +820,7 @@ GameObject:
   - component: {fileID: 222996908691695184}
   - component: {fileID: 114636886033372066}
   - component: {fileID: 114101386656259306}
+  - component: {fileID: 114157532411980132}
   m_Layer: 5
   m_Name: aiHealthBar (3)
   m_TagString: Untagged
@@ -922,6 +926,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114085191549317040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1459599867749226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d14337596025d478bcffb3e8c1e456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114094177677272582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -987,9 +1003,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 3
   worldScale: 0
   fillChildIndex: 0
   fillRedChildIndex: 0
+  playerIconIndex: 0
   yOffset: 1
 --- !u!114 &114119828062012334
 MonoBehaviour:
@@ -1045,6 +1063,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114157532411980132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969013717631758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d14337596025d478bcffb3e8c1e456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114174967690706832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1056,9 +1086,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 3
   worldScale: 0
   fillChildIndex: 1
   fillRedChildIndex: 0
+  playerIconIndex: 0
   yOffset: 1
 --- !u!114 &114187949334403746
 MonoBehaviour:
@@ -1233,9 +1265,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 3
   worldScale: 0
   fillChildIndex: 0
   fillRedChildIndex: 0
+  playerIconIndex: 0
   yOffset: 1
 --- !u!114 &114313470322168074
 MonoBehaviour:
@@ -1620,9 +1654,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 3
   worldScale: 0
   fillChildIndex: 1
   fillRedChildIndex: 0
+  playerIconIndex: 0
   yOffset: 1
 --- !u!114 &114627937584003030
 MonoBehaviour:
@@ -1743,9 +1779,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 3
   worldScale: 0
   fillChildIndex: 0
   fillRedChildIndex: 0
+  playerIconIndex: 0
   yOffset: 1
 --- !u!114 &114692723419351130
 MonoBehaviour:
@@ -1774,6 +1812,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114727538450820042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630409767772078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d14337596025d478bcffb3e8c1e456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114741276525719632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1812,9 +1862,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 1
   worldScale: 0
   fillChildIndex: 2
   fillRedChildIndex: 1
+  playerIconIndex: 4
   yOffset: 1
 --- !u!114 &114793577468269668
 MonoBehaviour:
@@ -1827,9 +1879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 1
   worldScale: 0
   fillChildIndex: 2
   fillRedChildIndex: 1
+  playerIconIndex: 4
   yOffset: 1
 --- !u!114 &114803097727225770
 MonoBehaviour:
@@ -1869,9 +1923,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 3
   worldScale: 0
   fillChildIndex: 0
   fillRedChildIndex: 0
+  playerIconIndex: 0
   yOffset: 1
 --- !u!114 &114811666112179530
 MonoBehaviour:
@@ -1970,6 +2026,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114928182868028912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464837485895176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d14337596025d478bcffb3e8c1e456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114940610239736118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1981,9 +2049,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 3
   worldScale: 0
   fillChildIndex: 0
   fillRedChildIndex: 0
+  playerIconIndex: 0
   yOffset: 1
 --- !u!114 &114949455277659424
 MonoBehaviour:
@@ -2420,7 +2490,7 @@ RectTransform:
   m_GameObject: {fileID: 1061075502553576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
   m_Children: []
   m_Father: {fileID: 224104619765246892}
   m_RootOrder: 4
@@ -3138,7 +3208,7 @@ RectTransform:
   m_GameObject: {fileID: 1427105398412888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 0.9}
   m_Children: []
   m_Father: {fileID: 224854256998427672}
   m_RootOrder: 4

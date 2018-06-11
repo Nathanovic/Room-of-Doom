@@ -74,3 +74,12 @@ MonoBehaviour:
   - startSec: 300
     endSec: 400
     amountHealingSpawns: 6
+  - startSec: 400
+    endSec: 600
+    amountHealingSpawns: 12
+  - startSec: 600
+    endSec: 1200
+    amountHealingSpawns: 24
+  - startSec: 1200
+    endSec: 2400
+    amountHealingSpawns: 32
