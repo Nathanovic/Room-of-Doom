@@ -78,6 +78,10 @@ public class DeadManager : MonoBehaviour {
         if (playersAlive == 0){
             GameOver();
         }
+
+        if (false){
+            GameWon();
+        }
     }
 
     private IEnumerator GetPlayersAliveDelay(){
