@@ -75,8 +75,8 @@ GameObject:
   - component: {fileID: 114665708308607302}
   - component: {fileID: 114117176932477804}
   - component: {fileID: 114094897338781184}
-  - component: {fileID: 82183587093234998}
   - component: {fileID: 114800478664699488}
+  - component: {fileID: 114237113460145210}
   m_Layer: 12
   m_Name: Girl
   m_TagString: Player
@@ -331,101 +331,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.87386966}
   m_EdgeRadius: 0
---- !u!82 &82183587093234998
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1206540721547482}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!95 &95132227207572982
 Animator:
   serializedVersion: 3
@@ -479,7 +384,26 @@ MonoBehaviour:
   Lvertical: 0
   Rhorizontal: 0
   Rvertical: 0
+  ltButton: 0
+  rtButton: 0
   keyboardInput: 0
+--- !u!114 &114237113460145210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206540721547482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbee1fac9b56c0b47b4beb9ea32b0be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  layer:
+    serializedVersion: 2
+    m_Bits: 4096
+  otherPlayerCombat: {fileID: 0}
+  buttonToRevive: 3
 --- !u!114 &114258236971674482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,6 +531,7 @@ MonoBehaviour:
   hittedControllerShakeSettings: {fileID: 11400000, guid: ee19ec3030b198545926b80d7fb0b601,
     type: 2}
   remainingShakeDuration: 0
+  blinkingSpeed: 3
   enemyLM:
     serializedVersion: 2
     m_Bits: 1024
