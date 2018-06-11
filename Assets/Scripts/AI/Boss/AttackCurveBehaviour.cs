@@ -34,7 +34,7 @@ public class AttackCurveBehaviour : MonoBehaviour, IWormTraverseable {
 		}
 
 		if (targetPos.y > 0f)
-			targetPos.y = -1.5f;
+			targetPos.y = -2f;
 
 		points = new Vector2[] {
 			startPos,
@@ -69,6 +69,10 @@ public class AttackCurveBehaviour : MonoBehaviour, IWormTraverseable {
 	public Vector3 GetPoint(float t){
 		Vector3 lerpedPoint = GetLerpedPoint (points [0], points [1], points [2], t);
 		return lerpedPoint;
+	}
+
+	public bool SpawnCentered(){
+		return false;
 	}
 
 	private Vector3 GetLerpedPoint(Vector3 p0, Vector3 p1, Vector3 p2, float t){

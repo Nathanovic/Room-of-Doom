@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Revive : MonoBehaviour {
     private PlayerInput playerInput;
     private Animator anim;
     private PlayerCombat playerCombat;
+    private bool canRevive = true;
 
     private void Start(){
         playerInput = GetComponent<PlayerInput>();
@@ -20,7 +22,8 @@ public class Revive : MonoBehaviour {
 
 
     private void Update(){
-        if (playerCombat.health > 0 && otherPlayerCombat.health <= 0 && (playerInput.ButtonIsDown(buttonToRevive) || Input.GetKeyDown(KeyCode.L))){
+        if (canRevive && playerCombat.health > 0 && otherPlayerCombat.health <= 0 && (playerInput.ButtonIsDown(buttonToRevive) || Input.GetKeyDown(KeyCode.L))){
+            canRevive = false;
             Collider2D[] hitCollider = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), radius, layer);
 
             foreach (var item in hitCollider){
@@ -30,11 +33,18 @@ public class Revive : MonoBehaviour {
                     
                     Debug.Log("revived");
                     otherPlayerCombat.HealthChangedEvent();
-                    DeadManager.instance.OnPlayerRevive();                    
+                    DeadManager.instance.OnPlayerRevive();
+                    break;
                 }
             }
+            StartCoroutine(ReviveDelay());
         }
 
+    }
+
+    private IEnumerator ReviveDelay(){
+        yield return new WaitForSeconds(0.3f);
+        canRevive = true;
     }
 
     private void OnCollisionStay2D(Collision2D collision) {

@@ -9,6 +9,9 @@ public class BossManager : MonoBehaviour {
 
 	private FSM fsm;
 
+	public Transform[] targets;//the players
+	public SpawnPositions spawner{ get; private set; }
+
 	public static BossManager instance;
 	public List<WormBase> worms = new List<WormBase>();
 	private WormBoss boss;
@@ -26,6 +29,7 @@ public class BossManager : MonoBehaviour {
 		} 
 		else {
 			instance = this;
+			spawner = GetComponent<SpawnPositions> ();
 		}
 	}
 
@@ -108,18 +112,18 @@ public class BossManager : MonoBehaviour {
 		}
 	}
 
-	private void OnDrawGizmos(){
+	private void OnDrawGizmosSelected(){
 		Gizmos.color = Color.red;
 
 		for (int i = 0; i < regionHeights.Length; i++) {
 			Vector3 regionCenter = new Vector3 (0f, regionHeights [i], 0f);
-			Vector3 regionSize = new Vector3 (30f, 1f);
+			Vector3 regionSize = new Vector3 (70f, 1f);
 			Gizmos.DrawWireCube (regionCenter, regionSize);
 		}
 	}
 
-	[System.Serializable]
-	public class BossPhaseData{
-		public float phaseStartThreshold = 0.5f;
+	public Vector3 GetRandomTargetPos(){
+		int rndmTargetIndex = Random.Range (0, targets.Length);
+		return targets [rndmTargetIndex].position;
 	}
 }
