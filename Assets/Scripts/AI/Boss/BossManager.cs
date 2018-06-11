@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using Boss_FSM;
+using System.Collections;
 
 //this script handles the AI attack state, using the Boss script
 //can be used to get the closest hittable head of the ai's
@@ -23,6 +24,9 @@ public class BossManager : MonoBehaviour {
 
 	public float[] regionHeights = new float[3];
 
+	public float winDelay = 1.5f;
+	public event SimpleDelegate onGameWon;
+
 	private void Awake(){
 		if (instance != null) {
 			Destroy (gameObject);
@@ -37,6 +41,7 @@ public class BossManager : MonoBehaviour {
 		if (worm is WormBoss) {
 			boss = (WormBoss)worm;
 			boss.onPhaseUp += StateUp;
+			boss.onBossDied += OnBossDied;
 		}
 		else {
 			worm.onWormDied += OnWormDied;
@@ -72,7 +77,10 @@ public class BossManager : MonoBehaviour {
 	}
 
 	public void FinalPhase(){
-		boss.WormUpdate ();
+		if (boss != null){
+			boss.WormUpdate ();
+		}
+	
 		foreach (WormBase worm in worms) {
 			worm.WormUpdate ();
 		}
@@ -92,6 +100,28 @@ public class BossManager : MonoBehaviour {
 	private void OnWormDied(WormBase worm){
 		worms.Remove (worm);
 		Shaker.instance.CameraShake (wormDieCamShake);
+
+		EvaluateWin ();
+	}
+
+	private void OnBossDied(){
+		if (worms.Count == 0) {
+			Shaker.instance.CameraShake (wormDieCamShake);			
+			boss = null;
+		}
+
+		EvaluateWin ();
+	}
+
+	private void EvaluateWin(){
+		if (worms.Count == 0 && boss == null) {
+			StartCoroutine (DelayedWin ());
+		}
+	}
+
+	private IEnumerator DelayedWin(){
+		yield return new WaitForSeconds (winDelay);
+		onGameWon ();
 	}
 
 	public List<Vector3> GetHeadPositions(Vector3 origin, float range){

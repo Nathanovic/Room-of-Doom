@@ -100,7 +100,7 @@ public class WormBase : MonoBehaviour {
 	}
 
 	//destroy the gameobject after time, first explode
-	private void OnDie(){
+	protected void OnDie(){
 		if (onWormDied != null) {
 			onWormDied (this);
 		}
@@ -141,6 +141,7 @@ public class WormBase : MonoBehaviour {
 		foreach (Rigidbody2D rb in explodables) {
 			Destroy (rb.gameObject);
 		}
+		Destroy (gameObject);
 	}
 
 	public Vector3 GetHeadPosition(){

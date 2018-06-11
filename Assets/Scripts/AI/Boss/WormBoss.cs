@@ -16,12 +16,16 @@ public class WormBoss : WormBase {
 	public float phaseUpDuration = 3f;
 	private bool phaseIncreasedUndergroundTime;
 
+	public SimpleDelegate onBossDied;
+
   // FMOD parameter trigger
   private FMODUnity.StudioParameterTrigger parameterTrigger;
 
 	protected override void Start(){
 		worm = GetComponent<WormMovement> ();
+		combatScript = GetComponent<CharacterCombat> ();
 		worm.onAttackEnded += EvaluateState;
+		combatScript.onDie += OnBossWormDied;
 
 		base.Start ();
 
@@ -31,7 +35,6 @@ public class WormBoss : WormBase {
 		bossPhases [2].Init (new ImpossibleState (this));
 		fsm = new FSM (beginState);
 
-		combatScript = GetComponent<CharacterCombat> ();
 		spawner = BossManager.instance.spawner;
 		spawner.SetSpawnMethod (bossPhases [0].SpawnInCameraView ());
 
@@ -52,10 +55,8 @@ public class WormBoss : WormBase {
 
 	private void StateUp(){
 		state++;
-		if (state == bossPhases.Length) {
-			Debug.LogWarning ("game should be over now");
-		}
-		else {
+		Debug.Log ("new state: " + state);
+		if (state < bossPhases.Length) {
 			State nextState = bossPhases [state].nextState;
 			fsm.TriggerNextState (nextState);
 			onPhaseUp (state);
@@ -64,9 +65,10 @@ public class WormBoss : WormBase {
 
 			EvaluateState ();
 		}
+	}
 
-	// Set the state in FMOD
-	parameterTrigger.TriggerParameters();
+	private void OnBossWormDied(){
+		onBossDied ();
 	}
 
 	protected override void OnAttackEnded () {

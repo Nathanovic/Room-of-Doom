@@ -19,17 +19,20 @@ public class DeadManager : MonoBehaviour {
     public Text lostAmount;
 
     private int playersAlive;
-    private GameObject gameOverScreen;
+
+	public CanvasGroup gameOverPanel;
+	public CanvasGroup gameWonPanel;
+
+	private bool gameEnded;
 
     private void Awake(){
         instance = this;
-
     }
 
     private void Start(){
         StartCoroutine(GetPlayersAliveDelay());
-        gameOverScreen = transform.GetChild(0).gameObject;
-        gameOverScreen.SetActive(false);
+		gameOverPanel.Deactivate ();
+		gameWonPanel.Deactivate ();
 
         if (Display.displays.Length > 1){
             Display.displays[1].Activate();
@@ -51,10 +54,11 @@ public class DeadManager : MonoBehaviour {
         winsAmount.text = winCount.ToString();
         lostAmount.text = lostCount.ToString();
 
+		BossManager.instance.onGameWon += GameWon;
     }
 
     private void Update(){
-        if (gameOverScreen.activeInHierarchy){
+		if (gameEnded){
             if (Input.GetKeyDown(KeyCode.JoystickButton0)){
                 Restart();
             }
@@ -84,26 +88,28 @@ public class DeadManager : MonoBehaviour {
     private IEnumerator GetPlayersAliveDelay(){
         yield return new WaitForSeconds(0.3f);
         playersAlive = CameraMovement.players.Count;
-
-    }
-
-    private void GameWon(){
-        SetCounts();
     }
 
     private void GameOver(){
         lostCount++;
-        gameOverScreen.SetActive(true);
+		gameEnded = true;
+		gameOverPanel.Activate ();
         lostAmount.text = lostCount.ToString();
         SetCounts();
-
     }
+
+	private void GameWon(){
+		Debug.Log ("game won!");
+		winCount++;
+		gameEnded = true;
+		gameWonPanel.Activate ();
+		winsAmount.text = winCount.ToString ();
+		SetCounts ();
+	}
 
     public void Restart(){
         SetCounts();
-
         SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
-
 	}
 
     private void SetCounts(){
