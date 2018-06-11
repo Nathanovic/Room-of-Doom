@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeadManager : MonoBehaviour {
 
@@ -10,7 +11,8 @@ public class DeadManager : MonoBehaviour {
     public int winCount;
     public int playersRevived;
 
-    public int playersAlive;
+    private int playersAlive;
+    private GameObject gameOverScreen;
 
     private void Awake(){
         instance = this;
@@ -19,13 +21,18 @@ public class DeadManager : MonoBehaviour {
 
     private void Start(){
         StartCoroutine(GetPlayersAliveDelay());
+        gameOverScreen = transform.GetChild(0).gameObject;
+        gameOverScreen.SetActive(false);
 
     }
 
     private void Update(){
-        
 
-
+        if (gameOverScreen.activeInHierarchy){
+            if (Input.GetKeyDown(KeyCode.JoystickButton0)){
+                Restart();
+            }
+        }
     }
 
     public void OnPlayerRevive(){
@@ -36,6 +43,10 @@ public class DeadManager : MonoBehaviour {
     public void OnPlayerDead(){
         deadCount++;
         playersAlive--;
+
+        if (playersAlive == 0){
+            GameOver();
+        }
     }
 
     private IEnumerator GetPlayersAliveDelay(){
@@ -44,6 +55,14 @@ public class DeadManager : MonoBehaviour {
 
     }
 
+    private void GameOver(){
+        gameOverScreen.SetActive(true);
 
+    }
+
+    public void Restart(){ 
+		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
+
+	}
 
 }
