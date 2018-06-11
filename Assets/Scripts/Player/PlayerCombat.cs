@@ -58,10 +58,10 @@ public class PlayerCombat : CharacterCombat {
 	private void OnHealthChanged (int newHP){
 		if (newHP < previousHealth) {
 			remainingShakeDuration = hittedControllerShakeSettings.duration;
+            StartCoroutine(PlayerBlink());
 		}
 
 		previousHealth = newHP;
-        StartCoroutine(PlayerBlink());
 	}
 
     private IEnumerator PlayerBlink(){

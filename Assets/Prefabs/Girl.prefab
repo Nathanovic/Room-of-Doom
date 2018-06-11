@@ -498,8 +498,8 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 4096
-  otherPlayer: {fileID: 0}
-  buttonToRevive: 2
+  otherPlayerCombat: {fileID: 0}
+  buttonToRevive: 3
 --- !u!114 &114258236971674482
 MonoBehaviour:
   m_ObjectHideFlags: 1

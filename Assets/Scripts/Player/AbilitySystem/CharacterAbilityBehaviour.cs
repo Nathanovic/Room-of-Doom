@@ -14,6 +14,7 @@ public class CharacterAbilityBehaviour : MonoBehaviour {
     private PlayerInput playerInput;
     private AudioSource audioSource;
     private PlayerMovement playerMovement;
+    private PlayerCombat playercombat;
 
     private void Awake(){
         cloneAbilities = new Ability[characterAbilities.Length];
@@ -28,11 +29,11 @@ public class CharacterAbilityBehaviour : MonoBehaviour {
         playerInput = GetComponent<PlayerInput>();
         audioSource = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovement>();
-
+        playercombat = GetComponent<PlayerCombat>();
     }
 
     private void Update(){
-        if (isCasting == false && isStunned == false){ 
+        if (isCasting == false && isStunned == false && playercombat.health > 0){ 
             foreach (var ab in cloneAbilities){
                 if (ab.readyAtTime <= Time.time && (playerInput.ButtonIsDown(ab.button) || Input.GetKeyDown(testBut))){
                     StartCoroutine(ab.TriggerAbility());

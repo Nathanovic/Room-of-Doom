@@ -6,12 +6,15 @@ public class Revive : MonoBehaviour {
 
     public float radius;
     public LayerMask layer;
-    public PlayerCombat otherPlayer;
+    public PlayerCombat otherPlayerCombat;
     public PlayerInput.Button buttonToRevive;
     private PlayerInput playerInput;
+    private Animator anim;
 
     private void Start(){
         playerInput = GetComponent<PlayerInput>();
+        anim = otherPlayerCombat.gameObject.GetComponentInChildren<Animator>();
+
     }
 
 
@@ -20,7 +23,10 @@ public class Revive : MonoBehaviour {
             Collider2D hitCollider = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), radius, layer);
 
             if (hitCollider != null){
-                if (otherPlayer.health <= 0){
+                if (otherPlayerCombat.health <= 0){
+                    otherPlayerCombat.health = 10;
+                    otherPlayerCombat.HealthChangedEvent();
+                    anim.SetBool("dead", false);
 
                     Debug.Log("revived");
                 }
@@ -30,7 +36,7 @@ public class Revive : MonoBehaviour {
     }
 
     private void OnCollisionStay2D(Collision2D collision) {
-        if (otherPlayer != null && collision.transform.root.tag == "Player" && otherPlayer.health <= 0) {
+        if (otherPlayerCombat != null && collision.transform.root.tag == "Player" && otherPlayerCombat.health <= 0) {
             if (playerInput.ButtonIsDown(buttonToRevive) || Input.GetKeyDown(KeyCode.L)){
                 Debug.Log("revived");
             }
