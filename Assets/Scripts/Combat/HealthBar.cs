@@ -61,13 +61,16 @@ public class HealthBar : MonoBehaviour {
         lastHealth = healthFill.sizeDelta.x;
 
         float percentage = (float)newHealth / maxHealth;
+        if (newHealth > maxHealth){
+            percentage = 1;
+        }
+
 		Vector2 healthBarSize = healthFill.sizeDelta;
 		healthBarSize.x = hbWidth * percentage;
 		healthFill.sizeDelta = healthBarSize;
-
+    
         currentHealth = healthBarSize.x;
         StartCoroutine(LerpRedHealthbar());
-        Debug.Log(percentage);
 
         if (newHealth <= 0){
             StartCoroutine(IconBlink());
