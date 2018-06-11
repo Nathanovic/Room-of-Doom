@@ -59,18 +59,15 @@ public class DeadManager : MonoBehaviour {
                 Restart();
             }
         }
-
-
     }
 
     public void OnPlayerRevive(){
         revivedCount += 1;
         playersAlive += 1;
         revivesAmount.text = revivedCount.ToString();
-
     }
 
-    public void OnPlayerDead(){
+    public void PlayerDied(){
         deadCount++;
         playersAlive--;
         deadAmount.text = deadCount.ToString();
@@ -116,12 +113,11 @@ public class DeadManager : MonoBehaviour {
         PlayerPrefs.SetInt("Dead", deadCount);
     }
 
-    [ContextMenu("ResetCount")] 
+	[ContextMenu("ResetCount")] //wow sick! dit is vet handig! :)
     public void ResetCount(){
         PlayerPrefs.SetInt("Lost", 0);
         PlayerPrefs.SetInt("Win", 0);
         PlayerPrefs.SetInt("Revived", 0);
         PlayerPrefs.SetInt("Dead", 0);
     }
-
 }
