@@ -67,7 +67,6 @@ public class HealthBar : MonoBehaviour {
 
         currentHealth = healthBarSize.x;
         StartCoroutine(LerpRedHealthbar());
-        Debug.Log(percentage);
 
         if (newHealth <= 0){
             StartCoroutine(IconBlink());

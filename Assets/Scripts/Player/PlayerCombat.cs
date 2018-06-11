@@ -92,7 +92,8 @@ public class PlayerCombat : CharacterCombat {
 
 	private void OnDie(){
 		anim.SetTrigger ("die");
-		anim.SetBool ("dead", true);		
+		anim.SetBool ("dead", true);
+        DeadManager.deadCount += 1;
 	}
 
 	//draw a circle where the weapon can hit
