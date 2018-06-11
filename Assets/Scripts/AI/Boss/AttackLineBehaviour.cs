@@ -29,7 +29,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		GameObject laserObj = GameObject.Instantiate (laserAttack.prefab, transform) as GameObject;
 		laserObj.transform.localPosition = Vector3.zero;
 		laserObj.GetComponent<Laser> ().damage = attackDamage;
-		laserAttack.Init (laserObj, transform);
+		laserAttack.Init (laserObj, transform, moveScript);
 	}
 
 	public void Prepare(Vector3 startPos, Vector3 enemyPos){
@@ -84,7 +84,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		attackState = AttackState.Attack;
 
 		moveScript.RotateHeadToPos (laserTargetPos);
-		laserAttack.StartAttack (this, laserTargetPos, StopAttack);
+		laserAttack.StartAttack (laserTargetPos, StopAttack);
 	}
 
 	private void StopAttack(){
@@ -106,10 +106,16 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		attackState = AttackState.MoveDown;
 	}
 
+	public void RotateHeadToLaserpoint(Vector3 point){
+		moveScript.RotateHeadToPos (point);
+	}
+
 	[System.Serializable]
 	public class LaserAttack{
+		private WormMovement moveScript;
 		private Transform parentTransform;
 		private GameObject laser;
+		private Transform laserLooker;
 		private Collider2D laserColl;
 
 		public GameObject prefab;
@@ -120,16 +126,18 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 		private UnityAction finishCallback;
 
-		public void Init(GameObject spawnedLaser, Transform transform){
+		public void Init(GameObject spawnedLaser, Transform transform, WormMovement _moveScript){
 			laser = spawnedLaser;
 			laser.SetActive (false);
 			laserColl = laser.GetComponent<Collider2D> ();
-			this.parentTransform = transform;
+			parentTransform = transform;
+			laserLooker = laser.transform.GetChild (0);
+			moveScript = _moveScript;
 		}
 
-		public void StartAttack(MonoBehaviour ienumeratable, Vector3 targetPos, UnityAction callback){
+		public void StartAttack(Vector3 targetPos, UnityAction callback){
 			finishCallback = callback;
-			ienumeratable.StartCoroutine (BeamAttack (
+			moveScript.StartCoroutine (BeamAttack (
 					parentTransform.position, 
 					targetPos)
 			);
@@ -157,6 +165,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 			while (t < 1f) {
 				t += Time.deltaTime / rotateDuration;
 				laser.transform.rotation = Quaternion.Lerp (startRot, endRot, t);
+				moveScript.RotateHeadToPos (laserLooker.position);
 				yield return null;
 			}
 
