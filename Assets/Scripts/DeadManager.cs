@@ -64,8 +64,8 @@ public class DeadManager : MonoBehaviour {
     }
 
     public void OnPlayerRevive(){
-        revivedCount++;
-        playersAlive++;
+        revivedCount += 1;
+        playersAlive += 1;
         revivesAmount.text = revivedCount.ToString();
 
     }
@@ -90,18 +90,23 @@ public class DeadManager : MonoBehaviour {
         lostCount++;
         gameOverScreen.SetActive(true);
         lostAmount.text = lostCount.ToString();
+        SetCounts();
 
     }
 
     public void Restart(){
-        PlayerPrefs.SetInt("Lost", lostCount);
-        PlayerPrefs.SetInt("Win", winCount);
-        PlayerPrefs.SetInt("Revived", revivedCount);
-        PlayerPrefs.SetInt("Dead", deadCount);
+        SetCounts();
 
         SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
 
 	}
+
+    private void SetCounts(){
+        PlayerPrefs.SetInt("Lost", lostCount);
+        PlayerPrefs.SetInt("Win", winCount);
+        PlayerPrefs.SetInt("Revived", revivedCount);
+        PlayerPrefs.SetInt("Dead", deadCount);
+    }
 
     [ContextMenu("ResetCount")] 
     public void ResetCount(){
