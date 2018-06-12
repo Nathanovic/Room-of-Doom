@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class PopUpTextManager : MonoBehaviour {
 
-    private float 
+    public static PopUpTextManager instance;
 
-    public static void CreateFloatingText(string tex, Transform pos){
+    private PopupDamage popup;
+    private GameObject parent;
 
+    private void Start(){
+        instance = this;
+        parent = gameObject;
+        popup = Resources.Load<PopupDamage>("PopUpParent");
+
+    }
+
+    public void CreateFloatingText(string tex, Transform pos){
+        PopupDamage pop = Instantiate(popup);
+        pop.transform.SetParent(parent.transform);
+        pop.SetText(tex);
 
     }
 

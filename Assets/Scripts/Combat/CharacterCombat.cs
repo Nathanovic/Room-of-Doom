@@ -12,7 +12,8 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 	private float remainingImmuneDuration = 0f;
 
 	public delegate void HealthUpdateDelegate (int newHP);
-	public event HealthUpdateDelegate onMaxHealthChanged;
+	public delegate void MaxHealthUpdateDelegate (int newHP, Color newColor);
+	public event MaxHealthUpdateDelegate onMaxHealthChanged;
 	public event HealthUpdateDelegate onHealthChanged;
 	public event SimpleDelegate onDie;
 
@@ -60,6 +61,8 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		hitPS.transform.position = hitPos;
 		hitPS.transform.localScale = hitDir;
 		hitPS.Play ();
+
+		PopUpTextManager.instance.CreateFloatingText (dmg.ToString (), transform);
 	}
 
 	//simplified version (without hitPS)
@@ -106,10 +109,10 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		remainingImmuneDuration = duration;
 	}
 
-	public void PrepareRevive(int newMaxHP){
+	public void PrepareRevive(int newMaxHP, Color newColor = default(Color)){
 		health = 0;
 		maxHealth = newMaxHP;		
-		onMaxHealthChanged (newMaxHP);
+		onMaxHealthChanged (newMaxHP, newColor);
 	}
 
 	public void HealUp(float hpPercentage){

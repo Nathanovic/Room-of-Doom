@@ -23,7 +23,7 @@ public class HealthBar : MonoBehaviour {
     private float currentHealth;
     private float lastHealth;
 
-	private void Start(){
+	private void Awake(){
 		healthFill = transform.GetChild (fillChildIndex).GetComponent<RectTransform> ();
         healthFillRed = transform.GetChild(fillRedChildIndex).GetComponent<RectTransform>();
         playerIcon = transform.GetChild(playerIconIndex).GetComponent<Image>();
@@ -73,8 +73,12 @@ public class HealthBar : MonoBehaviour {
         }
 	}
 
-	private void MaxHealthChanged(int newMaxHealth){
+	private void MaxHealthChanged(int newMaxHealth, Color newHBColor = default(Color)){
 		maxHealth = newMaxHealth;
+
+		if (newHBColor != Color.clear) {
+			healthFillRed.GetComponent<Image> ().color = newHBColor;
+		}
 	}
 
     private IEnumerator LerpRedHealthbar(){
