@@ -25,8 +25,6 @@ public class PopupDamage : MonoBehaviour {
     public void SetText(string text){
         if (colors.Count > 0){
             damageText.color = colors[Random.Range(0, colors.Count - 1)];
-            Debug.Log(colors[Random.Range(0, colors.Count - 1)]);
-            Debug.Log(damageText.color);
         }
         damageText.fontSize = Random.Range(damageText.fontSize - fontSizeRange, damageText.fontSize + fontSizeRange);
         damageText.text = text;

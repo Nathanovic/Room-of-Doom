@@ -16,7 +16,7 @@ public class PopUpTextManager : MonoBehaviour {
 
     }
 
-    public void CreateFloatingText(Transform pos, string text = null, Sprite texture = null){
+    public void CreateFloatingTextTransform(Transform pos, string text = null, Sprite texture = null){
         CreateFloatingText(pos.position, text, texture);
     }
 

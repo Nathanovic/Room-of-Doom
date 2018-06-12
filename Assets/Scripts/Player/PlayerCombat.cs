@@ -24,6 +24,8 @@ public class PlayerCombat : CharacterCombat {
 	public HealthBar hb;
 	private int previousHealth;
     private SpriteRenderer sp;
+    public Sprite reviveSprite;
+
 
     private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
@@ -94,6 +96,7 @@ public class PlayerCombat : CharacterCombat {
 		anim.SetTrigger ("die");
 		anim.SetBool ("dead", true);
         DeadManager.instance.PlayerDied();
+        StartCoroutine(PressXToRevive());
 	}
 
 	//draw a circle where the weapon can hit
@@ -101,4 +104,12 @@ public class PlayerCombat : CharacterCombat {
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere (weaponCheck.position, attackRange);
 	}
+
+    private IEnumerator PressXToRevive(){
+        while (health <= 0){
+            PopUpTextManager.instance.CreateFloatingText(transform.position, "", reviveSprite);
+            yield return new WaitForSeconds(1f);
+        }
+
+    }
 }

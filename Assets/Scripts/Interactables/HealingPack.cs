@@ -15,23 +15,26 @@ public class HealingPack : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.transform.root.tag == "Player"){
             PlayerCombat pc = collision.gameObject.GetComponent<PlayerCombat>();
-            Debug.Log(pc.health + " " + pc.maxHealth);
+            if (pc.health > 0){
+                Debug.Log(pc.health + " " + pc.maxHealth);
 
-            if (pc.health < pc.maxHealth){               
-                if (pc.maxHealth - pc.health >= healing){
-                    collision.gameObject.GetComponent<PlayerCombat>().health += healing;
+                if (pc.health < pc.maxHealth){               
+                    if (pc.maxHealth - pc.health >= healing){
+                        collision.gameObject.GetComponent<PlayerCombat>().health += healing;
+                    }
+                    else{
+                        int restHealing = pc.maxHealth - pc.health;
+                        collision.gameObject.GetComponent<PlayerCombat>().health += restHealing;
+                    }
+                    pc.HealthChangedEvent();
+                    gameObject.SetActive(false);
+
+                    ParticleSystem p = Instantiate(particle, transform.position + new Vector3(0, 0, 1), Quaternion.identity);
+                    Destroy(p, 5f);
+
                 }
-                else{
-                    int restHealing = pc.maxHealth - pc.health;
-                    collision.gameObject.GetComponent<PlayerCombat>().health += restHealing;
-                }
-                pc.HealthChangedEvent();
-                gameObject.SetActive(false);
-
-                ParticleSystem p = Instantiate(particle, transform.position + new Vector3(0, 0, 1), Quaternion.identity);
-                Destroy(p, 5f);
-
             }
+            
         }
 
     }
