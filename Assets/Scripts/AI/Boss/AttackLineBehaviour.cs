@@ -26,15 +26,18 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 	private Vector3 laserTargetPos;
     private AudioSource audioSource;
 
-    private void Start(){
-		startPoint = endPoint = new Vector2 ();
+	public GameObject laserObj;
 
+	private void Awake(){
 		moveScript = GetComponent<WormMovement> ();
-
-		GameObject laserObj = GameObject.Instantiate (laserAttack.prefab, transform) as GameObject;
+		laserObj = GameObject.Instantiate (laserAttack.prefab, transform) as GameObject;
 		laserObj.transform.localPosition = Vector3.zero;
 		laserObj.GetComponent<Laser> ().damage = attackDamage;
 		laserAttack.Init (laserObj, transform, moveScript);
+	}
+
+    private void Start(){
+		startPoint = endPoint = new Vector2 ();
 
         if (audioSource == null)
         { audioSource = transform.gameObject.AddComponent<AudioSource>(); }
@@ -148,6 +151,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 			parentTransform = transform;
 			laserLooker = laser.transform.GetChild (0);
 			moveScript = _moveScript;
+			Debug.Log (_moveScript);
             if (audioSource == null)
             { audioSource = transform.gameObject.AddComponent<AudioSource>(); }
             else

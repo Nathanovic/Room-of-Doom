@@ -13,6 +13,7 @@ public class WormBoss : WormBase {
 
 	private SpriteRenderer headColorElement;
 	public UnityEngine.UI.Image headUIElement;
+	private Material laserMat;
 
 	public BossPhase[] bossPhases = new BossPhase[3];
 	public delegate void BossPhaseDelegate(int stateIndex);
@@ -45,6 +46,8 @@ public class WormBoss : WormBase {
 		spawner = BossManager.instance.spawner;
 
 		headColorElement = head.GetChild (0).GetComponent<SpriteRenderer> ();
+		laserMat = GetComponent<AttackLineBehaviour> ().laserObj.
+			GetComponentInChildren<Renderer> ().material;
 		ApplyBossChanges (bossPhases [0]);
 	}
 
@@ -88,6 +91,9 @@ public class WormBoss : WormBase {
 		}
 		headColorElement.color = phase.bossColor;
 		headUIElement.color = phase.bossColor;
+		Color matC = phase.bossColor;
+		matC.a = 0.5f;
+		laserMat.SetColor("_TintColor", matC);
 	}
 
 	private void OnBossWormDied(){
