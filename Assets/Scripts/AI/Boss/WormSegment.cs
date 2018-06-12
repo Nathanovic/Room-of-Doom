@@ -5,7 +5,9 @@ public class WormSegment : MonoBehaviour, IAttackable {
 	private CharacterCombat myCombat;//used to damage the worm
 	private WormBase wormScript;
 
+	private SpriteRenderer colorElement;
 	public Transform prevSegment;
+
 	public float length;
 	public float moveT{get;private set;}
 	private float curveMoveSpeed;
@@ -57,5 +59,13 @@ public class WormSegment : MonoBehaviour, IAttackable {
 		transform.SetParent (null);
 		GetComponent<SpriteRenderer> ().color = deadColor;
 		return gameObject.AddComponent<Rigidbody2D> ();
+	}
+
+	public void RecolorSegment(Color newColor){
+		if (colorElement == null) {
+			colorElement = transform.GetComponentInChildren<SpriteRenderer> ();
+		}
+
+		colorElement.color = newColor;
 	}
 }

@@ -9,7 +9,7 @@ using UnityEngine;
 public class WormBase : MonoBehaviour {
 
 	private WormMovement moveScript;
-	private WormSegment[] wormSegments;
+	protected WormSegment[] wormSegments;
 
 	private Transform head;
 

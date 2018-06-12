@@ -57,7 +57,6 @@ public class WormBoss : WormBase {
 
 	private void StateUp(){
 		state++;
-		Debug.Log ("new state: " + state);
 
     musicEventEmitter.SetParameter("state",state);
 
@@ -69,9 +68,13 @@ public class WormBoss : WormBase {
 			phaseIncreasedUndergroundTime = true;
 			spawner.SetSpawnMethod (phase.SpawnInCameraView ());
 			healScript.Heal (phase.phaseHealth, phase.bossColor);
+
+			foreach (WormSegment segment in wormSegments) {
+				
+			}
 		} 
 		else {
-			Debug.Log ("worm dies");
+			Debug.Log ("worm boss dies");
 			OnDie ();	
 		}
 	}
