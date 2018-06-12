@@ -44,7 +44,6 @@ public class PlayerInput : MonoBehaviour {
 		
         controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
         SetControllerNumber(controllerNumber);
-
     }
 
     public bool ButtonIsDown(Button but){
