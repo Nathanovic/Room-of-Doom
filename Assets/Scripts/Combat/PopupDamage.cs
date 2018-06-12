@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class PopupDamage : MonoBehaviour {
 
+    public List<Color> colors = new List<Color>();
+    public int fontSizeRange;
+
     private Animator ani;
-	public Text damageText;
+	private Text damageText;
     private Image texture;
 
 	private void OnEnable(){
@@ -20,12 +23,17 @@ public class PopupDamage : MonoBehaviour {
     }
 
     public void SetText(string text){
+        if (colors.Count > 0){
+            damageText.color = colors[Random.Range(0, colors.Count - 1)];
+        }
+        damageText.fontSize = Random.Range(damageText.fontSize - fontSizeRange, damageText.fontSize + fontSizeRange);
         damageText.text = text;
 
     }
 
     public void SetTexture(Sprite t){
         texture.sprite = t;
+        texture.enabled = true;
     }
 
 }
