@@ -39,7 +39,12 @@ public class WormMovement : MonoBehaviour {
 
 		spawner = BossManager.instance.spawner;
 		BossManager.instance.DetachWormObject(feedForwardVFX.transform);
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        { audioSource = transform.gameObject.AddComponent<AudioSource>(); }
+        else
+        {
+            audioSource = transform.GetComponent<AudioSource>();
+        }
     }
 
 	public void AttackUpdate(){
@@ -80,8 +85,6 @@ public class WormMovement : MonoBehaviour {
 		feedForwardVFX.transform.position = new Vector3 (startPos.x, 0f, 0f);
 		feedForwardVFX.Play();
 
-        if (audioSource == null)
-        { audioSource = gameObject.AddComponent<AudioSource>(); }
         audioSource.PlayOneShot(AudioManager.instance.GetClipFromName("MagmaWorm", 0));
 
 

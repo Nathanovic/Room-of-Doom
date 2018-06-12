@@ -24,8 +24,9 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 	public LaserAttack laserAttack;
 	private Vector3 laserTargetPos;
+    private AudioSource audioSource;
 
-	private void Start(){
+    private void Start(){
 		startPoint = endPoint = new Vector2 ();
 
 		moveScript = GetComponent<WormMovement> ();
@@ -34,7 +35,15 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		laserObj.transform.localPosition = Vector3.zero;
 		laserObj.GetComponent<Laser> ().damage = attackDamage;
 		laserAttack.Init (laserObj, transform, moveScript);
-	}
+
+        if (audioSource == null)
+        { audioSource = transform.gameObject.AddComponent<AudioSource>(); }
+        else
+        {
+            audioSource = transform.GetComponent<AudioSource>();
+        }
+
+    }
 
 	public void Prepare(Vector3 startPos, Vector3 enemyPos){
 		moveScript.onReachedLineEnd += StartAttack;
@@ -86,8 +95,8 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 	private void StartAttack(){
 		moveScript.onReachedLineEnd -= StartAttack;
 		attackState = AttackState.Attack;
-
-		moveScript.RotateHeadToPos (laserTargetPos);
+        audioSource.PlayOneShot(AudioManager.instance.GetClipFromName("MagmaWorm", 3));
+        moveScript.RotateHeadToPos (laserTargetPos);
 		laserAttack.StartAttack (laserTargetPos, StopAttack);
 	}
 
@@ -129,6 +138,8 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		public float stayDuration;
 
 		private UnityAction finishCallback;
+        public AudioSource audioSource;
+
 
 		public void Init(GameObject spawnedLaser, Transform transform, WormMovement _moveScript){
 			laser = spawnedLaser;
@@ -137,7 +148,14 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 			parentTransform = transform;
 			laserLooker = laser.transform.GetChild (0);
 			moveScript = _moveScript;
-		}
+            if (audioSource == null)
+            { audioSource = transform.gameObject.AddComponent<AudioSource>(); }
+            else
+            {
+                audioSource = transform.GetComponent<AudioSource>();
+            }
+
+        }
 
 		public void StartAttack(Vector3 targetPos, UnityAction callback){
 			finishCallback = callback;
@@ -164,8 +182,11 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 			}
 			laserColl.enabled = true;
 
-			//rotate
-			t = 0;
+            //sound here
+            audioSource.PlayOneShot(AudioManager.instance.GetClipFromName("MagmaWorm", 2));
+
+            //rotate
+            t = 0;
 			while (t < 1f) {
 				t += Time.deltaTime / rotateDuration;
 				laser.transform.rotation = Quaternion.Lerp (startRot, endRot, t);
