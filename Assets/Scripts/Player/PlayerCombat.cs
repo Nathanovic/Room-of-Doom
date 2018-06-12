@@ -26,6 +26,7 @@ public class PlayerCombat : CharacterCombat {
     private SpriteRenderer sp;
     public Sprite reviveSprite;
 
+    public float XSpawnTime;
 
     private void Start(){
 		baseScript = GetComponent<PlayerBase> ();
@@ -108,7 +109,7 @@ public class PlayerCombat : CharacterCombat {
     private IEnumerator PressXToRevive(){
         while (health <= 0){
             PopUpTextManager.instance.CreateFloatingText(transform.position, "", reviveSprite);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(XSpawnTime);
         }
 
     }

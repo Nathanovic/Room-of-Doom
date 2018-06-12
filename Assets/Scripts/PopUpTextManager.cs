@@ -31,7 +31,7 @@ public class PopUpTextManager : MonoBehaviour {
         if (text != null){
             pop.SetText(text);
         }
-        else if (texture != null){
+        if (texture != null){
             pop.SetTexture(texture);
         }
 

@@ -34,6 +34,7 @@ public class PopupDamage : MonoBehaviour {
     public void SetTexture(Sprite t){
         texture.sprite = t;
         texture.enabled = true;
+        Debug.Log("x");
     }
 
 }
