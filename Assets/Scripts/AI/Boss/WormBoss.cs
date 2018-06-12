@@ -48,7 +48,7 @@ public class WormBoss : WormBase {
 
 	private void EvaluateState(){
 		float hpPercentage = combatScript.HPPercentage ();
-		if (bossPhases [state].CanStateUp (hpPercentage)) {
+		if (hpPercentage == 0f) {
 			StateUp ();
 		}
 	}
@@ -93,6 +93,7 @@ public class WormBoss : WormBase {
 
 	public void TriggerImpossibleState(){
 		intensity = 1f;
+		GetComponent<Healer> ().Heal ();
 	}
 	public void ImpossibleState(){
 		base.WormUpdate ();
@@ -101,17 +102,12 @@ public class WormBoss : WormBase {
 
 [System.Serializable]
 public class BossPhase{
-	[SerializeField]private float stateUpPercentage = 0.3f;
 	[SerializeField]private bool spawnInCameraView;
 
 	public State nextState{ get; private set; }
 
 	public void Init(State state){
 		nextState = state;
-	}
-
-	public bool CanStateUp(float hpPercentage){
-		return (nextState != null && hpPercentage <= stateUpPercentage);
 	}
 
 	public bool SpawnInCameraView(){
