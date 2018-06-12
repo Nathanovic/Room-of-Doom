@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   nameAbility: Dash
-  button: 2
+  button: 1
   cooldown: 1.2
   castingTime: 0
   abilitySprite: {fileID: 21300000, guid: e7fad9e9b2968c24c9d1741b0593adea, type: 3}
