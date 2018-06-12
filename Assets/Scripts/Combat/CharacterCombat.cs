@@ -62,7 +62,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		hitPS.transform.localScale = hitDir;
 		hitPS.Play ();
 
-		PopUpTextManager.instance.CreateFloatingText (dmg.ToString (), transform);
+		PopUpTextManager.instance.CreateFloatingText (transform, dmg.ToString());
 	}
 
 	//simplified version (without hitPS)
