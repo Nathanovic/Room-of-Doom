@@ -12,16 +12,24 @@ public class PopUpTextManager : MonoBehaviour {
     private void Start(){
         instance = this;
         parent = gameObject;
+        //popup = Resources.Load<PopupDamage>("PopUpParent");
+
+    }
+
+    public void CreateFloatingText(Transform pos, string text = null, Sprite texture = null){
         popup = Resources.Load<PopupDamage>("PopUpParent");
 
-    }
-
-    public void CreateFloatingText(string tex, Transform pos){
         PopupDamage pop = Instantiate(popup);
         pop.transform.SetParent(parent.transform);
-        pop.SetText(tex);
+
+        if (text != null){
+            pop.SetText(text);
+        }
+        else if (texture != null){
+            pop.SetTexture(texture);
+        }
 
     }
 
 
-}
+} 

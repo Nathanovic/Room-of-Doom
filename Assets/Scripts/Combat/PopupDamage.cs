@@ -7,19 +7,23 @@ public class PopupDamage : MonoBehaviour {
 
     private Animator ani;
     private Text damageText;
-
+    private Image texture;
 
     private void Start(){
         ani = transform.GetChild(0).GetComponent<Animator>();
         AnimatorClipInfo[] clipInfos = ani.GetCurrentAnimatorClipInfo(0);
         Destroy(gameObject, clipInfos[0].clip.length);
         damageText = ani.GetComponent<Text>();
+        texture = transform.GetChild(1).GetComponent<Image>();
     }
 
     public void SetText(string text){
         damageText.text = text;
 
+    }
 
+    public void SetTexture(Sprite t){
+        texture.sprite = t;
     }
 
 }
