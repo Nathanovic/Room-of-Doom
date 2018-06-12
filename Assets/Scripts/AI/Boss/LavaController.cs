@@ -1,16 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//used to control the lave, this is done from the BossManager
 public class LavaController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public float maxY = 2f;
+	public float riseSpeed = 3f;
+
+	public MoveState moveState = MoveState.Stay;
+	public enum MoveState{
+		Rise,
+		Stay
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void Rise(float newMaxY){
+		maxY = newMaxY;
+		moveState = MoveState.Rise;
+	}
+
+	private void Update(){
+		if(moveState == MoveState.Rise){
+			transform.Translate (Vector3.up * riseSpeed * Time.deltaTime, Space.World);
+			if (transform.position.y > maxY) {
+				moveState = MoveState.Stay;
+			}
+		}
 	}
 }

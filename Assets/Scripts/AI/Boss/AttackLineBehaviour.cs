@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Events;
 
 //used for laser attack
@@ -8,7 +9,11 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 	public float undergroundY = -1.5f;
 	private Vector2 startPoint, endPoint;
-	private float[] possibleHeights;
+	private List<float> possibleHeights{
+		get { 
+			return BossManager.instance.regionHeights;
+		}
+	}
 
 	private WormMovement moveScript;
 	private AttackState attackState;
@@ -22,7 +27,6 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 
 	private void Start(){
 		startPoint = endPoint = new Vector2 ();
-		possibleHeights = BossManager.instance.regionHeights;
 
 		moveScript = GetComponent<WormMovement> ();
 
@@ -36,7 +40,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		moveScript.onReachedLineEnd += StartAttack;
 		startPoint = startPos;
 		endPoint.x = startPoint.x;
-		int rndmIndex = Random.Range (0, possibleHeights.Length);
+		int rndmIndex = Random.Range (0, possibleHeights.Count);
 		endPoint.y = possibleHeights [rndmIndex];
 		attackState = AttackState.MoveUp;
 
@@ -49,7 +53,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 	public void Prepare(Vector2 start){
 		startPoint = start;
 		endPoint.x = start.x;
-		int rndmIndex = Random.Range (0, possibleHeights.Length);
+		int rndmIndex = Random.Range (0, possibleHeights.Count);
 		endPoint.y = possibleHeights [rndmIndex];
 		attackState = AttackState.MoveUp;
 	}

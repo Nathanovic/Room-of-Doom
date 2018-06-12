@@ -12,6 +12,8 @@ public class BossManager : MonoBehaviour {
 
 	public Transform[] targets;//the players
 	public SpawnPositions spawner{ get; private set; }
+	private LavaController lavaController;
+	public float lavaRiseTime = 10;
 
 	public static BossManager instance;
 	public List<WormBase> worms = new List<WormBase>();
@@ -22,7 +24,7 @@ public class BossManager : MonoBehaviour {
 
 	private State[] gamePhases = new State[3];
 
-	public float[] regionHeights = new float[3];
+	public List<float> regionHeights = new List<float>(3);
 
 	public float winDelay = 1.5f;
 	public event SimpleDelegate onGameWon;
@@ -54,6 +56,8 @@ public class BossManager : MonoBehaviour {
 		gamePhases[1] = new MultiWormPhase (this);
 		gamePhases[2] = new FinalPhase (this);
 		fsm = new FSM (gamePhases[0]);
+
+		lavaController = GetComponentInChildren<LavaController> ();
 	}
 
 	public void DetachWormObject(Transform wormObj){
@@ -65,7 +69,7 @@ public class BossManager : MonoBehaviour {
 		fsm.Run ();
 	}
 
-	public void StartPhase(){
+	public void IntroPhase(){
 		boss.WormUpdate ();
 	}
 
@@ -74,6 +78,10 @@ public class BossManager : MonoBehaviour {
 		foreach (WormBase worm in worms) {
 			worm.WormUpdate ();
 		}
+	}
+
+	public void StartFinalPhase(){
+		StartCoroutine (LavaUp());
 	}
 
 	public void FinalPhase(){
@@ -102,6 +110,14 @@ public class BossManager : MonoBehaviour {
 		Shaker.instance.CameraShake (wormDieCamShake);
 
 		EvaluateWin ();
+	}
+
+	private IEnumerator LavaUp(){
+		while (regionHeights.Count > 1) {
+			lavaController.Rise (regionHeights.First ());
+			regionHeights.RemoveAt (0);
+			yield return new WaitForSeconds (lavaRiseTime);
+		}
 	}
 
 	private void OnBossDied(){
@@ -145,7 +161,7 @@ public class BossManager : MonoBehaviour {
 	private void OnDrawGizmosSelected(){
 		Gizmos.color = Color.red;
 
-		for (int i = 0; i < regionHeights.Length; i++) {
+		for (int i = 0; i < regionHeights.Count; i++) {
 			Vector3 regionCenter = new Vector3 (0f, regionHeights [i], 0f);
 			Vector3 regionSize = new Vector3 (70f, 1f);
 			Gizmos.DrawWireCube (regionCenter, regionSize);

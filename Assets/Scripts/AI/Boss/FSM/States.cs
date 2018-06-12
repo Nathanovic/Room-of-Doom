@@ -63,7 +63,7 @@ namespace Boss_FSM{
 		}
 
 		public override void Run () {
-			manager.StartPhase ();
+			manager.IntroPhase ();
 		}
 	}
 
@@ -84,6 +84,10 @@ namespace Boss_FSM{
 
 		public FinalPhase(BossManager _manager){
 			manager = _manager;
+		}
+
+		public override void Enter (){
+			manager.StartFinalPhase ();
 		}
 
 		public override void Run () {
