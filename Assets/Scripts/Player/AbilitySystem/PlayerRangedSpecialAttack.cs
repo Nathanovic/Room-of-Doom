@@ -80,7 +80,6 @@ public class PlayerRangedSpecialAttack : Ability{
 
     private void NoTarget(GameObject p, Vector3 startpos, float speed){
         p.GetComponent<Rigidbody2D>().velocity = new Vector2(-(player.transform.position.x - startpos.x) * speed, -(player.transform.position.y - startpos.y) * speed);
-
     }
 
 

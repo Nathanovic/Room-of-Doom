@@ -35,6 +35,10 @@ public class ProjectileDamage : MonoBehaviour {
     }
 
 	private void OnCollisionEnter2D(Collision2D coll){
+        if (destroyOnHit){
+            DestroySelf();
+
+        }
         if (startTime - Time.time >= hitDelay){
             if (destroyOnHit){
                 DestroySelf();
