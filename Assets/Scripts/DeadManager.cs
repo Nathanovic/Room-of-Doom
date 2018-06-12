@@ -25,6 +25,9 @@ public class DeadManager : MonoBehaviour {
 
 	private bool gameEnded;
 
+  // FMOD event emitter
+  public FMODUnity.StudioEventEmitter musicEventEmitter;
+
     private void Awake(){
         instance = this;
     }
@@ -96,6 +99,8 @@ public class DeadManager : MonoBehaviour {
 		gameOverPanel.Activate ();
         lostAmount.text = lostCount.ToString();
         SetCounts();
+
+      musicEventEmitter.SetParameter("gameOver",1);
     }
 
 	private void GameWon(){
@@ -105,10 +110,14 @@ public class DeadManager : MonoBehaviour {
 		gameWonPanel.Activate ();
 		winsAmount.text = winCount.ToString ();
 		SetCounts ();
+
+    musicEventEmitter.SetParameter("gameOver",1);
 	}
 
     public void Restart(){
         SetCounts();
+        musicEventEmitter.SetParameter("gameOver",0);
+
         SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
 	}
 
