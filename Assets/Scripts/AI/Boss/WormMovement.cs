@@ -24,11 +24,12 @@ public class WormMovement : MonoBehaviour {
 	public float maxMoveSpeed = 10f;
 	private float movementSpeed = 2f;
 
-	public event SimpleDelegate onReachedLineEnd;
+    public event SimpleDelegate onReachedLineEnd;
 	public event SimpleDelegate onAttackEnded;
 
 	private SpawnPositions spawner;
-	public ParticleSystem feedForwardVFX;
+    private AudioSource audioSource;
+    public ParticleSystem feedForwardVFX;
 
 	private void Start(){
 		head = transform.GetChild (0);
@@ -38,7 +39,8 @@ public class WormMovement : MonoBehaviour {
 
 		spawner = BossManager.instance.spawner;
 		BossManager.instance.DetachWormObject(feedForwardVFX.transform);
-	}
+        AudioSource audioSource = GetComponent<AudioSource>();
+    }
 
 	public void AttackUpdate(){
 		if (delay > 0f) {
@@ -78,7 +80,15 @@ public class WormMovement : MonoBehaviour {
 		feedForwardVFX.transform.position = new Vector3 (startPos.x, 0f, 0f);
 		feedForwardVFX.Play ();
 
-		attackTraverseable.Prepare (startPos, enemyPos);
+        if ( audioSource.clip == null) { audioSource.clip = AudioManager.instance.GetClipFromName("MagmaWorm", 0); }
+        else
+        {
+            AudioSource aS = gameObject.AddComponent<AudioSource>();
+            aS.clip = AudioManager.instance.GetClipFromName("MagmaWorm", 0);
+        }
+        audioSource.Play();
+
+        attackTraverseable.Prepare (startPos, enemyPos);
 		StartAttack (attackIntensity);
 	}
 
