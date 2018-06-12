@@ -141,7 +141,7 @@ public class AttackLineBehaviour : MonoBehaviour, IWormTraverseable {
 		public float stayDuration;
 
 		private UnityAction finishCallback;
-        public AudioSource audioSource;
+        private AudioSource audioSource;
 
 
 		public void Init(GameObject spawnedLaser, Transform transform, WormMovement _moveScript){
