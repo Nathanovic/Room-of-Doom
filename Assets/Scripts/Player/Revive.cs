@@ -15,6 +15,8 @@ public class Revive : MonoBehaviour {
     private PlayerCombat playerCombat;
     private bool canRevive = true;
 
+    private bool closeEnough = false;
+
     private void Start(){
         playerInput = GetComponent<PlayerInput>();
         anim = otherPlayerCombat.gameObject.GetComponentInChildren<Animator>();
@@ -23,22 +25,31 @@ public class Revive : MonoBehaviour {
 
 
     private void Update(){
-        if (canRevive && playerCombat.health > 0 && otherPlayerCombat.health <= 0 && (playerInput.ButtonIsDown(buttonToRevive) || Input.GetKeyDown(KeyCode.L))){
+        if (canRevive && playerCombat.health > 0 && otherPlayerCombat.health <= 0){
+            Collider2D[] hitCollider = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), radius, layer);
+
+        }
+
+        if (canRevive && playerCombat.health > 0 && otherPlayerCombat.health <= 0){
             canRevive = false;
             Collider2D[] hitCollider = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), radius, layer);
 
-            foreach (var item in hitCollider){
-                if (item.transform.root.gameObject == otherPlayerCombat.transform.root.gameObject){
-                    otherPlayerCombat.health = newHealth;
-                    anim.SetBool("dead", false);
+            if (playerInput.ButtonIsDown(buttonToRevive) || Input.GetKeyDown(KeyCode.L)){
+                foreach (var item in hitCollider){
+                    if (item.transform.root.gameObject == otherPlayerCombat.transform.root.gameObject){
+                        otherPlayerCombat.health = newHealth;
+                        anim.SetBool("dead", false);
                     
-                    Debug.Log("revived");
-                    otherPlayerCombat.HealthChangedEvent();
-                    DeadManager.instance.OnPlayerRevive();
-                    break;
+                        Debug.Log("revived");
+                        otherPlayerCombat.HealthChangedEvent();
+                        DeadManager.instance.OnPlayerRevive();
+                        break;
+                    }
                 }
+                StartCoroutine(ReviveDelay());
+
             }
-            StartCoroutine(ReviveDelay());
+
         }
 
     }
