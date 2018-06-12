@@ -15,57 +15,29 @@ public class Revive : MonoBehaviour {
     private PlayerCombat playerCombat;
     private bool canRevive = true;
 
-    private bool closeEnough = false;
-
     private void Start(){
         playerInput = GetComponent<PlayerInput>();
         anim = otherPlayerCombat.gameObject.GetComponentInChildren<Animator>();
         playerCombat = GetComponent<PlayerCombat>();
     }
 
-
     private void Update(){
-        if (canRevive && playerCombat.health > 0 && otherPlayerCombat.health <= 0){
-            Collider2D[] hitCollider = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), radius, layer);
-
-        }
-
-        if (canRevive && playerCombat.health > 0 && otherPlayerCombat.health <= 0){
-            canRevive = false;
+        if (playerCombat.health > 0 && otherPlayerCombat.health <= 0){
             Collider2D[] hitCollider = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), radius, layer);
 
             if (playerInput.ButtonIsDown(buttonToRevive) || Input.GetKeyDown(KeyCode.L)){
                 foreach (var item in hitCollider){
-                    if (item.transform.root.gameObject == otherPlayerCombat.transform.root.gameObject){
+					if (item.transform.root.gameObject == otherPlayerCombat.transform.root.gameObject){
                         otherPlayerCombat.health = newHealth;
                         anim.SetBool("dead", false);
                     
-                        Debug.Log("revived");
                         otherPlayerCombat.HealthChangedEvent();
                         DeadManager.instance.OnPlayerRevive();
                         break;
                     }
                 }
-                StartCoroutine(ReviveDelay());
-
-            }
-
-        }
-
-    }
-
-    private IEnumerator ReviveDelay(){
-        yield return new WaitForSeconds(0.3f);
-        canRevive = true;
-    }
-
-    private void OnCollisionStay2D(Collision2D collision) {
-        if (otherPlayerCombat != null && collision.transform.root.tag == "Player" && otherPlayerCombat.health <= 0) {
-            if (playerInput.ButtonIsDown(buttonToRevive) || Input.GetKeyDown(KeyCode.L)){
-                Debug.Log("revived");
             }
         }
-
     }
 
     private void OnDrawGizmos(){
