@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public class WormSegment : MonoBehaviour, IAttackable {
 
@@ -19,10 +20,24 @@ public class WormSegment : MonoBehaviour, IAttackable {
 		wormScript = transform.parent.GetComponent<WormBase> ();
 	}
 
-	public void Prepare(Transform otherSegment, float beforeSegmentDelay, float speed){
-		segmentID++;
-		id = segmentID;
-		prevSegment = otherSegment;//.GetChild(0);
+	public void Reset(){
+		segmentID = 2;
+	}
+
+	public void Init(Transform previousSegment){
+		prevSegment = previousSegment;//.GetChild(0);id = segmentID + 1;
+
+		id = segmentID + 1;
+		GetComponent<SpriteRenderer> ().sortingOrder = -id;
+		if (transform.childCount == 1) {
+			colorElement = transform.GetChild (0).GetComponent<SpriteRenderer> ();
+			id++;
+			colorElement.sortingOrder = -id;
+		}
+		segmentID = id;
+	}
+
+	public void Prepare(float beforeSegmentDelay, float speed){
 		moveT = -beforeSegmentDelay;
 		curveMoveSpeed = speed;
 	}
@@ -62,10 +77,6 @@ public class WormSegment : MonoBehaviour, IAttackable {
 	}
 
 	public void RecolorSegment(Color newColor){
-		if (colorElement == null) {
-			colorElement = transform.GetComponentInChildren<SpriteRenderer> ();
-		}
-
 		colorElement.color = newColor;
 	}
 }
