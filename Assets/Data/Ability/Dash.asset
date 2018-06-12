@@ -16,7 +16,7 @@ MonoBehaviour:
   cooldown: 1.2
   castingTime: 0
   abilitySprite: {fileID: 21300000, guid: e7fad9e9b2968c24c9d1741b0593adea, type: 3}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 83cd0fffa57b814479cbac6a0e50e005, type: 3}
   readyAtTime: 0
   dashDuration: 0.3
   power: 20
