@@ -132,6 +132,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip GetClipFromName(string name, int index){
         if (groupDictionary.ContainsKey(name)){
             AudioClip[] sounds = groupDictionary[name];
+            Debug.Log(sounds[index].name + " is playing!");
             return sounds[index];
         }
 
