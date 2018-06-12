@@ -123,6 +123,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip GetRandomClipFromName(string name){
         if (groupDictionary.ContainsKey(name)){
             AudioClip[] sounds = groupDictionary[name];
+            Debug.Log(name + " is playing!");
             return sounds[Random.Range(0, sounds.Length)];
         }
 

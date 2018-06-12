@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour {
 	private Animator anim;
 	private PlayerBase baseScript;
     private CharacterAbilityBehaviour charBehabiour;
+    private AudioSource audioSource;
 
-	[Header("ground check values:")]
+    [Header("ground check values:")]
 	public Transform groundCheck;
 	public float groundCheckRadius;
 	public LayerMask groundLM;
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 	private bool canJump;
 	private bool didDoubleJump;
 	private bool grounded;
-	public ParticleSystem jumpPS;
+    public ParticleSystem jumpPS;
 	public ParticleSystem groundedPS;
 
 	private void Start(){
@@ -51,7 +52,14 @@ public class PlayerMovement : MonoBehaviour {
 		jumpCounter = new Counter (minJumpCountdownTime);
 		jumpCounter.onCount += EnableJumping;
 		canJump = true;
-	}
+
+        if (audioSource == null)
+        { audioSource = transform.gameObject.AddComponent<AudioSource>(); }
+        else
+        {
+            audioSource = transform.GetComponent<AudioSource>();
+        }
+    }
 
 	private void Update(){
 		if (!baseScript.canControl)
@@ -61,6 +69,8 @@ public class PlayerMovement : MonoBehaviour {
             MoveBehaviour();
             JumpBehaviour();
         }
+
+        
 	}
 
     public void StartCasting(){
@@ -71,6 +81,11 @@ public class PlayerMovement : MonoBehaviour {
     #region Move Behaviour
     private void MoveBehaviour(){
 		float inputValue = input.Lhorizontal;
+        if (inputValue > 0 && !audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(AudioManager.instance.GetRandomClipFromName("Walk"));
+        }
+
 		if (inputValue != 0 && !accelerate) {
 			curveT = GetCurveT (accelerationCurve);
 			accelerate = true;

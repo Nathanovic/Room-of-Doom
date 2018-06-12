@@ -16,7 +16,7 @@ MonoBehaviour:
   cooldown: 5
   castingTime: 0
   abilitySprite: {fileID: 21300000, guid: 8eb8daf719b5ac9479f6cf82e2d6a319, type: 3}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: cc3a27b47f13ca644b5c8f33f71d0d68, type: 3}
   readyAtTime: 0
   projectile: {fileID: 1513216415537730, guid: 6fb9e84050650064c8b32232a221770d, type: 2}
   growTime: 1
