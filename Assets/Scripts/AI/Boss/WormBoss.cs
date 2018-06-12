@@ -18,8 +18,8 @@ public class WormBoss : WormBase {
 
 	public SimpleDelegate onBossDied;
 
-  // FMOD parameter trigger
-  private FMODUnity.StudioParameterTrigger parameterTrigger;
+  // FMOD Event emitter
+  public FMODUnity.StudioEventEmitter musicEventEmitter;
 
 	protected override void Start(){
 		worm = GetComponent<WormMovement> ();
@@ -37,9 +37,6 @@ public class WormBoss : WormBase {
 
 		spawner = BossManager.instance.spawner;
 		spawner.SetSpawnMethod (bossPhases [0].SpawnInCameraView ());
-
-    // Set the FMOD parameter trigger
-    parameterTrigger = GetComponent<FMODUnity.StudioParameterTrigger> ();
 	}
 
 	public override void WormUpdate(){
@@ -56,6 +53,9 @@ public class WormBoss : WormBase {
 	private void StateUp(){
 		state++;
 		Debug.Log ("new state: " + state);
+
+    musicEventEmitter.SetParameter("state",state);
+
 		if (state < bossPhases.Length) {
 			State nextState = bossPhases [state].nextState;
 			fsm.TriggerNextState (nextState);

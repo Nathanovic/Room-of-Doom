@@ -11,14 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef8d824ea7b63742966aaa0e94ac383, type: 3}
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
-  HasSourceProject: 0
+  HasSourceProject: 1
   HasPlatforms: 1
   sourceProjectPath: D:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Room-of-Doom-audio.fspro
   SourceProjectPathUnformatted: D:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Room-of-Doom-audio.fspro
   SourceBankPathUnformatted: D:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Build
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
-  ImportType: 1
+  ImportType: 0
   TargetAssetPath: Music
   SpeakerModeSettings:
   - Platform: 2
