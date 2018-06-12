@@ -39,3 +39,6 @@ Assets/StreamingAssets/*.bank
 fmod.log
 fmod_editor.log
 Assets/Scripts/DeadManager.cs
+
+# FMOD settings
+Assets/Resources/FMODStudioSettings.asset

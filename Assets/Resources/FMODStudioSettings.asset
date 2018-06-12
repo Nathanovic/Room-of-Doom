@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   HasSourceProject: 0
-  HasPlatforms: 0
+  HasPlatforms: 1
   sourceProjectPath: D:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Room-of-Doom-audio.fspro
-  SourceProjectPathUnformatted: D:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Room-of-Doom-audio.fspro
-  SourceBankPathUnformatted: D:\HKU\2017-2018\SID 2d Game Audio\Room-of-Doom-audio\Build
+  SourceProjectPathUnformatted: C:\Users\Dell\Documents\HKU\Vrij\FMODBuild
+  SourceBankPathUnformatted: FMODBuild
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0
-  TargetAssetPath: 
+  TargetAssetPath: Music
   SpeakerModeSettings:
   - Platform: 2
     Value: 3
@@ -55,5 +55,5 @@ MonoBehaviour:
   - Platform: 2
     Value: 32
   Plugins: []
-  MasterBank: 
+  MasterBank: Master Bank
   Banks: []
