@@ -21,8 +21,6 @@ public class PlayerInput : MonoBehaviour {
     private string rbButton;
     private string lbButton;
 
-
-
     public int controllerNumber;
 
     [HideInInspector]
@@ -32,8 +30,10 @@ public class PlayerInput : MonoBehaviour {
     [HideInInspector]
     public float Rhorizontal;
     [HideInInspector]
-    public float Rvertical;
-    public float ltButton;
+	public float Rvertical;
+	[HideInInspector]
+	public float ltButton;
+	[HideInInspector]
     public float rtButton;
 
     public bool keyboardInput;

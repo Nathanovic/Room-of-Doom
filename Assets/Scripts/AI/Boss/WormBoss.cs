@@ -4,6 +4,7 @@ using Boss_FSM;
 public class WormBoss : WormBase {
 
 	private WormMovement worm;
+	private Healer healScript;
 	private CharacterCombat combatScript;
 	private SpawnPositions spawner;
 	private FSM fsm;
@@ -23,6 +24,7 @@ public class WormBoss : WormBase {
 
 	protected override void Start(){
 		worm = GetComponent<WormMovement> ();
+		healScript = GetComponent<Healer> ();
 		combatScript = GetComponent<CharacterCombat> ();
 		worm.onAttackEnded += EvaluateState;
 		combatScript.onDie += OnBossWormDied;
@@ -57,11 +59,13 @@ public class WormBoss : WormBase {
     musicEventEmitter.SetParameter("state",state);
 
 		if (state < bossPhases.Length) {
-			State nextState = bossPhases [state].nextState;
+			BossPhase phase = bossPhases [state];
+			State nextState = phase.nextState;
 			fsm.TriggerNextState (nextState);
 			onPhaseUp (state);
 			phaseIncreasedUndergroundTime = true;
-			spawner.SetSpawnMethod (bossPhases [state].SpawnInCameraView ());
+			spawner.SetSpawnMethod (phase.SpawnInCameraView ());
+			healScript.Heal (phase.phaseHealth);
 
 			EvaluateState ();
 		}
@@ -85,7 +89,6 @@ public class WormBoss : WormBase {
 
 	public void TriggerHardState(){
 		intensity = 0.6f;
-		GetComponent<Healer> ().Heal ();
 	}
 	public void HardState(){
 		base.WormUpdate ();
@@ -93,7 +96,6 @@ public class WormBoss : WormBase {
 
 	public void TriggerImpossibleState(){
 		intensity = 1f;
-		GetComponent<Healer> ().Heal ();
 	}
 	public void ImpossibleState(){
 		base.WormUpdate ();
@@ -103,7 +105,7 @@ public class WormBoss : WormBase {
 [System.Serializable]
 public class BossPhase{
 	[SerializeField]private bool spawnInCameraView;
-	//public int new
+	public int phaseHealth;
 
 	public State nextState{ get; private set; }
 
