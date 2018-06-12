@@ -11,14 +11,14 @@ public class Healer : MonoBehaviour {
 	private CharacterCombat combatScript;
 	public event SimpleDelegate onHeal;
 
-	private void Start(){
+	private void Awake(){
 		combatScript = GetComponent<CharacterCombat> ();
 	}
 
-	public void Heal(int newMaxHP){	
+	public void Heal(int newMaxHP, Color newColor = default(Color)){	
 		healCount--;
 		combatScript.MakeImmune (healDuration);
-		combatScript.PrepareRevive (newMaxHP);
+		combatScript.PrepareRevive (newMaxHP, newColor);
 		StartCoroutine (HealOverTime ());
 		if (onHeal != null) {
 			onHeal ();

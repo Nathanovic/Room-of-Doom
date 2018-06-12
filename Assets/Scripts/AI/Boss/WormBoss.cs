@@ -36,6 +36,7 @@ public class WormBoss : WormBase {
 		bossPhases [1].Init (new HardState (this));
 		bossPhases [2].Init (new ImpossibleState (this));
 		fsm = new FSM (beginState);
+		healScript.Heal (bossPhases [0].phaseHealth, bossPhases [0].bossColor);
 
 		spawner = BossManager.instance.spawner;
 		spawner.SetSpawnMethod (bossPhases [0].SpawnInCameraView ());
@@ -65,7 +66,7 @@ public class WormBoss : WormBase {
 			onPhaseUp (state);
 			phaseIncreasedUndergroundTime = true;
 			spawner.SetSpawnMethod (phase.SpawnInCameraView ());
-			healScript.Heal (phase.phaseHealth);
+			healScript.Heal (phase.phaseHealth, phase.bossColor);
 
 			EvaluateState ();
 		}
@@ -106,6 +107,7 @@ public class WormBoss : WormBase {
 public class BossPhase{
 	[SerializeField]private bool spawnInCameraView;
 	public int phaseHealth;
+	public Color bossColor;
 
 	public State nextState{ get; private set; }
 
