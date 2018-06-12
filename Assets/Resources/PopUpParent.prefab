@@ -112,9 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
-  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.40381765, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.2784314, b: 0, a: 1}
-  - {r: 1, g: 0.58082247, b: 0, a: 1}
+  - {r: 0, g: 0.18060637, b: 1, a: 1}
   fontSizeRange: 10
 --- !u!114 &114024275508217568
 MonoBehaviour:
