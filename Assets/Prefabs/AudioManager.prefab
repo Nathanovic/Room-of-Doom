@@ -67,11 +67,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 84182474e34a1d449aa20f8213000e7f, type: 3}
     - {fileID: 8300000, guid: d2928eb6a4483d542b09b83597b1c9ac, type: 3}
     - {fileID: 8300000, guid: 5ee4966143bc84e439e0d4869dbc7ed6, type: 3}
-    - {fileID: 8300000, guid: ae37b706d3adb114f8bdbac8605d8385, type: 3}
-    - {fileID: 8300000, guid: 53e67cdb305cc3040b45b0c671e756f2, type: 3}
     - {fileID: 8300000, guid: 6d99dfb078baf2c458df24153440c2be, type: 3}
     - {fileID: 8300000, guid: d6e3bc292ee311f4bbac6e9d64b4c030, type: 3}
   - GroupID: Walk
+    group:
+    - {fileID: 8300000, guid: da18e5bb49ebefc4b8f484d049adeeaa, type: 3}
+    - {fileID: 8300000, guid: 9737bf952913c904aa8d1e9030128935, type: 3}
+  - GroupID: Sword
     group:
     - {fileID: 8300000, guid: ae37b706d3adb114f8bdbac8605d8385, type: 3}
     - {fileID: 8300000, guid: 53e67cdb305cc3040b45b0c671e756f2, type: 3}
