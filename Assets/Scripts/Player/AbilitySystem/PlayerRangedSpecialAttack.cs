@@ -33,7 +33,7 @@ public class PlayerRangedSpecialAttack : Ability{
         if (BossManager.instance.GetHeadPositions(player.transform.position, attackRange).Count != 0){
             foreach (var item in BossManager.instance.GetHeadPositions(player.transform.position, attackRange)){
                 Debug.Log(item);
-                if (item.y > 1){
+                if (item.y > 0){
                     mw.Add(item);
                 }
             }
@@ -58,6 +58,8 @@ public class PlayerRangedSpecialAttack : Ability{
             pm.target.Add(pos);
 
             if (mw.Count > 0){
+                yield return new WaitForSeconds(0.1f);
+
                 if (pointNum < mw.Count){
                     pm.target.Add(mw[pointNum]);
                 }
@@ -65,12 +67,23 @@ public class PlayerRangedSpecialAttack : Ability{
                     pm.target.Add(mw[Random.Range(0, mw.Count)]);
                 }
             }
+            else{
+                NoTarget(proj, pos, pm.speed);
+
+            }
 
 
         }
 
         yield return null;
     }
+
+    private void NoTarget(GameObject p, Vector3 startpos, float speed){
+        p.GetComponent<Rigidbody2D>().velocity = new Vector2(-(player.transform.position.x - startpos.x) * speed, -(player.transform.position.y - startpos.y) * speed);
+
+    }
+
+
 }
 
 /*
