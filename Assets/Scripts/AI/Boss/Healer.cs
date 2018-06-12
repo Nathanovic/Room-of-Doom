@@ -5,7 +5,6 @@ using UnityEngine.UI;
 //can be used to heal a worm
 public class Healer : MonoBehaviour {
 
-	public int healCount = 1;
 	public float healDuration = 3f;
 
 	private CharacterCombat combatScript;
@@ -16,7 +15,6 @@ public class Healer : MonoBehaviour {
 	}
 
 	public void Heal(int newMaxHP, Color newColor = default(Color)){	
-		healCount--;
 		combatScript.MakeImmune (healDuration);
 		combatScript.PrepareRevive (newMaxHP, newColor);
 		StartCoroutine (HealOverTime ());
@@ -32,10 +30,6 @@ public class Healer : MonoBehaviour {
 			t = Mathf.Clamp01 (t);
 			combatScript.HealUp (t);
 			yield return null;
-		}
-			
-		if (healCount == 0) {
-			Destroy (this);
 		}
 	}
 }

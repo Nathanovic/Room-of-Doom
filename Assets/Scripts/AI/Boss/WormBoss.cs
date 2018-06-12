@@ -38,6 +38,7 @@ public class WormBoss : WormBase {
 		fsm = new FSM (beginState);
 		healScript.Heal (bossPhases [0].phaseHealth, bossPhases [0].bossColor);
 
+		combatScript.onDie -= OnDie;
 		spawner = BossManager.instance.spawner;
 		spawner.SetSpawnMethod (bossPhases [0].SpawnInCameraView ());
 	}
@@ -47,6 +48,7 @@ public class WormBoss : WormBase {
 	}
 
 	private void EvaluateState(){
+		Debug.Log ("evaluate state");
 		float hpPercentage = combatScript.HPPercentage ();
 		if (hpPercentage == 0f) {
 			StateUp ();
@@ -67,8 +69,10 @@ public class WormBoss : WormBase {
 			phaseIncreasedUndergroundTime = true;
 			spawner.SetSpawnMethod (phase.SpawnInCameraView ());
 			healScript.Heal (phase.phaseHealth, phase.bossColor);
-
-			EvaluateState ();
+		} 
+		else {
+			Debug.Log ("worm dies");
+			OnDie ();	
 		}
 	}
 
