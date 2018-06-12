@@ -13,12 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114276113107680588}
-  - {fileID: 114260071403405418}
+  - {fileID: 114005165290437604}
   EditorEvents:
   - {fileID: 114439064838642750}
-  MasterBankRef: {fileID: 114260071403405418}
+  MasterBankRef: {fileID: 114005165290437604}
   StringsBankRef: {fileID: 114276113107680588}
-  stringsBankWriteTime: 636644339010387320
+  stringsBankWriteTime: 636644311254651339
   cacheVersion: 2
 --- !u!114 &114000083341653954
 MonoBehaviour:
@@ -35,6 +35,24 @@ MonoBehaviour:
   Min: 0
   Max: 200
   Default: 0
+--- !u!114 &114005165290437604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\GIT\Room of Doom\FMODBuild\Desktop\Master Bank.bank
+  lastModified: 636644358025190051
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 2088416
+  Exists: 1
 --- !u!114 &114006366042361606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +243,21 @@ MonoBehaviour:
   - Name: 
     Value: 1601376
   Exists: 1
+--- !u!114 &114108933414587366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: state
+  Min: 1
+  Max: 4
+  Default: 1
 --- !u!114 &114112171902955144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMODBuild\Desktop\Master Bank.strings.bank
-  lastModified: 636644339010387320
+  lastModified: 636644311254651339
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -451,6 +484,21 @@ MonoBehaviour:
   Min: 1
   Max: 4
   Default: 1
+--- !u!114 &114324143068055186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: wormHealth
+  Min: 0
+  Max: 200
+  Default: 0
 --- !u!114 &114330069332734176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +524,21 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 108333
 --- !u!114 &114337194431388912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: wormHealth
+  Min: 0
+  Max: 200
+  Default: 0
+--- !u!114 &114348531749802116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -598,17 +661,32 @@ MonoBehaviour:
   Path: event:/music
   guid: 35b675c02adaf045af0261b65a5b7399
   Banks:
-  - {fileID: 114260071403405418}
+  - {fileID: 114005165290437604}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114783297165167468}
-  - {fileID: 114320718617669300}
-  - {fileID: 114047991140862886}
+  - {fileID: 114348531749802116}
+  - {fileID: 114948003754198374}
+  - {fileID: 114108933414587366}
   MinDistance: 0
   MaxDistance: 0
-  Length: 151671
+  Length: 142374
+--- !u!114 &114440308252000766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: state
+  Min: 1
+  Max: 4
+  Default: 1
 --- !u!114 &114453730603729134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +923,24 @@ MonoBehaviour:
   Min: 0
   Max: 200
   Default: 0
+--- !u!114 &114626774484766980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\GIT\Room of Doom\FMODBuild\Desktop\Master Bank.bank
+  lastModified: 636644358025190051
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 2088416
+  Exists: 1
 --- !u!114 &114632680413127564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1026,6 +1122,21 @@ MonoBehaviour:
   Min: 0
   Max: 200
   Default: 0
+--- !u!114 &114784147851674176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: gameOver
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114784368567376210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1185,6 +1296,21 @@ MonoBehaviour:
   Name: wormHealth
   Min: 0
   Max: 200
+  Default: 0
+--- !u!114 &114948003754198374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: gameOver
+  Min: 0
+  Max: 1
   Default: 0
 --- !u!114 &114956548523184422
 MonoBehaviour:
