@@ -7,12 +7,13 @@ public class HealthBar : MonoBehaviour {
 
 	private CharacterCombat combat;
 	private RectTransform healthFill;
-    private RectTransform healthFillRed;
     private Image playerIcon;
+	private Color hbColor = Color.white;
     public int blinkIconSpeed = 3;
 
     private int maxHealth;
 	public bool worldScale = true;
+	public bool useFill = false;
 	public int fillChildIndex = 0;
     public int fillRedChildIndex = 0;
     public int playerIconIndex = 0;
@@ -20,12 +21,11 @@ public class HealthBar : MonoBehaviour {
     public float yOffset = 1f;
 	private float hbWidth;
 
-    private float currentHealth;
+    private float currentHealthWidth;
     private float lastHealth;
 
 	private void Awake(){
 		healthFill = transform.GetChild (fillChildIndex).GetComponent<RectTransform> ();
-        healthFillRed = transform.GetChild(fillRedChildIndex).GetComponent<RectTransform>();
         playerIcon = transform.GetChild(playerIconIndex).GetComponent<Image>();
 
         hbWidth = healthFill.sizeDelta.x;
@@ -60,13 +60,19 @@ public class HealthBar : MonoBehaviour {
 
         lastHealth = healthFill.sizeDelta.x;
 
-        float percentage = (float)newHealth / maxHealth;
-		Vector2 healthBarSize = healthFill.sizeDelta;
-		healthBarSize.x = hbWidth * percentage;
-		healthFill.sizeDelta = healthBarSize;
+		if (!useFill) {
+			float percentage = (float)newHealth / maxHealth;
+			Vector2 healthBarSize = healthFill.sizeDelta;
+			healthBarSize.x = hbWidth * percentage;
+			healthFill.sizeDelta = healthBarSize;
+			currentHealthWidth = healthBarSize.x;
 
-        currentHealth = healthBarSize.x;
-        StartCoroutine(LerpRedHealthbar());
+			StartCoroutine(LerpRedHealthbar());
+		} 
+		else {
+			float fillAmount = (float)newHealth / maxHealth;
+			playerIcon.fillAmount = fillAmount;
+		}
 
         if (newHealth <= 0){
             StartCoroutine(IconBlink());
@@ -77,15 +83,16 @@ public class HealthBar : MonoBehaviour {
 		maxHealth = newMaxHealth;
 
 		if (newHBColor != Color.clear) {
-			healthFillRed.GetComponent<Image> ().color = newHBColor;
+			hbColor = newHBColor;
+			playerIcon.color = hbColor;
 		}
 	}
 
     private IEnumerator LerpRedHealthbar(){
-        while (!Mathf.Approximately(healthFillRed.sizeDelta.x, currentHealth)){
-            Vector2 healthBarSize = healthFillRed.sizeDelta;
-            healthBarSize.x = Mathf.Lerp(lastHealth, currentHealth, 0.8f * Time.deltaTime);
-            healthFillRed.sizeDelta = healthBarSize;
+		while (!Mathf.Approximately(healthFill.sizeDelta.x, currentHealthWidth)){
+			Vector2 healthBarSize = healthFill.sizeDelta;
+            healthBarSize.x = Mathf.Lerp(lastHealth, currentHealthWidth, 0.8f * Time.deltaTime);
+			healthFill.sizeDelta = healthBarSize;
 
             lastHealth = healthBarSize.x;
             yield return null;
@@ -96,12 +103,12 @@ public class HealthBar : MonoBehaviour {
     private IEnumerator IconBlink(){
         while (healthFill.sizeDelta.x <= 0){
             var pingPong = Mathf.PingPong(Time.time * blinkIconSpeed, 1);
-            var color = Color.Lerp(Color.white, Color.red, pingPong);
+			var color = Color.Lerp(hbColor, Color.red, pingPong);
             playerIcon.color = color;
             yield return null;
         }
 
-        playerIcon.color = Color.white;
+		playerIcon.color = hbColor;
     }
 
 }
