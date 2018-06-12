@@ -11,7 +11,7 @@ public class WormBase : MonoBehaviour {
 	private WormMovement moveScript;
 	protected WormSegment[] wormSegments;
 
-	private Transform head;
+	protected Transform head;
 
 	private Vector3 deactivePosition;
 

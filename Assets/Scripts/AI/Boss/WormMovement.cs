@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 //handle the movement of the magma worm
 //the body exists out of segments, and each segments just follows the head
@@ -36,6 +37,14 @@ public class WormMovement : MonoBehaviour {
 
 		attackTraverseables = GetComponents<IWormTraverseable> ();
 		wormSegments = GetComponentsInChildren<WormSegment> ();
+		wormSegments [0].Reset ();
+		Transform prevSegment = head;
+		foreach (WormSegment s in wormSegments) {
+			s.Init (prevSegment);
+			if (s != wormSegments.Last ()) {
+				prevSegment = s.transform;
+			}
+		}
 
 		spawner = BossManager.instance.spawner;
 		BossManager.instance.DetachWormObject(feedForwardVFX.transform);
@@ -104,12 +113,10 @@ public class WormMovement : MonoBehaviour {
 		movementSpeed = Mathf.Lerp (minMoveSpeed, maxMoveSpeed, attackIntensity);
 		traverseSpeed = movementSpeed / moveCurveLength;
 
-		Transform prevSegment = head;
 		float beforeSegmentDelay = headLength / moveCurveLength;
 		foreach (WormSegment segment in wormSegments) {
-			segment.Prepare (prevSegment, beforeSegmentDelay, traverseSpeed);
+			segment.Prepare (beforeSegmentDelay, traverseSpeed);
 			beforeSegmentDelay += segment.length / moveCurveLength;
-			prevSegment = segment.transform;
 		}
 
 		moveT = 0f;

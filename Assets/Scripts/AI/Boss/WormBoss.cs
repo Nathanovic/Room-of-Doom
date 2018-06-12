@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Boss_FSM;
+using System.Linq;
 
 public class WormBoss : WormBase {
 
@@ -9,6 +10,9 @@ public class WormBoss : WormBase {
 	private SpawnPositions spawner;
 	private FSM fsm;
 	private int state;
+
+	private SpriteRenderer headColorElement;
+	public UnityEngine.UI.Image headUIElement;
 
 	public BossPhase[] bossPhases = new BossPhase[3];
 	public delegate void BossPhaseDelegate(int stateIndex);
@@ -36,11 +40,12 @@ public class WormBoss : WormBase {
 		bossPhases [1].Init (new HardState (this));
 		bossPhases [2].Init (new ImpossibleState (this));
 		fsm = new FSM (beginState);
-		healScript.Heal (bossPhases [0].phaseHealth, bossPhases [0].bossColor);
 
 		combatScript.onDie -= OnDie;
 		spawner = BossManager.instance.spawner;
-		spawner.SetSpawnMethod (bossPhases [0].SpawnInCameraView ());
+
+		headColorElement = head.GetChild (0).GetComponent<SpriteRenderer> ();
+		ApplyBossChanges (bossPhases [0]);
 	}
 
 	public override void WormUpdate(){
@@ -66,17 +71,23 @@ public class WormBoss : WormBase {
 			fsm.TriggerNextState (nextState);
 			onPhaseUp (state);
 			phaseIncreasedUndergroundTime = true;
-			spawner.SetSpawnMethod (phase.SpawnInCameraView ());
-			healScript.Heal (phase.phaseHealth, phase.bossColor);
 
-			foreach (WormSegment segment in wormSegments) {
-				
-			}
+			ApplyBossChanges (phase);
 		} 
 		else {
 			Debug.Log ("worm boss dies");
 			OnDie ();	
 		}
+	}
+
+	private void ApplyBossChanges(BossPhase phase){
+		spawner.SetSpawnMethod (phase.SpawnInCameraView ());
+		healScript.Heal (phase.phaseHealth, phase.bossColor);		
+		foreach (WormSegment segment in wormSegments) {
+			segment.RecolorSegment (phase.bossColor);
+		}
+		headColorElement.color = phase.bossColor;
+		headUIElement.color = phase.bossColor;
 	}
 
 	private void OnBossWormDied(){
