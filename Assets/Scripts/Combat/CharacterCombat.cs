@@ -23,8 +23,6 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 
 	public ShakeSettings hittedShakeSettings;
 
-	private int lives;
-
 	private void Awake(){
 		CombatManager.Instance.RegisterPotentialTarget (this);
 		maxHealth = health;
@@ -35,12 +33,6 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 			hitPS = transform.GetChild (1).GetComponent<ParticleSystem> ();
 			if (hitPS == null)
 				Debug.LogWarning ("hit ps not assigned???");
-		}
-
-		Healer healScript = GetComponent<Healer> ();
-		if (healScript != null) {
-			lives = healScript.healCount;
-			healScript.onHeal += OnHeal;
 		}
 	}
 
@@ -62,7 +54,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		hitPS.transform.localScale = hitDir;
 		hitPS.Play ();
 
-		PopUpTextManager.instance.CreateFloatingText (dmg.ToString (), transform);
+		PopUpTextManager.instance.CreateFloatingText (transform, dmg.ToString());
 	}
 
 	//simplified version (without hitPS)
@@ -76,7 +68,7 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
         HealthChangedEvent();
 
 		//make sure we cannot be attacked anymore:
-		if (health == 0 && lives == 0) {
+		if (health == 0) {
 			if(onDie != null) {
 				onDie ();
 			}
@@ -120,9 +112,5 @@ public class CharacterCombat : MonoBehaviour, IAttackable {
 		if (onHealthChanged != null) {
 			onHealthChanged (health);
 		}
-	}
-
-	private void OnHeal(){
-		lives--;
 	}
 }
