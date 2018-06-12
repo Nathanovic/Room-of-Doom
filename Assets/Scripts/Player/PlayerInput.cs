@@ -33,22 +33,15 @@ public class PlayerInput : MonoBehaviour {
     public float Rhorizontal;
     [HideInInspector]
     public float Rvertical;
-    [HideInInspector]
     public float ltButton;
-    [HideInInspector]
     public float rtButton;
 
     public bool keyboardInput;
 
-    private void Awake(){
-        //controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
+    private void Start() {
 		if (keyboardInput)
 			controllerNumber = 1;
-		//SetControllerNumber(controllerNumber);
-    }
-
-    private void Start()
-    {
+		
         controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
         SetControllerNumber(controllerNumber);
 

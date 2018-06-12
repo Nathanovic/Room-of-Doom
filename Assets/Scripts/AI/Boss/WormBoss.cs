@@ -103,6 +103,7 @@ public class WormBoss : WormBase {
 [System.Serializable]
 public class BossPhase{
 	[SerializeField]private bool spawnInCameraView;
+	//public int new
 
 	public State nextState{ get; private set; }
 
