@@ -28,6 +28,8 @@ public class SceneSwitch : MonoBehaviour {
 
     public void Press(int _scene, bool _showOverlay)
     {
+        PlayerPrefs.SetInt("CharacterPlayer1", 1);
+        PlayerPrefs.SetInt("CharacterPlayer2", 2);
         StartCoroutine(LoadScene(scene,showOverlay));
     }
 
@@ -38,6 +40,7 @@ public class SceneSwitch : MonoBehaviour {
             _overlay.SetActive(true);
         }
     }
+
 
     private IEnumerator LoadScene(int _scene, bool _showOverlay)
     {
