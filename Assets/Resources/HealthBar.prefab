@@ -111,6 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fee85a820890e469821c451eb5315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkIconSpeed: 3
+  worldScale: 1
+  fillChildIndex: 0
+  fillRedChildIndex: 0
+  playerIconIndex: 0
   yOffset: 0.5
 --- !u!222 &222419113309696016
 CanvasRenderer:

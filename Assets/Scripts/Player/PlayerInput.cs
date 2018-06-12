@@ -41,10 +41,17 @@ public class PlayerInput : MonoBehaviour {
     public bool keyboardInput;
 
     private void Awake(){
-        controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
+        //controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
 		if (keyboardInput)
 			controllerNumber = 1;
-		SetControllerNumber(controllerNumber);
+		//SetControllerNumber(controllerNumber);
+    }
+
+    private void Start()
+    {
+        controllerNumber = PlayerPrefs.GetInt("CharacterPlayer" + controllerNumber);
+        SetControllerNumber(controllerNumber);
+
     }
 
     public bool ButtonIsDown(Button but){
