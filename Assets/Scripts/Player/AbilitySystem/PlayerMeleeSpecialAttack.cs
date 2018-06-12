@@ -90,6 +90,7 @@ public class PlayerMeleeSpecialAttack : Ability{
             Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
             rb.isKinematic = false;
             rb.velocity = new Vector2(xDir, -yDir).normalized * force;
+            Cooldown();
         }
 
     }
