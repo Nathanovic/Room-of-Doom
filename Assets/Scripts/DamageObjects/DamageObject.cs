@@ -6,6 +6,7 @@ public class DamageObject : MonoBehaviour {
 
 	private bool canDoDamage = true;
 	public bool destroyOnCollision;
+	public bool multiDamage = false;
 
 	public int damage;
 
@@ -27,7 +28,7 @@ public class DamageObject : MonoBehaviour {
 	}
 
 	private void TryDamageCollider(Collider2D other){
-		if (other.tag == "Player" && canDoDamage) {
+		if (other.tag == "Player" && (canDoDamage || multiDamage)) {
 			CharacterCombat combatScript = other.GetComponent<CharacterCombat> ();
 			if (combatScript.ValidTarget ()) {
 				combatScript.ApplyDamage (damage);

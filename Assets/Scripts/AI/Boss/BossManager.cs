@@ -96,9 +96,12 @@ public class BossManager : MonoBehaviour {
 		if (boss != null){
 			boss.WormUpdate ();
 		}
-	
+
+		int i = 0;
 		foreach (WormBase worm in worms) {
 			worm.WormUpdate ();
+			i++;
+			Debug.Log ("worm " + i);
 		}
 	}
 
