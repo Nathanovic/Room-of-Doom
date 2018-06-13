@@ -84,11 +84,8 @@ public class BossManager : MonoBehaviour {
 
 	public void MultiWormPhase(){
 		boss.WormUpdate ();
-		int i = 0;
 		foreach (WormBase worm in phase2Worms) {
 			worm.WormUpdate ();
-			i++;
-			Debug.Log ("worm " + worm.name);
 		}
 	}
 
@@ -101,11 +98,8 @@ public class BossManager : MonoBehaviour {
 			boss.WormUpdate ();
 		}
 
-		int i = 0;
 		foreach (WormBase worm in worms) {
 			worm.WormUpdate ();
-			i++;
-			Debug.Log ("worm " + worm.name);
 		}
 	}
 

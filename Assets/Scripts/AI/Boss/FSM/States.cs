@@ -91,7 +91,7 @@ namespace Boss_FSM{
 		}
 
 		public override void Run () {
-			manager.MultiWormPhase ();
+			manager.FinalPhase ();
 		}
 	}
 	#endregion
