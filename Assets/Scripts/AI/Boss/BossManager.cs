@@ -54,7 +54,7 @@ public class BossManager : MonoBehaviour {
 		}
 	}
 
-	private void Start(){
+	private IEnumerator Start(){
 		gamePhases[0] = new GameStartPhase (this);
 		gamePhases[1] = new MultiWormPhase (this);
 		gamePhases[2] = new FinalPhase (this);
@@ -62,6 +62,7 @@ public class BossManager : MonoBehaviour {
 
 		lavaController = GetComponentInChildren<LavaController> ();
 
+		yield return null;
 		phase2Worms = new List<WormBase> ();
 		for (int i = 0; i < phase2ExtraWormCount; i++) {
 			phase2Worms.Add (worms [i]);
@@ -83,8 +84,11 @@ public class BossManager : MonoBehaviour {
 
 	public void MultiWormPhase(){
 		boss.WormUpdate ();
+		int i = 0;
 		foreach (WormBase worm in phase2Worms) {
 			worm.WormUpdate ();
+			i++;
+			Debug.Log ("worm " + worm.name);
 		}
 	}
 
@@ -101,7 +105,7 @@ public class BossManager : MonoBehaviour {
 		foreach (WormBase worm in worms) {
 			worm.WormUpdate ();
 			i++;
-			Debug.Log ("worm " + i);
+			Debug.Log ("worm " + worm.name);
 		}
 	}
 
