@@ -17,6 +17,9 @@ public class BossManager : MonoBehaviour {
 
 	public static BossManager instance;
 	public List<WormBase> worms = new List<WormBase>();
+	public List<WormBase> phase2Worms;
+	public int phase2ExtraWormCount = 4;//phase 3 = just all worms
+	private int activeWormIndex;
 	private WormBoss boss;
 
 	public ShakeSettings wormDieCamShake;
@@ -58,6 +61,11 @@ public class BossManager : MonoBehaviour {
 		fsm = new FSM (gamePhases[0]);
 
 		lavaController = GetComponentInChildren<LavaController> ();
+
+		phase2Worms = new List<WormBase> ();
+		for (int i = 0; i < phase2ExtraWormCount; i++) {
+			phase2Worms.Add (worms [i]);
+		}
 	}
 
 	public void DetachWormObject(Transform wormObj){
@@ -75,7 +83,7 @@ public class BossManager : MonoBehaviour {
 
 	public void MultiWormPhase(){
 		boss.WormUpdate ();
-		foreach (WormBase worm in worms) {
+		foreach (WormBase worm in phase2Worms) {
 			worm.WormUpdate ();
 		}
 	}
