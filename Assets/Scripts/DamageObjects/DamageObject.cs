@@ -30,7 +30,9 @@ public class DamageObject : MonoBehaviour {
 	private void TryDamageCollider(Collider2D other){
 		if (other.tag == "Player" && (canDoDamage || multiDamage)) {
 			CharacterCombat combatScript = other.GetComponent<CharacterCombat> ();
+            Debug.Log("sadsd");
 			if (combatScript.ValidTarget ()) {
+                Debug.Log("iopio");
 				combatScript.ApplyDamage (damage);
 				DoImpact ();
 			}
@@ -43,8 +45,11 @@ public class DamageObject : MonoBehaviour {
 			destroyVFX.Play ();
 			destroyVFX.transform.SetParent (null);
 			Destroy (destroyVFX.gameObject, 1.5f);
-		} 
+		}
 
-		Destroy (gameObject);			
+        if (multiDamage == false){
+		    Destroy (gameObject);			
+
+        }
 	}
 }
